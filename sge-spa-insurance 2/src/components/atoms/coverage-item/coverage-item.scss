@@ -1,0 +1,18 @@
+@use "../../../styles/utils/index.scss";
+
+.coverage-item {
+  display: flex;
+  gap: 16px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__header {
+    display: flex;
+    flex-direction: column;
+
+    @extend .text-blue-500;
+  }
+}

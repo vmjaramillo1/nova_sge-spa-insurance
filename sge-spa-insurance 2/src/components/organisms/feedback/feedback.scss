@@ -1,0 +1,21 @@
+@use "../../../styles/utils/colors.scss" as colors;
+
+.feedback {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    text-align: center;
+    color: map-get(colors.$blue , 500);
+  }
+
+  &__content {
+    text-align: center;
+  }
+}

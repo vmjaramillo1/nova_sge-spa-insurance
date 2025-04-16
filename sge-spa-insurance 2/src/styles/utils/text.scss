@@ -1,0 +1,96 @@
+$fontWeightRecord : (
+  thin: (
+    weight: 100,
+    family: prelo-book
+  ),
+  lighter: (
+    weight: 200,
+    family: prelo-book
+  ),
+  light: (
+    weight: 300,
+    family: prelo-book
+  ),
+  normal: (
+    weight: 400,
+    family: prelo-book
+  ),
+  medium: (
+    weight: 400,
+    family: prelo-medium
+  ),
+  semibold: (
+    weight: 400,
+    family: prelo-semibold
+  ),
+  bold: (
+    weight: 400,
+    family: prelo-bold
+  ),
+  bolder: (
+    weight: 400,
+    family: prelo-bold
+  ),
+  black: (
+    weight: 400,
+    family: prelo-bold
+  )
+);
+
+$typographyVariants: (
+  hero: (
+    size: 40px,
+    line: 48px,
+  ),
+  headline1: (
+    size: 32px,
+    line: 40px,
+  ),
+  headline2: (
+    size: 28px,
+    line: 32px,
+  ),
+  headline3: (
+    size: 22px,
+    line: 28px,
+  ),
+  title: (
+    size: 20px,
+    line: 24px,
+  ),
+  subtitle: (
+    size: 18px,
+    line: 24px,
+  ),
+  body: (
+    size: 16px,
+    line: 24px,
+  ),
+  caption: (
+    size: 14px,
+    line: 20px,
+  ),
+  legal: (
+    size: 12px,
+    line: 16px,
+  ),
+  amount: (
+    size: 40px,
+    line: 48px,
+  ),
+  amountSmall: (
+    size: 28px,
+    line: 32px,
+  ),
+  button: (
+    size: 14px,
+    line: 24px,
+  ),
+  buttonSmall: (
+    size: 12px,
+    line: 16px,
+  ),
+);
+
+$alignment: left center right justify start end;
+

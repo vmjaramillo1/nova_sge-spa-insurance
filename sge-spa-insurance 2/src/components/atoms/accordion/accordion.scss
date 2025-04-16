@@ -1,0 +1,29 @@
+@import "../../../styles/index.scss";
+
+.accordion {  
+  border-bottom: 1px solid #DEE3ED;
+
+  &__title {
+    width: 100%;
+    padding: 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend .font-semibold;
+    @extend .text-left;
+    @extend .text-dark-gray-500;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    color: #6E6E73;
+    padding: 0 16px 16px;
+  }
+}

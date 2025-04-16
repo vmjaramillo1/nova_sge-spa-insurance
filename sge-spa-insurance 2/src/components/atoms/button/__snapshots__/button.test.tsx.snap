@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render loading 1`] = `
+<button
+  class="button button--primary"
+  disabled=""
+  type="button"
+>
+  <pichincha-spinner
+    background="#0f265c"
+    border="4"
+    color="rgba(15, 38, 92, 0.1)"
+    role="img"
+    size="16"
+  />
+</button>
+`;

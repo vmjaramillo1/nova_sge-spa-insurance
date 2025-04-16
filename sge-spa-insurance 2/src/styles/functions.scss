@@ -1,0 +1,12 @@
+
+@function getSpacing($size, $negative: false) {
+  @if $size == auto {
+    @return auto;
+  }
+
+  @if $negative {
+    @return $size * -1px;
+  }
+
+  @return $size * 1px;
+}

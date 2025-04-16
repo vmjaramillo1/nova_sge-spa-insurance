@@ -1,0 +1,190 @@
+import {
+  PaymentMethodOption,
+  PaymentPeriodicityOption,
+} from '../interfaces/offerable-product.interface'
+import {
+  MapperProductResult,
+  RecordAssistances,
+  RecordBenefits,
+  RecordCoverage,
+  RecordCoverageById,
+  RecordExclusions,
+  RecordPaymentMethod,
+  RecordPeriodicityWithPrice,
+  RecordPlan,
+  RecordPlanCoverages,
+  RecordPrices,
+} from '../interfaces/records.interface'
+import {
+  AssistanceRule,
+  BenefitRule,
+  CoverageLimitRule,
+  CoverageRule,
+  ExclusionRule,
+  PlanRule,
+  PriceRule,
+  ProductRule,
+} from '../interfaces/rule.interface'
+
+export function reduceGeneric<
+  Input extends object,
+  Output extends Record<string, Omit<Input, Key>>,
+  Key extends keyof Input
+>(values: Array<Input>, key: Key) {
+  return values.reduce<Output>((acc, value) => {
+    const { [key]: keyValue, ...restValue } = value
+
+    return {
+      ...acc,
+      [keyValue as unknown as string]: restValue,
+    }
+  }, {} as Output)
+}
+
+export function reducePrices(prices: Array<PriceRule>): RecordPrices {
+  return prices.reduce<RecordPrices>((acc, price) => {
+    const { periodicityPaymentCode, ...restPrice } = price
+
+    return {
+      ...acc,
+      [periodicityPaymentCode]: restPrice,
+    }
+  }, {} as RecordPrices)
+}
+
+export function reducePaymentMethodsOptions(
+  paymentMethodOptions: Array<PaymentMethodOption>
+) {
+  return paymentMethodOptions.reduce<RecordPaymentMethod>((acc, paymentMethod) => {
+    const { code, description, name, order } = paymentMethod
+
+    return {
+      ...acc,
+      [code]: { description, name, order },
+    }
+  }, {} as RecordPaymentMethod)
+}
+
+export function reducePaymentPeriodicityOptions(
+  paymentPeriodicityOptions: Array<PaymentPeriodicityOption>,
+  reducedPries: RecordPrices
+) {
+  return paymentPeriodicityOptions.reduce<RecordPeriodicityWithPrice>(
+    (acc, paymentPeriodicity) => {
+      const { code, description, factor, name, order } = paymentPeriodicity
+
+      const currentPrice = reducedPries[code]
+
+      return {
+        ...acc,
+        [code]: {
+          description,
+          factor,
+          name,
+          order,
+          ...currentPrice,
+        },
+      }
+    },
+    {} as RecordPeriodicityWithPrice
+  )
+}
+
+export function reducePlanCoverages(
+  coverageLimits: Array<CoverageLimitRule>,
+  coveragesById: RecordCoverageById
+): RecordPlanCoverages {
+  return coverageLimits.reduce<RecordPlanCoverages>((acc, coverageLimitRule) => {
+    const { coverageId, ...restCoverageLimit } = coverageLimitRule
+    const { code, ...restCoverage } = coveragesById[coverageId]
+
+    return {
+      ...acc,
+      [code]: {
+        ...restCoverage,
+        coverageLimit: restCoverageLimit,
+      },
+    }
+  }, {} as RecordPlanCoverages)
+}
+
+export function mapperPlan(
+  plan: PlanRule,
+  coveragesById: RecordCoverageById,
+  paymentMethodOptions: RecordPaymentMethod,
+  paymentPeriodicityOptions: Array<PaymentPeriodicityOption>
+) {
+  const { code, name, coverageLimits, prices } = plan
+
+  const planCoverages = reducePlanCoverages(coverageLimits, coveragesById)
+
+  const pricesResult = reducePrices(prices)
+
+  const periodicityOptions = reducePaymentPeriodicityOptions(
+    paymentPeriodicityOptions,
+    pricesResult
+  )
+
+  return {
+    code,
+    name,
+    coverages: planCoverages,
+    periodicityOptions,
+    paymentMethodOptions,
+  }
+}
+
+function reduceCoverages(coverages: Array<CoverageRule>): RecordCoverage {
+  return reduceGeneric(coverages, 'code')
+}
+
+function reduceBenefits(benefits: Array<BenefitRule>): RecordBenefits {
+  return reduceGeneric(benefits, 'code')
+}
+
+function reduceAssistances(assistances: Array<AssistanceRule>): RecordAssistances {
+  return reduceGeneric(assistances, 'code')
+}
+
+function reduceExclusions(exclusions: Array<ExclusionRule>): RecordExclusions {
+  return reduceGeneric(exclusions, 'code')
+}
+
+export function mapperProduct(product: ProductRule): MapperProductResult {
+  const { code, name } = product
+
+  const coverages = reduceCoverages(product.coverages)
+  const benefits = reduceBenefits(product.benefits)
+  const assistances = reduceAssistances(product.assistances)
+  const exclusions = reduceExclusions(product.exclusions)
+
+  return {
+    code,
+    name,
+    coverages,
+    benefits,
+    assistances,
+    exclusions,
+  }
+}
+
+export function reducePlans(
+  plans: Array<PlanRule>,
+  coveragesById: RecordCoverageById,
+  paymentMethodOptions: RecordPaymentMethod,
+  paymentPeriodicityOptions: Array<PaymentPeriodicityOption>
+) {
+  return plans.reduce<RecordPlan>((acc, plan) => {
+    const { code, ...reducePlan } = mapperPlan(
+      plan,
+      coveragesById,
+      paymentMethodOptions,
+      paymentPeriodicityOptions
+    )
+
+    return {
+      ...acc,
+      [code]: reducePlan,
+    }
+  }, {} as RecordPlan)
+}

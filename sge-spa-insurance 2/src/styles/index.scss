@@ -1,0 +1,42 @@
+@import "./utils";
+@import "./reset.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+
+  &__container {
+    max-width: 560px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+  }
+
+  &__gradient {
+    height: 70px;
+    margin-bottom: 30px;
+    background: linear-gradient(to bottom,
+        var(--yellow500) 0px, var(--yellow500) 10px,
+        var(--blue500) 10px, var(--blue500) 20px,
+        var(--yellowGold500) 20px, var(--yellowGold500) 30px,
+        var(--darkCyan500) 30px, var(--darkCyan500) 40px,
+        var(--pureOrange500) 40px, var(--pureOrange500) 50px,
+        var(--darkGrayishBlue500) 50px, var(--darkGrayishBlue500) 60px,
+        var(--info) 60px, var(--info) 70px);
+  }
+}
+
+.download-use-guide {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}

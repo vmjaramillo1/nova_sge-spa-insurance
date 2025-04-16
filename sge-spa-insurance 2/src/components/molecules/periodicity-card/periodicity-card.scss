@@ -1,0 +1,26 @@
+.periodicity-card {
+  position: relative;
+  text-align: left;
+
+  &__radio {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  &__badge {
+    font-size: 8px;
+    line-height: 11px;
+    background-color: #009688;
+    border-radius: 8px;
+    padding: 2.5px 6px;
+    width: 40px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  &__through {
+    text-decoration: line-through;
+  }
+}

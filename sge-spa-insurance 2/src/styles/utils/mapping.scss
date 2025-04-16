@@ -1,0 +1,125 @@
+@use "sass:list";
+
+@use "../functions.scss" as func;
+@use "./spacing.scss" as spacing;
+@use "./text.scss" as text;
+@use "./colors.scss" as colors;
+@use "./display.scss" as displays;
+
+// --------------------------------------------------------------------
+// SPACING ------------------------------------------------------------
+// --------------------------------------------------------------------
+
+@each $spaceKey, $spaceValue in spacing.$spacingRecord {
+  @each $size in spacing.$sizeList {
+    .#{$spaceKey}-#{$size} {
+      #{$spaceValue}: func.getSpacing($size);
+    }
+
+    @if ($size != 0) and ($size != auto) {
+      .-#{$spaceKey}-#{$size} {
+        #{$spaceValue}: func.getSpacing($size, true);
+      }
+    }
+
+    @each $propKey, $propValue in spacing.$spacingPropsRecord {
+      .#{$spaceKey}#{$propKey}-#{$size} {
+        @each $prop in $propValue {
+          #{$spaceValue}-#{$prop}: func.getSpacing($size);
+        }
+      }
+
+      @if ($size != 0) and ($size != auto) {
+        .-#{$spaceKey}#{$propKey}-#{$size} {
+          @each $prop in $propValue {
+            #{$spaceValue}-#{$prop}: func.getSpacing($size, true);
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $currentSize in spacing.$sizeList {
+  @each $directionKey, $directionValue  in spacing.$sizeDirectionList {
+    .#{$directionKey}-#{$currentSize} {
+      #{$directionValue}: func.getSpacing($currentSize);
+    }
+    .max-#{$directionKey}-#{$currentSize} {
+      max-#{$directionValue}: func.getSpacing($currentSize);
+    }
+    .min-#{$directionKey}-#{$currentSize} {
+      min-#{$directionValue}: func.getSpacing($currentSize);
+    }
+  }
+}
+
+
+// --------------------------------------------------------------------
+// DISPLAY ------------------------------------------------------------
+// --------------------------------------------------------------------
+
+@each $cursorKey, $cursorValue in displays.$cursorRecord {
+  .cursor-#{$cursorKey} {
+    cursor: $cursorValue;
+  }
+}
+
+@each $overflowKey, $overflowValue in displays.$overflowRecord {
+  .overflow-#{$overflowKey} {
+    overflow: $overflowValue;
+  }
+}
+
+
+// --------------------------------------------------------------------
+// TEXT ---------------------------------------------------------------
+// --------------------------------------------------------------------
+
+@each $variant, $weight in text.$fontWeightRecord {
+  $selector: "font-" + $variant;
+
+  .#{$selector} {
+    font-weight: map-get($weight, weight);
+    font-family: map-get($weight, family);
+  }
+}
+
+@each $variant, $value in text.$typographyVariants {
+  .text-#{$variant} {
+    font-size: map-get($value, size);
+    line-height: map-get($value, line);
+  }
+}
+
+@each $align in text.$alignment {
+  .text-#{$align} {
+    text-align: $align;
+  }
+}
+
+// --------------------------------------------------------------------
+// COLOR --------------------------------------------------------------
+// --------------------------------------------------------------------
+
+
+@each $variantKey, $variants in colors.$colorVariants {
+  @each $variant, $colors in $variants {
+    @each $level, $color in $colors {
+      $variantName: "" + $variant + "-" + $level; 
+
+      .bg-#{$variantName} {
+        background-color: $color;
+      }
+      .text-#{$variantName} {
+        color: $color;
+      }
+      .border-#{$variantName} {
+        border-color: $color;
+      }
+      .fill-#{$variantName} {
+        fill: $color;
+      }
+    }
+  }
+}

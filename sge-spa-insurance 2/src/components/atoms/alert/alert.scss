@@ -1,0 +1,26 @@
+.alert {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+
+  &--icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &--blank {
+    border-radius: 8px;
+    background-color: #F6F6F6;
+    box-shadow: 0 0 0 1px #DBDBDC;
+  }
+
+  &--info {
+    background-color: #EAF1F8;
+    box-shadow: 0 0 0 1px #ACCAE5;
+  }
+
+  &__icon {
+    display: flex;
+  }
+}

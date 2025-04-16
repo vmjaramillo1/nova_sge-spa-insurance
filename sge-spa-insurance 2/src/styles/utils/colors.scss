@@ -1,0 +1,178 @@
+$yellow: (
+  50: var(--yellow50),
+  100: var(--yellow100),
+  200: var(--yellow200),
+  300: var(--yellow300),
+  400: var(--yellow400),
+  500: var(--yellow500),
+  600: var(--yellow600),
+  700: var(--yellow700),
+  800: var(--yellow800),
+  900: var(--yellow900),
+);
+
+$blue: (
+  50: var(--blue50),
+  100: var(--blue100),
+  200: var(--blue200),
+  300: var(--blue300),
+  400: var(--blue400),
+  500: var(--blue500),
+  600: var(--blue600),
+  700: var(--blue700),
+  800: var(--blue800),
+  900: var(--blue900),
+);
+
+$yellow-gold: (
+  50: var(--yellowGold50),
+  100: var(--yellowGold100),
+  200: var(--yellowGold200),
+  300: var(--yellowGold300),
+  400: var(--yellowGold400),
+  500: var(--yellowGold500),
+  600: var(--yellowGold600),
+  700: var(--yellowGold700),
+  800: var(--yellowGold800),
+  900: var(--yellowGold900),
+);
+
+$dark-cyan: (
+  50: var(--darkCyan50),
+  100: var(--darkCyan100),
+  200: var(--darkCyan200),
+  300: var(--darkCyan300),
+  400: var(--darkCyan400),
+  500: var(--darkCyan500),
+  600: var(--darkCyan600),
+  700: var(--darkCyan700),
+  800: var(--darkCyan800),
+  900: var(--darkCyan900),
+);
+
+$pure-orange: (
+  50: var(--pureOrange50),
+  100: var(--pureOrange100),
+  200: var(--pureOrange200),
+  300: var(--pureOrange300),
+  400: var(--pureOrange400),
+  500: var(--pureOrange500),
+  600: var(--pureOrange600),
+  700: var(--pureOrange700),
+  800: var(--pureOrange800),
+  900: var(--pureOrange900),
+);
+
+$purple: (
+  50: #FBF2FE,
+  100: #F6E6FC,
+  200: #DC99F4,
+  300: #CB66EE,
+  400: #B933E9,
+  500: #A800E3,
+  600: #9700D0,
+  700: #8700BC,
+  800: #7700A9,
+  900: #670096,
+);
+
+$dark-grayish-blue: (
+  50: var(--darkGrayishBlue50),
+  100: var(--darkGrayishBlue100),
+  200: var(--darkGrayishBlue200),
+  300: var(--darkGrayishBlue300),
+  400: var(--darkGrayishBlue400),
+  500: var(--darkGrayishBlue500),
+  600: var(--darkGrayishBlue600),
+  700: var(--darkGrayishBlue700),
+  800: var(--darkGrayishBlue800),
+  900: var(--darkGrayishBlue900),
+);
+
+$dark-gray: (
+  50: var(--darkGrey50),
+  100: var(--darkGrey100),
+  200: var(--darkGrey200),
+  300: var(--darkGrey300),
+  400: var(--darkGrey400),
+  500: var(--darkGrey500),
+  600: var(--darkGrey600),
+  700: var(--darkGrey700),
+  800: var(--darkGrey800),
+  900: var(--darkGrey900),
+);
+
+$success: (
+  50: var(--success50),
+  100: var(--success100),
+  200: var(--success200),
+  300: var(--success300),
+  400: var(--success400),
+  500: var(--success),
+  600: var(--success600),
+  700: var(--success700),
+  800: var(--success800),
+  900: var(--success900),
+  );
+  
+$information: (
+  50: var(--info50),
+  100: var(--info100),
+  200: var(--info200),
+  300: var(--info300),
+  400: var(--info400),
+  500: var(--info),
+  600: var(--info600),
+  700: var(--info700),
+  800: var(--info800),
+  900: var(--info900),  
+);
+
+$warning: (
+  50: var(--warning50),
+  100: var(--warning100),
+  200: var(--warning200),
+  300: var(--warning300),
+  400: var(--warning400),
+  500: var(--warning),
+  600: var(--warning600),
+  700: var(--warning700),
+  800: var(--warning800),
+  900: var(--warning900),
+);
+
+$error: (
+  50: var(--danger50),
+  100: var(--danger100),
+  200: var(--danger200),
+  300: var(--danger300),
+  400: var(--danger400),
+  500: var(--danger),
+  600: var(--danger600),
+  700: var(--danger700),
+  800: var(--danger800),
+  900: var(--danger900),
+);
+
+$colorVariants: (
+  primary: (
+    yellow: $yellow,
+    blue: $blue,
+  ),
+  secondary: (
+    yellow-gold: $yellow-gold,
+    dark-cyan: $dark-cyan,
+    pure-orange: $pure-orange,
+    purple: $purple,
+    dark-grayish-blue: $dark-grayish-blue,
+  ),
+  grayscale: (
+    dark-gray: $dark-gray,
+  ),
+  alert: (
+    success: $success,
+    information: $information,
+    warning: $warning,
+    error: $error,
+  ),
+);

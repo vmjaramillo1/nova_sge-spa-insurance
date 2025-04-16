@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toggle /> should render selected 1`] = `
+<body>
+  <div>
+    <button
+      class="toggle p-16 toggle--selected"
+    >
+      My content
+    </button>
+  </div>
+</body>
+`;
+
+exports[`<Toggle /> should render unselected for default 1`] = `
+<body>
+  <div>
+    <button
+      class="toggle p-16"
+    >
+      My content
+    </button>
+  </div>
+</body>
+`;

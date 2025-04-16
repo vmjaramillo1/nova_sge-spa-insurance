@@ -1,0 +1,50 @@
+@import "../../../styles/utils";
+
+.success-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100%;
+
+    @extend .w-56;
+    @extend .h-56;
+    @extend .mx-auto;
+    @extend .bg-success-100;
+  }
+
+  &__title {
+    text-align: center;
+    color: #0F265C;
+  }
+
+  &__alert {
+    border-radius: 4px;
+    align-items: center;
+
+    .alert__icon pichincha-icon {
+      margin-bottom: -4px; // Fix Pichincha Icon is 28px height
+    }
+  }
+
+  &__row {
+
+    &--bolder {
+      @extend .font-semibold;
+      @extend .text-dark-gray-500;
+    }
+  }
+
+  &__block {
+    @extend .py-4;
+
+    &:first-of-type {
+      @extend .pt-0;
+    }
+  }
+}

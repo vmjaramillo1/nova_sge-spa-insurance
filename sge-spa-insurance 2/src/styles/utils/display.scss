@@ -1,0 +1,29 @@
+$displayRecord: (
+  flex: flex,
+  block: block,
+  inline-block: inline-block,
+  inline: inline,
+  hidden: none
+);
+
+@each $displayKey, $displayValue in $displayRecord {
+  .#{$displayKey} {
+    display: $displayValue;
+  }
+}
+
+$cursorRecord: (
+  pointer: pointer,
+  default: default,
+  none: none,
+  inherit: inherit,
+  initial: initial,
+  unset: unset,
+);
+
+$overflowRecord: (
+  hidden: hidden,
+  scroll: scroll,
+  auto: auto,
+  visible: visible
+);

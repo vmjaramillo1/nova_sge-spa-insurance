@@ -1,0 +1,14 @@
+.coverage-card {
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  background: #FFFFFF;
+  border: 1px solid #D3D9E7;
+  border-radius: 8px;
+
+  &__title {
+    color: #0F265C
+  }
+}

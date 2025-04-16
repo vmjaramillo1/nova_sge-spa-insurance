@@ -1,0 +1,21 @@
+$spacingRecord: (
+  m: "margin",
+  p: "padding"
+);
+
+$spacingPropsRecord: (
+  t: "top",
+  r: "right",
+  b: "bottom",
+  l: "left",
+  
+  y: "top" "bottom",
+  x: "left" "right",
+);
+
+$sizeList: auto 0 1 2 4 6 8 12 16 18 20 24 28 32 40 48 56 64 120 160;
+
+$sizeDirectionList: (
+  w: "width",
+  h: "height"
+);

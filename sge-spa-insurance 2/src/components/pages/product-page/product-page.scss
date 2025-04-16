@@ -1,0 +1,12 @@
+.product-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__periodicity {
+    display:  flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+}
+

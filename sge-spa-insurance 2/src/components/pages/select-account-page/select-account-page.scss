@@ -1,0 +1,18 @@
+.select-account {
+  
+  &__title {
+    display: block;
+    color: #0F265C;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+  }
+}

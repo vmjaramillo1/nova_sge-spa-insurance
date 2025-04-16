@@ -1,0 +1,15 @@
+@use "../../../styles/utils/colors.scss" as colors;
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--primary {
+    background-color: #FFDD00;
+  }
+
+  &--secondary {
+    background-color: map-get(colors.$dark-grayish-blue, 100);
+  }
+}

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AlreadyPage /> should render 1`] = `
+<div>
+  <div
+    class="already-page"
+  >
+    <div
+      class="feedback pt-40"
+    >
+      <div
+        class="feedback__icon mb-24"
+      >
+        <svg
+          fill="none"
+          height="64"
+          role="img"
+          viewBox="0 0 65 64"
+          width="65"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="32.5"
+            cy="32"
+            fill="#EAF1F8"
+            r="32"
+          />
+          <path
+            d="M32.5001 14C22.6707 14 14.5 22.153 14.5 32C14.5 41.8294 22.6883 50 32.5177 50C42.3648 50 50.5 41.8294 50.5 32C50.5 22.153 42.3471 14 32.5001 14ZM32.5177 29.353C33.453 29.353 33.9648 29.9 34.0001 30.8353L34.2471 39.5529C34.2824 40.5235 33.5412 41.2118 32.5354 41.2118C31.5472 41.2118 30.7883 40.5059 30.8236 39.5353L31.0707 30.8353C31.106 29.8824 31.6354 29.353 32.5177 29.353ZM32.5177 22.8589C33.5412 22.8589 34.4942 23.6706 34.4942 24.7647C34.4942 25.8588 33.5589 26.6706 32.5177 26.6706C31.4942 26.6706 30.5413 25.8765 30.5413 24.7647C30.5413 23.653 31.5118 22.8589 32.5177 22.8589Z"
+            fill="#2F7ABF"
+          />
+        </svg>
+      </div>
+      <h1
+        class="text-title feedback__title mb-8"
+      >
+        ¡Ya estás protegido!
+      </h1>
+      <div
+        class="feedback__content"
+      >
+        <p
+          class="text-body"
+        >
+          Ya cuentas con un seguro similar, para más información comunícate con nosotros.
+        </p>
+      </div>
+    </div>
+    <p
+      class="text-legal text-center font-medium mt-auto mb-24"
+    >
+      Comunícate al
+       
+      <span
+        class="text-legal already-page__link text-information-500 cursor-pointer"
+      >
+        (02) 299 9999
+      </span>
+    </p>
+    <button
+      class="button button--primary"
+      type="button"
+    >
+      Entendido
+    </button>
+  </div>
+</div>
+`;

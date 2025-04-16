@@ -1,0 +1,26 @@
+@import "../../../styles/index.scss";
+
+.layout {
+  --header-height: 64px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: var(--app-height);
+  padding-top: var(--header-height);
+ 
+  &--full {
+    padding-top: 0;
+  }
+
+  &__title {
+    @extend .font-semibold;
+    @extend .text-blue-500;
+  }
+
+  &__content {
+    @extend .p-24;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}

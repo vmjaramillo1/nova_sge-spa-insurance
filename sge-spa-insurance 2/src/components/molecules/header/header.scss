@@ -1,0 +1,38 @@
+@import "../../../styles/index.scss";
+
+.header {
+  @extend .h-64;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  border-bottom: 1px solid #DEE3ED;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  z-index: 10;
+
+  &--success {
+    justify-content: center;
+  }
+
+  &--back {
+    &--loading {
+      margin-left: 20px
+    }
+  }
+
+  &__box {
+    @extend .p-16;
+    @extend .m-4;
+    @extend .h-56;
+    @extend .w-56;
+
+    &--action {
+      cursor: pointer;
+    }
+  }
+}

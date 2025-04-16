@@ -1,0 +1,25 @@
+@use "../../../styles/utils/index.scss";
+
+.check-legal {
+  display: flex;
+  gap: 12px;
+  
+
+  &__content {
+    color: #6E6E73;
+
+    @extend .ml-8;
+    @extend .font-medium;
+    @extend .select-none;
+  }
+  
+  &__checkbox {
+    display: flex;
+    cursor: pointer;
+  }
+  
+  &__insurance {
+    cursor: pointer;
+    color: #2F7ABF;
+  }
+}

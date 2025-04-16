@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuccessPage /> should render 1`] = `
+<body>
+  <div>
+    <div
+      class="success-page -mt-24"
+    >
+      <div
+        class="success-page__content mb-16 px-16 py-24 bg-dark-grayish-blue-50"
+      >
+        <div
+          class="success-page__logo mb-8"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="32"
+            role="img"
+            viewBox="0 0 33 32"
+            width="33"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M16.5 31.75C7.80152 31.75 0.75 24.6985 0.75 16C0.75 7.30152 7.80152 0.25 16.5 0.25C25.1985 0.25 32.25 7.30152 32.25 16C32.25 24.6985 25.1985 31.75 16.5 31.75ZM23.5795 10.7045C23.1402 10.2652 22.4279 10.2652 21.9885 10.7045L14.8125 17.8805C14.3732 18.3199 13.6608 18.3199 13.2215 17.8805L11.108 15.767C10.6687 15.3277 9.95634 15.3277 9.517 15.767C9.07767 16.2063 9.07767 16.9187 9.517 17.358L13.2215 21.0625C13.6608 21.5018 14.3732 21.5018 14.8125 21.0625L23.5795 12.2955C24.0188 11.8562 24.0188 11.1438 23.5795 10.7045Z"
+              fill="#31A451"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <h1
+          class="text-title success-page__title mb-4 font-semibold"
+        />
+        <p
+          class="text-caption mb-24 text-center"
+        >
+          Póliza Maestra Nro: 50157
+        </p>
+        <div
+          class="alert alert--info alert--icon success-page__alert mb-16"
+          role="alert"
+        >
+          <div
+            aria-hidden="true"
+            class="alert__icon"
+          >
+            <pichincha-icon
+              aria-hidden="true"
+              color="info"
+              size="24px"
+              type="--round"
+              weight_color="400"
+            >
+              info
+            </pichincha-icon>
+          </div>
+          <div
+            aria-hidden="false"
+            class="alert__content"
+          >
+            <p
+              class="text-caption text-dark-gray-400"
+            />
+          </div>
+        </div>
+        <div
+          class="mb-32"
+        >
+          <div
+            aria-label="Seguro por robos y fraudes, cobertura total. Precio incluido impuesto, 3 dólares con 99 centavos"
+            class="success-page__block"
+          >
+            <div
+              aria-hidden="true"
+              class="coverage-row font-semibold success__row py-4"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-row__label font-semibold"
+              >
+                <p
+                  class="text-body"
+                >
+                  Precio incluido impuestos
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="coverage-row__value font-semibold"
+              >
+                <p
+                  class="text-body"
+                >
+                  $ 3,99
+                </p>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="coverage-row success__row mt-2"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-row__label"
+              >
+                <p
+                  class="text-caption"
+                >
+                  Mi banca protegida
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="coverage-row__value"
+              >
+                <p
+                  class="text-caption"
+                >
+                  Cobertura total
+                </p>
+              </div>
+            </div>
+          </div>
+          <span
+            aria-hidden="true"
+            class="divider"
+          />
+          <div
+            aria-label="Cuenta de débito termina en 2 2 3 4, fecha para débitos 15 de cada mes"
+            class="success-page__block"
+          >
+            <div
+              aria-hidden="true"
+              class="coverage-row font-semibold success__row"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-row__label font-semibold"
+              >
+                <p
+                  class="text-body"
+                >
+                  Cuenta de débito
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="coverage-row__value font-semibold"
+              >
+                <p
+                  class="text-body"
+                >
+                  ******2234
+                </p>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="coverage-row success__row mt-2"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-row__label"
+              >
+                <p
+                  class="text-caption"
+                >
+                  Fecha para débitos
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="coverage-row__value"
+              >
+                <p
+                  class="text-caption"
+                >
+                  15 de cada mes
+                </p>
+              </div>
+            </div>
+          </div>
+          <span
+            aria-hidden="true"
+            class="divider"
+          />
+          <div
+            aria-label="Fecha de vencimiento Indefinido, fecha de contratación 15 de agosto 2023"
+            class="success-page__block"
+          >
+            <div
+              aria-hidden="true"
+              class="coverage-row font-semibold success__row"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-row__label font-semibold"
+              >
+                <p
+                  class="text-body"
+                >
+                  Fecha de vencimiento
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="coverage-row__value font-semibold"
+              >
+                <p
+                  class="text-body"
+                >
+                  Indefinido
+                </p>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="coverage-row success__row mt-2"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-row__label"
+              >
+                <p
+                  class="text-caption"
+                >
+                  Fecha de contratación
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="coverage-row__value"
+              >
+                <p
+                  class="text-caption"
+                >
+                  15 ago. 2023
+                </p>
+              </div>
+            </div>
+          </div>
+          <span
+            aria-hidden="true"
+            class="divider"
+          />
+        </div>
+        <button
+          aria-label="Descargar guía de uso del Seguro"
+          class="button button--primary download-use-guide"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.5 12V19H5.5V12H3.5V19C3.5 20.1 4.4 21 5.5 21H19.5C20.6 21 21.5 20.1 21.5 19V12H19.5ZM13.5 12.67L16.09 10.09L17.5 11.5L12.5 16.5L7.5 11.5L8.91 10.09L11.5 12.67V3H13.5V12.67Z"
+              fill="#0F265C"
+            />
+          </svg>
+          Cómo usar tu seguro
+        </button>
+      </div>
+      <section
+        class="mb-16"
+      >
+        <p
+          aria-label="Si tienes requerimientos o más información, comunícate a Banca telefónica."
+          class="text-body mb-16"
+        >
+          Para requerimientos o más información
+        </p>
+        <button
+          class="button-save"
+          type="button"
+        >
+          <div
+            aria-hidden="true"
+            class="button-save__icon"
+          >
+            <pichincha-icon
+              aria-hidden="true"
+              color="blue"
+              size="24px"
+              type="--outlined"
+              weight_color="500"
+            >
+              call
+            </pichincha-icon>
+          </div>
+          <span
+            class="text-button button-save__text"
+          >
+            Llámanos al (02) 2999 999
+          </span>
+          <div
+            aria-hidden="true"
+            class="button-save__icon button-save__icon--arrow"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+                fill="#B7B7B9"
+              />
+            </svg>
+          </div>
+        </button>
+      </section>
+      <footer
+        class="mt-auto"
+      >
+        <button
+          class="button button--secondary"
+          type="button"
+        >
+          Finalizar
+        </button>
+      </footer>
+    </div>
+  </div>
+</body>
+`;

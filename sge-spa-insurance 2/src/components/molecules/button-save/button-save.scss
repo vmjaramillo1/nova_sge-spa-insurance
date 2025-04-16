@@ -1,0 +1,35 @@
+@import "../../../styles/index.scss";
+
+.button-save {
+  width: 100%;
+  padding: 14px 16px;
+  
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  
+  border: 1px solid #DEE3ED;
+  border-radius: 8px;
+
+  &__text {
+    @extend .text-dark-gray-500;
+    @extend .font-semibold;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--arrow {
+      margin-left: auto;
+    }
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}

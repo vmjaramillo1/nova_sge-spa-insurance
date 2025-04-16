@@ -1,0 +1,33 @@
+import { ComponentInterface, EventEmitter } from '../../../stencil-public-runtime';
+import { Term } from './term';
+export declare class SelectorBox implements ComponentInterface {
+  idElement: string;
+  isDisabled: boolean;
+  terms: Term[];
+  termsRangeConfig: any;
+  unitOfTime: string;
+  unitOfTimePlural: string;
+  additionalTermPlaceholder: string;
+  additionalTermType: 'input' | 'button';
+  saveButtonTextModal: string;
+  cancelButtonTextModal: string;
+  labelInputModal: string;
+  termChange: EventEmitter;
+  isModalVisible: boolean;
+  modalInputErrorHelper: string;
+  modalInputState: string;
+  timer: any;
+  modalInputText: string;
+  selectTerm(event: any, selectedTerm: Term): void;
+  debounce(func: any, timeout?: number): (...args: any[]) => void;
+  processInput(event: any): void;
+  processButton(event: any, term: any): void;
+  showModal(event: any): void;
+  hideModal(event: any): void;
+  onChangeModalInput(event: any): void;
+  saveInputFromModal(event: any): void;
+  renderTerms(): any[];
+  renderUserInputTerm(): any;
+  renderModal(): any;
+  render(): any;
+}

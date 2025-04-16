@@ -1,0 +1,14 @@
+.previous-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__feedback {
+    flex: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+}
