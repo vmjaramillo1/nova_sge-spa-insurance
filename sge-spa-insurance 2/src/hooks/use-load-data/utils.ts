@@ -1,4 +1,8 @@
-import { AccountInfo, MergeOfferPreviousList } from '@app/services/insurance'
+import {
+  AccountInfo,
+  MergeOfferPreviousList,
+} from '@app/services/insurance'
+import { OfferableProduct } from '@app/utils/interfaces'
 import { OfferableWithType } from '@app/utils'
 import { MergeOfferablePreviousType } from '@app/utils/enums'
 
@@ -19,6 +23,7 @@ export function getFavoriteAccountHash(accounts: Array<AccountInfo>): string {
 export function mergeOfferAndPrevious(
   data: MergeOfferPreviousList
 ): Array<OfferableWithType> {
+  debugger
   const result: Array<OfferableWithType> = []
 
   const offerableProducts = data.find(
@@ -26,10 +31,15 @@ export function mergeOfferAndPrevious(
   )
 
   if (offerableProducts?.data) {
-    const mappedOfferableProducts = offerableProducts.data.map((offerable) => ({
-      ...offerable,
-      type: offerableProducts.type,
-    }))
+    const mappedOfferableProducts = unifyOfferByProductCode(
+      offerableProducts.data,
+      offerableProducts.type
+    )
+    // todo validar eso
+    // const mappedOfferableProducts = offerableProducts.data.map((offerable) => ({
+    //   ...offerable,
+    //   type: offerableProducts.type,
+    // }))
 
     result.push(...mappedOfferableProducts)
   }
@@ -48,4 +58,25 @@ export function mergeOfferAndPrevious(
   }
 
   return result
+}
+
+function unifyOfferByProductCode(
+  items: Array<OfferableProduct>,
+  type: number
+): Array<OfferableWithType> {
+  const map = new Map<string, OfferableWithType>()
+
+  for (const item of items) {
+    const existing = map.get(item.productCode)
+
+    if (existing) {
+      existing.plans = [...existing.plans, ...item.plans]
+      existing.type = type
+    } else {
+      // Creamos una copia para evitar mutar el objeto original
+      map.set(item.productCode, { ...item, plans: [...item.plans], type: type })
+    }
+  }
+
+  return Array.from(map.values())
 }

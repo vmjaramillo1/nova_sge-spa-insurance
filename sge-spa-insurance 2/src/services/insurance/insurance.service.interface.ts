@@ -1,5 +1,7 @@
 import { MergeOfferablePreviousType } from '@app/utils/enums'
 import { OfferableProduct, Response } from '@app/utils/interfaces'
+import { PortalRule } from '@app/utils/interfaces'
+import { ResponseWithResult } from '@app/utils/interfaces'
 
 export interface KeyAndTransactionReference {
   key: string
@@ -29,10 +31,16 @@ export interface ValidateOfferParams {
 
 export type ValidateOfferBody = ParamsToBody<ValidateOfferParams>
 
+// todo validar esoc on servicio posterior
 interface ValidateOfferResult {
   value: {
     key: string
     transactionReference: string
+  }
+  odds: {
+    code: string
+    message: string
+    value: PortalRule
   }
 }
 
@@ -78,6 +86,10 @@ export interface FindOfferResult {
 
 export type FindOfferResponse = Response<FindOfferResult>
 
+export interface PortalHubOffer extends ResponseWithResult<FindOfferResult> {
+  portalHub: PortalRule
+}
+
 //#endregion
 
 //#region FindDocuments
@@ -111,7 +123,6 @@ export type DocumentsDownloadResponse = Response<DocumentsDownloadResult>
 //#endregion
 
 //#region ConsentLopdp
-
 export interface ConsentParams {
   url: string
   hasConsent: boolean
@@ -123,7 +134,6 @@ export interface ConsentParams {
 export type ConsentBody = ParamsToBody<ConsentParams>
 
 export type ConsentResponse = Response<{ [key: string]: unknown }>
-
 //#endregion
 
 //#region ProcessTransaction

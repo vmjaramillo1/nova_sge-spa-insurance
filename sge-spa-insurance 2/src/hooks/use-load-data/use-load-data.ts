@@ -11,9 +11,9 @@ import { getAppInfo } from '@app/utils/reduce/get-app-info'
 import { TIME, ZERO } from '@app/utils/constants'
 import { isSuccessResponse } from '@app/utils/guards'
 import { ErrorCode, MergeOfferablePreviousType } from '@app/utils/enums'
-import { ResponseWithResult, DefaultPortal } from '@app/utils/interfaces'
+import {  DefaultPortal } from '@app/utils/interfaces'
 
-import InsuranceService, { FindOfferResult } from '@app/services/insurance'
+import InsuranceService, { PortalHubOffer, MergeOfferPreviousList } from '@app/services/insurance'
 import { InvalidBodyError, ResponseError } from '@app/utils/classes'
 import { AppError } from '@app/context/global-context'
 import useIdentity from '../use-identity'
@@ -35,17 +35,13 @@ const useLoadData = () => {
 
   const identity = useIdentity()
 
-  const handleSuccess = ({
-    odds,
-    accounts,
-    lopdp,
-  }: ResponseWithResult<FindOfferResult>) => {
+  const handleSuccess = ({ odds, accounts, lopdp, portalHub }: PortalHubOffer) => {
     const offers = mergeOfferAndPrevious(odds)
 
     const [firstOffer] = offers
 
     const appInfo = getAppInfo<DefaultPortal>({ offerablePrevious: firstOffer })
-
+    debugger;
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
 
     dispatchLoadValues({ ...appInfo, accounts, lopdp })
@@ -72,8 +68,13 @@ const useLoadData = () => {
       dispatchPeriodicitySelected(firstPeriodicity.code)
     }
 
+    // todo ajustar para validar esto va ha hub
+    // const targetRoute = isOffer(offers)
+    //   ? APP_ROUTES.PRODUCT_DETAIL
+    //   : APP_ROUTES.PREVIOUS_PRODUCT
+
     const targetRoute = isOffer(offers)
-      ? APP_ROUTES.PRODUCT_DETAIL
+      ? APP_ROUTES.HOME
       : APP_ROUTES.PREVIOUS_PRODUCT
 
     navigate(targetRoute, {
@@ -145,6 +146,7 @@ const useLoadData = () => {
       }
 
       const { key, transactionReference } = validateResult.value
+      const portalHub = validateResult.odds.value
 
       const result = await InsuranceService.findOffer({
         key,
@@ -156,6 +158,7 @@ const useLoadData = () => {
         },
       })
 
+      //todo cambiar mapeo de errores a otro lado
       if (!isSuccessResponse(result)) {
         throw new ResponseError(result)
       }
@@ -185,8 +188,13 @@ const useLoadData = () => {
         })
       }
 
+      // ===================================================
+
       dispatchTransaction({ key, transactionReference })
-      return result
+      return {
+        ...result,
+        portalHub,
+      }
     },
     {
       onSuccess: handleSuccess,

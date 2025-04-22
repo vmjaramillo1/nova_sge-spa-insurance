@@ -1,4 +1,4 @@
-import { PRODUCT_NAME } from '@app/utils/constants'
+import { PRODUCT_NAME, HUB_NAME } from '@app/utils/constants'
 import { RoutesAlias } from '@app/utils/enums'
 
 interface RouteConfig {
@@ -17,6 +17,11 @@ function formatPath(path: string): string {
 }
 
 export const APP_ROUTES_CONFIG = Object.freeze<Record<RoutesAlias, RouteConfig>>({
+  HOME: {
+    key: RoutesAlias.HOME,
+    path: formatPath('home'),
+    title: HUB_NAME,
+  },
   PRODUCT_DETAIL: {
     key: RoutesAlias.PRODUCT_DETAIL,
     path: formatPath('detalle-producto'),

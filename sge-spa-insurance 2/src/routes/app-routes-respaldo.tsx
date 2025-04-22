@@ -1,9 +1,5 @@
 import { FC, memo } from 'react'
-import {
-  Route,
-  Routes,
-  // , createBrowserRouter
-} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import { APP_ROUTES_CONFIG, BASE_PATH } from './config'
 
@@ -26,38 +22,10 @@ import RetryAcceptancePage from '@app/components/pages/retry-acceptance-page'
 import PreviousPage from '@app/components/pages/previous-page'
 import InProgressPage from '@app/components/pages/in-progress-page'
 
-// import fraudRoutes from './fraud-routes'
-// import hubRoutes from './hub-routes'
-
-// const appRoutes = createBrowserRouter([
-//   {
-//     path: BASE_PATH,
-//     element: <Layout />,
-//     children: [
-//       ...fraudRoutes,
-//       ...hubRoutes,
-//     ],
-//   },
-// ])
-
 const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path={BASE_PATH} element={<Layout />}>
-        <Route
-          key={APP_ROUTES_CONFIG.HOME.key}
-          path={APP_ROUTES_CONFIG.HOME.key}
-          element={
-            <Page
-              title={APP_ROUTES_CONFIG.HOME.title}
-              fallback={<ProductDetailPageFallback />}
-            >
-              <div>esto es una prueba de concepto</div>
-            </Page>
-          
-          }
-        />
-
         <Route
           key={APP_ROUTES_CONFIG.PRODUCT_DETAIL.key}
           path={APP_ROUTES_CONFIG.PRODUCT_DETAIL.path}

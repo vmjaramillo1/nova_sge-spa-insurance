@@ -1,4 +1,5 @@
 export const enum RoutesAlias {
+  HOME = 'HOME',
   PRODUCT_DETAIL = 'PRODUCT_DETAIL',
   PRODUCT = 'PRODUCT',
   SELECT_ACCOUNT = 'SELECT_ACCOUNT',
