@@ -44,13 +44,13 @@ describe('format', () => {
   it('should return formatted value with custom thousands separator', () => {
     const result = formatMoney(1000, 2, false)
 
-    expect(result).toBe('$ 1000,00')
+    expect(result).toBe('$ 1.000,00')
   })
 
   it('should return formatted value with custom decimal and thousands separator', () => {
     const result = formatMoney(1000, 3, false)
 
-    expect(result).toBe('$ 1000,000')
+    expect(result).toBe('$ 1.000,000')
   })
 
   it('should return formatted value with thousands', () => {

@@ -38,6 +38,7 @@ describe('useApp', () => {
       portal: result.current.portal,
       lopdp: result.current.lopdp,
       accounts: [],
+      hasOffer: result.current.hasOffer,
     }
 
     expect(currentState).toEqual(initialState)
@@ -157,6 +158,7 @@ describe('useApp', () => {
           acceptedTermsConditions: true,
           url: 'url',
         },
+        hasOffer: false,
       })
     })
 
@@ -176,6 +178,7 @@ describe('useApp', () => {
       acceptedTermsConditions: true,
       url: 'url',
     })
+    expect(result.current.hasOffer).toEqual(false)
   })
 
   it('should preserve state if an invalid action is passed', () => {

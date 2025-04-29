@@ -28,7 +28,7 @@ describe('useLoadData', () => {
     jest.clearAllMocks()
   })
 
-  it('should navigate to product detail if offerable products are present', async () => {
+  it('should navigate to hub product home if service returns ok', async () => {
     const validateSpy = jest
       .spyOn(InsuranceService, 'validateOffer')
       .mockReturnValue(
@@ -110,7 +110,7 @@ describe('useLoadData', () => {
       {
         routes: (
           <>
-            <Route path={APP_ROUTES.PRODUCT_DETAIL} element={<>ProductDetail</>} />
+            <Route path={APP_ROUTES.INSURANCE_PORTAL} element={<>HubHomePage</>} />
           </>
         ),
       }
@@ -119,7 +119,7 @@ describe('useLoadData', () => {
     renderHook(() => useLoadData(), { wrapper })
 
     await waitFor(() => {
-      expect(screen.getByText('ProductDetail')).toBeInTheDocument()
+      expect(screen.getByText('HubHomePage')).toBeInTheDocument()
     })
 
     validateSpy.mockRestore()
@@ -135,7 +135,7 @@ describe('useLoadData', () => {
       {
         routes: (
           <>
-            <Route path={APP_ROUTES.PRODUCT_DETAIL} element={<>ProductDetail</>} />
+            <Route path={APP_ROUTES.INSURANCE_PORTAL} element={<>HubHomePage</>} />
             <Route path={APP_ROUTES.GENERAL_ERROR} element={<>UnexpectedError</>} />
           </>
         ),

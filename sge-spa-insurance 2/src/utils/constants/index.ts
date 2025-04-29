@@ -1,3 +1,4 @@
+export const INSURANCE_PORTAL_NAME = 'Seguros'
 export const PRODUCT_NAME = 'Seguro por robos y fraudes'
 export const OPEN_ACCOUNTS_FLOW_URL =
   process.env.REACT_APP_EXTERNAL_FLOW_ACCOUNT_URL!
