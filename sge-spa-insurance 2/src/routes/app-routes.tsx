@@ -6,6 +6,7 @@ import { APP_ROUTES_CONFIG, BASE_PATH } from './config'
 import Page from '@app/components/molecules/page'
 import Layout from '@app/components/molecules/layout'
 
+import InsurancePage from '@app/components/pages/insurance-page'
 import ProductDetail, {
   ProductDetailPageFallback,
 } from '@app/components/pages/product-detail-page'
@@ -26,6 +27,18 @@ const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path={BASE_PATH} element={<Layout />}>
+        <Route
+          key={APP_ROUTES_CONFIG.INSURANCE_PORTAL.key}
+          path={APP_ROUTES_CONFIG.INSURANCE_PORTAL.path}
+          element={
+            <Page
+              title={APP_ROUTES_CONFIG.INSURANCE_PORTAL.title}
+              fallback={<ProductDetailPageFallback />}
+            >
+              <InsurancePage />
+            </Page>
+          }
+        />
         <Route
           key={APP_ROUTES_CONFIG.PRODUCT_DETAIL.key}
           path={APP_ROUTES_CONFIG.PRODUCT_DETAIL.path}

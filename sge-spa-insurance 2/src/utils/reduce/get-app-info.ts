@@ -17,7 +17,10 @@ export interface GetDefaultContextParams {
   offerablePrevious: OfferableWithType
 }
 
-type AppStateProductInfo<TPortal> = Omit<AppState<TPortal>, 'accounts' | 'lopdp'>
+type AppStateProductInfo<TPortal> = Omit<
+  AppState<TPortal>,
+  'accounts' | 'lopdp' | 'hasOffer'
+>
 
 export function getAppInfo<TPortal>(
   params: GetDefaultContextParams

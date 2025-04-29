@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InsurancePage /> should render correctly 1`] = `
+<div>
+  <div
+    class="insurance-page"
+  >
+    <div
+      aria-hidden="true"
+      class="banner banner--secondary insurance-page__banner -mx-24 -mt-24 pt-24"
+      role="banner"
+    />
+    <div
+      class="insurance-page__product-list"
+    >
+      <div
+        class="product-card"
+      >
+        <div
+          class="product-card__header"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="40"
+            role="img"
+            viewBox="0 0 56 56"
+            width="40"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#clip0_421_38098)"
+            >
+              <path
+                d="M28 56C43.464 56 56 43.464 56 28C56 12.536 43.464 0 28 0C12.536 0 0 12.536 0 28C0 43.464 12.536 56 28 56Z"
+                fill="#F4F6F9"
+              />
+              <path
+                d="M28.1836 9.96582L42.3586 15.6796C42.695 15.8052 42.9845 16.0313 43.188 16.3272C43.3915 16.623 43.4991 16.9743 43.4961 17.3333V26.7221C43.4961 33.7221 40.0836 38.5521 34.4048 42.4721L28.1836 46.7158"
+                fill="white"
+              />
+              <path
+                d="M28.1837 9.96582L14.0086 15.6796C13.6723 15.8052 13.3827 16.0313 13.1793 16.3272C12.9758 16.623 12.8682 16.9743 12.8712 17.3333V26.7221C12.8712 33.7221 16.2837 38.5521 21.9624 42.4721L28.1837 46.7421"
+                fill="white"
+              />
+              <path
+                d="M42.5162 15.3036L28.3412 9.58984H28.2887H28.1837H28.0874H28.0262L13.8599 15.3036C13.4413 15.4597 13.0809 15.7406 12.8273 16.1084C12.5738 16.4763 12.4394 16.9131 12.4424 17.3598V26.7486C12.4424 33.3811 15.3912 38.4911 21.7174 42.8311L27.9387 47.1011C28.0028 47.1461 28.0791 47.1705 28.1575 47.1711C28.2358 47.1705 28.3121 47.1461 28.3762 47.1011L34.5974 42.8311C40.9237 38.4561 43.8724 33.3811 43.8724 26.7486V17.3598C43.8802 16.9203 43.7548 16.4887 43.5128 16.1217C43.2707 15.7547 42.9233 15.4695 42.5162 15.3036ZM43.0674 26.7486C43.0674 33.0748 40.2324 37.9573 34.1599 42.1223L28.1837 46.2173L22.2074 42.1223C16.1349 37.9573 13.2999 33.0748 13.2999 26.7486V17.3598C13.297 17.0861 13.3799 16.8182 13.5368 16.5939C13.6937 16.3695 13.9168 16.1998 14.1749 16.1086L28.1749 10.4561L42.1749 16.1086C42.4316 16.202 42.6533 16.3723 42.8099 16.5961C42.9664 16.82 43.0502 17.0867 43.0499 17.3598L43.0674 26.7486Z"
+                fill="#0F265C"
+              />
+              <path
+                d="M28.1836 33.2061C31.0831 33.2061 33.4336 30.8555 33.4336 27.9561C33.4336 25.0566 31.0831 22.7061 28.1836 22.7061C25.2841 22.7061 22.9336 25.0566 22.9336 27.9561C22.9336 30.8555 25.2841 33.2061 28.1836 33.2061Z"
+                fill="#FFDD00"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="clip0_421_38098"
+              >
+                <rect
+                  fill="white"
+                  height="56"
+                  width="56"
+                />
+              </clippath>
+            </defs>
+          </svg>
+          <p
+            aria-label="Seguro por Robos y Fraudes"
+            class="text-body product-card__title"
+          >
+            Seguro por Robos y Fraudes
+          </p>
+        </div>
+        <p
+          aria-label="Suma una capa extra de protección para tus cuentas y tarjetas."
+          class="text-caption my-16"
+        >
+          Suma una 
+          <span
+            class="font-semibold"
+          >
+            capa extra
+          </span>
+           de protección para tus cuentas y tarjetas.
+        </p>
+        <div
+          class="product-card__header"
+        >
+          <p
+            aria-label="Precio mensual"
+            class="text-body product-card__price"
+          >
+            Precio mensual
+          </p>
+          <h2
+            aria-label="$4,09"
+            class="text-headline2 product-card__price"
+          >
+            $4,09
+          </h2>
+        </div>
+        <div
+          class="product-card__divider"
+        />
+        <div>
+          <strong>
+            Este seguro cubre:
+          </strong>
+          <ul
+            class="product-card__coverage-list"
+          >
+            <li
+              class="product-card__header my-16"
+              data-testid="coverage-1"
+            >
+              <div
+                class="product-card__coverage-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="18"
+                  role="img"
+                  viewBox="0 0 18 18"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.99991 11.1701L1.82991 7.00009L0.409912 8.41009L5.99991 14.0001L17.9999 2.00009L16.5899 0.590088L5.99991 11.1701Z"
+                    fill="#31A451"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p
+                  aria-label="Hasta $10.000 al año por "
+                  class="text-body font-semibold"
+                >
+                  Hasta $10.000 al año por 
+                </p>
+                <p
+                  aria-label="cargos fraudulentos en tus cuentas"
+                  class="text-caption"
+                >
+                  cargos fraudulentos en tus cuentas
+                </p>
+              </div>
+            </li>
+            <li
+              class="product-card__header my-16"
+              data-testid="coverage-2"
+            >
+              <div
+                class="product-card__coverage-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="18"
+                  role="img"
+                  viewBox="0 0 18 18"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.99991 11.1701L1.82991 7.00009L0.409912 8.41009L5.99991 14.0001L17.9999 2.00009L16.5899 0.590088L5.99991 11.1701Z"
+                    fill="#31A451"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p
+                  aria-label="Hasta $1.400 al año por "
+                  class="text-body font-semibold"
+                >
+                  Hasta $1.400 al año por 
+                </p>
+                <p
+                  aria-label="robos en cajeros o ventanillas"
+                  class="text-caption"
+                >
+                  robos en cajeros o ventanillas
+                </p>
+              </div>
+            </li>
+            <li
+              class="product-card__header my-16"
+              data-testid="coverage-3"
+            >
+              <div
+                class="product-card__coverage-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="18"
+                  role="img"
+                  viewBox="0 0 18 18"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.99991 11.1701L1.82991 7.00009L0.409912 8.41009L5.99991 14.0001L17.9999 2.00009L16.5899 0.590088L5.99991 11.1701Z"
+                    fill="#31A451"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p
+                  aria-label="Protección desde el primer día, "
+                  class="text-body font-semibold"
+                >
+                  Protección desde el primer día, 
+                </p>
+                <p
+                  aria-label="garantizando el respaldo necesario"
+                  class="text-caption"
+                >
+                  garantizando el respaldo necesario
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="product-card__divider"
+        />
+        <div>
+          <button
+            aria-label="Descubre qué incluye tu seguro"
+            class="product-card__action"
+            type="button"
+          >
+            Descubre qué incluye tu seguro
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+                fill="#2F7ABF"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
