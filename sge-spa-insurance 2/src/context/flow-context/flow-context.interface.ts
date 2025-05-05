@@ -1,4 +1,4 @@
-import { RoutesAlias, FlowStatus } from '@app/utils/enums'
+import { FlowStatus } from '@app/utils/enums'
 import { AllRouteAliases } from '@app/routes/config'
 
 

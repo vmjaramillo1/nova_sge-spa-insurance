@@ -2,7 +2,7 @@ import { FC, memo, PropsWithChildren, ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
 
 import { APP_ROUTES } from '@app/routes/config'
-import { RoutesAlias, RoutesFraudAlias } from '@app/utils/enums'
+import { RoutesHubAlias, RoutesFraudAlias } from '@app/utils/enums'
 
 import usePage from './use-page'
 
@@ -20,7 +20,7 @@ const Page: FC<PropsWithChildren<PageProps>> = (props) => {
     return <>{fallback}</>
   }
 
-  if (isEndRetryError && step !== RoutesAlias.RETRY_ACCEPTANCE) {
+  if (isEndRetryError && step !== RoutesHubAlias.RETRY_ACCEPTANCE) {
     return <Navigate to={APP_ROUTES.RETRY_ACCEPTANCE} replace />
   }
 

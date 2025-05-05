@@ -1,4 +1,4 @@
-import { RoutesAlias, RoutesFraudAlias, RoutesHubAlias } from '@app/utils/enums'
+import { RoutesFraudAlias, RoutesHubAlias } from '@app/utils/enums'
 import { APP_ROUTES_CONFIG as APP_ROUTES_FRAUD } from './fraud'
 import { APP_ROUTES_CONFIG as APP_ROUTES_HUB } from './hub'
 // import { BASE_PATH } from '@app/utils/constants'
@@ -10,7 +10,7 @@ export interface RouteConfig<T extends string = string> {
   title: string
 }
 
-export type AllRouteAliases = RoutesAlias | RoutesFraudAlias | RoutesHubAlias
+export type AllRouteAliases = RoutesFraudAlias | RoutesHubAlias
 type RecordRoutes = Record<AllRouteAliases, string>
 
 // todo ajustar esto

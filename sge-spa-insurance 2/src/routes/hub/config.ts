@@ -3,7 +3,7 @@ import { RoutesHubAlias } from '@app/utils/enums'
 import { RouteConfig, formatPath } from '@app/routes/config'
 
 export const APP_ROUTES_CONFIG = Object.freeze<Record<RoutesHubAlias, RouteConfig>>({
-  HOME: {
+  INSURANCE_PORTAL: {
     key: RoutesHubAlias.INSURANCE_PORTAL,
     path: formatPath('home'),
     title: INSURANCE_PORTAL_NAME,

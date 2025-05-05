@@ -45,7 +45,7 @@ const useProductPage = () => {
 
   const { planSelected, periodicitySelected, dispatchPeriodicitySelected } =
     useFlow()
-
+  debugger;
   const periodicityOptions = plans[planSelected].periodicityOptions
 
   const iterablePeriodicityOptions = sortByOrder(

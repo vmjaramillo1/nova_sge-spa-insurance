@@ -31,12 +31,6 @@ export function mergeOfferAndPrevious(
       offerableProducts.data,
       offerableProducts.type
     )
-    // todo validar eso
-    // const mappedOfferableProducts = offerableProducts.data.map((offerable) => ({
-    //   ...offerable,
-    //   type: offerableProducts.type,
-    // }))
-
     result.push(...mappedOfferableProducts)
   }
 
@@ -69,8 +63,14 @@ function unifyOfferByProductCode(
       existing.plans = [...existing.plans, ...item.plans]
       existing.type = type
     } else {
-      // Creamos una copia para evitar mutar el objeto original
-      map.set(item.productCode, { ...item, plans: [...item.plans], type: type })
+      // todo mejorar esto para q code no se considere(se envia plan code origialmente)
+      const { code, ...rest } = item
+      map.set(item.productCode, {
+        code: item.productCode,
+        ...rest,
+        plans: [...item.plans],
+        type: type,
+      })
     }
   }
 

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Page from './page'
 import { createWrapper } from '@app/__test__/wrappers'
-import { FlowStatus, RoutesAlias, RoutesFraudAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesFraudAlias } from '@app/utils/enums'
 import { APP_ROUTES } from '@app/routes/config'
 import { Route } from 'react-router-dom'
 

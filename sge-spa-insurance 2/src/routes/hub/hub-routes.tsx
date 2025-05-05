@@ -11,21 +11,19 @@ import NotProductPage from '@app/components/pages/not-product-page'
 import RetryAcceptancePage from '@app/components/pages/retry-acceptance-page'
 import PreviousPage from '@app/components/pages/previous-page'
 import InProgressPage from '@app/components/pages/in-progress-page'
+import InsurancePage from '@app/components/pages/insurance-page'
 
 const HubRoutes: Array<RouteObject> = [
   {
-    path: APP_ROUTES_CONFIG.HOME.path,
-    element: <div>esto es una pruebba</div>,
-    children: [
-      {
-        index: true,
-        element: <>hijo del elemento</>,
-      },
-    ],
-  },
-  {
-    path: APP_ROUTES_CONFIG.HOME.path + '/ele',
-    element: <>elemento hijo</>,
+    path: APP_ROUTES_CONFIG.INSURANCE_PORTAL.path,
+    element: (
+      <Page
+        title={APP_ROUTES_CONFIG.INSURANCE_PORTAL.title}
+        fallback={<ProductDetailPageFallback />}
+      >
+        <InsurancePage />
+      </Page>
+    ),
   },
   {
     path: APP_ROUTES_CONFIG.NOT_ACCOUNT.path,

@@ -11,9 +11,12 @@ import { getAppInfo } from '@app/utils/reduce/get-app-info'
 import { TIME, ZERO } from '@app/utils/constants'
 import { isSuccessResponse } from '@app/utils/guards'
 import { ErrorCode, MergeOfferablePreviousType } from '@app/utils/enums'
-import {  DefaultPortal } from '@app/utils/interfaces'
+import { DefaultPortal } from '@app/utils/interfaces'
 
-import InsuranceService, { PortalHubOffer, MergeOfferPreviousList } from '@app/services/insurance'
+import InsuranceService, {
+  PortalHubOffer,
+  MergeOfferPreviousList,
+} from '@app/services/insurance'
 import { InvalidBodyError, ResponseError } from '@app/utils/classes'
 import { AppError } from '@app/context/global-context'
 import useIdentity from '../use-identity'
@@ -38,7 +41,9 @@ const useLoadData = () => {
   const handleSuccess = ({ odds, accounts, lopdp, portalHub }: PortalHubOffer) => {
     const offers = mergeOfferAndPrevious(odds)
 
-    const [firstOffer] = offers
+    debugger
+    // todo quitar luego en multioferta
+    const [firstOffer] = offers.filter((offer) => offer.productCode === 'TU_BAN_PRO')
 
     const hasOffer = isOffer(offers)
 

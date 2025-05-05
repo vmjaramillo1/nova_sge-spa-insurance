@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 import usePage from './use-page'
 import { createWrapper } from '@app/__test__/wrappers'
-import { FlowStatus, RoutesAlias, RoutesFraudAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesHubAlias, RoutesFraudAlias } from '@app/utils/enums'
 
 jest.mock('@pichincha/events-microsite')
 
@@ -80,7 +80,7 @@ describe('usePage', () => {
       {
         flow: {
           status: FlowStatus.RETRY_ACCEPTANCE_ERROR,
-          step: RoutesAlias.RETRY_ACCEPTANCE,
+          step: RoutesHubAlias.RETRY_ACCEPTANCE,
         },
       },
       { outletValues: { ...contextValues } }
@@ -96,7 +96,7 @@ describe('usePage', () => {
       {
         flow: {
           status: FlowStatus.END_ERROR,
-          step: RoutesAlias.GENERAL_ERROR,
+          step: RoutesHubAlias.GENERAL_ERROR,
         },
       },
       { outletValues: { ...contextValues } }

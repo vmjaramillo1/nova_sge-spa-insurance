@@ -31,7 +31,7 @@ export interface ValidateOfferParams {
 
 export type ValidateOfferBody = ParamsToBody<ValidateOfferParams>
 
-// todo validar esoc on servicio posterior
+// todo validar eso con servicio posterior
 interface ValidateOfferResult {
   value: {
     key: string
