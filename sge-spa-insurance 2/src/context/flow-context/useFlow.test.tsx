@@ -4,7 +4,7 @@ import useFlow from './use-flow'
 import FlowProvider from './flow-provider'
 import { initialState } from './flow-context'
 import { FlowState } from './flow-context.interface'
-import { RoutesAlias, FlowStatus } from '@app/utils/enums'
+import { RoutesAlias, FlowStatus, RoutesFraudAlias } from '@app/utils/enums'
 
 const wrapper: FC<PropsWithChildren> = ({ children }) => (
   <FlowProvider>{children}</FlowProvider>
@@ -74,7 +74,7 @@ describe('useFlow', () => {
   it('should dispatchStep', () => {
     const { result } = renderHook(() => useFlow(), { wrapper })
 
-    expect(result.current.step).toBe(RoutesAlias.PRODUCT_DETAIL)
+    expect(result.current.step).toBe(RoutesFraudAlias.PRODUCT_DETAIL)
 
     act(() => {
       result.current.dispatchStep(RoutesAlias.NOT_PRODUCT)

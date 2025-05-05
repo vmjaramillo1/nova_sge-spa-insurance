@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Page from './page'
 import { createWrapper } from '@app/__test__/wrappers'
-import { FlowStatus, RoutesAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesAlias, RoutesFraudAlias } from '@app/utils/enums'
 import { APP_ROUTES } from '@app/routes/config'
 import { Route } from 'react-router-dom'
 
@@ -55,7 +55,7 @@ describe('<Page />', () => {
       {
         flow: {
           status: FlowStatus.RETRY_ACCEPTANCE_ERROR,
-          step: RoutesAlias.PRODUCT_DETAIL,
+          step: RoutesFraudAlias.PRODUCT_DETAIL,
         },
       },
       {
@@ -84,7 +84,7 @@ describe('<Page />', () => {
       {
         flow: {
           status: FlowStatus.END_SUCCESS,
-          step: RoutesAlias.ACCEPTANCE,
+          step: RoutesFraudAlias.ACCEPTANCE,
         },
       },
       {

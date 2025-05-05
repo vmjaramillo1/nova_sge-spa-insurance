@@ -1,6 +1,4 @@
-import { RoutesAlias, FlowStatus } from '@app/utils/enums'
-import { AllRouteAliases } from '@app/routes/config'
-
+import { RoutesFraudAlias, FlowStatus } from '@app/utils/enums'
 
 export interface FlowState {
   accountHashSelected: string
@@ -8,7 +6,7 @@ export interface FlowState {
   periodicitySelected: string
   transactionReference?: string
   key?: string
-  step: AllRouteAliases
+  step: RoutesFraudAlias
   contentLoaded: boolean
   status: FlowStatus
 }
@@ -30,7 +28,7 @@ export interface SetAccountHashSelectedAction {
 
 export interface SetStepAction {
   type: FlowActionTypes.SET_STEP
-  payload: AllRouteAliases
+  payload: RoutesFraudAlias
 }
 
 export interface SetTransactionAction {

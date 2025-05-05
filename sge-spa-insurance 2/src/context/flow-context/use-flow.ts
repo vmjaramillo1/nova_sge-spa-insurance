@@ -4,7 +4,8 @@ import {
   FlowContext,
   SetTransactionAction,
 } from '@app/context/flow-context'
-import { FlowStatus, RoutesAlias } from '@app/utils/enums'
+import { FlowStatus } from '@app/utils/enums'
+import { AllRouteAliases } from '@app/routes/config'
 
 export const useFlow = () => {
   const [value, dispatch] = useContext(FlowContext)
@@ -21,7 +22,7 @@ export const useFlow = () => {
   )
 
   const dispatchStep = useCallback(
-    (payload: RoutesAlias) => {
+    (payload: AllRouteAliases) => {
       dispatch({ type: FlowActionTypes.SET_STEP, payload })
     },
     [dispatch]

@@ -1,7 +1,4 @@
-import {
-  AccountInfo,
-  MergeOfferPreviousList,
-} from '@app/services/insurance'
+import { AccountInfo, MergeOfferPreviousList } from '@app/services/insurance'
 import { OfferableProduct } from '@app/utils/interfaces'
 import { OfferableWithType } from '@app/utils'
 import { MergeOfferablePreviousType } from '@app/utils/enums'
@@ -23,7 +20,6 @@ export function getFavoriteAccountHash(accounts: Array<AccountInfo>): string {
 export function mergeOfferAndPrevious(
   data: MergeOfferPreviousList
 ): Array<OfferableWithType> {
-  debugger
   const result: Array<OfferableWithType> = []
 
   const offerableProducts = data.find(

@@ -1,5 +1,12 @@
 export const HUB_NAME = 'Hub de seguros'
 export const PRODUCT_NAME = 'Seguro por robos y fraudes'
+
+export const ALLOW_DEVTOOLS = ['development', 'local'].includes(
+  process.env.REACT_APP_ENVIRONMENT ?? ''
+)
+
+export const BASE_PATH = process.env.PUBLIC_URL ?? '/'
+
 export const OPEN_ACCOUNTS_FLOW_URL =
   process.env.REACT_APP_EXTERNAL_FLOW_ACCOUNT_URL!
 export const PORTAL_INSURANCE_URL =

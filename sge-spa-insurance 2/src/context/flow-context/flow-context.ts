@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 
 import { FlowActions, FlowState } from './flow-context.interface'
-import { FlowStatus, RoutesAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesFraudAlias } from '@app/utils/enums'
 
 export const initialState: FlowState = {
   accountHashSelected: '',
@@ -10,7 +10,7 @@ export const initialState: FlowState = {
   transactionReference: undefined,
   key: undefined,
   contentLoaded: false,
-  step: RoutesAlias.PRODUCT_DETAIL,
+  step: RoutesFraudAlias.PRODUCT_DETAIL,
   status: FlowStatus.WAIT_LOAD,
 }
 

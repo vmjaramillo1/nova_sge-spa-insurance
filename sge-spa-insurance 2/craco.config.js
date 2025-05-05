@@ -9,5 +9,8 @@ module.exports = {
       "@styles": path.resolve(__dirname, "src/styles/"),
       "@components": path.resolve(__dirname, "src/components/"),
     }
-  }
+  },
+  eslint: {
+    enable: false,
+  },
 }

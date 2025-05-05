@@ -41,7 +41,6 @@ const useLoadData = () => {
     const [firstOffer] = offers
 
     const appInfo = getAppInfo<DefaultPortal>({ offerablePrevious: firstOffer })
-    debugger;
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
 
     dispatchLoadValues({ ...appInfo, accounts, lopdp })

@@ -33,6 +33,10 @@ export interface WithDescription {
   description: string
 }
 
+export type WithName = {
+  name: string;
+};
+
 export interface WithLabel {
   label: string
 }

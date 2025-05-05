@@ -1,15 +1,9 @@
+import { type RouteObject } from 'react-router-dom'
 import { APP_ROUTES_CONFIG } from './config'
-
 import Page from '@app/components/molecules/page'
 
-import ProductDetail, {
-  ProductDetailPageFallback,
-} from '@app/components/pages/product-detail-page'
-import AcceptancePage from '@app/components/pages/acceptance-page'
+import { ProductDetailPageFallback } from '@app/components/pages/product-detail-page'
 import NotAccountPage from '@app/components/pages/not-account-page'
-import ProductPage from '@app/components/pages/product-page'
-import SelectAccountPage from '@app/components/pages/select-account-page'
-import SuccessPage from '@app/components/pages/success-page'
 import PreviousProduct from '@app/components/pages/previous-product-page'
 import ErrorPage from '@app/components/pages/error-page'
 import AlreadyPage from '@app/components/pages/already-page'
@@ -17,74 +11,21 @@ import NotProductPage from '@app/components/pages/not-product-page'
 import RetryAcceptancePage from '@app/components/pages/retry-acceptance-page'
 import PreviousPage from '@app/components/pages/previous-page'
 import InProgressPage from '@app/components/pages/in-progress-page'
-import { type RouteObject } from 'react-router-dom'
 
-const FraudRoutes: Array<RouteObject> = [
+const HubRoutes: Array<RouteObject> = [
   {
-    path: APP_ROUTES_CONFIG.PRODUCT_DETAIL.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.PRODUCT_DETAIL.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <ProductDetail />
-      </Page>
-    ),
+    path: APP_ROUTES_CONFIG.HOME.path,
+    element: <div>esto es una pruebba</div>,
+    children: [
+      {
+        index: true,
+        element: <>hijo del elemento</>,
+      },
+    ],
   },
   {
-    path: APP_ROUTES_CONFIG.PRODUCT.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.PRODUCT.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <ProductPage />
-      </Page>
-    ),
-  },
-  {
-    path: APP_ROUTES_CONFIG.SELECT_ACCOUNT.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.SELECT_ACCOUNT.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <SelectAccountPage />
-      </Page>
-    ),
-  },
-  {
-    path: APP_ROUTES_CONFIG.ACCEPTANCE.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.ACCEPTANCE.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <AcceptancePage />
-      </Page>
-    ),
-  },
-  {
-    path: APP_ROUTES_CONFIG.SUCCESS.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.ACCEPTANCE.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <AcceptancePage />
-      </Page>
-    ),
-  },
-  {
-    path: APP_ROUTES_CONFIG.SUCCESS.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.SUCCESS.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <SuccessPage />
-      </Page>
-    ),
+    path: APP_ROUTES_CONFIG.HOME.path + '/ele',
+    element: <>elemento hijo</>,
   },
   {
     path: APP_ROUTES_CONFIG.NOT_ACCOUNT.path,
@@ -98,7 +39,7 @@ const FraudRoutes: Array<RouteObject> = [
     ),
   },
   {
-    path: APP_ROUTES_CONFIG.PREVIOUS_PRODUCT.key,
+    path: APP_ROUTES_CONFIG.PREVIOUS_PRODUCT.path,
     element: (
       <Page
         title={APP_ROUTES_CONFIG.PREVIOUS_PRODUCT.title}
@@ -169,4 +110,4 @@ const FraudRoutes: Array<RouteObject> = [
   },
 ]
 
-export default FraudRoutes
+export default HubRoutes

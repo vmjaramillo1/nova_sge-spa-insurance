@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 import usePage from './use-page'
 import { createWrapper } from '@app/__test__/wrappers'
-import { FlowStatus, RoutesAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesAlias, RoutesFraudAlias } from '@app/utils/enums'
 
 jest.mock('@pichincha/events-microsite')
 
@@ -20,7 +20,7 @@ describe('usePage', () => {
       {
         flow: {
           status: FlowStatus.NORMAL,
-          step: RoutesAlias.PRODUCT_DETAIL,
+          step: RoutesFraudAlias.PRODUCT_DETAIL,
         },
       },
       { outletValues: { ...contextValues } }
@@ -43,7 +43,7 @@ describe('usePage', () => {
       {
         flow: {
           status: FlowStatus.NORMAL,
-          step: RoutesAlias.PRODUCT_DETAIL,
+          step: RoutesFraudAlias.PRODUCT_DETAIL,
         },
       },
       {
@@ -64,7 +64,7 @@ describe('usePage', () => {
       {
         flow: {
           status: FlowStatus.END_SUCCESS,
-          step: RoutesAlias.SUCCESS,
+          step: RoutesFraudAlias.SUCCESS,
         },
       },
       { outletValues: { ...contextValues } }
