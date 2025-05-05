@@ -40,10 +40,12 @@ const useLoadData = () => {
 
     const [firstOffer] = offers
 
+    const hasOffer = isOffer(offers)
+
     const appInfo = getAppInfo<DefaultPortal>({ offerablePrevious: firstOffer })
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
 
-    dispatchLoadValues({ ...appInfo, accounts, lopdp })
+    dispatchLoadValues({ ...appInfo, accounts, lopdp, hasOffer })
     dispatchSelectedAccount(favoriteAccountHash)
     dispatchContentLoaded(true)
 
@@ -67,14 +69,7 @@ const useLoadData = () => {
       dispatchPeriodicitySelected(firstPeriodicity.code)
     }
 
-    // todo ajustar para validar esto va ha hub
-    // const targetRoute = isOffer(offers)
-    //   ? APP_ROUTES.PRODUCT_DETAIL
-    //   : APP_ROUTES.PREVIOUS_PRODUCT
-
-    const targetRoute = isOffer(offers)
-      ? APP_ROUTES.HOME
-      : APP_ROUTES.PREVIOUS_PRODUCT
+    const targetRoute = APP_ROUTES.INSURANCE_PORTAL
 
     navigate(targetRoute, {
       replace: true,

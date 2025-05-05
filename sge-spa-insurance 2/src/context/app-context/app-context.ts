@@ -19,6 +19,7 @@ export const initialState: AppState<unknown> = {
     acceptedTermsConditions: false,
     url: '',
   },
+  hasOffer: false,
 }
 
 export const AppContext = createContext<

@@ -1,6 +1,6 @@
 export const enum RoutesHubAlias {
   // Hub Page
-  HUB_NAME = 'HOME',
+  INSURANCE_PORTAL = 'HOME',
 
   GENERAL_ERROR = 'GENERAL_ERROR',
   NOT_PRODUCT = 'NOT_PRODUCT',

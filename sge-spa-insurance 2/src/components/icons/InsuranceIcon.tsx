@@ -1,10 +1,13 @@
-import { memo } from 'react'
+import { FC, memo } from 'react'
 
-const InsuranceIcon = () => {
+import { IconProps } from './Icon.interface'
+
+const InsuranceIcon: FC<IconProps> = (props) => {
+  const { width, height } = props
   return (
     <svg
-      width="56"
-      height="56"
+      width={width}
+      height={height}
       viewBox="0 0 56 56"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -40,6 +43,11 @@ const InsuranceIcon = () => {
       </defs>
     </svg>
   )
+}
+
+InsuranceIcon.defaultProps = {
+  width: 56,
+  height: 56,
 }
 
 export default memo(InsuranceIcon)

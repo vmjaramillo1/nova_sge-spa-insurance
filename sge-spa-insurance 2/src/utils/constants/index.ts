@@ -1,4 +1,4 @@
-export const HUB_NAME = 'Hub de seguros'
+export const INSURANCE_PORTAL_NAME = 'Seguros'
 export const PRODUCT_NAME = 'Seguro por robos y fraudes'
 
 export const ALLOW_DEVTOOLS = ['development', 'local'].includes(

@@ -7,6 +7,8 @@ import ArrowIcon from './ArrowIcon'
 import SuccessIcon from './SuccessIcon'
 import WhatsappIcon from './WhatsappIcon'
 import ArrowBackIcon from './ArrowBackIcon'
+import FamilyUnitIcon from './FamilyUnitIcon'
+import CheckIcon from './CheckIcon'
 
 describe('<BPIcon />', () => {
   it('should render the component', () => {
@@ -91,13 +93,14 @@ describe('<FraudsIcon />', () => {
 
 describe('<InsuranceIcon />', () => {
   it('should be render', () => {
-    render(<InsuranceIcon />)
+    render(<InsuranceIcon width={56} height={56} />)
 
     const iconEl = screen.getByRole('img', {
       hidden: true,
     })
 
-    expect(iconEl).toMatchSnapshot()
+    expect(iconEl).toBeInTheDocument()
+    expect(iconEl).toHaveStyle({ width: '56', height: '56' })
   })
 })
 
@@ -141,5 +144,30 @@ describe('<ArrowIcon />', () => {
     const iconEl = screen.getByTestId('arrow')
 
     expect(iconEl).toMatchSnapshot()
+  })
+})
+
+describe('<FamilyUnitIcon />', () => {
+  it('should render FamilyUnitIcon', () => {
+    render(<FamilyUnitIcon />)
+
+    const iconEl = screen.getByRole('img', {
+      hidden: true,
+    })
+
+    expect(iconEl).toMatchSnapshot()
+  })
+})
+
+describe('<CheckIcon />', () => {
+  it('should render CheckIcon', () => {
+    render(<CheckIcon width={18} height={18} />)
+
+    const iconEl = screen.getByRole('img', {
+      hidden: true,
+    })
+
+    expect(iconEl).toBeInTheDocument()
+    expect(iconEl).toHaveStyle({ width: '18', height: '18' })
   })
 })
