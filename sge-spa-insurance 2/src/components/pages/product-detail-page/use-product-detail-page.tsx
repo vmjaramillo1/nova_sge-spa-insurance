@@ -1,7 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import useApp from '@app/context/app-context/use-app'
 import useBackButton from '@app/hooks/use-back-button'
 import useDownloadFile from '@app/hooks/use-download-file'
 import useIdentity from '@app/hooks/use-identity'
@@ -22,6 +21,12 @@ import { APP_ROUTES } from '@app/routes/config'
 import InsuranceService from '@app/services/insurance'
 import { DOCUMENT_DOWNLOAD_STATIC_CODES } from '@app/utils'
 import useIntersectionObserver from '@app/hooks/use-intersection-observer/use-intersection-observer'
+import useAppSelector from '@app/hooks/use-app-selector'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
+
+import { selectorPortal, selectorLopdp } from '@app/store/selectors/selectors'
+
+import { setLopdp } from '@app/store/reducers/app-slice'
 
 function getNextLopdpAction(hasConsent: boolean | null): LopdpAction {
   return hasConsent === null
@@ -30,9 +35,9 @@ function getNextLopdpAction(hasConsent: boolean | null): LopdpAction {
 }
 
 export function useContentProductDetailPage() {
-  const {
-    portal: { productDetail },
-  } = useApp<DefaultPortal>()
+  const { productDetail } = useAppSelector(selectorPortal) as {
+    productDetail: DefaultPortal['productDetail']
+  }
 
   const mappedCoverages = useMemo(() => {
     if (!productDetail?.coverages) return []
@@ -68,9 +73,11 @@ export function useContentProductDetailPage() {
 const useProductDetailPage = () => {
   const navigate = useNavigate()
   const identity = useIdentity()
+  const dispatch = useAppDispatch()
   const checkboxRef = useRef<HTMLInputElement>(null)
 
-  const { lopdp, dispatchLopdp } = useApp<DefaultPortal>()
+  const lopdp = useAppSelector(selectorLopdp)
+
   const { isIntersecting } = useIntersectionObserver({
     element: checkboxRef.current,
     options: { root: null, rootMargin: '0px 0px -128px 0px', threshold: 0 },
@@ -121,11 +128,13 @@ const useProductDetailPage = () => {
 
       if (!isSuccessResponse(response)) return
 
-      dispatchLopdp({
-        acceptedTermsConditions: acceptTC,
-        hasConsent: acceptTC,
-        url,
-      })
+      dispatch(
+        setLopdp({
+          acceptedTermsConditions: acceptTC,
+          hasConsent: acceptTC,
+          url,
+        })
+      )
     }
 
     navigate(APP_ROUTES.PRODUCT)

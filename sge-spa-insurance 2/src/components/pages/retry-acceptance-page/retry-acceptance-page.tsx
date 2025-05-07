@@ -9,8 +9,6 @@ import StackClose from '@app/components/atoms/stack-close'
 import useTokenListener from '@app/hooks/use-token-listener'
 import useAcceptance from '@app/hooks/use-acceptance'
 
-import useFlow from '@app/context/flow-context/use-flow'
-
 import { FlowStatus } from '@app/utils/enums'
 import { APP_ROUTES } from '@app/routes/config'
 import { calculateAcceptanceNextStatus } from '@app/utils'
@@ -21,6 +19,11 @@ import {
   goBackHome,
   pushTrackEvent,
 } from '@app/utils/messages'
+
+import useAppSelector from '@app/hooks/use-app-selector'
+import { selectorStatus } from '@app/store/selectors/selectors'
+import { setFlowStatus } from '@app/store/reducers/flow-slice'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
 
 interface AttemptContent {
   title: ReactNode
@@ -97,7 +100,8 @@ const trackingGroupByFlowStatus: Record<AttemptsStatusType, AttemptTrackingGroup
 }
 
 const RetryAcceptancePage = () => {
-  const { status, dispatchFlowStatus } = useFlow()
+  const dispatch = useAppDispatch()
+  const status = useAppSelector(selectorStatus)
 
   const navigate = useNavigate()
 
@@ -132,11 +136,10 @@ const RetryAcceptancePage = () => {
       await acceptanceService(softToken)
 
       navigate(APP_ROUTES.SUCCESS)
-      dispatchFlowStatus(FlowStatus.END_SUCCESS)
+      dispatch(setFlowStatus(FlowStatus.END_SUCCESS))
     } catch (error) {
       const targetStatus = calculateAcceptanceNextStatus(status)
-
-      dispatchFlowStatus(targetStatus)
+      dispatch(setFlowStatus(targetStatus))
     } finally {
       callModal(callModal.CLOSE)
     }

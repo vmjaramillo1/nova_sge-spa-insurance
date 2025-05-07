@@ -18,6 +18,7 @@ export const initialState: AppState<unknown> = {
     acceptedTermsConditions: false,
     url: '',
   },
+  hasOffer: false,
 }
 
 const appSlice = createSlice({

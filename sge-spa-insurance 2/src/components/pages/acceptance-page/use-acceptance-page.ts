@@ -2,9 +2,6 @@ import { useMemo } from 'react'
 import { useLottie } from 'lottie-react'
 import { useNavigate } from 'react-router-dom'
 
-import useApp from '@app/context/app-context/use-app'
-import useFlow from '@app/context/flow-context/use-flow'
-
 import useBackButton from '@app/hooks/use-back-button'
 import useCurrentAccount from '@app/hooks/use-current-account'
 import useAcceptance from '@app/hooks/use-acceptance'
@@ -12,7 +9,6 @@ import useTokenListener, { initialTokenData } from '@app/hooks/use-token-listene
 
 import { APP_ROUTES } from '@app/routes/config'
 
-import { DefaultPortal } from '@app/utils/interfaces'
 import { FlowStatus, PeriodicityCode } from '@app/utils/enums'
 import {
   TrackingEvents,
@@ -36,6 +32,16 @@ import {
 import softTokenAnimation from '@app/assets/animations/AnimacionCandadoCheck.json'
 import countDownAnimation from '@app/assets/animations/CountDown.json'
 import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
+import useAppSelector from '@app/hooks/use-app-selector'
+import { setFlowStatus } from '@app/store/reducers/flow-slice'
+import {
+  selectorPortal,
+  selectorPlans,
+  selectorStatus,
+  selectorPlanSelected,
+  selectorPeriodicitySelected,
+} from '@app/store/selectors/selectors'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
 
 const periodicityLabel: Record<string, string> = {
   [PeriodicityCode.ANNUAL]: 'anual',
@@ -44,6 +50,7 @@ const periodicityLabel: Record<string, string> = {
 
 const useAcceptancePage = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   useBackButton(() => {
     pushTrackEvent(TrackingEvents.ACCEPT_CLICK_BUTTON_BACK)
@@ -52,12 +59,12 @@ const useAcceptancePage = () => {
 
   usePageTrackingEvent(TrackingEvents.ACCEPT_VIEW_PAGE)
 
-  const {
-    plans,
-    portal: { acceptance },
-  } = useApp<DefaultPortal>()
+  const { acceptance } = useAppSelector(selectorPortal)
+  const plans = useAppSelector(selectorPlans)
 
-  const { status, planSelected, periodicitySelected, dispatchFlowStatus } = useFlow()
+  const status = useAppSelector(selectorStatus)
+  const planSelected = useAppSelector(selectorPlanSelected)
+  const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
 
   const currentAccount = useCurrentAccount()
 
@@ -97,7 +104,7 @@ const useAcceptancePage = () => {
 
       await acceptanceCallback(softToken)
 
-      dispatchFlowStatus(FlowStatus.END_SUCCESS)
+      dispatch(setFlowStatus(FlowStatus.END_SUCCESS))
 
       navigate(APP_ROUTES.SUCCESS, {
         replace: true,
@@ -108,8 +115,7 @@ const useAcceptancePage = () => {
       navigate(APP_ROUTES.RETRY_ACCEPTANCE, {
         replace: true,
       })
-
-      dispatchFlowStatus(targetStatus)
+      dispatch(setFlowStatus(targetStatus))
     } finally {
       callModal(callModal.CLOSE)
     }

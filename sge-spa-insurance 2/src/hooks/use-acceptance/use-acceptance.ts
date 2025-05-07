@@ -1,6 +1,3 @@
-import useApp from '@app/context/app-context/use-app'
-import useFlow from '@app/context/flow-context/use-flow'
-
 import useCurrentAccount from '@app/hooks/use-current-account'
 import useIdentity from '@app/hooks/use-identity'
 
@@ -9,9 +6,26 @@ import InsuranceService from '@app/services/insurance'
 import { ACCEPTED_STATUS, isSuccessResponse } from '@app/utils'
 import { customMessage, trackingConversion } from '@app/utils/messages'
 
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import {
+  selectorPlans,
+  selectorCode,
+  selectorKey,
+  selectorTransactionReference,
+  selectorPlanSelected,
+  selectorPeriodicitySelected,
+} from '@app/store/selectors/selectors'
+
 const useAcceptance = () => {
-  const { code: productCode, plans } = useApp()
-  const { key, transactionReference, planSelected, periodicitySelected } = useFlow()
+  const productCode = useAppSelector(selectorCode)
+  const plans = useAppSelector(selectorPlans)
+
+  const key = useAppSelector(selectorKey)
+  const transactionReference = useAppSelector(selectorTransactionReference)
+  const planSelected = useAppSelector(selectorPlanSelected)
+  const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
+
   const identity = useIdentity()
 
   const currentAccount = useCurrentAccount()

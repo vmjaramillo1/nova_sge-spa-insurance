@@ -25,4 +25,5 @@ export interface AppState<TPortal> {
   accounts: Array<AccountInfo>
   sale: Sale | null
   lopdp: LopdpResult
+  hasOffer: boolean
 }

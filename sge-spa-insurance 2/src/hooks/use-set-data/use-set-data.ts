@@ -1,19 +1,21 @@
 import { useCallback, useEffect } from 'react'
 import { AuthService, LocalEvents, IdentityEvent } from '@pichincha/events-microsite'
-import useGlobal from '@app/context/global-context/use-global'
 import { isValidIdentity } from '@app/utils/guards'
 import axios from 'axios'
 import { PersonSession } from '@app/services/insurance'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
+import { authenticate } from '@app/store/reducers/global-slice'
 
 const emptyCallback = () => null
 
 export const useSetData = () => {
-  const { dispatchAuthenticate } = useGlobal()
+  const dispatch = useAppDispatch()
 
   const identityEventCallback = useCallback(
     (detail: IdentityEvent) => {
+      debugger
       if (isValidIdentity(detail)) {
-        dispatchAuthenticate(detail)
+        dispatch(authenticate(detail))
 
         const identity: PersonSession = {
           device: detail.device,
@@ -29,7 +31,7 @@ export const useSetData = () => {
         axios.defaults.headers.common['Identity'] = stringifyIdentity
       }
     },
-    [dispatchAuthenticate]
+    [dispatch]
   )
 
   const backEventCallback = () => {

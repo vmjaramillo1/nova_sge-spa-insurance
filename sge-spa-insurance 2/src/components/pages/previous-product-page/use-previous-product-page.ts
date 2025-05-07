@@ -1,11 +1,7 @@
-import useApp from '@app/context/app-context/use-app'
-import useFlow from '@app/context/flow-context/use-flow'
-
 import useBackButton from '@app/hooks/use-back-button'
 import useDownloadFile from '@app/hooks/use-download-file'
 import useIdentity from '@app/hooks/use-identity'
 
-import { DefaultPortal } from '@app/utils/interfaces'
 import { isSuccessResponse } from '@app/utils/guards'
 import { filterAndSort, stringFormat } from '@app/utils/common'
 import { monthByNumber, smartFormats } from '@app/utils/format/smart-format'
@@ -26,15 +22,24 @@ import {
   getMoneyAriaLabel,
 } from '@app/utils'
 import { PeriodicityCode } from '@app/utils/enums'
+import useAppSelector from '@app/hooks/use-app-selector'
+import { DefaultPortal } from '@app/utils/interfaces'
+
+import {
+  selectorSale,
+  selectorPortal,
+  selectorPlans,
+  selectorKey,
+  selectorTransactionReference,
+} from '@app/store/selectors/selectors'
 
 function usePreviousProductPage() {
-  const {
-    portal: { sale },
-    sale: saleDetail,
-    plans,
-  } = useApp<DefaultPortal>()
+  const { sale } = useAppSelector(selectorPortal) as { sale: DefaultPortal['sale'] }
 
-  const { key, transactionReference } = useFlow()
+  const saleDetail = useAppSelector(selectorSale)
+  const plans = useAppSelector(selectorPlans)
+  const key = useAppSelector(selectorKey)
+  const transactionReference = useAppSelector(selectorTransactionReference)
 
   const identity = useIdentity()
 
@@ -133,6 +138,7 @@ function usePreviousProductPage() {
 
     const titlePeriodicity = `${smartFormats.toMoney(currentPrice)} cada ${period}`
 
+    // todo arreglar any
     return {
       ...sale,
       description: {

@@ -1,10 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-import useFlow from '@app/context/flow-context/use-flow'
-import useApp from '@app/context/app-context/use-app'
-import useGlobal from '@app/context/global-context/use-global'
-
 import { APP_ROUTES } from '@app/routes/config'
 import { getAppInfo } from '@app/utils/reduce/get-app-info'
 
@@ -15,26 +11,25 @@ import { DefaultPortal } from '@app/utils/interfaces'
 
 import InsuranceService, {
   PortalHubOffer,
-  MergeOfferPreviousList,
 } from '@app/services/insurance'
 import { InvalidBodyError, ResponseError } from '@app/utils/classes'
 import { AppError } from '@app/context/global-context'
 import useIdentity from '../use-identity'
 import { getFavoriteAccountHash, isOffer, mergeOfferAndPrevious } from './utils'
 import { sortByOrder } from '@app/utils'
-
+import useAppDispatch from '@app/hooks/use-app-dispatch'
+import { setError } from '@app/store/reducers/global-slice'
+import { loadValues } from '@app/store/reducers/app-slice'
+import {
+  setSelectedAccount,
+  setContentLoaded,
+  setTransaction,
+  setPeriodicitySelected,
+  setPlanSelected,
+} from '@app/store/reducers/flow-slice'
 const useLoadData = () => {
   const navigate = useNavigate()
-
-  const {
-    dispatchSelectedAccount,
-    dispatchContentLoaded,
-    dispatchTransaction,
-    dispatchPlanSelected,
-    dispatchPeriodicitySelected,
-  } = useFlow()
-  const { dispatchError } = useGlobal()
-  const { dispatchLoadValues } = useApp()
+  const dispatch = useAppDispatch()
 
   const identity = useIdentity()
 
@@ -50,16 +45,18 @@ const useLoadData = () => {
     const appInfo = getAppInfo<DefaultPortal>({ offerablePrevious: firstOffer })
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
 
-    dispatchLoadValues({ ...appInfo, accounts, lopdp, hasOffer })
-    dispatchSelectedAccount(favoriteAccountHash)
-    dispatchContentLoaded(true)
+    dispatch(loadValues({ ...appInfo, accounts, lopdp, hasOffer }))
+
+    dispatch(setSelectedAccount(favoriteAccountHash))
+
+    dispatch(setContentLoaded(true))
 
     const planKeys = Object.keys(appInfo.plans)
 
     if (planKeys.length === 1) {
       const [firstPlan] = planKeys
 
-      dispatchPlanSelected(firstPlan)
+      dispatch(setPlanSelected(firstPlan))
 
       const periodicityOptions = sortByOrder(
         Object.entries(appInfo.plans[firstPlan].periodicityOptions).map(
@@ -71,7 +68,7 @@ const useLoadData = () => {
       )
 
       const [firstPeriodicity] = periodicityOptions
-      dispatchPeriodicitySelected(firstPeriodicity.code)
+      dispatch(setPeriodicitySelected(firstPeriodicity.code))
     }
 
     const targetRoute = APP_ROUTES.INSURANCE_PORTAL
@@ -111,16 +108,14 @@ const useLoadData = () => {
           break
         }
         default: {
-          dispatchError(serverError)
-
+          dispatch(setError(serverError))
           targetRoute = APP_ROUTES.GENERAL_ERROR
         }
       }
     } else {
-      dispatchError(serverError)
+      dispatch(setError(serverError))
     }
-
-    dispatchContentLoaded(true)
+    dispatch(setContentLoaded(true))
 
     navigate(targetRoute, {
       replace: true,
@@ -188,8 +183,7 @@ const useLoadData = () => {
       }
 
       // ===================================================
-
-      dispatchTransaction({ key, transactionReference })
+      dispatch(setTransaction({ key, transactionReference }))
       return {
         ...result,
         portalHub,

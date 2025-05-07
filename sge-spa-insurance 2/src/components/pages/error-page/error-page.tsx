@@ -3,17 +3,18 @@ import { FC } from 'react'
 import Button from '@app/components/atoms/button/button'
 import Typography from '@app/components/atoms/typography'
 import Feedback from '@app/components/organisms/feedback/feedback'
-
-import useGlobal from '@app/context/global-context/use-global'
 import useBackButton from '@app/hooks/use-back-button'
 import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
 
 import { TrackingEvents, backHomeWithTracking } from '@app/utils/messages'
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import { selectorError } from '@app/store/selectors/selectors'
 
 import './error-page.scss'
 
 const ErrorPage: FC = () => {
-  const { error } = useGlobal()
+  const error = useAppSelector(selectorError)
 
   const handleBack = backHomeWithTracking(TrackingEvents.GENERAL_ERROR_CLICK_CTA)
 

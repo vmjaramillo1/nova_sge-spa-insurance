@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import useApp from '@app/context/app-context/use-app'
 import useBackButton from '@app/hooks/use-back-button'
 import useDownloadFile from '@app/hooks/use-download-file'
 import useCurrentAccount from '@app/hooks/use-current-account'
@@ -17,8 +16,21 @@ import {
 } from '@app/utils'
 import { DefaultPortal } from '@app/utils/interfaces'
 import { TrackingEvents, pushTrackEvent } from '@app/utils/messages'
-import { useFlow } from '@app/context/flow-context'
 import { PeriodicityCode } from '@app/utils/enums'
+
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import {
+  selectorPortal,
+  selectorPlans,
+  selectorAccounts,
+  selectorPlanSelected,
+  selectorPeriodicitySelected,
+} from '@app/store/selectors/selectors'
+
+import { setPeriodicitySelected } from '@app/store/reducers/flow-slice'
+
+import useAppDispatch from '@app/hooks/use-app-dispatch'
 
 function roundNum(num: string | number) {
   return Math.round((Number(num) + Number.EPSILON) * 100) / 100
@@ -34,18 +46,21 @@ const useProductPage = () => {
   const [accepted, setAccepted] = useState<boolean>(false)
 
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const currentAccountValues = useCurrentAccount()
 
-  const {
-    isMultiAccount,
-    plans,
-    portal: { productInfo },
-  } = useApp<DefaultPortal>()
+  const plans = useAppSelector(selectorPlans)
+  const { productInfo } = useAppSelector(selectorPortal) as {
+    productInfo: DefaultPortal['productInfo']
+  }
+  const isMultiAccount = useAppSelector(selectorAccounts)?.length > 1
 
-  const { planSelected, periodicitySelected, dispatchPeriodicitySelected } =
-    useFlow()
-  debugger;
+  const planSelected = useAppSelector(selectorPlanSelected)
+  const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
+
+  debugger
+
   const periodicityOptions = plans[planSelected].periodicityOptions
 
   const iterablePeriodicityOptions = sortByOrder(
@@ -144,7 +159,7 @@ const useProductPage = () => {
   }
 
   const handleClickPeriodicity = (code: string) => {
-    dispatchPeriodicitySelected(code)
+    dispatch(setPeriodicitySelected(code))
   }
 
   return {

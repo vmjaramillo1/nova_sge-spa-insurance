@@ -1,12 +1,15 @@
-import useFlow from '@app/context/flow-context/use-flow'
-import useApp from '@app/context/app-context/use-app'
-
 import { ACCOUNT_FORMATS } from '@app/utils'
 
-const useCurrentAccount = () => {
-  const { accounts } = useApp()
+import useAppSelector from '@app/hooks/use-app-selector'
 
-  const { accountHashSelected } = useFlow()
+import {
+  selectorAccounts,
+  selectorAccountHashSelected,
+} from '@app/store/selectors/selectors'
+
+const useCurrentAccount = () => {
+  const accounts = useAppSelector(selectorAccounts)
+  const accountHashSelected = useAppSelector(selectorAccountHashSelected)
 
   if (accounts.length === 0) return null
 

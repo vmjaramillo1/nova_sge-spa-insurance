@@ -1,14 +1,22 @@
-import useFlow from '@app/context/flow-context/use-flow'
 import InsuranceService, { FindDocumentsParams } from '@app/services/insurance'
 import { isSuccessResponse } from '@app/utils/guards'
 import { callModal, downloadFile } from '@app/utils/messages'
 import useIdentity from '../use-identity'
 
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import {
+  selectorKey,
+  selectorTransactionReference,
+} from '@app/store/selectors/selectors'
+
 /**
  * @param document return static file by document 'alias', if not provided, get preview of certificate
  */
 const useDownloadFile = (document?: string) => {
-  const { key, transactionReference } = useFlow()
+  const key = useAppSelector(selectorKey)
+  const transactionReference = useAppSelector(selectorTransactionReference)
+
   const identity = useIdentity()
 
   return async () => {

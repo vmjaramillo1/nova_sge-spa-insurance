@@ -1,8 +1,11 @@
-import { useGlobal } from '@app/context/global-context'
 import { IdentityValues } from '@app/services/insurance'
 
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import { selectorAuthEvent } from '@app/store/selectors/selectors'
+
 const useIdentity = (): IdentityValues | null => {
-  const { authEvent } = useGlobal()
+  const authEvent = useAppSelector(selectorAuthEvent)
 
   if (!authEvent) return null
 

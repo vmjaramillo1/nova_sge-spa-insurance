@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 
-import useApp from '@app/context/app-context/use-app'
 import useDownloadFile from '@app/hooks/use-download-file'
 import useCurrentAccount from '@app/hooks/use-current-account'
 
@@ -20,16 +19,25 @@ import {
   pushTrackEvent,
 } from '@app/utils/messages'
 import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
-import { useFlow } from '@app/context/flow-context'
 import { PeriodicityCode } from '@app/utils/enums'
 
-const useSuccessPage = () => {
-  const {
-    portal: { success },
-    plans,
-  } = useApp<DefaultPortal>()
+import useAppSelector from '@app/hooks/use-app-selector'
 
-  const { planSelected, periodicitySelected } = useFlow()
+import {
+  selectorPortal,
+  selectorPlans,
+  selectorPlanSelected,
+  selectorPeriodicitySelected,
+} from '@app/store/selectors/selectors'
+
+const useSuccessPage = () => {
+  const { success } = useAppSelector(selectorPortal) as {
+    success: DefaultPortal['success']
+  }
+  const plans = useAppSelector(selectorPlans)
+
+  const planSelected = useAppSelector(selectorPlanSelected)
+  const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
 
   usePageTrackingEvent(TrackingEvents.SUCCESS_VIEW_PAGE)
 

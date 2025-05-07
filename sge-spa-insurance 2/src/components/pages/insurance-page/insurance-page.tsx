@@ -1,19 +1,18 @@
-import React from 'react'
 import { Suspense, lazy } from 'react'
 import Typography from '@app/components/atoms/typography'
 import './insurance-page.scss'
 import content from './insrance-page-data.json'
 import Banner from '@app/components/atoms/banner'
 import ProductCard from '@app/components/atoms/product-card'
-
-import useApp from '@app/context/app-context/use-app'
-import { DefaultPortal } from '@app/utils/interfaces'
+import useAppSelector from '@app/hooks/use-app-selector'
+import { selectorHasOffer } from '@app/store/selectors/selectors'
 import { APP_ROUTES } from '@app/routes/config'
 
 const FamilyIcon = lazy(() => import('@app/components/icons/FamilyUnitIcon'))
 
 const InsurancePage = () => {
-  const { hasOffer } = useApp<DefaultPortal>()
+
+  const hasOffer = useAppSelector(selectorHasOffer)
 
   const descriptionValue = (
     <>

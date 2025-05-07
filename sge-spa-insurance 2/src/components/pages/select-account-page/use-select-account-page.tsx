@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 import Typography from '@app/components/atoms/typography'
 
-import useApp from '@app/context/app-context/use-app'
-import useFlow from '@app/context/flow-context/use-flow'
 import useBackButton from '@app/hooks/use-back-button'
 import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
 
@@ -19,18 +17,29 @@ import { formatMoney } from '@app/utils/format'
 import { DefaultPortal } from '@app/utils/interfaces'
 import { TrackingEvents, pushTrackEvent } from '@app/utils/messages'
 
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import { setSelectedAccount } from '@app/store/reducers/flow-slice'
+
+import {
+  selectorAccountHashSelected,
+  selectorAccounts,
+  selectorPortal,
+} from '@app/store/selectors/selectors'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
+
 const useSelectAccountPage = () => {
-  const {
-    accounts: sourceAccounts,
-    portal: { selectAccount },
-  } = useApp<DefaultPortal>()
+  const sourceAccounts = useAppSelector(selectorAccounts)
+  const { selectAccount } = useAppSelector(selectorPortal) as {
+    selectAccount: DefaultPortal['selectAccount']
+  }
 
   const navigate = useNavigate()
-
-  const { accountHashSelected, dispatchSelectedAccount } = useFlow()
+  const dispatch = useAppDispatch()
+  const accountHashSelected = useAppSelector(selectorAccountHashSelected)
 
   const handleSelect = (_event: unknown, code: string) => {
-    dispatchSelectedAccount(code)
+    dispatch(setSelectedAccount(code))
     navigate(APP_ROUTES.PRODUCT)
   }
 

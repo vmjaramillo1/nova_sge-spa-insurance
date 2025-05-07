@@ -3,6 +3,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { FlowState } from './flow-slice.inteface'
 import { FlowStatus, RoutesFraudAlias } from '@app/utils/enums'
 
+
 const initialState: FlowState = {
   accountHashSelected: '',
   planSelected: '',
@@ -18,7 +19,7 @@ const flowSlice = createSlice({
   name: 'flow',
   initialState,
   reducers: {
-    setAccountHashSelected(state, action: PayloadAction<string>) {
+    setSelectedAccount(state, action: PayloadAction<string>) {
       state.accountHashSelected = action.payload
     },
     setStep(state, action: PayloadAction<FlowState['step']>) {
@@ -50,7 +51,7 @@ const flowSlice = createSlice({
 })
 
 export const {
-  setAccountHashSelected,
+  setSelectedAccount,
   setStep,
   setTransaction,
   setContentLoaded,
