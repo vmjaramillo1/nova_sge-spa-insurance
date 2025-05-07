@@ -14,7 +14,7 @@ import { selectorError } from '@app/store/selectors/selectors'
 import './error-page.scss'
 
 const ErrorPage: FC = () => {
-  const error = useAppSelector(selectorError)
+  const lastError = useAppSelector(selectorError)?.at(-1)
 
   const handleBack = backHomeWithTracking(TrackingEvents.GENERAL_ERROR_CLICK_CTA)
 
@@ -25,11 +25,11 @@ const ErrorPage: FC = () => {
   return (
     <div className="error-page">
       <Feedback
-        title={error?.title ?? ''}
+        title={lastError?.title ?? ''}
         type="info"
         classes={{ root: 'error-page__feedback' }}
       >
-        <Typography>{error?.message}</Typography>
+        <Typography>{lastError?.message}</Typography>
       </Feedback>
       <Button className="error-page__button mt-auto" onClick={handleBack}>
         Entendido

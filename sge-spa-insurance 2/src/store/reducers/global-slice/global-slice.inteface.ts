@@ -11,10 +11,11 @@ export interface AppError {
   details?: Record<string, string>
 }
 
-export interface GlobalState {
+export interface GlobalState<TPortal> {
   security: {
     isAuthenticated: boolean
     authEvent?: FullIdentityEvent
-    error?: AppError
   }
+  error: Array<AppError>
+  portalHub: TPortal
 }

@@ -13,7 +13,6 @@ export const useSetData = () => {
 
   const identityEventCallback = useCallback(
     (detail: IdentityEvent) => {
-      debugger
       if (isValidIdentity(detail)) {
         dispatch(authenticate(detail))
 

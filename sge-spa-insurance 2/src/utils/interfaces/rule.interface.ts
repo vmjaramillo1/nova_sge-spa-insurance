@@ -1,5 +1,5 @@
 import { CoverageLimit, Plan, Price } from './plan.interface'
-import { Portal, Section } from './portal.interface'
+import { Portal, Section, Param } from './portal.interface'
 import {
   Assistance,
   Benefit,
@@ -116,7 +116,10 @@ export type ProductRule = Pick<
 /**
  * PORTAL RULE
  */
-export type PortalRule = Pick<ReMapPortalRule, 'code' | 'isActive' | 'sections'>
+export type PortalRule = Pick<
+  ReMapPortalRule,
+  'code' | 'isActive' | 'sections' | 'params'
+>
 
 export type SectionRule = Pick<Section, 'code' | 'isActive' | 'attributes'>
 
@@ -124,5 +127,6 @@ type ReMapPortalRule = ReMapProperties<
   Portal,
   {
     sections: Array<SectionRule>
+    params: Array<Param>
   }
 >

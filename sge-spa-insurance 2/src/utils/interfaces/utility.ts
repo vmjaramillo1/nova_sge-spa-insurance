@@ -8,6 +8,9 @@ export type ReMapProperties<
 export type Full<TObject> = {
   [P in keyof TObject]-?: TObject[P]
 }
+export type RecordLowercase<T> = {
+  [K in keyof T as Lowercase<K & string>]: T[K]
+}
 
 export interface WithIsActive {
   isActive: boolean
@@ -34,8 +37,8 @@ export interface WithDescription {
 }
 
 export type WithName = {
-  name: string;
-};
+  name: string
+}
 
 export interface WithLabel {
   label: string

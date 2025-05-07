@@ -2,8 +2,9 @@ import { createSelector } from '@reduxjs/toolkit'
 
 import { type RootState } from '../store'
 
+//#region Global
 export const selectorError = createSelector(
-  (store: RootState) => store.global.security.error,
+  (store: RootState) => store.global.error,
   (error) => error
 )
 
@@ -12,6 +13,13 @@ export const selectorAuthEvent = createSelector(
   (authEvent) => authEvent
 )
 
+export const selectorPortalHub = createSelector(
+  (store: RootState) => store.global.portalHub,
+  (portalHub) => portalHub
+)
+//#endregion
+
+//#region App
 export const selectorAccounts = createSelector(
   (store: RootState) => store.app.accounts,
   (accounts) => accounts
@@ -46,7 +54,9 @@ export const selectorCode = createSelector(
   (store: RootState) => store.app.code,
   (code) => code
 )
+//#endregion
 
+//#region Flow
 export const selectorKey = createSelector(
   (store: RootState) => store.flow.key,
   (key) => key
@@ -86,3 +96,4 @@ export const selectorContentLoaded = createSelector(
   (store: RootState) => store.flow.contentLoaded,
   (contentLoaded) => contentLoaded
 )
+//#endregion

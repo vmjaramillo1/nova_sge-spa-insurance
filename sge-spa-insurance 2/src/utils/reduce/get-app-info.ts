@@ -1,5 +1,5 @@
 import { OfferableProduct } from '../interfaces/offerable-product.interface'
-import { reducePortal } from './portal-reduce-utils'
+import { type ReducedPortal, reducePortal } from './portal-reduce-utils'
 import {
   mapperProduct,
   reduceGeneric,
@@ -22,9 +22,9 @@ type AppStateProductInfo<TPortal> = Omit<
   'accounts' | 'lopdp' | 'hasOffer'
 >
 
-export function getAppInfo<TPortal>(
+export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>>(
   params: GetDefaultContextParams
-): AppStateProductInfo<TPortal> {
+): AppStateProductInfo<ReducedPortal<TContent, TParams>> {
   const { offerablePrevious } = params
 
   const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
@@ -46,7 +46,7 @@ export function getAppInfo<TPortal>(
     paymentPeriodicityOptions
   )
 
-  const portalResult = reducePortal<TPortal>(portal)
+  const portalResult = reducePortal<TContent, TParams>(portal)
 
   return {
     code,

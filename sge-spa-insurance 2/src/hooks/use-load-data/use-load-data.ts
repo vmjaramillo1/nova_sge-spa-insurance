@@ -9,9 +9,11 @@ import { isSuccessResponse } from '@app/utils/guards'
 import { ErrorCode, MergeOfferablePreviousType } from '@app/utils/enums'
 import { DefaultPortal } from '@app/utils/interfaces'
 
-import InsuranceService, {
-  PortalHubOffer,
-} from '@app/services/insurance'
+import { PortalRule } from '@app/utils/interfaces'
+
+import { reducePortal } from '@app/utils/reduce/portal-reduce-utils'
+
+import InsuranceService, { PortalHubOffer } from '@app/services/insurance'
 import { InvalidBodyError, ResponseError } from '@app/utils/classes'
 import { AppError } from '@app/context/global-context'
 import useIdentity from '../use-identity'
@@ -27,6 +29,9 @@ import {
   setPeriodicitySelected,
   setPlanSelected,
 } from '@app/store/reducers/flow-slice'
+
+import { setPortalHub } from '@app/store/reducers/global-slice'
+
 const useLoadData = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -42,8 +47,12 @@ const useLoadData = () => {
 
     const hasOffer = isOffer(offers)
 
-    const appInfo = getAppInfo<DefaultPortal>({ offerablePrevious: firstOffer })
+    const portalHubInfo = reducePortal(portalHub)
+
+    const appInfo = getAppInfo({ offerablePrevious: firstOffer })
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
+
+    dispatch(setPortalHub(portalHubInfo))
 
     dispatch(loadValues({ ...appInfo, accounts, lopdp, hasOffer }))
 
@@ -141,7 +150,7 @@ const useLoadData = () => {
 
       const { key, transactionReference } = validateResult.value
       const portalHub = validateResult.odds.value
-
+      debugger
       const result = await InsuranceService.findOffer({
         key,
         transactionReference,

@@ -29,6 +29,7 @@ const fraudsOffer: OfferableWithType = {
     code: 'BANCAMOVIL_TU_BAN_PRO',
     isActive: true,
     sections: [],
+    params: [],
   },
 }
 

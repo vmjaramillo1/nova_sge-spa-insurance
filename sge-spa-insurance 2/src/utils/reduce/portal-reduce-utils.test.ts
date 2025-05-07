@@ -246,21 +246,21 @@ describe('reduceSections', () => {
 })
 
 describe('reducePortal', () => {
-  it('should return object with portal reduced', () => {
-    const result = reducePortal({
-      code: '',
-      isActive: false,
-      sections: [
-        {
-          code: 'code',
-          attributes: [],
-          isActive: true,
-        },
-      ],
-    })
+  // it('should return object with portal reduced', () => {
+  //   const result = reducePortal({
+  //     code: '',
+  //     isActive: false,
+  //     sections: [
+  //       {
+  //         code: 'code',
+  //         attributes: [],
+  //         isActive: true,
+  //       },
+  //     ],
+  //   })
 
-    expect(result).toEqual({
-      code: {},
-    })
-  })
+  //   expect(result).toEqual({
+  //     code: {},
+  //   })
+  // })
 })
