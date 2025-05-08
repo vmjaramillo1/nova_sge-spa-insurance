@@ -54,7 +54,7 @@ const useProductPage = () => {
   const { productInfo } = useAppSelector(selectorPortal) as {
     productInfo: DefaultPortal['productInfo']
   }
-  const isMultiAccount = useAppSelector(selectorAccounts)?.length > 1
+  const isMultiAccount = Object.keys(useAppSelector(selectorAccounts)).length > 1
 
   const planSelected = useAppSelector(selectorPlanSelected)
   const periodicitySelected = useAppSelector(selectorPeriodicitySelected)

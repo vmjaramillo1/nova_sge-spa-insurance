@@ -9,6 +9,7 @@ import {
   CoverageRule,
   ExclusionRule,
   PriceRule,
+  AccountRule,
 } from './rule.interface'
 import { WithOutCode } from './utility'
 
@@ -79,3 +80,5 @@ export interface ReducePlanReturn {
 }
 
 export type RecordPlan = Record<string, WithOutCode<ReducePlanReturn>>
+
+export type RecordAccount = Record<string, AccountRule>

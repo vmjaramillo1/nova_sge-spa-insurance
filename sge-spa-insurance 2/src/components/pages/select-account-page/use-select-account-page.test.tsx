@@ -7,6 +7,8 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn(),
 }))
 
+
+// todo ajustar prueba
 describe('useSelectAccountPage', () => {
   it('should return default', () => {
     const wrapper = createWrapper({

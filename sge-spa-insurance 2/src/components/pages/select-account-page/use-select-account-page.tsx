@@ -51,7 +51,11 @@ const useSelectAccountPage = () => {
   usePageTrackingEvent(TrackingEvents.SELECT_ACCOUNT_VIEW_PAGE)
 
   const accounts = useMemo(() => {
-    return sourceAccounts.map((account) => {
+    const hashAccountList = Object.keys(sourceAccounts)
+
+    return hashAccountList.map((hashAccount) => {
+      const account = sourceAccounts[hashAccount]
+
       const format = ACCOUNT_FORMATS[account.type] || ACCOUNT_FORMATS.DEFAULT
 
       const ariaLastNumbers = getAriaAccountNumber(account.mask)

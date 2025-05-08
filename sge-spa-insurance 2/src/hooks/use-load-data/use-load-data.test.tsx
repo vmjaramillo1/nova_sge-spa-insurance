@@ -23,6 +23,8 @@ const identityEvent = Object.freeze({
   deeplink: '',
 })
 
+
+// todo ajustar prueba
 describe('useLoadData', () => {
   afterEach(() => {
     jest.clearAllMocks()

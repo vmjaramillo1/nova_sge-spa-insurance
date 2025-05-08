@@ -12,7 +12,7 @@ import {
   RecordPlan,
 } from '@app/utils/interfaces'
 
-export interface AppState<TPortal> {
+export interface Products<TPortal> {
   code: string
   name: string
   coverages: RecordCoverage
@@ -22,8 +22,12 @@ export interface AppState<TPortal> {
   insuranceName: string
   plans: RecordPlan
   portal: TPortal
-  accounts: Array<AccountInfo>
   sale: Sale | null
-  lopdp: LopdpResult
   hasOffer: boolean
+}
+
+export interface AppState<TPortal> {
+  products: Record<string, Products<TPortal>>
+  accounts: Record<string, AccountInfo>
+  lopdp: LopdpResult
 }

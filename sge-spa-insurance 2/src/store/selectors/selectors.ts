@@ -26,17 +26,17 @@ export const selectorAccounts = createSelector(
 )
 
 export const selectorPlans = createSelector(
-  (store: RootState) => store.app.plans,
+  (store: RootState) => store.app.products[0]?.plans,
   (plans) => plans
 )
 
 export const selectorSale = createSelector(
-  (store: RootState) => store.app.sale,
+  (store: RootState) => store.app.products[0]?.sale,
   (sale) => sale
 )
 
 export const selectorPortal = createSelector(
-  (store: RootState) => store.app.portal,
+  (store: RootState) => store.app.products[0]?.portal,
   (portal) => portal
 )
 
@@ -46,12 +46,12 @@ export const selectorLopdp = createSelector(
 )
 
 export const selectorHasOffer = createSelector(
-  (store: RootState) => store.app.hasOffer,
+  (store: RootState) => store.app.products[0]?.hasOffer,
   (hasOffer) => hasOffer
 )
 
 export const selectorCode = createSelector(
-  (store: RootState) => store.app.code,
+  (store: RootState) => store.app.products[0]?.code,
   (code) => code
 )
 //#endregion

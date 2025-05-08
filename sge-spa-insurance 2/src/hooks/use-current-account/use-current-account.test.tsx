@@ -2,6 +2,8 @@ import { renderHook } from '@testing-library/react'
 import { createWrapper } from '@app/__test__/wrappers'
 import useCurrentAccount from './use-current-account'
 
+
+// todo ajustar prueba
 describe('useCurrentAccount', () => {
   it('should return null when no accounts', () => {
     const wrapper = createWrapper({

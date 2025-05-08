@@ -14,6 +14,7 @@ import {
   RecordPlan,
   RecordPlanCoverages,
   RecordPrices,
+  RecordAccount,
 } from '../interfaces/records.interface'
 import {
   AssistanceRule,
@@ -24,7 +25,12 @@ import {
   PlanRule,
   PriceRule,
   ProductRule,
+  AccountRule,
 } from '../interfaces/rule.interface'
+
+import { type OfferableWithType } from './get-app-info'
+import { reducePortal } from './portal-reduce-utils'
+import { isOffer } from '@app/hooks/use-load-data/utils'
 
 export function reduceGeneric<
   Input extends object,
@@ -134,22 +140,6 @@ export function mapperPlan(
   }
 }
 
-function reduceCoverages(coverages: Array<CoverageRule>): RecordCoverage {
-  return reduceGeneric(coverages, 'code')
-}
-
-function reduceBenefits(benefits: Array<BenefitRule>): RecordBenefits {
-  return reduceGeneric(benefits, 'code')
-}
-
-function reduceAssistances(assistances: Array<AssistanceRule>): RecordAssistances {
-  return reduceGeneric(assistances, 'code')
-}
-
-function reduceExclusions(exclusions: Array<ExclusionRule>): RecordExclusions {
-  return reduceGeneric(exclusions, 'code')
-}
-
 export function mapperProduct(product: ProductRule): MapperProductResult {
   const { code, name } = product
 
@@ -166,6 +156,22 @@ export function mapperProduct(product: ProductRule): MapperProductResult {
     assistances,
     exclusions,
   }
+}
+
+function reduceCoverages(coverages: Array<CoverageRule>): RecordCoverage {
+  return reduceGeneric(coverages, 'code')
+}
+
+function reduceBenefits(benefits: Array<BenefitRule>): RecordBenefits {
+  return reduceGeneric(benefits, 'code')
+}
+
+function reduceAssistances(assistances: Array<AssistanceRule>): RecordAssistances {
+  return reduceGeneric(assistances, 'code')
+}
+
+function reduceExclusions(exclusions: Array<ExclusionRule>): RecordExclusions {
+  return reduceGeneric(exclusions, 'code')
 }
 
 export function reducePlans(
@@ -187,4 +193,56 @@ export function reducePlans(
       [code]: reducePlan,
     }
   }, {} as RecordPlan)
+}
+
+export function reduceAccounts(accounts: Array<AccountRule>) {
+  return accounts.reduce<RecordAccount>((acc, account) => {
+    const { hash } = account
+
+    return {
+      ...acc,
+      [hash]: account,
+    }
+  }, {} as RecordAccount)
+}
+
+export function reduceOffer<TContent = unknown, TParams = Record<string, unknown>>(
+  offer: OfferableWithType
+) {
+  const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
+    offer
+
+  const { code, name, coverages, benefits, assistances, exclusions } =
+    mapperProduct(product)
+
+  const coveragesById = reduceGeneric(product.coverages, 'id')
+
+  const paymentMethodOptions = reducePaymentMethodsOptions(
+    offer.paymentMethodOptions
+  )
+
+  const plansResult = reducePlans(
+    plans,
+    coveragesById,
+    paymentMethodOptions,
+    paymentPeriodicityOptions
+  )
+
+  const portalResult = reducePortal<TContent, TParams>(portal)
+
+  const hasOffer = isOffer(offer)
+
+  return {
+    code,
+    name,
+    sale,
+    coverages,
+    benefits,
+    assistances,
+    exclusions,
+    insuranceName,
+    plans: plansResult,
+    portal: portalResult,
+    hasOffer: hasOffer,
+  }
 }

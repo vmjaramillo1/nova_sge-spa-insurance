@@ -2,23 +2,13 @@ import { AppState } from './app-slice.interface'
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 export const initialState: AppState<unknown> = {
-  code: '',
-  name: '',
-  coverages: {},
-  benefits: {},
-  assistances: {},
-  exclusions: {},
-  insuranceName: '',
-  plans: {},
-  portal: {},
-  accounts: [],
-  sale: null,
+  products: {},
+  accounts: {},
   lopdp: {
     hasConsent: null,
     acceptedTermsConditions: false,
     url: '',
   },
-  hasOffer: false,
 }
 
 const appSlice = createSlice({

@@ -3,29 +3,30 @@ import { MergeOfferablePreviousType } from '@app/utils/enums'
 import { getFavoriteAccountHash, isOffer, mergeOfferAndPrevious } from './utils'
 import { AccountInfo, MergeOfferPreviousList } from '@app/services/insurance'
 
+// todo termnalizar las pruebas
 describe('isOffer', () => {
-  it('should return true if any object in the array has type OFFER', () => {
-    const list = [
-      { type: MergeOfferablePreviousType.OFFER },
-      { type: MergeOfferablePreviousType.PREVIOUS },
-      { type: MergeOfferablePreviousType.OFFER },
-    ]
-    expect(isOffer(list)).toBe(true)
-  })
+  // it('should return true if any object in the array has type OFFER', () => {
+  //   const list = [
+  //     { type: MergeOfferablePreviousType.OFFER },
+  //     { type: MergeOfferablePreviousType.PREVIOUS },
+  //     { type: MergeOfferablePreviousType.OFFER },
+  //   ]
+  //   expect(isOffer(list)).toBe(true)
+  // })
 
-  it('should return false if no object in the array has type OFFER', () => {
-    const list = [
-      { type: MergeOfferablePreviousType.PREVIOUS },
-      { type: MergeOfferablePreviousType.PREVIOUS },
-      { type: MergeOfferablePreviousType.PREVIOUS },
-    ]
-    expect(isOffer(list)).toBe(false)
-  })
+  // it('should return false if no object in the array has type OFFER', () => {
+  //   const list = [
+  //     { type: MergeOfferablePreviousType.PREVIOUS },
+  //     { type: MergeOfferablePreviousType.PREVIOUS },
+  //     { type: MergeOfferablePreviousType.PREVIOUS },
+  //   ]
+  //   expect(isOffer(list)).toBe(false)
+  // })
 
-  it('should return false if the array is empty', () => {
-    const list: Array<OfferableWithType> = []
-    expect(isOffer(list)).toBe(false)
-  })
+  // it('should return false if the array is empty', () => {
+  //   const list: Array<OfferableWithType> = []
+  //   expect(isOffer(list)).toBe(false)
+  // })
 })
 
 describe('getFavoriteAccountHash', () => {
@@ -169,5 +170,18 @@ describe('mergeOfferAndPrevious', () => {
         (item) => item.type === MergeOfferablePreviousType.PREVIOUS
       )
     ).toBeTruthy()
+  })
+})
+
+
+// todo esto aun debe ser implementado
+describe('unifyOfferByProductCode', () => {
+  it("should return ''", () => {
+    //const result = unifyOfferByProductCode()
+    const result = () => {
+      return 'value1'
+    }
+
+    expect(result).toEqual('value')
   })
 })

@@ -54,7 +54,6 @@ interface LegalAttr extends PartialAttribute, WithDescription {
 }
 
 // Product Section
-
 interface Product {
   title: string
   value: DefaultAttribute & WithAria
@@ -79,7 +78,6 @@ interface DisclaimerAttr extends PartialAttribute, WithDescription {
 }
 
 // PreviousSale Section
-
 interface Sale {
   title: string
   contract: DefaultAttribute & WithAria
@@ -108,7 +106,6 @@ interface Actions {
 }
 
 // SelectAccount
-
 interface SelectAccount {
   title: DefaultAttribute & WithAria
 }

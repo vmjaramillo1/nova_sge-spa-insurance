@@ -7,9 +7,6 @@ import { getAppInfo } from '@app/utils/reduce/get-app-info'
 import { TIME, ZERO } from '@app/utils/constants'
 import { isSuccessResponse } from '@app/utils/guards'
 import { ErrorCode, MergeOfferablePreviousType } from '@app/utils/enums'
-import { DefaultPortal } from '@app/utils/interfaces'
-
-import { PortalRule } from '@app/utils/interfaces'
 
 import { reducePortal } from '@app/utils/reduce/portal-reduce-utils'
 
@@ -43,42 +40,47 @@ const useLoadData = () => {
 
     debugger
     // todo quitar luego en multioferta
-    const [firstOffer] = offers.filter((offer) => offer.productCode === 'TU_BAN_PRO')
+    // const [firstOffer] = offers.filter((offer) => offer.productCode === 'TU_BAN_PRO')
 
-    const hasOffer = isOffer(offers)
+    // const hasOffer = isOffer(offers)
+    // const accountInfo = reduceAccounts(accounts)
 
     const portalHubInfo = reducePortal(portalHub)
 
-    const appInfo = getAppInfo({ offerablePrevious: firstOffer })
+    const appInfo = getAppInfo({ offers, accounts })
+    
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
 
     dispatch(setPortalHub(portalHubInfo))
 
-    dispatch(loadValues({ ...appInfo, accounts, lopdp, hasOffer }))
+    dispatch(loadValues({ ...appInfo, lopdp
+    //   accounts: accountInfo,  hasOffer 
+    }))
 
     dispatch(setSelectedAccount(favoriteAccountHash))
 
     dispatch(setContentLoaded(true))
 
-    const planKeys = Object.keys(appInfo.plans)
+    // todo esto es flow
+    // const planKeys = Object.keys(appInfo.plans)
 
-    if (planKeys.length === 1) {
-      const [firstPlan] = planKeys
+    // if (planKeys.length === 1) {
+    //   const [firstPlan] = planKeys
 
-      dispatch(setPlanSelected(firstPlan))
+    //   dispatch(setPlanSelected(firstPlan))
 
-      const periodicityOptions = sortByOrder(
-        Object.entries(appInfo.plans[firstPlan].periodicityOptions).map(
-          ([code, periodicity]) => ({
-            code,
-            order: periodicity.order,
-          })
-        )
-      )
+    //   const periodicityOptions = sortByOrder(
+    //     Object.entries(appInfo.plans[firstPlan].periodicityOptions).map(
+    //       ([code, periodicity]) => ({
+    //         code,
+    //         order: periodicity.order,
+    //       })
+    //     )
+    //   )
 
-      const [firstPeriodicity] = periodicityOptions
-      dispatch(setPeriodicitySelected(firstPeriodicity.code))
-    }
+    //   const [firstPeriodicity] = periodicityOptions
+    //   dispatch(setPeriodicitySelected(firstPeriodicity.code))
+    // }
 
     const targetRoute = APP_ROUTES.INSURANCE_PORTAL
 
@@ -150,7 +152,6 @@ const useLoadData = () => {
 
       const { key, transactionReference } = validateResult.value
       const portalHub = validateResult.odds.value
-      debugger
       const result = await InsuranceService.findOffer({
         key,
         transactionReference,

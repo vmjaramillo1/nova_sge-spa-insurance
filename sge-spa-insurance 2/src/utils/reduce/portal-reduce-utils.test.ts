@@ -245,22 +245,46 @@ describe('reduceSections', () => {
   })
 })
 
-describe('reducePortal', () => {
-  // it('should return object with portal reduced', () => {
-  //   const result = reducePortal({
-  //     code: '',
-  //     isActive: false,
-  //     sections: [
-  //       {
-  //         code: 'code',
-  //         attributes: [],
-  //         isActive: true,
-  //       },
-  //     ],
-  //   })
+// todo esto aun debe ser implementado
+describe('reduceParams', () => {
+  it("should return ''", () => {
+    //const result = reduceParams()
+    const result = () => {
+      return 'value1'
+    }
 
-  //   expect(result).toEqual({
-  //     code: {},
-  //   })
-  // })
+    expect(result).toEqual('value')
+  })
 })
+
+// todo esto aun debe ser implementado
+describe('reducePortal', () => {
+  it("should return ''", () => {
+    //const result = reducePortal()
+    const result = () => {
+      return 'value1'
+    }
+
+    expect(result).toEqual('value')
+  })
+})
+
+// describe('reducePortal', () => {
+//   // it('should return object with portal reduced', () => {
+//   //   const result = reducePortal({
+//   //     code: '',
+//   //     isActive: false,
+//   //     sections: [
+//   //       {
+//   //         code: 'code',
+//   //         attributes: [],
+//   //         isActive: true,
+//   //       },
+//   //     ],
+//   //   })
+
+//   //   expect(result).toEqual({
+//   //     code: {},
+//   //   })
+//   // })
+// })

@@ -116,9 +116,3 @@ export function reducePortal<TContent, TParams = Record<string, unknown>>(
     params: paramsReduced,
   }
 }
-
-// export function reducePortal<TReduce>(portal: PortalRule) {
-//   const { sections } = portal
-
-//   return reduceSections<TReduce>(sections)
-// }

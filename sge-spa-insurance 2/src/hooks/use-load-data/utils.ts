@@ -5,9 +5,17 @@ import { MergeOfferablePreviousType } from '@app/utils/enums'
 
 type ItemWIthType = { type: MergeOfferablePreviousType }
 
-export function isOffer<T extends ItemWIthType>(list: Array<T>) {
-  return list.some((item) => item.type === MergeOfferablePreviousType.OFFER)
+// todo ajustar prueba
+export function isOffer<T extends ItemWIthType>(item: T) {
+  return item.type === MergeOfferablePreviousType.OFFER
 }
+
+
+// todo validar si no requiro un arreglo para type y eliminar
+// export function isOffer<T extends ItemWIthType>(list: Array<T>) {
+//   return list.some((item) => item.type === MergeOfferablePreviousType.OFFER)
+// }
+
 
 export function getFavoriteAccountHash(accounts: Array<AccountInfo>): string {
   const favoriteAccountByFlag = accounts.find((account) => account.favorite)

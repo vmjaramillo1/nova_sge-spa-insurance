@@ -10,6 +10,20 @@ import {
 import { ReMapProperties } from './utility'
 
 /**
+ * ACCOUNT RULE
+ */
+export type AccountRule = {
+  hash: string
+  mask: string
+  type: string
+  balance: number
+  alias: string | null
+  favorite: boolean
+  value: string
+}
+
+
+/**
  * COVERAGE LIMITS RULE
  */
 type ReMapCoverageLimitRule = ReMapProperties<

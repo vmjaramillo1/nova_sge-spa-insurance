@@ -9,11 +9,12 @@ import {
 
 const useCurrentAccount = () => {
   const accounts = useAppSelector(selectorAccounts)
+  const hashAccountList = Object.keys(accounts)
   const accountHashSelected = useAppSelector(selectorAccountHashSelected)
 
-  if (accounts.length === 0) return null
+  if (hashAccountList.length === 0) return null
 
-  const value = accounts.find((account) => account.hash === accountHashSelected)
+  const value = accounts[accountHashSelected]
 
   if (!value) return null
 
