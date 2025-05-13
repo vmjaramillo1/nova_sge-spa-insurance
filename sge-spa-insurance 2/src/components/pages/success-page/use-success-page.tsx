@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import useDownloadFile from '@app/hooks/use-download-file'
 import useCurrentAccount from '@app/hooks/use-current-account'
 
-import smartFormats, { monthByNumber } from '@app/utils/format/smart-format'
+import smartFormats, { monthByNumber } from '@app/utils/format/formats/odd-formats'
 import { DefaultPortal } from '@app/utils/interfaces'
 import {
   DOCUMENT_DOWNLOAD_STATIC_CODES,

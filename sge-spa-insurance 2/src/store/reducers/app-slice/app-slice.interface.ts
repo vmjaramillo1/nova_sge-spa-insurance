@@ -26,8 +26,11 @@ export interface Products<TPortal> {
   hasOffer: boolean
 }
 
+export type AppProducts<TPortal> = Record<string, Products<TPortal>>
+export type AppAccounts = Record<string, AccountInfo>
+
 export interface AppState<TPortal> {
-  products: Record<string, Products<TPortal>>
-  accounts: Record<string, AccountInfo>
+  products: AppProducts<TPortal>
+  accounts: AppAccounts
   lopdp: LopdpResult
 }

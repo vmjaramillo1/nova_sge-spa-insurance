@@ -14,7 +14,7 @@ import InsuranceService, { PortalHubOffer } from '@app/services/insurance'
 import { InvalidBodyError, ResponseError } from '@app/utils/classes'
 import { AppError } from '@app/context/global-context'
 import useIdentity from '../use-identity'
-import { getFavoriteAccountHash, isOffer, mergeOfferAndPrevious } from './utils'
+import { getFavoriteAccountHash, mergeOfferAndPrevious } from './utils'
 import { sortByOrder } from '@app/utils'
 import useAppDispatch from '@app/hooks/use-app-dispatch'
 import { setError } from '@app/store/reducers/global-slice'
@@ -26,6 +26,7 @@ import {
   setPeriodicitySelected,
   setPlanSelected,
 } from '@app/store/reducers/flow-slice'
+import { hasOfferableProduct } from '@app/hooks/use-load-data/utils'
 
 import { setPortalHub } from '@app/store/reducers/global-slice'
 
@@ -38,27 +39,15 @@ const useLoadData = () => {
   const handleSuccess = ({ odds, accounts, lopdp, portalHub }: PortalHubOffer) => {
     const offers = mergeOfferAndPrevious(odds)
 
-    debugger
-    // todo quitar luego en multioferta
-    // const [firstOffer] = offers.filter((offer) => offer.productCode === 'TU_BAN_PRO')
-
-    // const hasOffer = isOffer(offers)
-    // const accountInfo = reduceAccounts(accounts)
+    // debugger
 
     const portalHubInfo = reducePortal(portalHub)
-
     const appInfo = getAppInfo({ offers, accounts })
-    
     const favoriteAccountHash = getFavoriteAccountHash(accounts)
 
     dispatch(setPortalHub(portalHubInfo))
-
-    dispatch(loadValues({ ...appInfo, lopdp
-    //   accounts: accountInfo,  hasOffer 
-    }))
-
+    dispatch(loadValues({ ...appInfo, lopdp }))
     dispatch(setSelectedAccount(favoriteAccountHash))
-
     dispatch(setContentLoaded(true))
 
     // todo esto es flow
@@ -82,7 +71,13 @@ const useLoadData = () => {
     //   dispatch(setPeriodicitySelected(firstPeriodicity.code))
     // }
 
-    const targetRoute = APP_ROUTES.INSURANCE_PORTAL
+    // todo control pagna de aceptacion
+    // todo control para venta o posventa
+    const targetRoute = hasOfferableProduct(appInfo.products)
+      ? APP_ROUTES.INSURANCE_PORTAL
+      : APP_ROUTES.PREVIOUS_PRODUCT
+
+    // const targetRoute = APP_ROUTES.INSURANCE_PORTAL
 
     navigate(targetRoute, {
       replace: true,

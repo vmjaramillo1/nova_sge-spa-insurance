@@ -3,6 +3,9 @@ import { OfferableProduct } from '@app/utils/interfaces'
 import { OfferableWithType } from '@app/utils'
 import { MergeOfferablePreviousType } from '@app/utils/enums'
 
+import { AppProducts } from '@app/store/reducers/app-slice/app-slice.interface'
+
+
 type ItemWIthType = { type: MergeOfferablePreviousType }
 
 // todo ajustar prueba
@@ -15,6 +18,11 @@ export function isOffer<T extends ItemWIthType>(item: T) {
 // export function isOffer<T extends ItemWIthType>(list: Array<T>) {
 //   return list.some((item) => item.type === MergeOfferablePreviousType.OFFER)
 // }
+
+// todo ajustar prueba
+export function hasOfferableProduct<TPortal>(products: AppProducts<TPortal>): boolean {
+  return Object.values(products).some((product) => product.hasOffer)
+}
 
 
 export function getFavoriteAccountHash(accounts: Array<AccountInfo>): string {

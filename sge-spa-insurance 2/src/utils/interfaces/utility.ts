@@ -1,3 +1,16 @@
+import type { NodeWithChildren, ChildNode } from 'domhandler'
+type ReplaceAttributes<T extends string> = Partial<Record<T, string>>
+export type ElementWithAttributes<T extends string> = Element &
+  NodeWithChildren & {
+    attribs: ReplaceAttributes<T>
+    children: ChildNode[]
+  }
+
+export type ReplaceCallback<TKeys extends string = string> = (
+  node: ElementWithAttributes<TKeys>
+) => React.JSX.Element
+
+export type UnknownRecord = Record<string, unknown>
 export type ReMapProperties<
   TSource,
   TProperties extends { [K in keyof TSource]?: TProperties[K] }

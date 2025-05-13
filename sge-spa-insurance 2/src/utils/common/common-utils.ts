@@ -1,6 +1,11 @@
 import { WithIsActive, WithOrder } from '@app/utils/interfaces'
 import { FlowStatus } from '@app/utils/enums'
 import { ZERO } from '../constants'
+import { smartFormat } from '@app/utils/format'
+import { parseHtmlToJsx, smartFormatParseOptions } from '@app/utils/converter'
+import { type UnknownRecord } from '@app/utils/interfaces'
+
+import { formats } from '@app/utils/format'
 
 export function sortArrayBy<T>(array: Array<T>, filter: keyof T): Array<T> {
   if (!array || array.length <= 0) return array
@@ -71,4 +76,14 @@ export const calculateAcceptanceNextStatus = (status: FlowStatus) => {
 
 export function arrayIsEmpty<T>(array?: Array<T> | null) {
   return !array || !Array.isArray(array) || array.length <= ZERO
+}
+
+export function capitalize(value: string) {
+  const [char, ...restWord] = value.split('')
+  return `${char.toUpperCase()}${restWord.join('').toLowerCase()}`
+}
+
+export function smartParse(value: string, context: UnknownRecord = {}) {
+  const valueFormatted = smartFormat(value, context, formats)
+  return parseHtmlToJsx(valueFormatted, smartFormatParseOptions)
 }

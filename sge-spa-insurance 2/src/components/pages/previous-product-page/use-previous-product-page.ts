@@ -4,7 +4,7 @@ import useIdentity from '@app/hooks/use-identity'
 
 import { isSuccessResponse } from '@app/utils/guards'
 import { filterAndSort, stringFormat } from '@app/utils/common'
-import { monthByNumber, smartFormats } from '@app/utils/format/smart-format'
+import smartFormats, { monthByNumber } from '@app/utils/format/formats/odd-formats'
 import InsuranceService from '@app/services/insurance'
 import {
   TrackingEvents,
@@ -119,8 +119,8 @@ function usePreviousProductPage() {
   const saleFormatted = useMemo<typeof sale>(() => {
     const isAnnual = currentPeriodicity === PeriodicityCode.ANNUAL
 
-    const startDate = smartFormats.toDate(saleDetail?.startVigency, 'full')
-    const dateAria = smartFormats.toDate(saleDetail?.startVigency, 'aria')
+    const startDate = smartFormats.toDate(saleDetail?.startVigency || '', 'full')
+    const dateAria = smartFormats.toDate(saleDetail?.startVigency || '', 'aria')
     const currentSaleId = saleDetail?.idGpsSale ?? ''
     const ariaSaleId = getAriaNumber(currentSaleId)
 

@@ -20,6 +20,11 @@ export const selectorPortalHub = createSelector(
 //#endregion
 
 //#region App
+export const selectorProducts = createSelector(
+  (store: RootState) => store.app.products,
+  (products) => products
+)
+
 export const selectorAccounts = createSelector(
   (store: RootState) => store.app.accounts,
   (accounts) => accounts

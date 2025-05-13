@@ -28,6 +28,7 @@ import {
   AccountRule,
 } from '../interfaces/rule.interface'
 
+import { type WithCode } from '../interfaces'
 import { type OfferableWithType } from './get-app-info'
 import { reducePortal } from './portal-reduce-utils'
 import { isOffer } from '@app/hooks/use-load-data/utils'
@@ -245,4 +246,35 @@ export function reduceOffer<TContent = unknown, TParams = Record<string, unknown
     portal: portalResult,
     hasOffer: hasOffer,
   }
+}
+
+// todo poner prueba
+export function reduceToRecord<
+  Input extends object,
+  Key extends keyof Input,
+  OmitKeys extends keyof Input = never
+>(values: Array<Input>, key: Key, omit: Array<OmitKeys> = []) {
+  const result = values.reduce((acc, properties) => {
+    const { [key]: keyProperty } = properties
+
+    omit.forEach((property) => {
+      delete properties[property as unknown as keyof typeof properties]
+    })
+
+    return {
+      ...acc,
+      [keyProperty as unknown as string]: properties
+    }
+  }, {})
+
+  return result as Record<string, Omit<Input, OmitKeys>>
+}
+
+// todo poner prueba
+
+export function reduceToRecordByCode<
+  TInput extends WithCode,
+  TOmit extends keyof TInput = never
+>(values: Array<TInput>, omit: Array<TOmit> = []) {
+  return reduceToRecord(values, 'code', omit)
 }

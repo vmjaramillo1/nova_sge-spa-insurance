@@ -4,16 +4,19 @@ import './insurance-page.scss'
 import content from './insrance-page-data.json'
 import Banner from '@app/components/atoms/banner'
 import ProductCard from '@app/components/atoms/product-card'
-import useAppSelector from '@app/hooks/use-app-selector'
-import { selectorHasOffer } from '@app/store/selectors/selectors'
+import usePortalHubSelector from '@app/store/hooks/use-portal-hub-selector'
+import useInsurancePage from './use-insurance-page'
+
 import { APP_ROUTES } from '@app/routes/config'
 
 const FamilyIcon = lazy(() => import('@app/components/icons/FamilyUnitIcon'))
 
 const InsurancePage = () => {
+  // const hasOffer = useAppSelector(selectorHasOffer)
+  const { heroContent, productCards } = useInsurancePage()
 
-  const hasOffer = useAppSelector(selectorHasOffer)
 
+  
   const descriptionValue = (
     <>
       Suma una <span className="font-semibold">capa extra</span> de protección para
@@ -21,7 +24,7 @@ const InsurancePage = () => {
     </>
   )
   const coverageValue = <strong>Este seguro cubre:</strong>
-  const urlTarget = hasOffer
+  const urlTarget = true // hasOffer
     ? APP_ROUTES.PRODUCT_DETAIL
     : APP_ROUTES.PREVIOUS_PRODUCT
 
@@ -102,9 +105,9 @@ const InsurancePage = () => {
           <Typography
             variant="headline3"
             className="insurance-page__title mr-4"
-            aria-label={content.title.aria}
+            aria-label={heroContent.title.aria}
           >
-            {content.title.value}
+            {heroContent.title.value}
           </Typography>
 
           <FamilyIcon />
@@ -112,7 +115,9 @@ const InsurancePage = () => {
       </Banner>
 
       <div className="insurance-page__product-list">
-        <ProductCard {...contentProduct} />
+        {productCards.map((card) => (
+          <ProductCard key={card.code} {...card} />
+        ))}
       </div>
     </div>
   )

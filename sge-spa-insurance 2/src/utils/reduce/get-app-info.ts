@@ -40,40 +40,4 @@ export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>
     products,
     accounts: accountInfo,
   }
-
-  // const { offerablePrevious } = params
-
-  // const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
-  //   offerablePrevious
-
-  // const { code, name, coverages, benefits, assistances, exclusions } =
-  //   mapperProduct(product)
-
-  // const coveragesById = reduceGeneric(product.coverages, 'id')
-
-  // const paymentMethodOptions = reducePaymentMethodsOptions(
-  //   offerablePrevious.paymentMethodOptions
-  // )
-
-  // const plansResult = reducePlans(
-  //   plans,
-  //   coveragesById,
-  //   paymentMethodOptions,
-  //   paymentPeriodicityOptions
-  // )
-
-  // const portalResult = reducePortal<TContent, TParams>(portal)
-
-  // return {
-  //   code,
-  //   name,
-  //   sale,
-  //   coverages,
-  //   benefits,
-  //   assistances,
-  //   exclusions,
-  //   insuranceName,
-  //   plans: plansResult,
-  //   portal: portalResult,
-  // }
 }

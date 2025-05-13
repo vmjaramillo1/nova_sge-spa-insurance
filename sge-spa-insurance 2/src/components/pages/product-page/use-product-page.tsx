@@ -59,7 +59,7 @@ const useProductPage = () => {
   const planSelected = useAppSelector(selectorPlanSelected)
   const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
 
-  debugger
+  // debugger
 
   const periodicityOptions = plans[planSelected].periodicityOptions
 
