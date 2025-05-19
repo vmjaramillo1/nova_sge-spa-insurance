@@ -62,43 +62,47 @@ export const selectorCode = createSelector(
 //#endregion
 
 //#region Flow
+export const selectorProductCode = createSelector(
+  (store: RootState) => store.flow.shared.productCode,
+  (productCode) => productCode
+)
 export const selectorKey = createSelector(
-  (store: RootState) => store.flow.key,
+  (store: RootState) => store.flow.shared.key,
   (key) => key
 )
 
 export const selectorTransactionReference = createSelector(
-  (store: RootState) => store.flow.transactionReference,
+  (store: RootState) => store.flow.shared.transactionReference,
   (transactionReference) => transactionReference
 )
 
 export const selectorAccountHashSelected = createSelector(
-  (store: RootState) => store.flow.accountHashSelected,
+  (store: RootState) => store.flow.shared.accountHashSelected,
   (accountHashSelected) => accountHashSelected
 )
 
 export const selectorPlanSelected = createSelector(
-  (store: RootState) => store.flow.planSelected,
+  (store: RootState) => store.flow.shared.planSelected,
   (planSelected) => planSelected
 )
 
 export const selectorPeriodicitySelected = createSelector(
-  (store: RootState) => store.flow.periodicitySelected,
+  (store: RootState) => store.flow.shared.periodicitySelected,
   (periodicitySelected) => periodicitySelected
 )
 
 export const selectorStatus = createSelector(
-  (store: RootState) => store.flow.status,
+  (store: RootState) => store.flow.shared.status,
   (status) => status
 )
 
 export const selectorStep = createSelector(
-  (store: RootState) => store.flow.step,
+  (store: RootState) => store.flow.shared.step,
   (step) => step
 )
 
 export const selectorContentLoaded = createSelector(
-  (store: RootState) => store.flow.contentLoaded,
+  (store: RootState) => store.flow.shared.contentLoaded,
   (contentLoaded) => contentLoaded
 )
 //#endregion

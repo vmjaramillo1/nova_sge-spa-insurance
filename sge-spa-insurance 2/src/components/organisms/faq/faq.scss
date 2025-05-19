@@ -2,4 +2,9 @@
   &__list {
     list-style: none;
   }
+
+  &__question-title-image {
+    display: flex;
+    align-items: center;
+  }
 }

@@ -1,4 +1,7 @@
-import { INSURANCE_PORTAL_NAME } from '@app/utils/constants'
+import {
+  INSURANCE_PORTAL_NAME,
+  TERMS_AND_CONDITIONS_NAME,
+} from '@app/utils/constants'
 import { RoutesHubAlias } from '@app/utils/enums'
 import { RouteConfig, formatPath } from '@app/routes/config'
 
@@ -8,6 +11,13 @@ export const APP_ROUTES_CONFIG = Object.freeze<Record<RoutesHubAlias, RouteConfi
     path: formatPath('home'),
     title: INSURANCE_PORTAL_NAME,
   },
+
+  TERMS_AND_CONDITIONS: {
+    key: RoutesHubAlias.TERMS_AND_CONDITIONS,
+    path: formatPath('terminos'), // todo validar
+    title: TERMS_AND_CONDITIONS_NAME,
+  },
+
   // Errors
   GENERAL_ERROR: {
     key: RoutesHubAlias.GENERAL_ERROR,

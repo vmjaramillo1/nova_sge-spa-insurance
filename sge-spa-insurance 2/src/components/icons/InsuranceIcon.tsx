@@ -2,8 +2,7 @@ import { FC, memo } from 'react'
 
 import { IconProps } from './Icon.interface'
 
-const InsuranceIcon: FC<IconProps> = (props) => {
-  const { width, height } = props
+const InsuranceIcon: FC<IconProps> = ({ width = 56, height = 56 }) => {
   return (
     <svg
       width={width}
@@ -43,11 +42,6 @@ const InsuranceIcon: FC<IconProps> = (props) => {
       </defs>
     </svg>
   )
-}
-
-InsuranceIcon.defaultProps = {
-  width: 56,
-  height: 56,
 }
 
 export default memo(InsuranceIcon)

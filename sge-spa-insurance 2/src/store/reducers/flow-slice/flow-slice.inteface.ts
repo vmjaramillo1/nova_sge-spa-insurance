@@ -1,16 +1,18 @@
 import { FlowStatus } from '@app/utils/enums'
-import { AllRouteAliases } from '@app/routes/config'
 
 export interface FlowState {
-  accountHashSelected: string
-  planSelected: string
-  periodicitySelected: string
-  transactionReference?: string
-  key?: string
-  step: AllRouteAliases
-  contentLoaded: boolean
-  status: FlowStatus
+  shared: {
+    step: string
+    key?: string
+    status: FlowStatus
+    productCode: string
+    contentLoaded: boolean
+    planSelected: string
+    accountHashSelected: string
+    periodicitySelected: string
+    transactionReference?: string
+  }
+
+  // payment: PaymentStep;
+  //   acceptance: AcceptanceStep;
 }
-
-
-

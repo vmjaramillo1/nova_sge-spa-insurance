@@ -2,11 +2,14 @@ import useAppSelector from '@app/hooks/use-app-selector'
 
 import { selectorPortalHub } from '@app/store/selectors/selectors'
 import {
-  type UsePortalSelectorResult,
-  type TypedUsePortalSelectorHook,
   type PortalHubReducedDefault,
   type PortalHubParamsKeys,
 } from './use-portal-hub-selector.interface'
+
+import {
+  type UsePortalSelectorResult,
+  type TypedUsePortalSelectorHook,
+} from '@app/store/hooks/use-generic-portal-selector'
 
 function usePortalHubSelectorDefault<TPortal, TResult>(
   selector?: (portal: TPortal) => TResult

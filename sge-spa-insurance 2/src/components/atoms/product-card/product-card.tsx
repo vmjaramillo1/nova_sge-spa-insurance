@@ -3,19 +3,16 @@ import SmartContent from '@app/components/atoms/smart-text'
 import Typography from '@app/components/atoms/typography'
 import clsx from 'clsx'
 import './product-card.scss'
-import { useNavigate } from 'react-router-dom'
 import ArrowIcon from '@app/components/icons/ArrowIcon'
 import InsuranceIcon from '@app/components/icons/InsuranceIcon'
 import CheckIcon from '@app/components/icons/CheckIcon'
 import { ProductCardProps } from './product-card.interface'
+import useProductCard from './use-product-card'
 
 const ProductCard = (props: ProductCardProps) => {
-  const { title, description, paymentType, price, coverages, action } = props
-  const navigate = useNavigate()
+  const { title, description, paymentType, price, coverages, action, code } = props
 
-  const handleClick = () => {
-    navigate(action.urlTarget)
-  }
+  const { handleClick } = useProductCard(action.urlTarget, code)
 
   return (
     <div className="product-card">
@@ -87,7 +84,6 @@ const ProductCard = (props: ProductCardProps) => {
           aria-label={action.aria}
         >
           {action.value}
-          {/* {Descubre qué incluye tu seguro} */}
           <ArrowIcon fill="#2F7ABF" />
         </button>
       </div>

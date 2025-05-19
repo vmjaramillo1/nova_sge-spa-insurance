@@ -18,7 +18,7 @@ interface Classes {
 type AriaHiddenValue = React.AriaAttributes['aria-hidden']
 
 const Alert: FC<PropsWithChildren<AlertProps>> = (props) => {
-  const { children, type, classes, icon, ariaLabel } = props
+  const { children, type = 'info', classes, icon, ariaLabel } = props
 
   const ariaHiddenChild: AriaHiddenValue = ariaLabel ? 'true' : 'false'
 
@@ -46,10 +46,6 @@ const Alert: FC<PropsWithChildren<AlertProps>> = (props) => {
       </div>
     </div>
   )
-}
-
-Alert.defaultProps = {
-  type: 'info',
 }
 
 export default memo(Alert)

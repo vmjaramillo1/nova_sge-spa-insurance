@@ -8,6 +8,7 @@ import {
   WithValue,
 } from '../utility'
 
+// todo eliminar luego
 export interface DefaultPortal {
   productDetail: PartialSection<ProductDetail>
   productInfo: PartialSection<Product>
@@ -18,7 +19,6 @@ export interface DefaultPortal {
 }
 
 // ProductDetail Section
-
 interface ProductDetail {
   title: DefaultAttribute & WithAria
   description: DefaultAttribute & WithAria

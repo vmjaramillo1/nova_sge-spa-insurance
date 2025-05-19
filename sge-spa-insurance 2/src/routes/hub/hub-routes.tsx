@@ -2,7 +2,9 @@ import { type RouteObject } from 'react-router-dom'
 import { APP_ROUTES_CONFIG } from './config'
 import Page from '@app/components/molecules/page'
 
-import { ProductDetailPageFallback } from '@app/components/pages/product-detail-page'
+import { ProductDetailPageFallback } from '@app/components/pages/shared/product-detail-page'
+import TermsAndConditionPage from '@app/components/pages/terms-and-condition-page'
+import { TermsAndConditionPageFallback } from '@app/components/pages/terms-and-condition-page'
 import NotAccountPage from '@app/components/pages/not-account-page'
 import PreviousProduct from '@app/components/pages/previous-product-page'
 import ErrorPage from '@app/components/pages/error-page'
@@ -22,6 +24,18 @@ const HubRoutes: Array<RouteObject> = [
         fallback={<ProductDetailPageFallback />}
       >
         <InsurancePage />
+      </Page>
+    ),
+  },
+
+  {
+    path: APP_ROUTES_CONFIG.TERMS_AND_CONDITIONS.path,
+    element: (
+      <Page
+        title={APP_ROUTES_CONFIG.TERMS_AND_CONDITIONS.title}
+        fallback={<TermsAndConditionPageFallback />}
+      >
+        <TermsAndConditionPage />
       </Page>
     ),
   },

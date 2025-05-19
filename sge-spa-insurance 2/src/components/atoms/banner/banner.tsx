@@ -12,8 +12,11 @@ interface Classes {
   root: string
 }
 
-const Banner: FC<PropsWithChildren<BannerProps>> = (props) => {
-  const { children, classes, variant } = props
+const Banner: FC<PropsWithChildren<BannerProps>> = ({
+  children,
+  classes,
+  variant = 'primary',
+}) => {
   return (
     <div
       className={clsx('banner', variant && `banner--${variant}`, classes?.root)}
@@ -23,10 +26,6 @@ const Banner: FC<PropsWithChildren<BannerProps>> = (props) => {
       {children}
     </div>
   )
-}
-
-Banner.defaultProps = {
-  variant: 'primary',
 }
 
 export default memo(Banner)

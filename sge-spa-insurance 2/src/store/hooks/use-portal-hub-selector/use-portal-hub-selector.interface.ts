@@ -1,28 +1,5 @@
 import { AttributeFormat } from '@app/utils/reduce/portal-reduce-utils'
-import { title } from 'process'
-
-export type PortalDetails<TContent = unknown, TParams = unknown> = {
-  code: string
-  isActive: boolean
-  content: TContent
-  params: TParams
-}
-
-export type UsePortalSelectorResult<TResult> = [boolean, TResult]
-
-export interface TypedUsePortalSelectorHook<TContent, TParams> {
-  <TSelect>(
-    selector: (portal: PortalDetails<TContent, TParams>) => TSelect
-  ): UsePortalSelectorResult<TSelect>
-  (): UsePortalSelectorResult<PortalDetails<TContent, TParams>>
-}
-
-export type ListReducedAttribute<T> = Array<AttributeFormat<T>>
-
-interface TextWhitAria {
-  value: string
-  aria: string
-}
+import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
 
 interface SectionHero {
   title: TextWhitAria

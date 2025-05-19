@@ -4,7 +4,7 @@ import Page from '@app/components/molecules/page'
 
 import ProductDetail, {
   ProductDetailPageFallback,
-} from '@app/components/pages/product-detail-page'
+} from '@app/components/pages/shared/product-detail-page'
 import AcceptancePage from '@app/components/pages/acceptance-page'
 import ProductPage from '@app/components/pages/product-page'
 import SelectAccountPage from '@app/components/pages/select-account-page'

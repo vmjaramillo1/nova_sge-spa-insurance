@@ -1,4 +1,6 @@
-@use "../../../styles//utils/index.scss";
+@use "@app/styles/utils/index.scss";
+
+$product-detail-action-color: #2F7ABF;
 
 .product-detail {
   flex: 1;
@@ -8,10 +10,11 @@
   &__title {
     @extend .font-semibold;
     @extend .text-blue-500;
+    text-align: center;
   }
 
   &__description {
-    @extend .font-semibold;
+    text-align: center;
   }
 
   &__coverages {
@@ -19,6 +22,19 @@
     flex-direction: column;
     gap: 24px;
   }
+
+  &__banner {
+    border-radius: 12px;
+    border: 1px solid #D3D9E7;
+  }
+
+  &__action{
+		@extend .font-semibold;
+		color: $product-detail-action-color;
+		display: flex;
+		justify-content: space-between;
+	}
+
 }
 
 .product-detail-fallback {

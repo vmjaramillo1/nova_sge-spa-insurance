@@ -19,7 +19,13 @@ export const smartFormatParseOptions: HTMLReactParserOptions = {
 }
 
 export const parseHtmlToJsx = createParser({
-  allowedAttributeKeys: ['style', 'src', 'width', ...replacers.attributes],
+  allowedAttributeKeys: [
+    'style',
+    'className',
+    'src',
+    'width',
+    ...replacers.attributes,
+  ],
   allowedTags: [
     'br',
     'div',

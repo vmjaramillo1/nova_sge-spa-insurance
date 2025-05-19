@@ -1,0 +1,5 @@
+export { useGenericPortalByCodeSelector as default } from './use-generic-portal-selector'
+export * from './use-generic-portal-selector'
+export * from './use-generic-portal-selector.interface'
+export * from './use-portal-fraud-selector.interface'
+export * from './use-portal-life-selector.interface'

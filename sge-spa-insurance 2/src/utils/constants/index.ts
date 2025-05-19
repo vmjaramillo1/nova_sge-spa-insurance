@@ -1,4 +1,5 @@
 export const INSURANCE_PORTAL_NAME = 'Seguros'
+export const TERMS_AND_CONDITIONS_NAME = 'Autorización de uso de datos'
 export const PRODUCT_NAME = 'Seguro por robos y fraudes'
 
 export const ALLOW_DEVTOOLS = ['development', 'local'].includes(

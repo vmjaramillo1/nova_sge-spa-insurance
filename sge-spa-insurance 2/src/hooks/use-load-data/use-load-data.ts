@@ -71,13 +71,14 @@ const useLoadData = () => {
     //   dispatch(setPeriodicitySelected(firstPeriodicity.code))
     // }
 
-    // todo control pagna de aceptacion
-    // todo control para venta o posventa
-    const targetRoute = hasOfferableProduct(appInfo.products)
+    // todo control pagina de aceptacion
+    const targetProductRoute = hasOfferableProduct(appInfo.products)
       ? APP_ROUTES.INSURANCE_PORTAL
       : APP_ROUTES.PREVIOUS_PRODUCT
 
-    // const targetRoute = APP_ROUTES.INSURANCE_PORTAL
+    const targetRoute = lopdp.acceptedTermsConditions
+      ? targetProductRoute
+      : APP_ROUTES.TERMS_AND_CONDITIONS
 
     navigate(targetRoute, {
       replace: true,

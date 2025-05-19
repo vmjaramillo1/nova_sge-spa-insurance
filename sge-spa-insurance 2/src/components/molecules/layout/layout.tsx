@@ -8,7 +8,7 @@ import Header from '@app/components/molecules/header'
 import useLayout from './use-layout'
 import './layout.scss'
 import ModalLoading from '@app/components/atoms/modal-loading/modal-loading'
-import ProductDetailPageFallback from '@app/components/pages/product-detail-page/product-detail-page-fallback'
+import ProductDetailPageFallback from '@app/components/pages/shared/product-detail-page/product-detail-page-fallback'
 
 const Layout: FC = () => {
   const { contextValue, isFlowEndSuccess, title, showHeader, showModal, isLoading } =

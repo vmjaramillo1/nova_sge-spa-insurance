@@ -5,8 +5,8 @@ import Typography from '../typography'
 import clsx from 'clsx'
 
 export interface CoverageItemProps {
-  title: string
-  subTitle: string
+  title?: string
+  subTitle?: string
   icon: ReactNode
   aria?: string
   classes?: Partial<Classes>
@@ -30,14 +30,27 @@ const CoverageItem: FC<PropsWithChildren<CoverageItemProps>> = (props) => {
         className={clsx('coverage-item__content', classes?.content)}
         aria-hidden="true"
       >
-        <header className="coverage-item__header" aria-hidden="true">
-          <Typography variant="body" className="font-semibold" aria-hidden="true">
-            {title}
-          </Typography>
-          <Typography variant="body" className="mb-4" aria-hidden="true">
-            {subTitle}
-          </Typography>
-        </header>
+        {title ||
+          (subTitle && (
+            <header className="coverage-item__header" aria-hidden="true">
+              {title && (
+                <Typography
+                  variant="body"
+                  className="font-semibold"
+                  aria-hidden="true"
+                >
+                  {title}
+                </Typography>
+              )}
+
+              {subTitle && (
+                <Typography variant="body" className="mb-4" aria-hidden="true">
+                  {subTitle}
+                </Typography>
+              )}
+            </header>
+          ))}
+
         <div className="coverage-item__description" aria-hidden="true">
           {children}
         </div>

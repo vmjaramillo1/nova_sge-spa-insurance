@@ -22,7 +22,15 @@ interface Classes {
 }
 
 const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
-  const { title, children, active, onChange, value, classes, dataTestId } = props
+  const {
+    title,
+    children,
+    active = false,
+    onChange,
+    value,
+    classes,
+    dataTestId,
+  } = props
 
   const currentId = useId()
 
@@ -55,10 +63,6 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
       </MuiCollapse>
     </li>
   )
-}
-
-Accordion.defaultProps = {
-  active: false,
 }
 
 export default memo(Accordion)

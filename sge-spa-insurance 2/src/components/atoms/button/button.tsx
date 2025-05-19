@@ -20,23 +20,23 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: React.ReactNode
 }
 
-const Button: FC<ButtonProps> = (props: ButtonProps) => {
-  const {
-    onClick,
-    className,
-    color,
-    loading,
-    icon,
-    disabled,
-    children,
-    ...restProps
-  } = props
-
+const Button: FC<ButtonProps> = ({
+  onClick,
+  className,
+  color = 'primary',
+  loading,
+  icon,
+  disabled,
+  children,
+  type = 'button',
+  ...restProps
+}: ButtonProps) => {
   return (
     <button
       onClick={onClick}
       className={clsx('button', `button--${color}`, className)}
       disabled={Boolean(disabled) || loading}
+      type={type}
       {...restProps}
     >
       {loading ? (
@@ -49,11 +49,6 @@ const Button: FC<ButtonProps> = (props: ButtonProps) => {
       )}
     </button>
   )
-}
-
-Button.defaultProps = {
-  color: 'primary',
-  type: 'button',
 }
 
 export default memo(Button)

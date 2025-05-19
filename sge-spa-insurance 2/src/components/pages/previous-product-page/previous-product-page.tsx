@@ -146,11 +146,11 @@ const PreviousProductPage = () => {
       >
         Cómo usar tu seguro
       </Button>
-      <Faq
+      {/* <Faq
         title={content.faq.title.value}
         titleAria={content.faq.title.aria}
         items={content.faq.questions}
-      />
+      /> */}
     </div>
   )
 }

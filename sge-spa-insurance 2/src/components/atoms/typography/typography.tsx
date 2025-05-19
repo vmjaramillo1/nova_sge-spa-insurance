@@ -46,9 +46,14 @@ export interface TypographyProps extends HTMLAttributes<HTMLElement> {
   onClick?: () => void
 }
 
-const Typography: FC<PropsWithChildren<TypographyProps>> = (props) => {
-  const { children, className, onClick, variant = 'body', as, ...restProps } = props
-
+const Typography: FC<PropsWithChildren<TypographyProps>> = ({
+  children,
+  className,
+  onClick,
+  variant = 'body',
+  as,
+  ...restProps
+}) => {
   const Component = as ?? componentByVariant[variant]
 
   if (Component === 'a') {
@@ -64,10 +69,6 @@ const Typography: FC<PropsWithChildren<TypographyProps>> = (props) => {
       {children}
     </Component>
   )
-}
-
-Typography.defaultProps = {
-  variant: 'body',
 }
 
 export default memo(Typography)

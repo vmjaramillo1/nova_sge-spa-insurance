@@ -11,7 +11,10 @@ const replaceElement: ReplaceCallback = (node) => {
     )
   )
 
+  console.log(node)
+  console.log("attrs", attrs)
   delete attrs.class
+
 
   if (node.attribs.class) {
     attrs.className = node.attribs.class
