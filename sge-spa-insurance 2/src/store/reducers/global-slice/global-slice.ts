@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-import { GlobalState, FullIdentityEvent, AppError } from './global-slice.inteface'
+import { GlobalState, FullIdentityEvent, AppError } from './global-slice.interface'
 
 const initialState: GlobalState<unknown> = {
   security: {

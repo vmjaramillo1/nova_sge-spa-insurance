@@ -1,22 +1,78 @@
 import { render, screen } from '@testing-library/react'
-import ModalLoading from './modal-coverage'
+import ModalCoverage from './modal-coverage'
 
-describe('<ModalLoading />', () => {
-  // it('should render the component', () => {
-  //   const { container } = render(<ModalCoverage />)
+describe('<ModalCoverage />', () => {
+  it('should render the component', () => {
+    const propsModal = {
+      title: {
+        value: 'title test',
+        aria: 'title test',
+      },
+      description: {
+        value: 'title test',
+        aria: 'title test',
+      },
+      actionDownloadCertificate: {
+        value: 'title test',
+        aria: 'title test',
+      },
+      exclusions: {
+        title: {
+          value: 'title test',
+          aria: 'title test',
+        },
+        items: [
+          {
+            key: 'title test',
+            description: {
+              value: 'title test',
+              aria: 'title test',
+            },
+            icon: (
+              <pichincha-icon
+                size="24px"
+                type="--outlined"
+                color="blue"
+                weight_color="500"
+                aria-hidden="true"
+              >
+                close
+              </pichincha-icon>
+            ),
+          },
+        ],
+      },
+      coverages: {
+        title: {
+          value: 'title test',
+          aria: 'title test',
+        },
+        items: [
+          {
+            key: 'title test',
+            description: {
+              value: 'title test',
+              aria: 'title test',
+            },
+            icon: (
+              <pichincha-icon
+                size="24px"
+                type="--outlined"
+                color="blue"
+                weight_color="500"
+                aria-hidden="true"
+              >
+                close
+              </pichincha-icon>
+            ),
+          },
+        ],
+      },
+      handleClose: () => console.log('close'),
+    }
 
-  //   expect(container).toMatchSnapshot()
-  // })
+    const { container } = render(<ModalCoverage {...propsModal} />)
 
-  // it('should render the component with children', () => {
-  //   render(
-  //     <ModalCoverage>
-  //       <span>Test</span>
-  //     </ModalCoverage>
-  //   )
-
-  //   const child = screen.getByText('Test')
-
-  //   expect(child).toBeInTheDocument()
-  // })
+    expect(container).toMatchSnapshot()
+  })
 })

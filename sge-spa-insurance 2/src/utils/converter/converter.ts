@@ -4,9 +4,10 @@ import { type HTMLReactParserOptions } from 'html-react-parser'
 
 import replaceElement from './replace/element'
 import replaceFragment from './replace/sf-fragment'
+import replaceDownloadFile from './replace/sf-download-file'
 import { mergeReplacers } from './utils'
 
-const replacers = mergeReplacers([replaceFragment])
+const replacers = mergeReplacers([replaceFragment, replaceDownloadFile])
 
 export const smartFormatParseOptions: HTMLReactParserOptions = {
   replace: createReplacer({

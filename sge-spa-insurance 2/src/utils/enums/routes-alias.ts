@@ -16,7 +16,6 @@ export const enum RoutesHubAlias {
 export const enum RoutesFraudAlias {
   PRODUCT_DETAIL = 'PRODUCT_DETAIL',
   PRODUCT = 'PRODUCT',
-  SELECT_ACCOUNT = 'SELECT_ACCOUNT',
   ACCEPTANCE = 'ACCEPTANCE',
   SUCCESS = 'SUCCESS',
 }

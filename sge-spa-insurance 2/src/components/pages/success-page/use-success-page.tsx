@@ -25,16 +25,23 @@ import useAppSelector from '@app/hooks/use-app-selector'
 
 import {
   selectorPortal,
-  selectorPlans,
   selectorPlanSelected,
   selectorPeriodicitySelected,
 } from '@app/store/selectors/selectors'
-
+import { selectorProductCode } from '@app/store/selectors/selectors'
+import {
+  type PortalType,
+  useGenericProductByCodeSelector,
+} from '@app/store/hooks/use-generic-portal-selector'
 const useSuccessPage = () => {
   const { success } = useAppSelector(selectorPortal) as {
     success: DefaultPortal['success']
   }
-  const plans = useAppSelector(selectorPlans)
+
+  const productCode = useAppSelector(selectorProductCode)
+  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
+
+  const plans = productData?.plans
 
   const planSelected = useAppSelector(selectorPlanSelected)
   const periodicitySelected = useAppSelector(selectorPeriodicitySelected)

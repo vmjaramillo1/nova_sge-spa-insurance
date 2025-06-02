@@ -9,17 +9,23 @@ import { customMessage, trackingConversion } from '@app/utils/messages'
 import useAppSelector from '@app/hooks/use-app-selector'
 
 import {
-  selectorPlans,
-  selectorCode,
   selectorKey,
   selectorTransactionReference,
   selectorPlanSelected,
   selectorPeriodicitySelected,
 } from '@app/store/selectors/selectors'
+import {
+  type PortalType,
+  useGenericProductByCodeSelector,
+} from '@app/store/hooks/use-generic-portal-selector'
+
+import { selectorProductCode } from '@app/store/selectors/selectors'
 
 const useAcceptance = () => {
-  const productCode = useAppSelector(selectorCode)
-  const plans = useAppSelector(selectorPlans)
+  const productCode = useAppSelector(selectorProductCode)
+  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
+
+  const plans = productData?.plans
 
   const key = useAppSelector(selectorKey)
   const transactionReference = useAppSelector(selectorTransactionReference)

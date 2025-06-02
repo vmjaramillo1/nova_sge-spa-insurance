@@ -5,9 +5,8 @@ import Page from '@app/components/molecules/page'
 import ProductDetail, {
   ProductDetailPageFallback,
 } from '@app/components/pages/shared/product-detail-page'
-import AcceptancePage from '@app/components/pages/acceptance-page'
-import ProductPage from '@app/components/pages/product-page'
-import SelectAccountPage from '@app/components/pages/select-account-page'
+import AcceptancePage from '@app/components/pages/shared/acceptance-page'
+import ProductPage from '@app/components/pages/shared/product-page'
 import SuccessPage from '@app/components/pages/success-page'
 import { type RouteObject } from 'react-router-dom'
 
@@ -31,17 +30,6 @@ const FraudRoutes: Array<RouteObject> = [
         fallback={<ProductDetailPageFallback />}
       >
         <ProductPage />
-      </Page>
-    ),
-  },
-  {
-    path: APP_ROUTES_CONFIG.SELECT_ACCOUNT.path,
-    element: (
-      <Page
-        title={APP_ROUTES_CONFIG.SELECT_ACCOUNT.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <SelectAccountPage />
       </Page>
     ),
   },

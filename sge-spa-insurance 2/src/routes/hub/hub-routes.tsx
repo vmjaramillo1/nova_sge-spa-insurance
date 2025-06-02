@@ -3,8 +3,8 @@ import { APP_ROUTES_CONFIG } from './config'
 import Page from '@app/components/molecules/page'
 
 import { ProductDetailPageFallback } from '@app/components/pages/shared/product-detail-page'
-import TermsAndConditionPage from '@app/components/pages/terms-and-condition-page'
-import { TermsAndConditionPageFallback } from '@app/components/pages/terms-and-condition-page'
+import TermsAndConditionPage from '@app/components/pages/hub/terms-and-condition-page'
+import { TermsAndConditionPageFallback } from '@app/components/pages/hub/terms-and-condition-page'
 import NotAccountPage from '@app/components/pages/not-account-page'
 import PreviousProduct from '@app/components/pages/previous-product-page'
 import ErrorPage from '@app/components/pages/error-page'
@@ -13,7 +13,7 @@ import NotProductPage from '@app/components/pages/not-product-page'
 import RetryAcceptancePage from '@app/components/pages/retry-acceptance-page'
 import PreviousPage from '@app/components/pages/previous-page'
 import InProgressPage from '@app/components/pages/in-progress-page'
-import InsurancePage from '@app/components/pages/insurance-page'
+import InsurancePage from '@app/components/pages/hub/insurance-page'
 
 const HubRoutes: Array<RouteObject> = [
   {

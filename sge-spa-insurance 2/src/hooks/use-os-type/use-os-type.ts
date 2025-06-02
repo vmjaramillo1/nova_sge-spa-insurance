@@ -4,7 +4,7 @@ import useAppSelector from '@app/hooks/use-app-selector'
 import { selectorAuthEvent } from '@app/store/selectors/selectors'
 
 const useOsType = () => {
-  const authEvent = useAppSelector(selectorAuthEvent)
+  const authEvent: any = useAppSelector(selectorAuthEvent)
 
   const type = useMemo(() => {
     if (!authEvent?.os || typeof authEvent.os !== 'string') return 'unknown'

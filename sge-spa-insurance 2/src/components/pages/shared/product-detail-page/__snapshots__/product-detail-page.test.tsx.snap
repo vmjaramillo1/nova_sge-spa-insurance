@@ -7,180 +7,30 @@ exports[`<ProductDetailPage /> should render correctly 1`] = `
   >
     <div
       aria-hidden="true"
-      class="banner banner--secondary product-detail__banner -mt-24 -mx-24 mb-24"
+      class="banner banner--secondary product-detail__banner  mb-24"
       role="banner"
     />
-    <h2
-      aria-label="titleAria"
-      class="text-headline2 product-detail__title mb-16"
+    <h3
+      aria-label="Protección adicional desde el primer dia, por $4,09 al mes"
+      class="text-headline3 product-detail__title mb-16"
     >
-      title
-    </h2>
+      Protección adicional desde el primer dia, por $4,09 al mes
+    </h3>
     <p
-      aria-label="descriptionAria"
-      class="text-subtitle product-detail__description mb-24"
+      aria-label="Añade una capa extra de seguridad a tus cuentas y tarjetas de Banco Pichincha."
+      class="text-body product-detail__description mb-24"
     >
-      description
+      Añade una capa extra de seguridad a tus cuentas y tarjetas de Banco Pichincha.
     </p>
     <section
       class="mb-24"
     >
-      <ul
-        class="product-detail__coverages"
+      <p
+        aria-label="Esto es lo que cubre tu seguro:"
+        class="text-body mb-16"
       >
-        <li
-          aria-label="coverageAria1"
-          class="coverage-item py-8"
-        >
-          <div
-            aria-hidden="true"
-            class="coverage-item__icon min-w-48 text-center"
-          >
-            <pichincha-icon
-              color="blue"
-              size="32px"
-              type="--outlined"
-              weight-color="500"
-            >
-              coverage1
-            </pichincha-icon>
-          </div>
-          <div
-            aria-hidden="true"
-            class="coverage-item__content"
-          >
-            <header
-              aria-hidden="true"
-              class="coverage-item__header"
-            >
-              <p
-                aria-hidden="true"
-                class="text-body font-semibold"
-              >
-                coverageName1
-              </p>
-              <p
-                aria-hidden="true"
-                class="text-body mb-4"
-              >
-                coverageSubtitle1
-              </p>
-            </header>
-            <div
-              aria-hidden="true"
-              class="coverage-item__description"
-            >
-              <p
-                aria-hidden="true"
-                class="text-body"
-              >
-                coverageDescription1
-              </p>
-            </div>
-          </div>
-        </li>
-        <li
-          aria-label="coverageAria2"
-          class="coverage-item py-8"
-        >
-          <div
-            aria-hidden="true"
-            class="coverage-item__icon min-w-48 text-center"
-          >
-            <pichincha-icon
-              color="blue"
-              size="32px"
-              type="--outlined"
-              weight-color="500"
-            >
-              coverage2
-            </pichincha-icon>
-          </div>
-          <div
-            aria-hidden="true"
-            class="coverage-item__content"
-          >
-            <header
-              aria-hidden="true"
-              class="coverage-item__header"
-            >
-              <p
-                aria-hidden="true"
-                class="text-body font-semibold"
-              >
-                coverageName2
-              </p>
-              <p
-                aria-hidden="true"
-                class="text-body mb-4"
-              >
-                coverageSubtitle2
-              </p>
-            </header>
-            <div
-              aria-hidden="true"
-              class="coverage-item__description"
-            >
-              <p
-                aria-hidden="true"
-                class="text-body"
-              >
-                coverageDescription2
-              </p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
-    <div
-      class="alert alert--info alert--icon mb-24"
-      role="alert"
-    >
-      <div
-        aria-hidden="true"
-        class="alert__icon"
-      >
-        <pichincha-icon
-          aria-hidden="true"
-          color="info"
-          size="24px"
-          type="--round"
-          weight_color="400"
-        >
-          info
-        </pichincha-icon>
-      </div>
-      <div
-        aria-hidden="false"
-        class="alert__content"
-      >
-        <p
-          class="text-caption text-dark-gray-400"
-        >
-          alertDescription
-        </p>
-        <a
-          aria-label="alertActionAria"
-          class="text-caption underline text-information-500 font-semibold cursor-pointer"
-          href="#"
-        >
-          alertAction
-        </a>
-      </div>
-    </div>
-    <span
-      aria-hidden="true"
-      class="divider h-16 mb-24"
-    />
-    <section
-      class="mb-48"
-    >
-      <h2
-        aria-label="faqTitleAria"
-        class="text-subtitle font-semibold mb-16"
-      >
-        faqTitle
-      </h2>
+        Esto es lo que cubre tu seguro:
+      </p>
       <ul
         class="faq__list"
       >
@@ -194,9 +44,22 @@ exports[`<ProductDetailPage /> should render correctly 1`] = `
             type="button"
           >
             <p
-              class="text-body font-semibold"
+              aria-label="Hasta $10.000 al año, por cargos que no reconoces"
+              class="text-body font-semibold faq__question-title-image"
             >
-              faqTitle1
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                devices
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $10.000 al año, por cargos que no reconoces
+              </span>
             </p>
             <div
               aria-hidden="true"
@@ -228,9 +91,116 @@ exports[`<ProductDetailPage /> should render correctly 1`] = `
             type="button"
           >
             <p
-              class="text-body font-semibold"
+              aria-label="Hasta $1.400 al año, por robo después de retirar dinero"
+              class="text-body font-semibold faq__question-title-image"
             >
-              faqTitle2
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                local_atm
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $1.400 al año, por robo después de retirar dinero
+              </span>
+            </p>
+            <div
+              aria-hidden="true"
+              class="accordion__arrow"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 8.59009L12 13.1701L16.59 8.59009L18 10.0001L12 16.0001L6 10.0001L7.41 8.59009Z"
+                  fill="#0F265C"
+                />
+              </svg>
+            </div>
+          </button>
+        </li>
+        <li
+          class="accordion"
+        >
+          <button
+            aria-controls=":r2:"
+            aria-expanded="false"
+            class="accordion__title"
+            type="button"
+          >
+            <p
+              aria-label="Hasta $1.000 al año por daños o robo a productos"
+              class="text-body font-semibold faq__question-title-image"
+            >
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                shopping_bag
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $1.000 al año por daños o robo a productos
+              </span>
+            </p>
+            <div
+              aria-hidden="true"
+              class="accordion__arrow"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 8.59009L12 13.1701L16.59 8.59009L18 10.0001L12 16.0001L6 10.0001L7.41 8.59009Z"
+                  fill="#0F265C"
+                />
+              </svg>
+            </div>
+          </button>
+        </li>
+        <li
+          class="accordion"
+        >
+          <button
+            aria-controls=":r3:"
+            aria-expanded="false"
+            class="accordion__title"
+            type="button"
+          >
+            <p
+              aria-label="Hasta $600 al año por robo de tu billetera o bolso"
+              class="text-body font-semibold faq__question-title-image"
+            >
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                account_balance_wallet
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $600 al año por robo de tu billetera o bolso
+              </span>
             </p>
             <div
               aria-hidden="true"
@@ -255,46 +225,68 @@ exports[`<ProductDetailPage /> should render correctly 1`] = `
       </ul>
     </section>
     <div
-      class="check-legal product-detail__disclaimer mb-24"
+      class="alert alert--info alert--icon mb-24"
+      role="alert"
     >
       <div
-        class="check-legal__checkbox"
+        aria-hidden="true"
+        class="alert__icon"
       >
-        <span
-          class="inline-block"
-        >
-          <input
-            aria-labelledby=":r2:"
-            class="checkbox"
-            type="checkbox"
-            value="false"
-          />
-        </span>
-        <label
+        <pichincha-icon
           aria-hidden="true"
-          class="text-legal check-legal__content"
-          id=":r2:"
+          color="info"
+          size="24px"
+          type="--round"
+          weight_color="400"
         >
-          <span>
-            legalDescription
-          </span>
-          <a
-            class="text-legal underline font-semibold text-information-500 cursor-pointer"
-            href="#"
-            tabindex="0"
-          >
-            legalAction
-          </a>
-        </label>
+          info
+        </pichincha-icon>
+      </div>
+      <div
+        aria-hidden="false"
+        class="alert__content"
+      >
+        <p
+          class="text-caption text-dark-gray-400"
+        >
+          Puedes usar cada cobertura hasta 2 veces al año o hasta alcanzar el monto máximo, y también usarlas al mismo tiempo.
+        </p>
       </div>
     </div>
+    <div>
+      <button
+        aria-label="Saber más del seguro"
+        class="product-detail__action"
+        type="button"
+      >
+        Saber más del seguro
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+            fill="#2F7ABF"
+          />
+        </svg>
+      </button>
+    </div>
+    dsdsds
+    $ 0,00
+    <span
+      aria-hidden="true"
+      class="divider h-16 mb-16 mt-16 -mx-24"
+    />
     <button
-      aria-label="Continuar"
+      aria-label="Elige tu método de pago"
       class="button button--primary mt-auto floating-button"
-      disabled=""
       type="button"
     >
-      Continuar
+      Elige tu método de pago
     </button>
   </div>
 </div>

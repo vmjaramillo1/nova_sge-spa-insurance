@@ -73,8 +73,6 @@ export function mapperRouts(routeCode: string) {
       return APP_ROUTES.PRODUCT_DETAIL
     case 'PRODUCT':
       return APP_ROUTES.PRODUCT
-    case 'SELECT_ACCOUNT':
-      return APP_ROUTES.SELECT_ACCOUNT
     case 'ACCEPTANCE':
       return APP_ROUTES.ACCEPTANCE
     case 'SUCCESS':

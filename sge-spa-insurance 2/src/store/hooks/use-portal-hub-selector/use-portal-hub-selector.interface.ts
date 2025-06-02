@@ -35,9 +35,19 @@ export interface PageHome {
   sectionProducts: AttributeFormat<SectionProducts>
 }
 
+export interface TermsAndConditionPage {
+  title: TextWhitAria
+  description: TextWhitAria
+  checkbox: {
+    description: TextWhitAria
+  }
+  previewDocument: TextWhitAria
+  action: TextWhitAria
+}
+
 export interface PortalHubReducedDefault {
   home: PageHome
-  // termsConditions: PageTermsConditions;
+  // termsConditions: TermsAndConditionPage
 
   // CONFIG FLOW
   // flow: PageFlow;

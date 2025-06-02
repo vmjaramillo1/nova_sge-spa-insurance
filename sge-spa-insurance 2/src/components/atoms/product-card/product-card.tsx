@@ -58,7 +58,7 @@ const ProductCard = (props: ProductCardProps) => {
         <ul className="product-card__coverage-list">
           {coverages.items.map((item) => (
             <li
-              data-testid={item.coverageCode}
+              data-testid={`${code}-${item.coverageCode}`}
               key={item.coverageCode}
               className={clsx('product-card__header my-16')}
             >

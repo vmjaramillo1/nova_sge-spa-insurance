@@ -21,6 +21,8 @@ const ProductDetailPage = () => {
     useProductDetailPage()
 
   const { content, questions, coverages } = useContentProductDetailPage()
+  const test =
+    '{{app.products.TU_BAN_PRO.plans.TU_BAN_PRO_2.periodicityOptions.MONTHLY.totalPrice::money(2,false,true)}}'
 
   return (
     <>
@@ -86,6 +88,8 @@ const ProductDetailPage = () => {
             <ArrowIcon fill="#2F7ABF" />
           </button>
         </div>
+        dsdsds
+        <SmartContent>{test}</SmartContent>
         <Divider className="h-16 mb-16 mt-16 -mx-24" />
         <Button
           className="mt-auto floating-button"
@@ -94,6 +98,10 @@ const ProductDetailPage = () => {
         >
           {content.sectionCoverages.actionNext.value}
         </Button>
+
+
+
+
       </div>
       {showModalCoverage && (
         <ModalCoverage handleClose={handleModalCoverage} {...coverages} />

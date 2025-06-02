@@ -12,12 +12,12 @@ import { reducePortal } from '@app/utils/reduce/portal-reduce-utils'
 
 import InsuranceService, { PortalHubOffer } from '@app/services/insurance'
 import { InvalidBodyError, ResponseError } from '@app/utils/classes'
-import { AppError } from '@app/context/global-context'
+
 import useIdentity from '../use-identity'
 import { getFavoriteAccountHash, mergeOfferAndPrevious } from './utils'
 import { sortByOrder } from '@app/utils'
 import useAppDispatch from '@app/hooks/use-app-dispatch'
-import { setError } from '@app/store/reducers/global-slice'
+import { setError, AppError } from '@app/store/reducers/global-slice'
 import { loadValues } from '@app/store/reducers/app-slice'
 import {
   setSelectedAccount,

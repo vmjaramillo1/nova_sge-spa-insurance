@@ -43,15 +43,68 @@ interface SectionCoverages {
   coverages: itemsList
 }
 
-
 export interface PageHomeLife {
   sectionHero: AttributeFormat<SectionHero>
   sectionFaq: AttributeFormat<SectionFaq>
   sectionCoverages: AttributeFormat<SectionCoverages>
 }
 
+export interface PagePaymentLife {
+  title: TextWhitAria
+  description: TextWhitAria
+  alert: TextWhitAria
+  paymentMethod: {
+    input: TextWhitAria
+  }
+  disclaimer: TextWhitAria & {
+    action: string
+  }
+  selectAccount: {
+    multipleAccount: string
+    singleAccount: string
+  }
+  actionNext: {
+    cta: {
+      value: string
+      aria: {
+        enabled: string
+        disabled: string
+      }
+    }
+  }
+}
+
+interface StepItem extends WithKey, WithOrder, WithIsActive {
+  route: string
+}
+
+interface ConfigurationFlow {
+  steps: Array<StepItem>
+}
+
+interface PageAcceptance {
+  title: string
+  descriptions: {
+    aria: string
+    toPay: string
+    from: string
+    toCompany: string
+    companyName: string
+    forProduct: string
+    productName: string
+    policy: string
+  }
+  actions: {
+    btnCancel: TextWhitAria
+    cta: TextWhitAria
+  }
+}
+
 export interface PortalLifeReducedDefault {
   home: PageHomeLife
+  payment: PagePaymentLife
+  acceptance: PageAcceptance
+  flow: ConfigurationFlow
 }
 
 export type PortalLifeParamsKeys = 'ChannelCode'

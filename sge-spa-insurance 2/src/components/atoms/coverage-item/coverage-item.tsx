@@ -23,33 +23,34 @@ const CoverageItem: FC<PropsWithChildren<CoverageItemProps>> = (props) => {
 
   return (
     <li className={clsx('coverage-item py-8', classes?.root)} aria-label={aria}>
+      {/* icon */}
       <div className={clsx('coverage-item__icon', classes?.icon)} aria-hidden="true">
         {icon}
       </div>
+      {/* content */}
       <div
         className={clsx('coverage-item__content', classes?.content)}
         aria-hidden="true"
       >
-        {title ||
-          (subTitle && (
-            <header className="coverage-item__header" aria-hidden="true">
-              {title && (
-                <Typography
-                  variant="body"
-                  className="font-semibold"
-                  aria-hidden="true"
-                >
-                  {title}
-                </Typography>
-              )}
+        {(title || subTitle) && (
+          <header className="coverage-item__header" aria-hidden="true">
+            {title && (
+              <Typography
+                variant="body"
+                className="font-semibold"
+                aria-hidden="true"
+              >
+                {title}
+              </Typography>
+            )}
 
-              {subTitle && (
-                <Typography variant="body" className="mb-4" aria-hidden="true">
-                  {subTitle}
-                </Typography>
-              )}
-            </header>
-          ))}
+            {subTitle && (
+              <Typography variant="body" className="mb-4" aria-hidden="true">
+                {subTitle}
+              </Typography>
+            )}
+          </header>
+        )}
 
         <div className="coverage-item__description" aria-hidden="true">
           {children}

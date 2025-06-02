@@ -12,7 +12,7 @@ import {
   TrackingEvents,
 } from '@app/utils/messages'
 
-import { APP_ROUTES } from '@app/routes/config'
+import { APP_ROUTES, AllRouteAliases } from '@app/routes/config'
 
 import useAppSelector from '@app/hooks/use-app-selector'
 import useModal from '@app/hooks/use-modal/use-modal'
@@ -21,6 +21,7 @@ import { selectorProductCode } from '@app/store/selectors/selectors'
 import useGenericPortalByCodeSelector, {
   type PortalType,
 } from '@app/store/hooks/use-generic-portal-selector'
+import useNextStep from '@app/hooks/use-next-step'
 
 export function useContentProductDetailPage() {
   const productCode = useAppSelector(selectorProductCode)
@@ -94,6 +95,7 @@ export function useContentProductDetailPage() {
 
 const useProductDetailPage = () => {
   const navigate = useNavigate()
+  const nextStep = useNextStep() as AllRouteAliases
   const identity = useIdentity()
   const { isOpen: showModalCoverage, toggle: handleModalCoverage } = useModal()
 
@@ -106,7 +108,7 @@ const useProductDetailPage = () => {
 
     if (!identity) return
 
-    navigate(APP_ROUTES.PRODUCT)
+    navigate(APP_ROUTES[nextStep])
   }
 
   return {

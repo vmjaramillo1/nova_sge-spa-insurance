@@ -19,7 +19,7 @@ interface Classes {
 }
 
 const CoverageRow: FC<CoverageRowProps> = (props) => {
-  const { label, value, bolder, classes, aria } = props
+  const { label, value, bolder = false, classes, aria } = props
 
   return (
     <div
@@ -51,10 +51,6 @@ const CoverageRow: FC<CoverageRowProps> = (props) => {
       </div>
     </div>
   )
-}
-
-CoverageRow.defaultProps = {
-  bolder: false,
 }
 
 export default memo(CoverageRow)

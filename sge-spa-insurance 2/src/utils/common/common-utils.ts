@@ -53,7 +53,6 @@ export const filterAndSort = <T extends WithOrder & WithIsActive>(
 
 export function formatPemKeys(key: string, type: 'public' | 'private') {
   if (key.startsWith('-----BEGIN') && key.endsWith('KEY-----')) return key
-
   const typeValue = type.toUpperCase()
   return `-----BEGIN ${typeValue} KEY-----\n${key}\n-----END ${typeValue} KEY-----`
 }

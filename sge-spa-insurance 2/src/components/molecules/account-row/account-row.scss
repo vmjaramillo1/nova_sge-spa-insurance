@@ -1,0 +1,84 @@
+@use "../../../styles/utils/index.scss";
+
+$account-row-select-color: #EAF1F8;
+$account-row-disabled-color: #F6F6F6;
+
+
+.account-row {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  @extend .text-dark-gray-500;
+
+  transition: background-color .1s, box-shadow .1s;
+
+  &:not(&--disabled):hover {
+    background-color: $account-row-select-color;
+  }
+
+  &--selected {
+    background-color: $account-row-select-color;
+  }
+
+  &--disabled {
+    background-color: $account-row-disabled-color;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--selected {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__header, &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    min-width: 24px;
+    align-self: center;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-left: -10px;
+  }
+
+  &__actionable {
+    min-width: 24px;
+    align-self: center;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-left: 8px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+
+
+    &--left {
+      * {
+        text-align: left;
+      }
+    }
+
+    &--right {
+      * {
+        text-align: right;
+      }
+    }
+  }
+}

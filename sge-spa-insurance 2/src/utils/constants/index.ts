@@ -6,6 +6,17 @@ export const ALLOW_DEVTOOLS = ['development', 'local'].includes(
   process.env.REACT_APP_ENVIRONMENT ?? ''
 )
 
+export const CARD_BRANDS = {
+  VISA: 'VISA',
+  MASTERCARD: 'MASTERCARD',
+  UNKNOWN: 'UNKNOWN',
+}
+
+export const PAYMENT_METHODS = {
+  ACCOUNT: 'ACCOUNT',
+  CREDIT_CARD: 'CREDIT_CARD',
+}
+
 export const BASE_PATH = process.env.PUBLIC_URL ?? '/'
 
 export const OPEN_ACCOUNTS_FLOW_URL =
