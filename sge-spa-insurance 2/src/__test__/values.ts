@@ -52,7 +52,7 @@ export const globalValues = Object.freeze({
             key: 'title',
             order: 0,
             value: 'Pablo, vive tranquilo, nosotros cuidamos de ti.',
-            aria: 'Pablo, vive tranquilo, nosotros cuidamos de ti.',
+            aria: '2025-06-03',
           },
         },
         sectionProducts: {

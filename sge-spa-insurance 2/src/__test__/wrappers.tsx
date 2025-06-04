@@ -81,3 +81,17 @@ export const createWrapperStore = (
     </Provider>
   )
 }
+
+export const createWrapperMemoryStore = (
+  store: ReturnType<typeof makeStore>,
+  routing?: WrapperRoutesProps
+): FC<PropsWithChildren> => {
+  return ({ children }) => (
+    <Provider store={store}>
+      <QueryClientProvider client={new QueryClient()}>
+          <WrapperRoutes {...routing}>{children}</WrapperRoutes>
+          {children}
+      </QueryClientProvider>
+    </Provider>
+  )
+}

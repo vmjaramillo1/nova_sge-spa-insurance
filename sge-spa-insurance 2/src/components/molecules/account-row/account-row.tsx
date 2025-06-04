@@ -99,7 +99,11 @@ const AccountRow: FC<AccountRowProps> = (props) => {
         </div>
       </div>
       {groupSelected && (
-        <div className="account-row__actionable" aria-hidden="true">
+        <div
+          className="account-row__actionable"
+          data-testid="checked-icon"
+          aria-hidden="true"
+        >
           {selected && (
             <pichincha-icon size="24px" type="--outlined" color="success">
               check

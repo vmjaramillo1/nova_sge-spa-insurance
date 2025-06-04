@@ -1,11 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import AccountCard from './account-row'
+import AccountRow from './account-row'
 import { act } from 'react-dom/test-utils'
 
-describe('<AccountCard />', () => {
+describe('<AccountRow />', () => {
   it('should be render', () => {
     render(
-      <AccountCard
+      <AccountRow
         value="3123123123"
         label="My custom label"
         description="My custom description"
@@ -13,51 +13,68 @@ describe('<AccountCard />', () => {
       />
     )
 
-    const accountCardLabelEl = screen.getByText('My custom label')
-    const accountCardDescriptionEl = screen.getByText('My custom description')
-    const accountCardValueEl = screen.getByText('My custom value')
+    const accountRowLabelEl = screen.getByText('My custom label')
+    const accountRowDescriptionEl = screen.getByText('My custom description')
+    const accountRowValueEl = screen.getByText('My custom value')
     const actionableEl = screen.queryByText('Desde')
 
-    expect(accountCardLabelEl).toBeInTheDocument()
-    expect(accountCardDescriptionEl).toBeInTheDocument()
-    expect(accountCardValueEl).toBeInTheDocument()
+    expect(accountRowLabelEl).toBeInTheDocument()
+    expect(accountRowDescriptionEl).toBeInTheDocument()
+    expect(accountRowValueEl).toBeInTheDocument()
     expect(actionableEl).toBeNull()
   })
 
-  it('should be show actionable content', () => {
+  it('should be show selected', () => {
     render(
-      <AccountCard
+      <AccountRow
         value="3451252354"
         label="My custom label"
         description="My custom description"
         amount="My custom value"
-        // actionable
+        groupSelected={true}
+        selected={true}
       />
     )
 
-    const actionableContentEl = screen.getByTestId('account-arrow')
+    const actionableContentEl = screen.getByTestId('checked-icon')
     expect(actionableContentEl).toBeInTheDocument()
   })
 
   it('should be show selected style', () => {
     render(
-      <AccountCard
+      <AccountRow
         value="3451252354"
         label="My custom label"
         description="My custom description"
         amount="My custom value"
-        selected
+        groupSelected={true}
+        selected={true}
       />
     )
 
-    const accountCardEl = screen.getByRole('button')
-    expect(accountCardEl).toHaveClass('account-card--selected')
+    const accountRowEl = screen.getByRole('button')
+    expect(accountRowEl).toHaveClass('account-row--selected')
+  })
+
+  it('should be show disabled style', () => {
+    render(
+      <AccountRow
+        value="3451252354"
+        label="My custom label"
+        description="My custom description"
+        amount="My custom value"
+        disabled={true}
+      />
+    )
+
+    const accountRowEl = screen.getByRole('button')
+    expect(accountRowEl).toHaveClass('account-row--disabled')
   })
 
   it('should be call onClick', () => {
     const onClick = jest.fn()
     render(
-      <AccountCard
+      <AccountRow
         value="4574658345t234"
         label="My custom label"
         description="My custom description"
@@ -66,10 +83,10 @@ describe('<AccountCard />', () => {
       />
     )
 
-    const accountCardEl = screen.getByRole('button')
+    const accountRowEl = screen.getByRole('button')
 
     act(() => {
-      fireEvent.click(accountCardEl)
+      fireEvent.click(accountRowEl)
     })
 
     expect(onClick).toHaveBeenCalled()

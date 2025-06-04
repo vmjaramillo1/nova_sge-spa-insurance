@@ -8,6 +8,7 @@ import SuccessIcon from './SuccessIcon'
 import WhatsappIcon from './WhatsappIcon'
 import ArrowBackIcon from './ArrowBackIcon'
 import FamilyUnitIcon from './FamilyUnitIcon'
+import SuccessFraudIcon from './SuccessFraudIcon'
 import CheckIcon from './CheckIcon'
 
 describe('<BPIcon />', () => {
@@ -169,5 +170,17 @@ describe('<CheckIcon />', () => {
 
     expect(iconEl).toBeInTheDocument()
     expect(iconEl).toHaveStyle({ width: '18', height: '18' })
+  })
+})
+
+describe('<SuccessFraudIcon />', () => {
+  it('should render SuccessFraudIcon', () => {
+    render(<SuccessFraudIcon />)
+
+    const iconEl = screen.getByRole('img', {
+      hidden: true,
+    })
+
+    expect(iconEl).toMatchSnapshot()
   })
 })

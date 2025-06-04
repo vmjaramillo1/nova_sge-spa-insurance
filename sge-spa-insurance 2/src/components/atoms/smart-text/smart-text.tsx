@@ -1,10 +1,10 @@
 import { BASE_PATH } from '@app/utils/constants'
-import store from '@app/store'
-import { useSmartContext } from '@app/context/smart-context'
-
+import { useSmartContext } from '@app/components/atoms/smart-text/smart-context'
+import { useStore } from 'react-redux'
 import { smartFormat } from '@app/utils/format'
 import { smartParse } from '@app/utils/common'
 import { formats } from '@app/utils/format'
+import { type RootState } from '@app/store'
 
 type ContextObject = Record<string, unknown>
 
@@ -12,23 +12,21 @@ const publicEnv = {
   baseUrl: BASE_PATH,
 }
 
-function getSmartContext(context: ContextObject = {}) {
-  const values = store.getState()
+const useSmartReduxContext = (context: Record<string, unknown> = {}) => {
+  const store = useStore()
+  const values = store.getState() as RootState
 
   return {
     public: publicEnv,
-    app: values.app,
-    flow: values.flow,
+    ...values,
     ...context,
   }
 }
 
-const useSmartValues = (context: ContextObject = {}) => {
-  const smartContextValues = useSmartContext()
-
+const useSmartValues = (context: Record<string, unknown> = {}) => {
   return {
-    ...getSmartContext(context),
-    ...smartContextValues,
+    ...useSmartReduxContext(context),
+    ...useSmartContext(),
   }
 }
 
@@ -39,7 +37,24 @@ export function SmartContent(
   return <>{smartParse(props?.children ?? '', context)}</>
 }
 
-export function smartText(content: string, context: ContextObject = {}) {
-  const smartContext = getSmartContext(context)
+export function smartTextFromState(
+  content: string,
+  storeState: RootState,
+  context: Record<string, unknown> = {}
+) {
+  const smartContext = {
+    public: publicEnv,
+    ...storeState,
+    ...context,
+  }
+
+  return smartFormat(content ?? '', smartContext, formats)
+}
+
+export function useSmartText(
+  content: string,
+  context: Record<string, unknown> = {}
+) {
+  const smartContext = useSmartValues(context)
   return smartFormat(content ?? '', smartContext, formats)
 }

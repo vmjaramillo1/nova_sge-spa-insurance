@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-const SuccessIcon = () => (
+const SuccessFraudIcon = () => (
   <svg
     width="33"
     height="32"
@@ -19,4 +19,4 @@ const SuccessIcon = () => (
   </svg>
 )
 
-export default memo(SuccessIcon)
+export default memo(SuccessFraudIcon)
