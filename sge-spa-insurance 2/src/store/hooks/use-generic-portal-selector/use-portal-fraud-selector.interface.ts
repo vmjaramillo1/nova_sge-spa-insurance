@@ -102,12 +102,57 @@ interface PageAcceptance {
   }
 }
 
+interface SubItems extends WithKey, WithOrder, WithIsActive {
+  label: string
+  value: string
+}
+
+interface ItemDetailSuccess extends WithKey, WithOrder, WithIsActive {
+  aria: string
+  subItems: Array<SubItems>
+}
+
+interface MoreInformation extends WithKey, WithOrder, WithIsActive {
+  title: TextWhitAria
+  actions: Array<{
+    aria: string
+    value: string
+    codeAction: string
+    link?: string
+  }>
+}
+
+interface PageSuccess {
+  title: TextWhitAria
+  policy: TextWhitAria
+  description: TextWhitAria
+  alert: TextWhitAria
+  details: Array<ItemDetailSuccess>
+  moreInformation: MoreInformation
+  additionalInfo: {
+    title: TextWhitAria
+    items: Array<{
+      aria: string
+      icon: string
+      vaue: string
+    }>
+  }
+  toolbar: {
+    title: TextWhitAria
+  }
+  actions: {
+    btnDownload: TextWhitAria
+    cta: TextWhitAria
+    btnInformation: TextWhitAria
+  }
+}
+
 export interface PortalFraudReducedDefault {
   home: PageHomeFraud
   payment: PagePaymentFraud
   acceptance: PageAcceptance
+  success: PageSuccess
   flow: ConfigurationFlow
-  
 }
 
 export type PortalFraudParamsKeys = 'ChannelCode'

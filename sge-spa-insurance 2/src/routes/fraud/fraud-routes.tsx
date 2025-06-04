@@ -48,17 +48,6 @@ const FraudRoutes: Array<RouteObject> = [
     path: APP_ROUTES_CONFIG.SUCCESS.path,
     element: (
       <Page
-        title={APP_ROUTES_CONFIG.ACCEPTANCE.title}
-        fallback={<ProductDetailPageFallback />}
-      >
-        <AcceptancePage />
-      </Page>
-    ),
-  },
-  {
-    path: APP_ROUTES_CONFIG.SUCCESS.path,
-    element: (
-      <Page
         title={APP_ROUTES_CONFIG.SUCCESS.title}
         fallback={<ProductDetailPageFallback />}
       >

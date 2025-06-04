@@ -15,7 +15,6 @@ import { InvalidBodyError, ResponseError } from '@app/utils/classes'
 
 import useIdentity from '../use-identity'
 import { getFavoriteAccountHash, mergeOfferAndPrevious } from './utils'
-import { sortByOrder } from '@app/utils'
 import useAppDispatch from '@app/hooks/use-app-dispatch'
 import { setError, AppError } from '@app/store/reducers/global-slice'
 import { loadValues } from '@app/store/reducers/app-slice'
@@ -23,8 +22,6 @@ import {
   setSelectedAccount,
   setContentLoaded,
   setTransaction,
-  setPeriodicitySelected,
-  setPlanSelected,
 } from '@app/store/reducers/flow-slice'
 import { hasOfferableProduct } from '@app/hooks/use-load-data/utils'
 
@@ -49,27 +46,6 @@ const useLoadData = () => {
     dispatch(loadValues({ ...appInfo, lopdp }))
     dispatch(setSelectedAccount(favoriteAccountHash))
     dispatch(setContentLoaded(true))
-
-    // todo esto es flow
-    // const planKeys = Object.keys(appInfo.plans)
-
-    // if (planKeys.length === 1) {
-    //   const [firstPlan] = planKeys
-
-    //   dispatch(setPlanSelected(firstPlan))
-
-    //   const periodicityOptions = sortByOrder(
-    //     Object.entries(appInfo.plans[firstPlan].periodicityOptions).map(
-    //       ([code, periodicity]) => ({
-    //         code,
-    //         order: periodicity.order,
-    //       })
-    //     )
-    //   )
-
-    //   const [firstPeriodicity] = periodicityOptions
-    //   dispatch(setPeriodicitySelected(firstPeriodicity.code))
-    // }
 
     // todo control pagina de aceptacion
     const targetProductRoute = hasOfferableProduct(appInfo.products)

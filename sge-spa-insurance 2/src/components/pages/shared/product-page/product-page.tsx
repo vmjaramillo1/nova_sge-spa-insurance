@@ -8,9 +8,11 @@ import PeriodicityCard from '@app/components/molecules/periodicity-card'
 import useProductPage from './use-product-page'
 import useModal from '@app/hooks/use-modal/use-modal'
 import ModalAccount from '@app/components/atoms/modal-account'
+import SmartContent from '@app/components/atoms/smart-text'
 
 import './product-page.scss'
 
+// pagina de pago
 const ProductPage = () => {
   const { isOpen: showModalAccount, toggle: handleModalCoverage } = useModal()
   const {
@@ -30,7 +32,7 @@ const ProductPage = () => {
     <>
       <div className="product-page">
         <Typography variant="subtitle" className="font-semibold">
-          {content.title.value}
+          <SmartContent>{content.title.value}</SmartContent>
         </Typography>
         <Typography aria-label={content.description.aria} className="mb-16">
           {content.description.value}
@@ -97,15 +99,17 @@ const ProductPage = () => {
           classes={{ root: 'mt-auto mb-24' }}
         >
           {content.disclaimer.value}
-          <Typography
-            onClick={handleDownload}
-            variant="legal"
-            className="check-legal__insurance underline font-semibold"
-            as="a"
-            aria-label={content.disclaimer.aria}
-          >
-            {content.disclaimer.action}
-          </Typography>
+          {content.disclaimer?.action && content.disclaimer?.action === '' && (
+            <Typography
+              onClick={handleDownload}
+              variant="legal"
+              className="check-legal__insurance underline font-semibold"
+              as="a"
+              aria-label={content.disclaimer.aria}
+            >
+              {content.disclaimer.action}
+            </Typography>
+          )}
         </CheckLegal>
         <Button onClick={handleClickContinue} disabled={!accepted}>
           {content.actionNext.cta.value}

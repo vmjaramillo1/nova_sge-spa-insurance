@@ -49,16 +49,6 @@ export const selectorLopdp = createSelector(
   (store: RootState) => store.app.lopdp,
   (lopdp) => lopdp
 )
-
-export const selectorHasOffer = createSelector(
-  (store: RootState) => store.app.products[0]?.hasOffer,
-  (hasOffer) => hasOffer
-)
-
-export const selectorCode = createSelector(
-  (store: RootState) => store.app.products[0]?.code,
-  (code) => code
-)
 //#endregion
 
 //#region Flow

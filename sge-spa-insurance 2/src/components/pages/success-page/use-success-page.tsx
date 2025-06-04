@@ -34,12 +34,10 @@ import {
   useGenericProductByCodeSelector,
 } from '@app/store/hooks/use-generic-portal-selector'
 const useSuccessPage = () => {
-  const { success } = useAppSelector(selectorPortal) as {
-    success: DefaultPortal['success']
-  }
-
   const productCode = useAppSelector(selectorProductCode)
   const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
+
+  const { success } = productData.portal.content
 
   const plans = productData?.plans
 
@@ -117,7 +115,7 @@ const useSuccessPage = () => {
 
   const handleClickCall = () => {
     pushTrackEvent(TrackingEvents.SUCCESS_CLICK_CALL)
-    openBrowser(success.moreInformation.action.link)
+    // openBrowser(success.moreInformation.actions.[0].link)
   }
 
   return {
