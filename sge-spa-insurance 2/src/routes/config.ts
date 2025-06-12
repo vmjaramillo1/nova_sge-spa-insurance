@@ -57,10 +57,10 @@ export function mapperRouts(routeCode: string) {
       return APP_ROUTES.NOT_ACCOUNT
     case 'RETRY_ACCEPTANCE':
       return APP_ROUTES.RETRY_ACCEPTANCE
-    case 'PREVIOUS':
-      return APP_ROUTES.PREVIOUS
     case 'PREVIOUS_PRODUCT':
       return APP_ROUTES.PREVIOUS_PRODUCT
+    case 'PREVIOUS_PRODUCT_DETAIL':
+      return APP_ROUTES.PREVIOUS_PRODUCT_DETAIL
     case 'ALREADY_PRODUCT':
       return APP_ROUTES.ALREADY_PRODUCT
     case 'NOT_PRODUCT':
@@ -68,7 +68,7 @@ export function mapperRouts(routeCode: string) {
     case 'IN_PROGRESS':
       return APP_ROUTES.IN_PROGRESS
 
-    // Fraud
+    // PRODUCTS
     case 'PRODUCT_DETAIL':
       return APP_ROUTES.PRODUCT_DETAIL
     case 'PRODUCT':

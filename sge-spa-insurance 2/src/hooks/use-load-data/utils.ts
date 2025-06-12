@@ -1,10 +1,5 @@
-import { AccountInfo, MergeOfferPreviousList } from '@app/services/insurance'
-import { OfferableProduct } from '@app/utils/interfaces'
-import { OfferableWithType } from '@app/utils'
 import { MergeOfferablePreviousType } from '@app/utils/enums'
-
-import { AppProducts } from '@app/store/reducers/app-slice/app-slice.interface'
-
+import { AppAccounts } from '@app/store/reducers/app-slice/app-slice.interface'
 
 type ItemWIthType = { type: MergeOfferablePreviousType }
 
@@ -13,82 +8,13 @@ export function isOffer<T extends ItemWIthType>(item: T) {
   return item.type === MergeOfferablePreviousType.OFFER
 }
 
+export function getFavoriteAccountHash(appAccounts: AppAccounts): string {
+  const allAccounts = [
+    ...Object.values(appAccounts.accounts),
+    ...Object.values(appAccounts.cards),
+  ]
 
-// todo validar si no requiro un arreglo para type y eliminar
-// export function isOffer<T extends ItemWIthType>(list: Array<T>) {
-//   return list.some((item) => item.type === MergeOfferablePreviousType.OFFER)
-// }
+  const favoriteAccount = allAccounts.find((account) => account.favorite)
 
-// todo ajustar prueba
-export function hasOfferableProduct<TPortal>(products: AppProducts<TPortal>): boolean {
-  return Object.values(products).some((product) => product.hasOffer)
-}
-
-
-export function getFavoriteAccountHash(accounts: Array<AccountInfo>): string {
-  const favoriteAccountByFlag = accounts.find((account) => account.favorite)
-  if (favoriteAccountByFlag) return favoriteAccountByFlag.hash
-
-  const [firstAccount] = accounts
-  return firstAccount.hash
-}
-
-export function mergeOfferAndPrevious(
-  data: MergeOfferPreviousList
-): Array<OfferableWithType> {
-  const result: Array<OfferableWithType> = []
-
-  const offerableProducts = data.find(
-    (item) => item.type === MergeOfferablePreviousType.OFFER
-  )
-
-  if (offerableProducts?.data) {
-    const mappedOfferableProducts = unifyOfferByProductCode(
-      offerableProducts.data,
-      offerableProducts.type
-    )
-    result.push(...mappedOfferableProducts)
-  }
-
-  const previousProducts = data.find(
-    (item) => item.type === MergeOfferablePreviousType.PREVIOUS
-  )
-
-  if (previousProducts?.data) {
-    const mappedPreviousProducts = previousProducts.data.map((previous) => ({
-      ...previous,
-      type: previousProducts.type,
-    }))
-
-    result.push(...mappedPreviousProducts)
-  }
-
-  return result
-}
-
-function unifyOfferByProductCode(
-  items: Array<OfferableProduct>,
-  type: number
-): Array<OfferableWithType> {
-  const map = new Map<string, OfferableWithType>()
-
-  for (const item of items) {
-    const existing = map.get(item.productCode)
-
-    if (existing) {
-      existing.plans = [...existing.plans, ...item.plans]
-      existing.type = type
-    } else {
-      // todo mejorar esto para q code no se considere(se envia plan code origialmente)
-      const { code, ...rest } = item
-      map.set(item.productCode, {
-        code: item.productCode,
-        ...rest,
-        plans: [...item.plans],
-        type: type,
-      })
-    }
-  }
-
-  return Array.from(map.values())
+  return favoriteAccount?.hash ?? allAccounts[0]?.hash ?? ''
 }

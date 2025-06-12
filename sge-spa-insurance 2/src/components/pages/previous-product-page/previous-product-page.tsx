@@ -1,156 +1,178 @@
-import clsx from 'clsx'
-import CoverageRow from '@app/components/atoms/coverage-row'
-import Divider from '@app/components/atoms/divider'
-import Typography from '@app/components/atoms/typography'
-import InsuranceIcon from '@app/components/icons/InsuranceIcon'
+import ActionButton from '@app/components/atoms/action-button/action-button'
+import Button from '@app/components/atoms/button'
+import Typography from '@app/components/atoms/typography/'
 import WhatsappIcon from '@app/components/icons/WhatsappIcon'
-import Button from '@app/components/atoms/button/button'
-import Faq from '@app/components/organisms/faq'
-import DownloadIcon from '@app/components/icons/DownloadIcon'
+import Feedback from '@app/components/organisms/feedback'
+import useBackButton from '@app/hooks/use-back-button/use-back-button'
+import useDownloadFile from '@app/hooks/use-download-file/use-download-file'
+import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
+import {
+  BP_CALL_NUMBER_LINK,
+  DOCUMENT_DOWNLOAD_STATIC_CODES,
+  WHATSAPP_LINK,
+} from '@app/utils'
+import {
+  TrackingEvents,
+  backHomeWithTracking,
+  openBrowser,
+  pushTrackEvent,
+} from '@app/utils/messages'
+import SmartContent from '@app/components/atoms/smart-text'
 
-import { isLastItemInArray } from '@app/utils/common'
-import ActionButton from '@app/components/atoms/action-button'
-import usePreviousProductPage from './use-previous-product-page'
 import './previous-product-page.scss'
 import useOsType from '@app/hooks/use-os-type/use-os-type'
+import { act } from 'react'
+
+import BackHomeCard from '@app/components/pages/previous-product-page/back-home-card'
+import PreviousProductCard, {
+  StatusType,
+} from '@app/components/atoms/previous-product-card/previous-product-card'
+
+const data = {
+  description: {
+    value:
+      'Revisa tus seguros vigentes, conoce qué cubre cada uno y accede a tus documentos en cualquier momento.',
+    aria: 'Revisa tus seguros vigentes, conoce qué cubre cada uno y accede a tus documentos en cualquier momento.',
+  },
+  defaultCard: {
+    description: {
+    value:
+      'Descubre más seguros pensados para ti.',
+    aria: 'Descubre más seguros pensados para ti.',
+  },
+  action: {
+    value: 'Ver seguros',
+    aria: 'Ver seguros',
+  },
+},
+  products: {
+    LIFE_HEALTH: {
+      title: {
+        value: 'Seguro de Vida + Salud',
+        aria: 'Seguro de Vida + Salud',
+      },
+      status: 'success',
+      account: {
+        value: 'Cuenta de debito: Nro. ******7154',
+        aria: 'Cuenta de debito: Nro. ******7154',
+      },
+      nextPayment: {
+        value: '02/12/2024',
+        text: 'Próximo pago: ',
+        aria: 'Próximo pago: ',
+      },
+      amount: {
+        value: '$ 9,09',
+        text: 'Monto a pagar: ',
+        aria: 'Monto a pagar: ',
+      },
+      action: {
+        value: 'Ver detalles de tu cobertura',
+        aria: 'Ver detalles de tu cobertura',
+      },
+    },
+    TU_BAN_PRO: {
+      title: {
+        value: 'Robos y Fraudes',
+        aria: 'Robos y Fraudes',
+      },
+      status: 'error',
+      account: {
+        value: 'Tarjeta de crédito: Nro. 2204********1171',
+        aria: 'Tarjeta de crédito: Nro. 2204********1171',
+      },
+      nextPayment: {
+        value: '02/12/2024',
+        aria: 'Próximo pago: ',
+        text: 'Próximo pago: ',
+      },
+      amount: {
+        value: '$ 4,04',
+        aria: 'Monto a pagar: ',
+        text: 'Monto a pagar: ',
+      },
+      action: {
+        value: 'Ver detalles de tu cobertura',
+        aria: 'Ver detalles de tu cobertura',
+      },
+    },
+    TU_BAN_PRO1: {
+      title: {
+        value: 'Robos y Fraudes',
+        aria: 'Robos y Fraudes',
+      },
+      status: 'warning',
+      account: {
+        value: 'Tarjeta de crédito: Nro. 2204********1171',
+        aria: 'Tarjeta de crédito: Nro. 2204********1171',
+      },
+      nextPayment: {
+        value: '02/12/2024',
+        aria: 'Próximo pago: ',
+        text: 'Próximo pago: ',
+      },
+      amount: {
+        value: '$ 4,04',
+        aria: 'Monto a pagar: ',
+        text: 'Monto a pagar: ',
+      },
+      action: {
+        value: 'Ver detalles de tu cobertura',
+        aria: 'Ver detalles de tu cobertura',
+      },
+    },
+  },
+}
 
 const PreviousProductPage = () => {
-  const {
-    content,
-    handleDownloadContract,
-    handleDownloadUseGuide,
-    handleOpenCall,
-    handleOpenWhatsapp,
-    coverages,
-    pichinchaIconProps,
-  } = usePreviousProductPage()
+  const handleClick = backHomeWithTracking(TrackingEvents.PREVIOUS_CLICK_CTA)
 
-  const { isAndroid } = useOsType()
+  useBackButton(backHomeWithTracking(TrackingEvents.PREVIOUS_CLICK_BUTTON_BACK))
+
+  usePageTrackingEvent(TrackingEvents.PREVIOUS_VIEW_PAGE)
+
+  const { description } = data
+
+  const handleNavigateProduct = (code: string) => {
+    console.log(code)
+  }
 
   return (
-    <div className="previous-product">
-      <div className="previous-product__card mb-24">
-        <div className="text-center mb-2">
-          <InsuranceIcon />
-          <div className="mt-4 mb-2 py-2">
-            <Typography className="font-medium" aria-hidden="true">
-              {content.title}
-            </Typography>
-            <Typography variant="legal" aria-label={content.contract.aria}>
-              {content.contract.value}
-            </Typography>
-          </div>
-          <Typography
-            variant="caption"
-            className="py-8 font-semibold"
-            aria-label={content.description.aria}
-          >
-            {content.description.value}
-          </Typography>
-        </div>
-        <Divider className="h-28 mb-2" />
-        <CoverageRow
-          label={content.insuranceCarrier.label}
-          value={content.insuranceCarrier.value}
-          aria={content.insuranceCarrier.aria}
-          classes={{ root: 'mb-2', shared: 'text-caption' }}
-        />
-        <Divider className="h-28 mb-2" />
-        <div aria-label={content.range.aria}>
-          {content.range.items.map((range, index) => (
-            <CoverageRow
-              key={range.key}
-              label={range.label}
-              value={range.value}
-              classes={{
-                root: clsx(index === 0 && 'mb-2'),
-                shared: 'text-caption',
-              }}
-            />
-          ))}
-        </div>
-        <Divider className="h-16 mb-2" />
-        <Typography
-          variant="caption"
-          className="font-medium mb-4"
-          aria-label={content.coverages.description.aria}
-        >
-          {content.coverages.description.value}
-        </Typography>
-        <CoverageRow
-          aria={`${content.coverages.headers.label}, ${content.coverages.headers.value}`}
-          label={content.coverages.headers.label}
-          value={content.coverages.headers.value}
-          classes={{
-            root: 'py-4',
-            shared: 'text-caption',
-          }}
-          bolder
-        />
-        {coverages.map((coverageItem, coverageIndex) => {
-          const isLast = isLastItemInArray(content.coverages.items, coverageIndex)
-
-          return (
-            <CoverageRow
-              key={coverageItem.key}
-              aria={coverageItem.aria}
-              label={coverageItem.label}
-              value={coverageItem.value}
-              classes={{
-                root: clsx(isLast ? 'mb-16' : 'mb-4'),
-                shared: 'text-caption',
-              }}
-            />
-          )
-        })}
-        <Divider className="h-16 mb-2" />
-        <div className="previous-product__actions py-8">
-          {content?.actions?.userGuide?.isActive && (
-            <ActionButton
-              onClick={handleDownloadContract}
-              icon={
-                <pichincha-icon {...pichinchaIconProps}>file_copy</pichincha-icon>
-              }
-              aria-label={content.actions.userGuide.aria}
-            >
-              Revisa <br />
-              tu certificado
-            </ActionButton>
-          )}
-          {content?.actions?.call?.isActive && isAndroid && (
-            <ActionButton
-              onClick={handleOpenCall}
-              icon={<pichincha-icon {...pichinchaIconProps}>call</pichincha-icon>}
-              aria-label={content.actions.call.aria}
-            >
-              Llámanos <br />
-              24/7
-            </ActionButton>
-          )}
-          {content?.actions?.whatsapp?.isActive && (
-            <ActionButton
-              onClick={handleOpenWhatsapp}
-              icon={<WhatsappIcon />}
-              aria-label={content.actions.whatsapp.aria}
-            >
-              Escríbenos <br />
-              al WhatsApp
-            </ActionButton>
-          )}
-        </div>
-      </div>
-      <Button
-        className="mb-24 download-use-guide"
-        onClick={handleDownloadUseGuide}
-        icon={<DownloadIcon />}
+    <div className="previous-product-page">
+      <Typography
+        variant="body"
+        className="previous-product-page__title"
+        aria-label={description.aria}
       >
-        Cómo usar tu seguro
-      </Button>
-      {/* <Faq
-        title={content.faq.title.value}
-        titleAria={content.faq.title.aria}
-        items={content.faq.questions}
-      /> */}
+        <SmartContent>{description.value}</SmartContent>
+      </Typography>
+
+      <div className="previous-product-page__content -mx-24 p-24">
+        <PreviousProductCard
+          {...{
+            ...data.products.LIFE_HEALTH,
+            status: data.products.LIFE_HEALTH.status as StatusType,
+          }}
+          handleClick={() => handleNavigateProduct('test')}
+        />
+
+        <PreviousProductCard
+           {...{
+            ...data.products.TU_BAN_PRO,
+            status: data.products.TU_BAN_PRO.status as StatusType,
+          }}
+          handleClick={() => handleNavigateProduct('test')}
+        />
+        <PreviousProductCard
+           {...{
+            ...data.products.TU_BAN_PRO1,
+            status: data.products.TU_BAN_PRO1.status as StatusType,
+          }}
+          handleClick={() => handleNavigateProduct('test')}
+        />
+
+        <BackHomeCard {...data.defaultCard}/>
+      </div>
     </div>
   )
 }

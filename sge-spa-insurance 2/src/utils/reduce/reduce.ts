@@ -14,7 +14,7 @@ import {
   RecordPlan,
   RecordPlanCoverages,
   RecordPrices,
-  RecordAccount,
+  RecordAccountWithType,
 } from '../interfaces/records.interface'
 import {
   AssistanceRule,
@@ -28,10 +28,8 @@ import {
   AccountRule,
 } from '../interfaces/rule.interface'
 
-import { type WithCode } from '../interfaces'
-import { type OfferableWithType } from './get-app-info'
+import { OfferableProduct } from '../interfaces/offerable-product.interface'
 import { reducePortal } from './portal-reduce-utils'
-import { isOffer } from '@app/hooks/use-load-data/utils'
 
 export function reduceGeneric<
   Input extends object,
@@ -196,20 +194,30 @@ export function reducePlans(
   }, {} as RecordPlan)
 }
 
-export function reduceAccounts(accounts: Array<AccountRule>) {
-  return accounts.reduce<RecordAccount>((acc, account) => {
-    const { hash } = account
-
-    return {
-      ...acc,
-      [hash]: account,
+export function reduceAccounts(
+  accounts: Array<AccountRule>,
+  typeAccount: string
+): Record<string, RecordAccountWithType> {
+  return accounts.reduce<Record<string, RecordAccountWithType>>((acc, account) => {
+    const { accountHash } = account
+    acc[accountHash] = {
+      hash: accountHash,
+      mask: account.accountMaskedNumber,
+      type: account.type,
+      balance: account.availableBalance,
+      alias: account.alias,
+      favorite: account.favoriteStatus,
+      allowsTransact: account.allowsTransact,
+      paymentType: typeAccount,
     }
-  }, {} as RecordAccount)
+    return acc
+  }, {})
 }
 
 export function reduceOffer<TContent = unknown, TParams = Record<string, unknown>>(
-  offer: OfferableWithType
+  offer: OfferableProduct
 ) {
+  // debugger
   const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
     offer
 
@@ -231,8 +239,6 @@ export function reduceOffer<TContent = unknown, TParams = Record<string, unknown
 
   const portalResult = reducePortal<TContent, TParams>(portal)
 
-  const hasOffer = isOffer(offer)
-
   return {
     code,
     name,
@@ -244,7 +250,6 @@ export function reduceOffer<TContent = unknown, TParams = Record<string, unknown
     insuranceName,
     plans: plansResult,
     portal: portalResult,
-    hasOffer: hasOffer,
   }
 }
 
@@ -263,18 +268,9 @@ export function reduceToRecord<
 
     return {
       ...acc,
-      [keyProperty as unknown as string]: properties
+      [keyProperty as unknown as string]: properties,
     }
   }, {})
 
   return result as Record<string, Omit<Input, OmitKeys>>
-}
-
-// todo poner prueba
-
-export function reduceToRecordByCode<
-  TInput extends WithCode,
-  TOmit extends keyof TInput = never
->(values: Array<TInput>, omit: Array<TOmit> = []) {
-  return reduceToRecord(values, 'code', omit)
 }

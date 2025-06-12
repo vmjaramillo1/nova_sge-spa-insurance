@@ -4,28 +4,33 @@ import { type ReducedPortal } from './portal-reduce-utils'
 
 import { type AppState } from '@app/store/reducers/app-slice/app-slice.interface'
 
-import { MergeOfferablePreviousType } from '../enums/merge-offerable-previous-type'
 import { reduceAccounts } from '@app/utils/reduce'
+import { ACCOUNT_TYPES, CARD_BRANDS } from '@app/utils/constants'
 
 import { AccountRule } from '../interfaces/rule.interface'
 
-export interface OfferableWithType extends OfferableProduct {
-  type: MergeOfferablePreviousType
-}
+export type OfferableWithType = OfferableProduct[]
 
 export interface GetDefaultContextParams {
-  offers: Array<OfferableWithType>
-  accounts: Array<AccountRule>
+  offers: OfferableProduct[]
+  paymentOptions: {
+    accounts: {
+      checking: Array<AccountRule>
+      savings: Array<AccountRule>
+    }
+    cards: Array<AccountRule>
+  }
 }
 
-type AppStateProductInfo<TPortal> = Omit<AppState<TPortal>, 'lopdp'>
+type AppStateProductInfo<TPortal> = Omit<AppState<TPortal>, 'lopdp'| 'offer'>
 
 export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>>(
   params: GetDefaultContextParams
 ): AppStateProductInfo<ReducedPortal<TContent, TParams>> {
-  const { offers, accounts } = params
 
-  const products = offers.reduce<any>((acc, item) => {
+  const { offers, paymentOptions } = params
+
+  const products = offers.reduce((acc, item) => {
     const offer = reduceOffer<TContent, TParams>(item)
 
     return {
@@ -34,10 +39,24 @@ export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>
     }
   }, {})
 
-  const accountInfo = reduceAccounts(accounts)
+  const accountInfo = {
+    checking: reduceAccounts(
+      paymentOptions.accounts.checking,
+      ACCOUNT_TYPES.CHECKING_ACCOUNT
+    ),
+    savings: reduceAccounts(
+      paymentOptions.accounts.savings,
+      ACCOUNT_TYPES.SAVING_ACCOUNT
+    ),
+  }
+
+  const paymentCards = reduceAccounts(paymentOptions.cards, CARD_BRANDS.UNKNOWN)
 
   return {
     products,
-    accounts: accountInfo,
+    paymentOptions: {
+      accounts: { ...accountInfo.checking, ...accountInfo.savings },
+      cards: paymentCards,
+    },
   }
 }

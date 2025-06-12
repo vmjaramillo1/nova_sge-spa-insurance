@@ -71,7 +71,7 @@ const useTermsAndConditionPage = () => {
 
     pushTrackEvent(TrackingEvents.ONBOARDING_CLICK_CTA)
 
-    const { acceptedTermsConditions, hasConsent, url } = lopdp
+    const { acceptedTermsConditions, url } = lopdp
 
     if (!identity) return
 
@@ -80,7 +80,7 @@ const useTermsAndConditionPage = () => {
 
       const { cif, dni, dniType } = identity
 
-      const action = getNextLopdpAction(hasConsent)
+      const action = getNextLopdpAction(true) // todo eliminar xq iva el acpet tyC
 
       const response = await InsuranceService.consentLopdp({
         acceptedTermsConditions: acceptTC,
@@ -95,7 +95,6 @@ const useTermsAndConditionPage = () => {
       dispatch(
         setLopdp({
           acceptedTermsConditions: acceptTC,
-          hasConsent: acceptTC,
           url,
         })
       )

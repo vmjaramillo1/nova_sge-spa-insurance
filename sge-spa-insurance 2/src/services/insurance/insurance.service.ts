@@ -38,58 +38,9 @@ axios.interceptors.response.use(
 )
 
 export default class InsuranceService {
+  // todo ajuste para variable de entorno en test
   private static baseUrl = 'http://localhost:4200/insurance'
   private static formatEndpoint = (path: string) => `${this.baseUrl}/${path}`
-
-  static async validateOffer(
-    params: ValidateOfferParams
-  ): Promise<ValidateOfferResponse> {
-    try {
-      const {
-        identity: { cif, dni, dniType },
-      } = params
-
-      const endpoint = this.formatEndpoint('validate-offerable-product')
-
-      const body = encryptBody({
-        cif,
-        dni,
-        dniType,
-      })
-
-      const result = await axios.post<ValidateOfferResponse>(endpoint, body)
-
-      return validateResult(result)
-    } catch (error) {
-      return resolveError(error)
-    }
-  }
-
-  static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
-    try {
-      const {
-        key,
-        transactionReference,
-        identity: { cif, dni, dniType },
-      } = params
-
-      const endpoint = this.formatEndpoint('offer')
-
-      const body = encryptBody({
-        transactionReference,
-        key,
-        cif,
-        dni,
-        dniType,
-      })
-
-      const result = await axios.post<FindOfferResponse>(endpoint, body)
-
-      return validateResult(result)
-    } catch (error) {
-      return resolveError(error)
-    }
-  }
 
   static async consentLopdp(params: ConsentParams): Promise<ConsentResponse> {
     try {
@@ -225,6 +176,81 @@ export default class InsuranceService {
         body
       )
 
+      return validateResult(result)
+    } catch (error) {
+      return resolveError(error)
+    }
+  }
+
+  // ============== TODO AJUSTE PARA SERVICIO TEMPORAL==========================
+
+  // todo ajustar
+  private static tempHeaders = {
+    headers: {
+      'x-guid': 'f99e3fe2-1ca6-42d5-898b-ffeffebc8b03',
+      'x-app': '003',
+      'x-channel': 'ddd',
+      'x-medium': 'ddd',
+      'x-session': 'f99e3fe2-1ca6-42d5-898b-ffeffebc8b03',
+      'x-device-ip': '192.168.0.12',
+      'x-device': 'macos',
+      'Content-Type': 'application/json',
+    },
+  }
+
+  static async validateOffer(
+    params: ValidateOfferParams
+  ): Promise<ValidateOfferResponse> {
+    const tempBaseUrl =
+      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+
+    const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
+
+    try {
+      const {
+        identity: { cif, dni, dniType },
+      } = params
+
+      const request = {
+        profile: 'A1',
+        mode: 'NORMAL',
+        dni: dni,
+        dniType: dniType,
+        cif: cif,
+        channelProductCode: 'BP_BM_REQUESTS',
+        transactionReference: 'd536b1b6-2057-eb23-a3df-3a1716ec58f6',
+        portalCode: 'POR_BP_EMB_PROD',
+      }
+
+      const endpoint = tempFormatEndpoint('validate')
+
+      const result = await axios.post<ValidateOfferResponse>(endpoint, request, {
+        ...this.tempHeaders,
+      })
+
+      return validateResult(result)
+    } catch (error) {
+      return resolveError(error)
+    }
+  }
+
+  static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
+    const tempBaseUrl =
+      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+
+    const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
+
+    try {
+      const request = {
+        productCode: 'TU_BAN_PRO',
+        portalCode: 'POR_BP_BANCAMOVIL_TU_BAN_PRO',
+      }
+
+      const endpoint = tempFormatEndpoint('offer')
+
+      const result = await axios.post<FindOfferResponse>(endpoint, request, {
+        ...this.tempHeaders,
+      })
       return validateResult(result)
     } catch (error) {
       return resolveError(error)

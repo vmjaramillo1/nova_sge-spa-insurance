@@ -13,15 +13,14 @@ import { ReMapProperties } from './utility'
  * ACCOUNT RULE
  */
 export type AccountRule = {
-  hash: string
-  mask: string
+  accountHash: string
+  accountMaskedNumber: string
   type: string
-  balance: number
+  availableBalance: number
   alias: string | null
-  favorite: boolean
-  value: string
+  favoriteStatus: boolean
+  allowsTransact: boolean
 }
-
 
 /**
  * COVERAGE LIMITS RULE
@@ -130,10 +129,7 @@ export type ProductRule = Pick<
 /**
  * PORTAL RULE
  */
-export type PortalRule = Pick<
-  ReMapPortalRule,
-  'code' | 'isActive' | 'sections' | 'params'
->
+export type PortalRule = Pick<ReMapPortalRule, 'code' | 'sections' | 'params'>
 
 export type SectionRule = Pick<Section, 'code' | 'isActive' | 'attributes'>
 

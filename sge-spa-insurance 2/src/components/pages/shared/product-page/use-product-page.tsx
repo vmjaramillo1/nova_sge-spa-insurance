@@ -14,15 +14,12 @@ import {
   getAriaAccountNumber,
   sortByOrder,
 } from '@app/utils'
-import { DefaultPortal } from '@app/utils/interfaces'
 import { TrackingEvents, pushTrackEvent } from '@app/utils/messages'
 import { PeriodicityCode } from '@app/utils/enums'
 
 import useAppSelector from '@app/hooks/use-app-selector'
 
 import {
-  selectorPortal,
-  selectorPlans,
   selectorAccounts,
   selectorProductCode,
   selectorPlanSelected,
@@ -30,7 +27,8 @@ import {
 } from '@app/store/selectors/selectors'
 
 import { setPeriodicitySelected } from '@app/store/reducers/flow-slice'
-import {useGenericProductByCodeSelector,
+import {
+  useGenericProductByCodeSelector,
   type PortalType,
 } from '@app/store/hooks/use-generic-portal-selector'
 import useAppDispatch from '@app/hooks/use-app-dispatch'
@@ -47,7 +45,6 @@ interface PeriodicityExtraProps {
 
 const useProductPage = () => {
   const [accepted, setAccepted] = useState<boolean>(false)
-
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -112,11 +109,11 @@ const useProductPage = () => {
   const ariaLabelAccount = useMemo(() => {
     if (!currentAccountValues) return null
 
-    const { amount, description, type, alias } = currentAccountValues
+    const { amount, description, paymentType, alias } = currentAccountValues
 
     const lastNumbers = getAriaAccountNumber(description)
     const ariaMoney = getAriaAccountMoney(amount)
-    const ariaLabel = getAriaAccountLabel(type, alias)
+    const ariaLabel = getAriaAccountLabel(paymentType, alias)
 
     return `Desde cuenta ${ariaLabel}, con saldo disponible de ${ariaMoney}, Número de cuenta termina en ${lastNumbers}`
   }, [currentAccountValues])

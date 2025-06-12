@@ -104,14 +104,13 @@ export function reduceParams<TReduce>(params: Array<Param>) {
 export function reducePortal<TContent, TParams = Record<string, unknown>>(
   portal: PortalRule
 ) {
-  const { code, isActive, sections, params } = portal
+  const { code, sections, params } = portal
 
   const content = reduceSections<TContent>(sections)
   const paramsReduced = reduceParams<TParams>(params)
 
   return {
     code,
-    isActive,
     content,
     params: paramsReduced,
   }

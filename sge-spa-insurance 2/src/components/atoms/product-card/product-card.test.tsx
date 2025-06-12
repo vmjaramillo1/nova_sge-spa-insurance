@@ -2,15 +2,25 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { useNavigate } from 'react-router-dom'
 import ProductCard from './product-card'
 import { APP_ROUTES } from '@app/routes/config'
+import { createWrapperStore, makeStore } from '@app/__test__/wrappers'
+import { flowValues, globalValues, appValues } from '@app/__test__/values'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
 }))
 
+const store = makeStore({
+  app: appValues,
+  flow: flowValues,
+  global: globalValues,
+})
+
+const wrapper = createWrapperStore(store)
+
 describe('<ProductCard />', () => {
   const DATA = {
-    code: 'code test',
+    code: 'TU_BAN_PRO',
     title: {
       value: 'title test',
       aria: 'title-aria',
@@ -56,7 +66,9 @@ describe('<ProductCard />', () => {
   })
 
   it('should render title', () => {
-    render(<ProductCard {...DATA} />)
+    render(<ProductCard {...DATA} />, {
+      wrapper: wrapper,
+    })
 
     const title = screen.getByText('title test')
 
@@ -64,7 +76,9 @@ describe('<ProductCard />', () => {
   })
 
   it('should render description', () => {
-    render(<ProductCard {...DATA} />)
+    render(<ProductCard {...DATA} />, {
+      wrapper: wrapper,
+    })
 
     const description = screen.getByText('description test')
 
@@ -72,7 +86,9 @@ describe('<ProductCard />', () => {
   })
 
   it('should render price', () => {
-    render(<ProductCard {...DATA} />)
+    render(<ProductCard {...DATA} />, {
+      wrapper: wrapper,
+    })
 
     const paymentType = screen.getByText('paymentType test')
     const price = screen.getByText('price test')
@@ -82,15 +98,19 @@ describe('<ProductCard />', () => {
   })
 
   it('should render content', () => {
-    render(<ProductCard {...DATA} />)
+    render(<ProductCard {...DATA} />, {
+      wrapper: wrapper,
+    })
 
-    const cardEl = screen.getByTestId('coverage-1')
+    const cardEl = screen.getByTestId('TU_BAN_PRO-coverage-1')
 
     expect(cardEl).toBeInTheDocument()
   })
 
   it('should call navigate when clicking on the action button', () => {
-    render(<ProductCard {...DATA} />)
+    render(<ProductCard {...DATA} />, {
+      wrapper: wrapper,
+    })
 
     const actionButton = screen.getByRole('button')
     fireEvent.click(actionButton)
@@ -99,7 +119,9 @@ describe('<ProductCard />', () => {
   })
 
   it('should navigate to urlTarget', () => {
-    render(<ProductCard {...DATA} />)
+    render(<ProductCard {...DATA} />, {
+      wrapper: wrapper,
+    })
 
     const actionButton = screen.getByRole('button')
     fireEvent.click(actionButton)

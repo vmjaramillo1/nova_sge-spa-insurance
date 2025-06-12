@@ -34,3 +34,28 @@
 
 	}
 }
+
+.insurance-page-fallback {
+
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+
+	&__price {
+		display: flex;
+		gap: 8px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__hero {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;       /* centra en horizontal (eje cruzado) */
+		background: #dee3ed;
+		width: auto;
+		height: 188px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}

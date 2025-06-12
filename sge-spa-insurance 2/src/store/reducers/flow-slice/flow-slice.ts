@@ -10,10 +10,22 @@ const initialState: FlowState = {
     planSelected: '',
     periodicitySelected: '',
     transactionReference: undefined,
-    key: undefined,
     contentLoaded: false,
     step: RoutesFraudAlias.PRODUCT_DETAIL,
     status: FlowStatus.WAIT_LOAD,
+  },
+  client: {
+    cellPhone: '',
+    email: '',
+    firstLastName: '',
+    firstName: '',
+    gender: '',
+    homePhone: '',
+    identification: '',
+    identificationType: '',
+    ipClient: '',
+    secondLastName: '',
+    secondName: '',
   },
 }
 
@@ -30,11 +42,9 @@ const flowSlice = createSlice({
     setTransaction(
       state,
       action: PayloadAction<{
-        key: FlowState['shared']['key']
         transactionReference: FlowState['shared']['transactionReference']
       }>
     ) {
-      state.shared.key = action.payload.key
       state.shared.transactionReference = action.payload.transactionReference
     },
     setContentLoaded(state, action: PayloadAction<boolean>) {
@@ -52,6 +62,9 @@ const flowSlice = createSlice({
     setProductCodeSelected(state, action: PayloadAction<string>) {
       state.shared.productCode = action.payload
     },
+    setClientData(state, action: PayloadAction<FlowState['client']>) {
+      state.client = action.payload
+    },
   },
 })
 
@@ -64,6 +77,7 @@ export const {
   setFlowStatus,
   setPlanSelected,
   setPeriodicitySelected,
+  setClientData,
 } = flowSlice.actions
 
 export default flowSlice

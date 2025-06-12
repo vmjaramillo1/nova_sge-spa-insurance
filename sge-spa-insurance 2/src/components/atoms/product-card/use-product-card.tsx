@@ -14,6 +14,7 @@ import { sortByOrder } from '@app/utils'
 const useProductCard = (urlTarget: string, productCode: string) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+
   const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
 
   const planData = productData.plans

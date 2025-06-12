@@ -63,4 +63,16 @@ $product-card-shadow-color: #00000040;
 	}
 }
 
+.product-card-fallback {
+	@extend .product-card;
+
+	&__coverage-content{
+		width: 100%;
+	}
+
+	&__action{
+		display: flex;
+		justify-content: flex-end;
+	}
+}
 

@@ -8,7 +8,7 @@ export interface OfferableProduct {
   paymentMethodOptions: PaymentMethodOption[]
   paymentPeriodicityOptions: PaymentPeriodicityOption[]
   plans: PlanRule[]
-  planCode: string
+  planCode: string | null
   portal: PortalRule
   product: ProductRule
   productCode: string

@@ -275,8 +275,6 @@ exports[`<ProductDetailPage /> should render correctly 1`] = `
         </svg>
       </button>
     </div>
-    dsdsds
-    $ 0,00
     <span
       aria-hidden="true"
       class="divider h-16 mb-16 mt-16 -mx-24"

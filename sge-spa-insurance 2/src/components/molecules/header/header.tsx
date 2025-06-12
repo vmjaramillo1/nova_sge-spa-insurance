@@ -33,6 +33,9 @@ const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
         </div>
         <Skeleton width="120px" height="16px" className="header__title--loading" />
         <div className="header__box" aria-hidden="true" />
+        <div className="header__box" aria-hidden="true">
+          <Skeleton width="24px" height="24px" className="header__back--loading" />
+        </div>
       </div>
     )
   }

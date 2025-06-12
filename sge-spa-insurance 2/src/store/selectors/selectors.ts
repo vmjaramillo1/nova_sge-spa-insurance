@@ -20,14 +20,20 @@ export const selectorPortalHub = createSelector(
 //#endregion
 
 //#region App
+
+export const selectorOfferProducts = createSelector(
+  (store: RootState) => store.app.offer,
+  (offer) => offer
+)
+
 export const selectorProducts = createSelector(
   (store: RootState) => store.app.products,
   (products) => products
 )
 
 export const selectorAccounts = createSelector(
-  (store: RootState) => store.app.accounts,
-  (accounts) => accounts
+  (store: RootState) => store.app.paymentOptions,
+  (paymentOptions) => paymentOptions
 )
 
 export const selectorPlans = createSelector(

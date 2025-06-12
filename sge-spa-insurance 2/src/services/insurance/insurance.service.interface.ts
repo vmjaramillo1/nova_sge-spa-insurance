@@ -1,8 +1,8 @@
-import { MergeOfferablePreviousType } from '@app/utils/enums'
 import { OfferableProduct, Response } from '@app/utils/interfaces'
-import { PortalRule } from '@app/utils/interfaces'
+import { PortalRule, AccountRule, ClientRule } from '@app/utils/interfaces'
 import { ResponseWithResult } from '@app/utils/interfaces'
 
+//#region Session
 export interface KeyAndTransactionReference {
   key: string
   transactionReference: string
@@ -23,6 +23,7 @@ export interface PersonInformation {
 export type IdentityValues = PersonSession & PersonInformation
 
 type ParamsToBody<T> = Omit<T, 'identity'> & PersonInformation
+//#endregion
 
 //#region ValidateOffer
 export interface ValidateOfferParams {
@@ -31,17 +32,37 @@ export interface ValidateOfferParams {
 
 export type ValidateOfferBody = ParamsToBody<ValidateOfferParams>
 
+interface OfferableProducts {
+  productCode: string
+  portalCode: string
+}
+
+interface PreviousProducts {
+  source: string
+  contract: string
+  relatedProductCode: string
+  portalCode: string
+}
+
 // todo validar eso con servicio posterior
+interface ValidateValue {
+  transactionReference: string
+  lopdpAcceptation: boolean
+  offerableProducts: Array<OfferableProducts>
+  previousProducts: Array<PreviousProducts>
+  availablePaymentOptions: {
+    accounts: {
+      savings: Array<AccountRule>
+      checking: Array<AccountRule>
+    }
+    cards: Array<AccountRule>
+  }
+  portal: PortalRule
+  client: ClientRule
+}
+
 interface ValidateOfferResult {
-  value: {
-    key: string
-    transactionReference: string
-  }
-  odds: {
-    code: string
-    message: string
-    value: PortalRule
-  }
+  value: ValidateValue
 }
 
 export type ValidateOfferResponse = Response<ValidateOfferResult>
@@ -49,45 +70,38 @@ export type ValidateOfferResponse = Response<ValidateOfferResult>
 //#endregion
 
 //#region FindOffer
-export interface FindOfferParams extends KeyAndTransactionReference {
+// todo eliminar el key en caso de ser necessario
+export interface FindOfferParams {
   identity: PersonInformation
+  offerableProducts?: Array<{
+    productCode: string
+    portalCode: string
+  }>
+  transactionReference: string
 }
 
 export type FindOfferBody = ParamsToBody<FindOfferParams>
 
-export interface AccountInfo {
-  hash: string
-  mask: string
-  type: string
-  balance: number
-  alias: string | null
-  favorite: boolean
-  value: string
-}
-
 export interface LopdpResult {
-  hasConsent: boolean | null
   acceptedTermsConditions: boolean
   url: string
 }
 
 export interface MergeOfferPrevious {
-  type: MergeOfferablePreviousType
   data: Array<OfferableProduct> | null
 }
 
-export type MergeOfferPreviousList = Array<MergeOfferPrevious>
+export type MergeOfferPreviousList = Array<OfferableProduct>
 
 export interface FindOfferResult {
-  lopdp: LopdpResult
-  accounts: Array<AccountInfo>
-  odds: MergeOfferPreviousList
+  value: OfferableProduct | null
 }
 
 export type FindOfferResponse = Response<FindOfferResult>
 
 export interface PortalHubOffer extends ResponseWithResult<FindOfferResult> {
-  portalHub: PortalRule
+  validateResult: ValidateValue
+  offerResult: Array<OfferableProduct>
 }
 
 //#endregion

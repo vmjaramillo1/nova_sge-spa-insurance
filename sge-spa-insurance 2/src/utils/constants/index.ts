@@ -1,6 +1,7 @@
 export const INSURANCE_PORTAL_NAME = 'Seguros'
+export const PREVIOUS_PORTAL_NAME = 'Seguros contratados'
 export const TERMS_AND_CONDITIONS_NAME = 'Autorización de uso de datos'
-export const PRODUCT_NAME = 'Seguro por robos y fraudes'
+export const PRODUCT_NAME_FRAUD = 'Seguro por robos y fraudes'
 
 export const ALLOW_DEVTOOLS = ['development', 'local'].includes(
   process.env.REACT_APP_ENVIRONMENT ?? ''
@@ -15,6 +16,11 @@ export const CARD_BRANDS = {
 export const PAYMENT_METHODS = {
   ACCOUNT: 'ACCOUNT',
   CREDIT_CARD: 'CREDIT_CARD',
+}
+
+export const ACCOUNT_TYPES = {
+  SAVING_ACCOUNT: 'SAVING_ACCOUNT',
+  CHECKING_ACCOUNT: 'CHECKING_ACCOUNT',
 }
 
 export const BASE_PATH = process.env.PUBLIC_URL ?? '/'

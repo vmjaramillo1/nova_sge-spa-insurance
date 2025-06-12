@@ -1,8 +1,6 @@
 import { FC, PropsWithChildren, ReactNode } from 'react'
 import { MemoryRouter, Outlet, Route, Routes } from 'react-router-dom'
 
-// import { FlowProvider, FlowState } from '@app/context/flow-context'
-// import { GlobalProvider, GlobalState } from '@app/context/global-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { BrowserRouter } from 'react-router-dom'
@@ -32,34 +30,6 @@ export const WrapperRoutes: FC<PropsWithChildren<WrapperRoutesProps>> = ({
   </MemoryRouter>
 )
 
-// export interface WrapperProvidersProps {
-//   // flow?: Partial<FlowState>
-//   // global?: Partial<GlobalState>
-// }
-
-// export const WrapperProviders: FC<PropsWithChildren<WrapperProvidersProps>> = ({
-//   children,
-//   flow = {},
-//   global = {},
-// }) => (
-//   <QueryClientProvider client={new QueryClient()}>
-//     <GlobalProvider initialValues={{ ...global }}>
-//       <FlowProvider initialValues={{ ...flow }}>{children}</FlowProvider>
-//     </GlobalProvider>
-//   </QueryClientProvider>
-// )
-
-// export const createWrapper = (
-//   providers?: WrapperProvidersProps,
-//   routing?: WrapperRoutesProps
-// ): FC<PropsWithChildren> => {
-//   return ({ children }) => (
-//     <WrapperProviders {...providers}>
-//       <WrapperRoutes {...routing}>{children}</WrapperRoutes>
-//     </WrapperProviders>
-//   )
-// }
-
 export const makeStore = (preloadedState = {}) =>
   configureStore({
     reducer: {
@@ -82,15 +52,35 @@ export const createWrapperStore = (
   )
 }
 
+import { useOutletContext } from 'react-router-dom'
+
+type WrapperOptions = {
+  outletValues?: any
+  routes?: React.ReactNode
+  initialEntries?: string[]
+}
+
 export const createWrapperMemoryStore = (
-  store: ReturnType<typeof makeStore>,
-  routing?: WrapperRoutesProps
+  preloadedState: Parameters<typeof makeStore>[0],
+  options: WrapperOptions = {}
 ): FC<PropsWithChildren> => {
+  const store = makeStore(preloadedState)
+
+  if (options.outletValues) {
+    ;(useOutletContext as jest.Mock).mockReturnValue(options.outletValues)
+  }
+
+  const client = new QueryClient()
+
   return ({ children }) => (
     <Provider store={store}>
-      <QueryClientProvider client={new QueryClient()}>
-          <WrapperRoutes {...routing}>{children}</WrapperRoutes>
-          {children}
+      <QueryClientProvider client={client}>
+        <MemoryRouter initialEntries={options.initialEntries || ['/']}>
+          <Routes>
+            {options.routes}
+            <Route path="*" element={children} />
+          </Routes>
+        </MemoryRouter>
       </QueryClientProvider>
     </Provider>
   )

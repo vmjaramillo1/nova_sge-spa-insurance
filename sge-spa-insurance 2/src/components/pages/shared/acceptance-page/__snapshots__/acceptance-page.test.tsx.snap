@@ -7,7 +7,9 @@ exports[`<AcceptancePage /> should render 1`] = `
   >
     <h1
       class="text-title font-semibold text-blue-500 text-center mb-24"
-    />
+    >
+      Confirma los datos para la contratación
+    </h1>
     <div
       class="acceptance-page__logo mb-24"
     >
@@ -615,35 +617,45 @@ exports[`<AcceptancePage /> should render 1`] = `
       </div>
     </div>
     <div
-      aria-label=""
+      aria-label="Vas a pagar 4 dólares con 9 centavos. De la cuenta: Corriente. A la empresa: Novaecuador S.A. Por el producto: Seguro por robos y fraudes. Cobertura total. Póliza maestra número: 5 0 1 5 7"
       class="text-center mb-24"
     >
       <p
         aria-hidden="true"
         class="text-body font-medium mb-4"
-      />
+      >
+        Vas a pagar mensual: $ 4,09 inc. impuestos
+      </p>
       <p
         aria-hidden="true"
         class="text-body text-dark-gray-400 mb-16"
-      />
+      >
+        De la cuenta: Corriente
+      </p>
       <p
         aria-hidden="true"
         class="text-body font-medium mb-16"
       >
+        A la empresa:
          
         <br />
+        Novaecuador S.A.
       </p>
       <p
         aria-hidden="true"
         class="text-body font-medium mb-4"
       >
+        Por el producto:
          
         <br />
+        Seguro por robos y fraudes. Cobertura Total
       </p>
       <p
         aria-hidden="true"
         class="text-body text-dark-gray-400"
-      />
+      >
+        Póliza maestra nro.: 50157
+      </p>
     </div>
     <div
       class="mt-auto"

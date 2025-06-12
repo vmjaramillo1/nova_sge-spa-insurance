@@ -9,6 +9,7 @@
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
     "@mui/material": "^5.12.3",
+    "@pichincha/channels-event-bus": "^1.0.4",
     "@pichincha/encrypt-microsite": "1.0.6",
     "@pichincha/events-microsite": "1.0.40",
     "@reduxjs/toolkit": "^2.7.0",

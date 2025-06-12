@@ -27,7 +27,7 @@ const ProductDetailPage = () => {
       <div className="product-detail">
         <Banner
           classes={{
-            root: 'product-detail__banner  mb-24',
+            root: 'product-detail__banner mb-24',
           }}
           variant="secondary"
         >

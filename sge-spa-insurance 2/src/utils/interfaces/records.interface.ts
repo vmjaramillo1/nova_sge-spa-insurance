@@ -69,8 +69,6 @@ type ItemPeriodicity = Omit<
 
 export type RecordPeriodicityWithPrice = Record<string, ItemPeriodicity & ItemPrice>
 
-export type RecordPeriodicity = Record<string, ItemPeriodicity>
-
 export interface ReducePlanReturn {
   code: string
   name: string
@@ -81,4 +79,13 @@ export interface ReducePlanReturn {
 
 export type RecordPlan = Record<string, WithOutCode<ReducePlanReturn>>
 
-export type RecordAccount = Record<string, AccountRule>
+export type RecordAccountWithType = {
+  hash: string
+  mask: string
+  type: string
+  balance: number
+  alias: string | null
+  favorite: boolean
+  allowsTransact: boolean
+  paymentType: string
+}

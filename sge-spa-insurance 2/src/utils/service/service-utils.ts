@@ -30,7 +30,6 @@ export function validateResult<TResult>(result: AxiosResponse<Response<TResult>>
   }
 
   const { data: response } = result
-
   if (!isSuccessResponse(response)) {
     throw new ResponseError(response)
   }

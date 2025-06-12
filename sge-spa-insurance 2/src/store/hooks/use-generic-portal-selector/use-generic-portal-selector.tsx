@@ -75,7 +75,6 @@ export function useGenericProductByCodeSelector<P extends PortalType>(
   const typedProducts = products as unknown as AppProducts<
     PortalDetails<PortalTypeMap[P]['content'], PortalTypeMap[P]['params']>
   >
-
   const productCode = portalProductCodes[portalType]
   const product = typedProducts[productCode]
 

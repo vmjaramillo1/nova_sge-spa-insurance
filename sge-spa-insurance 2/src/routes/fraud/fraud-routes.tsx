@@ -7,7 +7,7 @@ import ProductDetail, {
 } from '@app/components/pages/shared/product-detail-page'
 import AcceptancePage from '@app/components/pages/shared/acceptance-page'
 import ProductPage from '@app/components/pages/shared/product-page'
-import SuccessPage from '@app/components/pages/success-page'
+import SuccessPage from '@app/components/pages/shared/success-page'
 import { type RouteObject } from 'react-router-dom'
 
 const FraudRoutes: Array<RouteObject> = [

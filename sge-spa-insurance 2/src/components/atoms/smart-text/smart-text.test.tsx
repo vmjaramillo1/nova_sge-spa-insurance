@@ -14,14 +14,14 @@ const store = makeStore({
   global: globalValues,
 })
 
-const Wrapper = createWrapperStore(store)
+const wrapper = createWrapperStore(store)
 
 describe('<SmartContent />', () => {
   it('should render normal content', () => {
     const test = 'Test de data'
 
     render(<SmartContent>{test}</SmartContent>, {
-      wrapper: Wrapper,
+      wrapper: wrapper,
     })
 
     const textData = screen.getByText('Test de data')
@@ -47,7 +47,7 @@ describe('<SmartContent />', () => {
         <SmartContent>{contentP}</SmartContent>
       </>,
       {
-        wrapper: Wrapper,
+        wrapper: wrapper,
       }
     )
 
@@ -69,7 +69,7 @@ describe('<SmartContent />', () => {
     const test = '{{flow.shared.productCode}}'
 
     render(<SmartContent>{test}</SmartContent>, {
-      wrapper: Wrapper,
+      wrapper: wrapper,
     })
 
     screen.debug()
@@ -108,7 +108,7 @@ describe('<SmartContent />', () => {
         <SmartContent>{toDateText}</SmartContent>
       </>,
       {
-        wrapper: Wrapper,
+        wrapper: wrapper,
       }
     )
 

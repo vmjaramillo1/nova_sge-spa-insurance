@@ -6,5 +6,6 @@ export * from './records.interface'
 export * from './response.interface'
 export * from './rule.interface'
 export * from './utility'
+export * from './client.interface'
 
 export * from './portal-products'

@@ -43,7 +43,7 @@ const useAcceptance = () => {
       )
     }
 
-    const { type: accountType, value: accountValue } = currentAccount
+    const { type: accountType, accountHash: accountValue } = currentAccount
     const { cif, dni, dniType } = identity
     const [paymentMethodCode] = Object.keys(plans[planSelected].paymentMethodOptions)
 
@@ -55,7 +55,7 @@ const useAcceptance = () => {
       transactionReference,
       acceptanceReference,
       accountType,
-      accountValue,
+      accountValue, // todo asjutar aqui antes se vnaia el valuer pero ya no existe
       paymentMethodCode,
       paymentPeriodicityCode: periodicitySelected,
       planCode: planSelected,
@@ -82,6 +82,8 @@ const useAcceptance = () => {
       aux: periodicity?.name?.toLowerCase(),
       aux2: method?.name?.toLowerCase(),
     })
+
+    // todo emitir evento de tracking de MOENGAGE
 
     return response
   }

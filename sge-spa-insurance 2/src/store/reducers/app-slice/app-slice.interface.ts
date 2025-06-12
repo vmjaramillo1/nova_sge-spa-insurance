@@ -1,7 +1,6 @@
-import {
-  AccountInfo,
-  LopdpResult,
-} from '@app/services/insurance/insurance.service.interface'
+import { LopdpResult } from '@app/services/insurance/insurance.service.interface'
+
+import { RecordAccountWithType } from '@app/utils/interfaces'
 
 import {
   Sale,
@@ -23,14 +22,32 @@ export interface Products<TPortal> {
   plans: RecordPlan
   portal: TPortal
   sale: Sale | null
-  hasOffer: boolean
+}
+
+export type OfferableProduct = {
+  productCode: string
+  portalCode: string
+}
+interface PreviousProducts {
+  source: string
+  contract: string
+  portalCode: string
+}
+
+interface OfferProducts {
+  offerableProducts: Array<OfferableProduct>
+  previousProducts: Array<PreviousProducts>
 }
 
 export type AppProducts<TPortal> = Record<string, Products<TPortal>>
-export type AppAccounts = Record<string, AccountInfo>
+export type AppAccounts = {
+  accounts: Record<string, RecordAccountWithType>
+  cards: Record<string, RecordAccountWithType>
+}
 
 export interface AppState<TPortal> {
+  offer: OfferProducts
   products: AppProducts<TPortal>
-  accounts: AppAccounts
+  paymentOptions: AppAccounts
   lopdp: LopdpResult
 }

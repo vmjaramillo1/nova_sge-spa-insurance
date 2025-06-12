@@ -5,6 +5,8 @@ import Button from '@app/components/atoms/button'
 import SmartContent from '@app/components/atoms/smart-text'
 import useTermsAndConditionPage from './use-terms-and-condition-page'
 import DocumentCheckIcon from '@app/components/icons/DocumentCheckIcon'
+
+// todo ajustar
 const TermsAndConditionPage = () => {
   const content = {
     title: {

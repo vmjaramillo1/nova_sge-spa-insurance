@@ -1,13 +1,19 @@
 @use "../../../styles/utils/index.scss";
+@use "../../../styles/utils/colors.scss" as colors;
 
-.previous-product {
+
+.previous-product-page {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 
-  &__card {
-    @extend .px-24;
-    @extend .py-16;
-    border: 1px solid #DEE3ED;
-    border-radius: 8px;
+  &__title {
+    color: map-get(colors.$dark-gray, 500);
+  }
+
+  &__content {
+    min-height: 100vh;
+    background-color: map-get(colors.$dark-grayish-blue, 50);
   }
 
   &__actions {
@@ -16,29 +22,27 @@
   }
 }
 
-.circle-icon {
-  flex: 1;
+
+.back-home-card {
+  margin-bottom: 24px;
+	width: 100%;
+	min-width: 290px;
+	padding: 24px;
+	border-radius: 8px;
+	border: 1px solid #00000040;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  &__icon {
-    @extend .h-48;
-    @extend .w-48;
+  background-color: white;
 
+  &__action {
+    margin-top: 8px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    border-radius: 100%;
-    background: #F4F6F9;
-    border: 1px solid #E9ECF3;
-  }
-
-  &__description {
-    @extend .text-center;
-    @extend .text-blue-500;
-    @extend .font-medium;
+    padding: 8px 16px;
+    gap: 16px;
+  color: map-get(colors.$blue, 500);
+    border-radius: 8px;
+	  border: 2px solid map-get(colors.$blue, 500);;
   }
 }

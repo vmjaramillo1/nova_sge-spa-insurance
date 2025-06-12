@@ -9,7 +9,7 @@ export const flowValues = Object.freeze({
     key: 'aUYg77Dfr/mA8NhDEHfVRbksKZjbdPnuV3ARE29k3vCL2/dnEgSBJl1xbo/Dey3t5LXDvGIRgV7QUAvEacJSHKqyrns3ej5fFPxl59bAxPBTM4cONP2NyRJKomx9RmLA9QOv9x4=',
     contentLoaded: true,
     step: 'GENERAL_ERROR',
-    status: 'WAIT_LOAD',
+    status: 'NORMAL',
   },
 })
 

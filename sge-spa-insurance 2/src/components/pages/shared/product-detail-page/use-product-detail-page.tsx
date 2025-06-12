@@ -16,7 +16,7 @@ import { APP_ROUTES, AllRouteAliases } from '@app/routes/config'
 
 import useAppSelector from '@app/hooks/use-app-selector'
 import useModal from '@app/hooks/use-modal/use-modal'
-import { CoverageItem } from '@app/store/hooks/use-generic-portal-selector/use-portal-fraud-selector.interface'
+import { CoverageItem } from '@app/store/hooks/use-generic-portal-selector/use-portal-shared-selector.interface'
 import { selectorProductCode } from '@app/store/selectors/selectors'
 import useGenericPortalByCodeSelector, {
   type PortalType,

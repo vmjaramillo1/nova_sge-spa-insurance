@@ -7,6 +7,7 @@ import {
   TrackingService,
   TrackApplication,
 } from '@pichincha/events-microsite'
+import { TrackingEvents } from '@app/utils/messages/tracking-events'
 
 export const LocalEvents = {
   HEADER_PRESS_EVENT: PackageLocalEvents.HEADER_PRESS_EVENT,
@@ -64,7 +65,29 @@ export function goBackHome() {
   MessageService.sendMessage(message)
 }
 
+// export function pushTrackEvent(eventName: string) {
+//   TrackingService.pushTrackEvent(TrackApplication.APPSFLYER, {
+//     eventName,
+//   })
+// }
+
 export function pushTrackEvent(eventName: string) {
+  if (
+    [TrackingEvents.ONBOARDING_VIEW_PAGE, TrackingEvents.SUCCESS_VIEW_PAGE].includes(
+      eventName
+    )
+  ) {
+    MessageService.sendMessage({
+      type: WebviewMessages.PUSH_TRACK_EVENT,
+      customData: {
+        eventName,
+        eventValues: {
+          tool: 'Moengage',
+        },
+      },
+    })
+  }
+ 
   TrackingService.pushTrackEvent(TrackApplication.APPSFLYER, {
     eventName,
   })

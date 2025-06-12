@@ -107,7 +107,6 @@ const useAcceptancePage = () => {
     try {
       pushTrackEvent(TrackingEvents.ACCEPT_CLICK_CTA)
       callModal(callModal.OPEN)
-
       await acceptanceCallback(softToken)
 
       dispatch(setFlowStatus(FlowStatus.END_SUCCESS))
@@ -127,7 +126,7 @@ const useAcceptancePage = () => {
     }
   }
 
-  const currentAccountFormat = ACCOUNT_FORMATS[currentAccount!.type]
+  const currentAccountFormat = ACCOUNT_FORMATS[currentAccount!.paymentType]
 
   const softTokenAria = useMemo(() => {
     const splittedTokenAria = softToken.split('').join(' ')

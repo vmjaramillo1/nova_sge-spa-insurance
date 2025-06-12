@@ -34,10 +34,11 @@ const useModalAccount = () => {
   }
 
   const { accountList, creditCards } = useMemo(() => {
-    const hashAccountList = Object.keys(sourceAccounts)
+    const allPaymentsTypes = { ...sourceAccounts.accounts, ...sourceAccounts.cards }
+    const hashAccountList = Object.keys(allPaymentsTypes)
 
     const allAccounts = hashAccountList.map((hashAccount) => {
-      const account = sourceAccounts[hashAccount]
+      const account = allPaymentsTypes[hashAccount]
 
       const format = ACCOUNT_FORMATS[account.type] || ACCOUNT_FORMATS.DEFAULT
       const ariaLastNumbers = getAriaAccountNumber(account.mask)
@@ -75,7 +76,6 @@ const useModalAccount = () => {
     )
     return { accountList, creditCards }
   }, [sourceAccounts, accountSelected])
-
 
   const handleSelect = (code: string, paymentMethod: string) => {
     dispatch(setSelectedAccount(code))

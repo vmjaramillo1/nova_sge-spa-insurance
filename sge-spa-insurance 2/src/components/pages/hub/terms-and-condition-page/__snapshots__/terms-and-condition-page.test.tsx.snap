@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TermsAndConditionPage /> should render correctly 1`] = `
+<div>
+  <div
+    class="terms-and-condition"
+  >
+    <div
+      class="terms-and-condition__icon mb-16"
+    >
+      <pichincha-icon
+        aria-hidden="true"
+        color="info"
+        size="36px"
+        type="--round"
+        weight_color="400"
+      >
+        info
+      </pichincha-icon>
+    </div>
+    <h1
+      aria-label="Autorización"
+      class="text-title terms-and-condition__title mb-16"
+    >
+      Autorización
+    </h1>
+    <p
+      aria-label="Tu seguridad es nuestra prioridad. Usamos tu información para ofrecerte seguros a tu medida, pensados en lo que realmente necesitas."
+      class="text-body terms-and-condition__description mb-16"
+    >
+      Tu seguridad es nuestra prioridad. Usamos tu información para ofrecerte seguros a tu medida, pensados en lo que realmente necesitas.
+    </p>
+    <div
+      class="check-legal terms-and-condition__disclaimer mb-24"
+    >
+      <div
+        class="check-legal__checkbox"
+      >
+        <span
+          class="inline-block"
+        >
+          <input
+            aria-labelledby=":r0:"
+            checked=""
+            class="checkbox"
+            type="checkbox"
+            value="true"
+          />
+        </span>
+        <label
+          aria-hidden="true"
+          class="text-legal check-legal__content"
+          id=":r0:"
+        >
+          <p
+            class="text-caption"
+          >
+            He leído y autorizo el tratamiento de mis datos
+          </p>
+        </label>
+      </div>
+    </div>
+    <a
+      class="text-legal no-underline font-semibold text-information-500 cursor-pointer terms-and-condition__document-link"
+      href="#"
+      tabindex="0"
+    >
+      <svg
+        aria-hidden="true"
+        fill="none"
+        height="17"
+        role="img"
+        viewBox="0 0 14 17"
+        width="14"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6.12492 14L10.8333 9.29163L9.62492 8.08329L6.10408 11.6041L4.35408 9.85413L3.16659 11.0416L6.12492 14ZM1.99992 17.3333C1.54159 17.3333 1.14922 17.1701 0.822835 16.8437C0.496446 16.5173 0.333252 16.125 0.333252 15.6666V2.33329C0.333252 1.87496 0.496446 1.4826 0.822835 1.15621C1.14922 0.82982 1.54159 0.666626 1.99992 0.666626H8.66658L13.6666 5.66663V15.6666C13.6666 16.125 13.5034 16.5173 13.177 16.8437C12.8506 17.1701 12.4583 17.3333 11.9999 17.3333H1.99992ZM7.83325 6.49996V2.33329H1.99992V15.6666H11.9999V6.49996H7.83325Z"
+          fill="#2F7ABF"
+        />
+      </svg>
+      <span
+        class="ml-8"
+      >
+        Ver documento completo
+      </span>
+    </a>
+    <button
+      aria-label="Guardar"
+      class="button button--primary mt-auto floating-button"
+      type="button"
+    >
+      Guardar
+    </button>
+  </div>
+</div>
+`;

@@ -4,6 +4,7 @@ import './insurance-page.scss'
 import Banner from '@app/components/atoms/banner'
 import ProductCard from '@app/components/atoms/product-card'
 import useInsurancePage from './use-insurance-page'
+import SmartContent from '@app/components/atoms/smart-text'
 
 const FamilyIcon = lazy(() => import('@app/components/icons/FamilyUnitIcon'))
 
@@ -24,7 +25,7 @@ const InsurancePage = () => {
             className="insurance-page__title mr-4"
             aria-label={heroContent.title.aria}
           >
-            {heroContent.title.value}
+            <SmartContent>{heroContent.title.value}</SmartContent>
           </Typography>
 
           <FamilyIcon />
