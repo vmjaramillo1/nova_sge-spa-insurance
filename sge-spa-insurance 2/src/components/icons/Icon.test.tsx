@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import BPIcon from './BPIcon'
 import DownloadIcon from './DownloadIcon'
-import FraudsIcon from './FraudsIcon'
-import InsuranceIcon from './InsuranceIcon'
+import FraudsIcon from './FraudsIconBanner'
+import InsuranceIconTuBanPro from './InsuranceIconTuBanPro'
 import ArrowIcon from './ArrowIcon'
 import SuccessIcon from './SuccessIcon'
 import WhatsappIcon from './WhatsappIcon'
@@ -94,7 +94,7 @@ describe('<FraudsIcon />', () => {
 
 describe('<InsuranceIcon />', () => {
   it('should be render', () => {
-    render(<InsuranceIcon width={56} height={56} />)
+    render(<InsuranceIconTuBanPro width={56} height={56} />)
 
     const iconEl = screen.getByRole('img', {
       hidden: true,

@@ -111,7 +111,6 @@ interface SelectAccount {
 }
 
 // Acceptance
-
 interface Acceptance {
   title: string
   descriptions: DescriptionsAttr

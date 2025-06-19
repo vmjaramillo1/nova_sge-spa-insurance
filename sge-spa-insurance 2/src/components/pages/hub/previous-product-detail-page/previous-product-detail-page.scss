@@ -1,7 +1,7 @@
-@use "../../../styles/utils/index.scss";
-@use "../../../styles/utils/colors.scss" as colors;
+@use "../../../../styles/utils/index.scss";
+@use "../../../../styles/utils/colors.scss" as colors;
 
-.previous-product {
+.previous-product-detail {
   flex: 1;
 
   &__card {
@@ -10,6 +10,19 @@
     border: 1px solid #DEE3ED;
     border-radius: 8px;
   }
+
+  &__record{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__contact{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+  }
+
 
   &__actions {
     display: flex;
@@ -31,7 +44,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
     border-radius: 100%;
     background: #F4F6F9;
     border: 1px solid #E9ECF3;
@@ -47,5 +59,3 @@
 .previous-product-fallback {
   background-color: map-get(colors.$dark-grayish-blue, 50);
 }
-
-

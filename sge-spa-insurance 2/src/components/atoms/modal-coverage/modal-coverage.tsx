@@ -105,7 +105,7 @@ const ModalCoverage: FC<ModalCoverageProps> = (props) => {
 
         <Divider className="h-16 mb-16 mt-16 -mx-24" />
 
-        <div className="modal-coverage__coverages">
+        <div className="modal-coverage__coverages mb-82">
           <Typography
             variant="body"
             className="font-semibold text-dark-gray-500 my-16"

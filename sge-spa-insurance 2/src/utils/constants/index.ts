@@ -2,6 +2,21 @@ export const INSURANCE_PORTAL_NAME = 'Seguros'
 export const PREVIOUS_PORTAL_NAME = 'Seguros contratados'
 export const TERMS_AND_CONDITIONS_NAME = 'Autorización de uso de datos'
 export const PRODUCT_NAME_FRAUD = 'Seguro por robos y fraudes'
+export const PRODUCT_NAME_LIFE = 'Seguro de Vida + Salud'
+export const PRODUCT_NAME_PAYMENT = 'Forma de pago'
+export const PRODUCT_NAME_ACCEPTANCE = 'Confirmar contratación'
+
+export const PROD_CODE_LIFE_HEALTH = 'LIFE_HEALTH'
+export const PROD_CODE_TU_BAN_PRO = 'TU_BAN_PRO'
+
+export const PRODUCTS_CODES = [PROD_CODE_LIFE_HEALTH, PROD_CODE_TU_BAN_PRO] as const
+
+export const MAP_INSURANCE_STATUS = {
+  success: 'Estás al día',
+  error: 'Cancelado',
+  warning: 'Pendiente',
+  info: 'Pendiente',
+} as const
 
 export const ALLOW_DEVTOOLS = ['development', 'local'].includes(
   process.env.REACT_APP_ENVIRONMENT ?? ''

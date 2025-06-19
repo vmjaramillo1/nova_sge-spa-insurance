@@ -1,0 +1,76 @@
+import { useState } from 'react'
+import {
+  selectorProductCode,
+} from '@app/store/selectors/selectors'
+import { useNavigate } from 'react-router-dom'
+import {
+  useGenericProductByCodeSelector,
+  type PortalTypeLife,
+} from '@app/store/hooks/use-generic-portal-selector'
+import useAppSelector from '@app/hooks/use-app-selector'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
+import {
+  setPlanSelected,
+  setPeriodicitySelected,
+} from '@app/store/reducers/flow-slice'
+import { sortByOrder } from '@app/utils'
+import { APP_ROUTES } from '@app/routes/config'
+
+const usePlanSelectionPage = () => {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  const productCode = useAppSelector(selectorProductCode)
+  const [, productData] = useGenericProductByCodeSelector(
+    productCode as PortalTypeLife
+  )
+
+  const [selectedPlan, setSelectedPlan] = useState('LIFE_HEALTH_3')
+
+  const content = productData?.portal?.content?.multiOffer
+  const plans = productData?.plans
+  const benefitsCodes = Object.keys(content.benefits).sort()
+  const planCodes = Object.keys(plans)
+
+  const getIcon = (icon: string) => {
+    const color = icon === 'close' ? 'error' : 'success'
+
+    return (
+      <pichincha-icon size="20px" type="--outlined" color={color} weight-color="500">
+        {icon}
+      </pichincha-icon>
+    )
+  }
+
+  const handleNextPage = () => {
+    const periodicityOptions = sortByOrder(
+      Object.entries(plans[selectedPlan].periodicityOptions).map(
+        ([code, periodicity]) => ({
+          code,
+          order: periodicity.order,
+        })
+      )
+    )
+
+    const [firstPeriodicity] = periodicityOptions
+    dispatch(setPlanSelected(selectedPlan))
+    dispatch(setPeriodicitySelected(firstPeriodicity.code))
+    navigate(APP_ROUTES.PRODUCT_DETAIL)
+  }
+
+  const handleChangePlan = (planCode: string) => {
+    setSelectedPlan(planCode)
+  }
+
+  return {
+    content,
+    benefitsCodes,
+    planCodes,
+    getIcon,
+    selectedPlan,
+    handleChangePlan,
+    handleNextPage,
+  }
+}
+
+export default usePlanSelectionPage

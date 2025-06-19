@@ -203,7 +203,7 @@ export default class InsuranceService {
   ): Promise<ValidateOfferResponse> {
     const tempBaseUrl =
       'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-
+      // 'https://hub-seguros.free.beeceptor.com/hub'
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
     try {
@@ -219,7 +219,7 @@ export default class InsuranceService {
         cif: cif,
         channelProductCode: 'BP_BM_REQUESTS',
         transactionReference: 'd536b1b6-2057-eb23-a3df-3a1716ec58f6',
-        portalCode: 'POR_BP_EMB_PROD',
+        portalCode: 'POR_BP_BANCAMOVIL_EMB_PROD',
       }
 
       const endpoint = tempFormatEndpoint('validate')
@@ -237,13 +237,16 @@ export default class InsuranceService {
   static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
     const tempBaseUrl =
       'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+      // 'https://hub-seguros.free.beeceptor.com/hub'
 
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
     try {
       const request = {
-        productCode: 'TU_BAN_PRO',
-        portalCode: 'POR_BP_BANCAMOVIL_TU_BAN_PRO',
+        //productCode: 'TU_BAN_PRO',
+        // portalCode: 'POR_BP_BANCAMOVIL_TU_BAN_PRO',
+        productCode: 'LIFE_HEALTH',
+        portalCode: 'POR_BP_BANCAMOVIL_LIFE_HEALTH',
       }
 
       const endpoint = tempFormatEndpoint('offer')

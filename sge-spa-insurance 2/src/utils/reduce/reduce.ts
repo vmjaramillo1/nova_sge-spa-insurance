@@ -217,7 +217,6 @@ export function reduceAccounts(
 export function reduceOffer<TContent = unknown, TParams = Record<string, unknown>>(
   offer: OfferableProduct
 ) {
-  // debugger
   const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
     offer
 

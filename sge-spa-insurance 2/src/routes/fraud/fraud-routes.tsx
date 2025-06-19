@@ -9,8 +9,21 @@ import AcceptancePage from '@app/components/pages/shared/acceptance-page'
 import ProductPage from '@app/components/pages/shared/product-page'
 import SuccessPage from '@app/components/pages/shared/success-page'
 import { type RouteObject } from 'react-router-dom'
+import PlanSelection from '@app/components/pages/shared/plan-selection-page'
 
 const FraudRoutes: Array<RouteObject> = [
+  // PLAN_SELECTION
+  {
+    path: APP_ROUTES_CONFIG.PLAN_SELECTION.path,
+    element: (
+      <Page
+        title={APP_ROUTES_CONFIG.PLAN_SELECTION.title}
+        fallback={<ProductDetailPageFallback />}
+      >
+        <PlanSelection />
+      </Page>
+    ),
+  },
   {
     path: APP_ROUTES_CONFIG.PRODUCT_DETAIL.path,
     element: (
@@ -22,6 +35,7 @@ const FraudRoutes: Array<RouteObject> = [
       </Page>
     ),
   },
+
   {
     path: APP_ROUTES_CONFIG.PRODUCT.path,
     element: (

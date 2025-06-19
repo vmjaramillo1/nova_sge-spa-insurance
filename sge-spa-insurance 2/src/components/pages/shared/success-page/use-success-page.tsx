@@ -22,6 +22,7 @@ import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
 import { PeriodicityCode } from '@app/utils/enums'
 
 import useAppSelector from '@app/hooks/use-app-selector'
+import useBackButton from '@app/hooks/use-back-button'
 
 import {
   selectorPortal,
@@ -43,6 +44,8 @@ const useSuccessPage = () => {
 
   const planSelected = useAppSelector(selectorPlanSelected)
   const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
+
+  useBackButton(backHomeWithTracking(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK))
 
   usePageTrackingEvent(TrackingEvents.SUCCESS_VIEW_PAGE)
 

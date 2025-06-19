@@ -38,13 +38,16 @@ const useTermsAndConditionPage = () => {
 
   const [acceptTC, setAcceptTC] = useState<boolean>(lopdp.acceptedTermsConditions)
 
+  // todo validar traking
+  useBackButton(backHomeWithTracking(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK))
+  // todo validar el evento a enviar
+  usePageTrackingEvent(TrackingEvents.ONBOARDING_VIEW_PAGE)
+
   const canContinue = useMemo(() => {
     if (!lopdp.acceptedTermsConditions) return acceptTC
 
     return true
   }, [lopdp.acceptedTermsConditions, acceptTC])
-
-  useBackButton(backHomeWithTracking(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK))
 
   const handleAcceptTC = (value: boolean) => {
     pushTrackEvent(TrackingEvents.ONBOARDING_CHECK_TEXT)
@@ -55,9 +58,6 @@ const useTermsAndConditionPage = () => {
     pushTrackEvent(TrackingEvents.ONBOARDING_DOWNLOAD_LINK_LOPDP)
     openBrowser(lopdp.url)
   }
-
-  // todo validar el evento a enviar
-  usePageTrackingEvent(TrackingEvents.ONBOARDING_VIEW_PAGE)
 
   const handleContinue = async () => {
     if (canContinue && !lopdp.acceptedTermsConditions && !acceptTC) {

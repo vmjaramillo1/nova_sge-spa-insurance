@@ -6,6 +6,7 @@ import { WithIsActive, WithKey, WithOrder } from '@app/utils/interfaces'
 interface SectionHero {
   title: TextWhitAria
   description: TextWhitAria
+  bannerType: string
 }
 
 interface AccordionItem extends WithKey, WithOrder, WithIsActive {
@@ -156,11 +157,31 @@ export interface PageSuccessShared {
 //#region flow
 interface StepItem extends WithKey, WithOrder, WithIsActive {
   route: string
+  title: string
 }
 
 export interface ConfigurationFlowShared {
   steps: Array<StepItem>
 }
+//#endregion
+
+//#region MultiOffer
+
+interface OfferPlan {
+  header: string
+  row: Record<string, string>
+}
+
+export interface PageMultiOffer {
+  title: TextWhitAria
+  table: Record<string, OfferPlan>
+  benefits: Record<string, string>
+  actions: {
+    footer: string
+    cta: TextWhitAria
+  }
+}
+
 //#endregion
 
 //#region Reduced
@@ -169,6 +190,7 @@ export interface PortalSharedReducedDefault {
   payment: PagePaymentShared
   acceptance: PageAcceptanceShared
   success: PageSuccessShared
+  multiOffer: PageMultiOffer
   flow: ConfigurationFlowShared
 }
 //#endregion

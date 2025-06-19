@@ -6,6 +6,8 @@ import clsx from 'clsx'
 import ArrowIcon from '@app/components/icons/ArrowIcon'
 import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
 import Badge from '@app/components/atoms/badge'
+import CoverageRow from '@app/components/atoms/coverage-row'
+import { MAP_INSURANCE_STATUS } from '@app/utils/constants'
 
 interface RecordItem extends TextWhitAria {
   text: string
@@ -21,14 +23,7 @@ interface PreviousProductCard {
   handleClick: () => void
 }
 
-const MAP_STATUS = {
-  success: 'Estás al día',
-  error: 'Cancelado',
-  warning: 'Pendiente',
-  info: 'Pendiente',
-} as const
-
-export type StatusType = keyof typeof MAP_STATUS
+export type StatusType = keyof typeof MAP_INSURANCE_STATUS
 
 const PreviousProductCard = (props: PreviousProductCard) => {
   const { title, status, account, nextPayment, amount, action, handleClick } = props
@@ -43,7 +38,7 @@ const PreviousProductCard = (props: PreviousProductCard) => {
         >
           <SmartContent>{title.value}</SmartContent>
         </Typography>
-        {status && <Badge type={status}>{MAP_STATUS[status]}</Badge>}
+        {status && <Badge type={status}>{MAP_INSURANCE_STATUS[status]}</Badge>}
       </div>
 
       <Typography
@@ -56,31 +51,26 @@ const PreviousProductCard = (props: PreviousProductCard) => {
 
       <Divider className="px-16 my-8" />
 
-      <div className="previous-product-card__record mt-4">
-        <Typography
-          variant="caption"
-          className="text-dark-gray-400"
-          aria-label={nextPayment.aria}
-        >
-          <SmartContent>{nextPayment.text}</SmartContent>
-        </Typography>
-        <Typography variant="caption" className="text-dark-gray-400 font-semibold">
-          <SmartContent>{nextPayment.value}</SmartContent>
-        </Typography>
-      </div>
-
-      <div className="previous-product-card__record mt-4">
-        <Typography
-          variant="caption"
-          className="text-dark-gray-400"
-          aria-label={amount.aria}
-        >
-          <SmartContent>{amount.text}</SmartContent>
-        </Typography>
-        <Typography variant="headline2" className="text-dark-gray-500 font-semibold">
-          <SmartContent>{amount.value}</SmartContent>
-        </Typography>
-      </div>
+      <CoverageRow
+        label={<SmartContent>{nextPayment.text}</SmartContent>}
+        value={<SmartContent>{nextPayment.value}</SmartContent>}
+        aria={nextPayment.aria}
+        classes={{
+          root: 'mt-4',
+          shared: 'text-dark-gray-400 text-caption',
+          value: 'font-semibold',
+        }}
+      />
+      <CoverageRow
+        label={<SmartContent>{amount.text}</SmartContent>}
+        value={<SmartContent>{amount.value}</SmartContent>}
+        aria={amount.aria}
+        classes={{
+          root: 'mt-4',
+          label: 'text-dark-gray-400 text-caption middle-content',
+          value: 'text-dark-gray-500 font-semibold text-headline2',
+        }}
+      />
 
       <Divider className="px-16 my-8" />
       <button

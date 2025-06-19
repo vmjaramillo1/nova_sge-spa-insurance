@@ -69,6 +69,8 @@ export function mapperRouts(routeCode: string) {
       return APP_ROUTES.IN_PROGRESS
 
     // PRODUCTS
+    case 'PLAN_SELECTION':
+      return APP_ROUTES.PLAN_SELECTION
     case 'PRODUCT_DETAIL':
       return APP_ROUTES.PRODUCT_DETAIL
     case 'PRODUCT':
@@ -79,6 +81,6 @@ export function mapperRouts(routeCode: string) {
       return APP_ROUTES.SUCCESS
 
     default:
-      return ''
+      return 'URL_NOT_MAP_FOUND'
   }
 }

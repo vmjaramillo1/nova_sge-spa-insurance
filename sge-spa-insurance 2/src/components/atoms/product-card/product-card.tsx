@@ -4,21 +4,20 @@ import Typography from '@app/components/atoms/typography'
 import clsx from 'clsx'
 import './product-card.scss'
 import ArrowIcon from '@app/components/icons/ArrowIcon'
-import InsuranceIcon from '@app/components/icons/InsuranceIcon'
 import CheckIcon from '@app/components/icons/CheckIcon'
 import { ProductCardProps } from './product-card.interface'
-import useProductCard from './use-product-card'
+import useProductCard, { ProductCode } from './use-product-card'
 
 const ProductCard = (props: ProductCardProps) => {
   const { title, description, paymentType, price, coverages, action, code } = props
 
-  const { handleClick } = useProductCard(action.urlTarget, code)
+  const { handleClick, MAPPER_ICONS } = useProductCard(action.urlTarget, code)
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleClick}>
       {/* Header */}
       <div className="product-card__header">
-        <InsuranceIcon width={40} height={40} />
+        {MAPPER_ICONS[code as ProductCode]}
         <Typography
           variant="body"
           className="product-card__title"
@@ -78,7 +77,6 @@ const ProductCard = (props: ProductCardProps) => {
       {/* footer */}
       <div>
         <button
-          onClick={handleClick}
           className={clsx('product-card__action')}
           type="button"
           aria-label={action.aria}

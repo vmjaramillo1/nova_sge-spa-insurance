@@ -14,7 +14,15 @@ import clsx from 'clsx'
 import ArrowIcon from '@app/components/icons/ArrowIcon'
 import ModalCoverage from '@app/components/atoms/modal-coverage'
 
-const FraudsIcon = lazy(() => import('@app/components/icons/FraudsIcon'))
+const FraudsIconBanner = lazy(() => import('@app/components/icons/FraudsIconBanner'))
+const LifeIconBanner = lazy(() => import('@app/components/icons/LifeIconBanner'))
+
+const MAP_BANNER = {
+  LIFE_HEALTH: LifeIconBanner,
+  TU_BAN_PRO: FraudsIconBanner,
+} as const
+
+type BannerType = keyof typeof MAP_BANNER
 
 // pagina de home de producto
 const ProductDetailPage = () => {
@@ -22,6 +30,14 @@ const ProductDetailPage = () => {
     useProductDetailPage()
 
   const { content, questions, coverages } = useContentProductDetailPage()
+
+  const bannerType = content.sectionHero.bannerType
+
+  const BannerIcon =
+    bannerType in MAP_BANNER
+      ? MAP_BANNER[bannerType as BannerType]
+      : FraudsIconBanner
+
   return (
     <>
       <div className="product-detail">
@@ -32,7 +48,7 @@ const ProductDetailPage = () => {
           variant="secondary"
         >
           <Suspense>
-            <FraudsIcon />
+            <BannerIcon />
           </Suspense>
         </Banner>
         <Typography
@@ -40,7 +56,7 @@ const ProductDetailPage = () => {
           className="product-detail__title mb-16"
           aria-label={content.sectionHero.title.aria}
         >
-          {content.sectionHero.title.value}
+          <SmartContent>{content.sectionHero.title.value}</SmartContent>
         </Typography>
         <Typography
           variant="body"

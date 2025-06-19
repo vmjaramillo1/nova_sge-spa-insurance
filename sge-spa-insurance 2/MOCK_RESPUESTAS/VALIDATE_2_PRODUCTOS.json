@@ -1,0 +1,1106 @@
+{
+    "code": "200",
+    "message": "OK",
+    "value": {
+        "transactionReference": "d536b1b6-2057-eb23-a3df-3a1716ec58f6",
+        "lopdpAcceptation": true,
+        "offerableProducts": [
+            {
+                "productCode": "LIFE_HEALTH",
+                "portalCode": "POR_BP_BANCAMOVIL_LIFE_HEALTH"
+            },
+            {
+                "productCode": "TU_BAN_PRO",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            }
+        ],
+        "previousProducts": [
+            {
+                "source": "EVA",
+                "contract": "6298340",
+                "productCode": "LIFE_HEALTH",
+                "relatedProductCode": "478|477|475|476",
+                "portalCode": "POR_BP_WB_LIFE"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298346",
+                "productCode": "SEG_DES_NOM_CON",
+                "relatedProductCode": "279|278|493",
+                "portalCode": "POR_BP_EMB_PRE_UNEMPY_DEP"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298377",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298378",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298348",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298407",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298410",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298414",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298415",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            },
+            {
+                "source": "EVA",
+                "contract": "6298417",
+                "productCode": "TU_BAN_PRO",
+                "relatedProductCode": "208|209|210|168|129|127|405|104|406|407|391|392|393|394|408|150|156|422|423|383|386|384|385|217|218|219|214",
+                "portalCode": "POR_BP_BANCAMOVIL_TU_BAN_PRO"
+            }
+        ],
+        "availablePaymentOptions": {
+            "accounts": {
+                "savings": [],
+                "checking": [
+                    {
+                        "accountHash": "6d6c774c6d685a6e7a63546d534543623437456b48426365566f436d4a4174683453764c686463556f6a303d",
+                        "accountMaskedNumber": "303021****",
+                        "availableBalance": "4264956.83",
+                        "favoriteStatus": false,
+                        "allowsTransact": true,
+                        "alias": null,
+                        "type": "CTA.CTE PERSONAL"
+                    },
+                    {
+                        "accountHash": "6d6c774c6d685a6e7a63546d534543623437456b48426365566f436d4a4174683453764c686463556f6a303d",
+                        "accountMaskedNumber": "303021****",
+                        "availableBalance": "4264956.83",
+                        "favoriteStatus": false,
+                        "allowsTransact": true,
+                        "alias": null,
+                        "type": "CTA.CTE PERSONAL"
+                    },
+                    {
+                        "accountHash": "6d6c774c6d685a6e7a63546d534543623437456b48426365566f436d4a4174683453764c686463556f6a303d",
+                        "accountMaskedNumber": "303021****",
+                        "availableBalance": "4264956.83",
+                        "favoriteStatus": false,
+                        "allowsTransact": true,
+                        "alias": null,
+                        "type": "CTA.CTE PERSONAL"
+                    },
+                    {
+                        "accountHash": "6d6c774c6d685a6e7a63546d534543623437456b48426365566f436d4a4174683453764c686463556f6a303d",
+                        "accountMaskedNumber": "303021****",
+                        "availableBalance": "4264956.83",
+                        "favoriteStatus": false,
+                        "allowsTransact": true,
+                        "alias": null,
+                        "type": "CTA.CTE PERSONAL"
+                    },
+                    {
+                        "accountHash": "6d6c774c6d685a6e7a63546d534543623437456b48426365566f436d4a4174683453764c686463556f6a303d",
+                        "accountMaskedNumber": "303021****",
+                        "availableBalance": "4264956.83",
+                        "favoriteStatus": false,
+                        "allowsTransact": true,
+                        "alias": null,
+                        "type": "CTA.CTE PERSONAL"
+                    }
+                ]
+            },
+            "cards": []
+        },
+        "portal": {
+            "params": [],
+            "sections": [
+                {
+                    "name": "Home",
+                    "code": "home",
+                    "isActive": true,
+                    "title": "Home",
+                    "description": "Home",
+                    "icon": "",
+                    "order": 0,
+                    "attributes": [
+                        {
+                            "key": "sectionHero",
+                            "value": "Default value",
+                            "type": "object",
+                            "order": 0,
+                            "isActive": true,
+                            "parentId": null,
+                            "attributes": [
+                                {
+                                    "key": "title",
+                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                    "type": "object",
+                                    "order": 0,
+                                    "isActive": true,
+                                    "parentId": "a1140c7f-e656-bbe6-3398-3a1a68db8bab",
+                                    "attributes": [
+                                        {
+                                            "key": "value",
+                                            "value": "{{flow.client.firstName}}, vive tranquilo, nosotros cuidamos de ti.",
+                                            "type": "string",
+                                            "order": 0,
+                                            "isActive": true,
+                                            "parentId": "333fe793-98ab-0c35-900e-3a1a68db8bb0",
+                                            "attributes": [],
+                                            "attributeValues": [],
+                                            "id": "d9593492-4d87-4190-c050-3a1a68db8bb6"
+                                        },
+                                        {
+                                            "key": "aria",
+                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                            "type": "string",
+                                            "order": 1,
+                                            "isActive": true,
+                                            "parentId": "333fe793-98ab-0c35-900e-3a1a68db8bb0",
+                                            "attributes": [],
+                                            "attributeValues": [],
+                                            "id": "626e69c9-ee44-21a1-41db-3a1a68db8bbd"
+                                        }
+                                    ],
+                                    "attributeValues": [],
+                                    "id": "333fe793-98ab-0c35-900e-3a1a68db8bb0"
+                                }
+                            ],
+                            "attributeValues": [],
+                            "id": "a1140c7f-e656-bbe6-3398-3a1a68db8bab"
+                        },
+                        {
+                            "key": "sectionProducts",
+                            "value": "Default value",
+                            "type": "object",
+                            "order": 1,
+                            "isActive": true,
+                            "parentId": null,
+                            "attributes": [
+                                {
+                                    "key": "cards",
+                                    "value": "Default value",
+                                    "type": "record",
+                                    "order": 0,
+                                    "isActive": true,
+                                    "parentId": "1301bd77-f18b-c616-1e5b-3a1a68db8bc2",
+                                    "attributes": [
+                                        {
+                                            "key": "TU_BAN_PRO",
+                                            "value": "Default value",
+                                            "type": "object",
+                                            "order": 0,
+                                            "isActive": true,
+                                            "parentId": "c5368aed-d48a-2c7a-70c4-3a1a68db8bc7",
+                                            "attributes": [
+                                                {
+                                                    "key": "title",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 0,
+                                                    "isActive": true,
+                                                    "parentId": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Seguro por Robos y Fraudes",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "1e91915b-a881-1719-8a47-3a1a68db8bd1",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "d3cff955-3838-c61d-1f46-3a1a68db8bd6"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "1e91915b-a881-1719-8a47-3a1a68db8bd1",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "54fbdfc2-63ef-c4c4-e67c-3a1a68db8bdb"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "1e91915b-a881-1719-8a47-3a1a68db8bd1"
+                                                },
+                                                {
+                                                    "key": "description",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 1,
+                                                    "isActive": true,
+                                                    "parentId": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": " Suma una <span className=\"font-semibold\">capa extra</span> de protección para tus cuentas y tarjetas.",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "87d2e669-48ce-e249-c326-3a1a68db8be1",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "109aa407-c94c-ba5c-ea93-3a1a68db8be6"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Suma una capa extra de protección para tus cuentas y tarjetas.",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "87d2e669-48ce-e249-c326-3a1a68db8be1",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "f809990a-b4e2-19fe-925f-3a1a68db8beb"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "87d2e669-48ce-e249-c326-3a1a68db8be1"
+                                                },
+                                                {
+                                                    "key": "paymentType",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 2,
+                                                    "isActive": true,
+                                                    "parentId": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Precio mensual",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "13c517fe-a9ee-6617-8e9a-3a1a68db8bf0",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "92de1231-62d7-61fb-aaa9-3a1a68db8bf6"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Precio mensual",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "13c517fe-a9ee-6617-8e9a-3a1a68db8bf0",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "67ff4980-9d3a-ced0-f084-3a1a68db8bfc"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "13c517fe-a9ee-6617-8e9a-3a1a68db8bf0"
+                                                },
+                                                {
+                                                    "key": "price",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 3,
+                                                    "isActive": true,
+                                                    "parentId": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "{{app.products.TU_BAN_PRO.plans.TU_BAN_PRO_2.periodicityOptions.MONTHLY.totalPrice::money()}}",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "57bdc4ca-6250-432d-3987-3a1a68db8c01",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "5de973e5-31d6-d0e8-f5d8-3a1a68db8c08"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "$4,09",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "57bdc4ca-6250-432d-3987-3a1a68db8c01",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "691e5553-7c6d-33f8-ff2e-3a1a68db8c0d"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "57bdc4ca-6250-432d-3987-3a1a68db8c01"
+                                                },
+                                                {
+                                                    "key": "coverages",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 4,
+                                                    "isActive": true,
+                                                    "parentId": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "items",
+                                                            "value": " <>\r\n  Suma una <span className=\"font-semibold\">capa extra</span> de protección para\r\n  tus cuentas y tarjetas.\r\n</>",
+                                                            "type": "array",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "5aef0718-3a16-d706-b79c-3a1a68db8c13",
+                                                            "attributes": [
+                                                                {
+                                                                    "key": "COBE176",
+                                                                    "value": "Default value",
+                                                                    "type": "object",
+                                                                    "order": 1,
+                                                                    "isActive": true,
+                                                                    "parentId": "62155010-8999-3008-60b3-3a1a68db8c18",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "key": "coverageCode",
+                                                                            "value": "COBE176",
+                                                                            "type": "string",
+                                                                            "order": 0,
+                                                                            "isActive": true,
+                                                                            "parentId": "93e86ca1-0975-c86b-f06f-3a1a68db8c1d",
+                                                                            "attributes": [],
+                                                                            "attributeValues": [],
+                                                                            "id": "3ed50a05-76d4-eaa6-dccf-3a1a68db8c22"
+                                                                        },
+                                                                        {
+                                                                            "key": "description",
+                                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                                            "type": "object",
+                                                                            "order": 1,
+                                                                            "isActive": true,
+                                                                            "parentId": "93e86ca1-0975-c86b-f06f-3a1a68db8c1d",
+                                                                            "attributes": [
+                                                                                {
+                                                                                    "key": "value",
+                                                                                    "value": "<strong>Hasta $10.000 al año por </strong>\r\ncargos fraudulentos en tus cuentas",
+                                                                                    "type": "string",
+                                                                                    "order": 0,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "f59b5abb-6a7e-d5c7-69a5-3a1a68db8c28",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "1396e4d7-fd9b-3a76-9675-3a1a68db8c2e"
+                                                                                },
+                                                                                {
+                                                                                    "key": "aria",
+                                                                                    "value": "Hsta $10.000 al año por cargos raudulentos en tus cuentas",
+                                                                                    "type": "string",
+                                                                                    "order": 1,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "f59b5abb-6a7e-d5c7-69a5-3a1a68db8c28",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "8482ef36-44df-345d-cc3e-3a1a68db8c33"
+                                                                                }
+                                                                            ],
+                                                                            "attributeValues": [],
+                                                                            "id": "f59b5abb-6a7e-d5c7-69a5-3a1a68db8c28"
+                                                                        }
+                                                                    ],
+                                                                    "attributeValues": [],
+                                                                    "id": "93e86ca1-0975-c86b-f06f-3a1a68db8c1d"
+                                                                },
+                                                                {
+                                                                    "key": "COBE177",
+                                                                    "value": "Default value",
+                                                                    "type": "object",
+                                                                    "order": 2,
+                                                                    "isActive": true,
+                                                                    "parentId": "62155010-8999-3008-60b3-3a1a68db8c18",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "key": "coverageCode",
+                                                                            "value": "COBE177",
+                                                                            "type": "string",
+                                                                            "order": 0,
+                                                                            "isActive": true,
+                                                                            "parentId": "2fe8b8f3-e2f7-cf94-d5f6-3a1a68db8c3a",
+                                                                            "attributes": [],
+                                                                            "attributeValues": [],
+                                                                            "id": "13c593fa-1896-fe43-800d-3a1a68db8c3f"
+                                                                        },
+                                                                        {
+                                                                            "key": "description",
+                                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                                            "type": "object",
+                                                                            "order": 1,
+                                                                            "isActive": true,
+                                                                            "parentId": "2fe8b8f3-e2f7-cf94-d5f6-3a1a68db8c3a",
+                                                                            "attributes": [
+                                                                                {
+                                                                                    "key": "value",
+                                                                                    "value": "<strong>Hasta $1.400 al año por </strong>\r\nrobos en cajeros o ventanillas",
+                                                                                    "type": "string",
+                                                                                    "order": 0,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "979df99b-1128-a259-331c-3a1a68db8c45",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "5b2a9f48-9919-6052-4072-3a1a68db8c4a"
+                                                                                },
+                                                                                {
+                                                                                    "key": "aria",
+                                                                                    "value": "Hasta $10.000 al año por robos en cajeros o ventanillas",
+                                                                                    "type": "string",
+                                                                                    "order": 1,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "979df99b-1128-a259-331c-3a1a68db8c45",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "7293125a-3940-8f6e-db8f-3a1a68db8c50"
+                                                                                }
+                                                                            ],
+                                                                            "attributeValues": [],
+                                                                            "id": "979df99b-1128-a259-331c-3a1a68db8c45"
+                                                                        }
+                                                                    ],
+                                                                    "attributeValues": [],
+                                                                    "id": "2fe8b8f3-e2f7-cf94-d5f6-3a1a68db8c3a"
+                                                                },
+                                                                {
+                                                                    "key": "COBE178",
+                                                                    "value": "Default value",
+                                                                    "type": "object",
+                                                                    "order": 3,
+                                                                    "isActive": true,
+                                                                    "parentId": "62155010-8999-3008-60b3-3a1a68db8c18",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "key": "coverageCode",
+                                                                            "value": "COBE178",
+                                                                            "type": "string",
+                                                                            "order": 0,
+                                                                            "isActive": true,
+                                                                            "parentId": "a752021f-7813-8193-c090-3a1a68db8c56",
+                                                                            "attributes": [],
+                                                                            "attributeValues": [],
+                                                                            "id": "07065c27-9827-8b5d-aa25-3a1a68db8c5b"
+                                                                        },
+                                                                        {
+                                                                            "key": "description",
+                                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                                            "type": "object",
+                                                                            "order": 1,
+                                                                            "isActive": true,
+                                                                            "parentId": "a752021f-7813-8193-c090-3a1a68db8c56",
+                                                                            "attributes": [
+                                                                                {
+                                                                                    "key": "value",
+                                                                                    "value": "<strong>Protección desde el primer día,  </strong>\r\ngarantizando el respaldo necesario",
+                                                                                    "type": "string",
+                                                                                    "order": 0,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "97f1b917-3fcd-5bd9-2fa0-3a1a68db8c61",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "11f7e7a8-066f-b05c-e652-3a1a68db8c66"
+                                                                                },
+                                                                                {
+                                                                                    "key": "aria",
+                                                                                    "value": "sta $10.000 al año por cargos fraudulentos en tus cuentas",
+                                                                                    "type": "string",
+                                                                                    "order": 1,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "97f1b917-3fcd-5bd9-2fa0-3a1a68db8c61",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "c7e5f36a-5fbb-bc80-5752-3a1a68db8c6c"
+                                                                                }
+                                                                            ],
+                                                                            "attributeValues": [],
+                                                                            "id": "97f1b917-3fcd-5bd9-2fa0-3a1a68db8c61"
+                                                                        }
+                                                                    ],
+                                                                    "attributeValues": [],
+                                                                    "id": "a752021f-7813-8193-c090-3a1a68db8c56"
+                                                                }
+                                                            ],
+                                                            "attributeValues": [],
+                                                            "id": "62155010-8999-3008-60b3-3a1a68db8c18"
+                                                        },
+                                                        {
+                                                            "key": "title",
+                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                            "type": "object",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "5aef0718-3a16-d706-b79c-3a1a68db8c13",
+                                                            "attributes": [
+                                                                {
+                                                                    "key": "value",
+                                                                    "value": "<strong>Este seguro cubre:</strong>",
+                                                                    "type": "string",
+                                                                    "order": 0,
+                                                                    "isActive": true,
+                                                                    "parentId": "4ace8a24-cf75-c409-bd60-3a1a68db8c72",
+                                                                    "attributes": [],
+                                                                    "attributeValues": [],
+                                                                    "id": "155d9dc9-4f13-40e9-5978-3a1a68db8c77"
+                                                                },
+                                                                {
+                                                                    "key": "aria",
+                                                                    "value": "Este seguro cubre:",
+                                                                    "type": "string",
+                                                                    "order": 1,
+                                                                    "isActive": true,
+                                                                    "parentId": "4ace8a24-cf75-c409-bd60-3a1a68db8c72",
+                                                                    "attributes": [],
+                                                                    "attributeValues": [],
+                                                                    "id": "f7e2f51b-14e8-4a02-602c-3a1a68db8c7e"
+                                                                }
+                                                            ],
+                                                            "attributeValues": [],
+                                                            "id": "4ace8a24-cf75-c409-bd60-3a1a68db8c72"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "5aef0718-3a16-d706-b79c-3a1a68db8c13"
+                                                },
+                                                {
+                                                    "key": "action",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 5,
+                                                    "isActive": true,
+                                                    "parentId": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "urlTarget",
+                                                            "value": "PRODUCT_DETAIL",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "cd14c41c-9d34-990f-5269-3a1a68db8c84",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "c00e6858-23e9-bdcf-9073-3a1a68db8c8a"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Descubre qué incluye tu seguro",
+                                                            "type": "string",
+                                                            "order": 2,
+                                                            "isActive": true,
+                                                            "parentId": "cd14c41c-9d34-990f-5269-3a1a68db8c84",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "5be55ce2-4f17-2795-1813-3a1a68db8c90"
+                                                        },
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Descubre qué incluye tu seguro",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "cd14c41c-9d34-990f-5269-3a1a68db8c84",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "81c5277d-b6b7-20a3-1115-3a1a68db8c96"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "cd14c41c-9d34-990f-5269-3a1a68db8c84"
+                                                }
+                                            ],
+                                            "attributeValues": [],
+                                            "id": "4d559fba-9bdd-c9cb-18e1-3a1a68db8bcc"
+                                        },
+                                        {
+                                            "key": "LIFE_HEALTH",
+                                            "value": "Default value",
+                                            "type": "object",
+                                            "order": 1,
+                                            "isActive": true,
+                                            "parentId": "c5368aed-d48a-2c7a-70c4-3a1a68db8bc7",
+                                            "attributes": [
+                                                {
+                                                    "key": "title",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 0,
+                                                    "isActive": true,
+                                                    "parentId": "7358cd61-f306-007b-0ef2-3a1a68db8cb2",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Seguro de Vida + Salud",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "dfc04244-d3e7-dc80-20d2-3a1a68db8cb7",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "bab9b456-55fe-319e-7635-3a1a68db8cbd"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Seguro de Vida + Salud",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "dfc04244-d3e7-dc80-20d2-3a1a68db8cb7",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "45fb9aff-50a3-3539-319a-3a1a68db8cc4"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "dfc04244-d3e7-dc80-20d2-3a1a68db8cb7"
+                                                },
+                                                {
+                                                    "key": "description",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 1,
+                                                    "isActive": true,
+                                                    "parentId": "7358cd61-f306-007b-0ef2-3a1a68db8cb2",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Protege los sueños y metas de tu familia asegurando tu <span className=\"font-semibold\">vida.</span>",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "072af0bf-9e9a-d57b-ce17-3a1a68db8cca",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "dc55c951-8c0d-6ea9-a635-3a1a68db8cd0"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Protege los sueños y metas de tu familia asegurando tu vida.",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "072af0bf-9e9a-d57b-ce17-3a1a68db8cca",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "ca8319f7-80c8-db8e-d80a-3a1a68db8cd7"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "072af0bf-9e9a-d57b-ce17-3a1a68db8cca"
+                                                },
+                                                {
+                                                    "key": "paymentType",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 2,
+                                                    "isActive": true,
+                                                    "parentId": "7358cd61-f306-007b-0ef2-3a1a68db8cb2",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Precio mensual desde:",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "0c69eca8-0e1f-5783-796a-3a1a68db8cdd",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "23f546d5-fcdd-35d6-0a2a-3a1a68db8cee"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Precio mensual desde:",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "0c69eca8-0e1f-5783-796a-3a1a68db8cdd",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "9031f6a2-9a74-94a9-f7cc-3a1a68db8cf5"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "0c69eca8-0e1f-5783-796a-3a1a68db8cdd"
+                                                },
+                                                {
+                                                    "key": "price",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 3,
+                                                    "isActive": true,
+                                                    "parentId": "7358cd61-f306-007b-0ef2-3a1a68db8cb2",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "value",
+                                                            "value": "$9,99",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "fc1a16f7-22dc-7967-5a00-3a1a68db8cfc",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "ce68a083-dd84-3d6e-d30a-3a1a68db8d07"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "$9,99",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "fc1a16f7-22dc-7967-5a00-3a1a68db8cfc",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "c4c770cf-53f9-7ea8-101c-3a1a68db8d0d"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "fc1a16f7-22dc-7967-5a00-3a1a68db8cfc"
+                                                },
+                                                {
+                                                    "key": "coverages",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 4,
+                                                    "isActive": true,
+                                                    "parentId": "7358cd61-f306-007b-0ef2-3a1a68db8cb2",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "items",
+                                                            "value": " <>\r\n  Suma una <span className=\"font-semibold\">capa extra</span> de protección para\r\n  tus cuentas y tarjetas.\r\n</>",
+                                                            "type": "array",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "f8172996-f505-2b04-1a46-3a1a68db8d14",
+                                                            "attributes": [
+                                                                {
+                                                                    "key": "COBE176_LH",
+                                                                    "value": "Default value",
+                                                                    "type": "object",
+                                                                    "order": 1,
+                                                                    "isActive": true,
+                                                                    "parentId": "a115db2b-ef5e-ea09-cd39-3a1a68db8d1a",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "key": "coverageCode",
+                                                                            "value": "COBE176_LH",
+                                                                            "type": "string",
+                                                                            "order": 0,
+                                                                            "isActive": true,
+                                                                            "parentId": "c77246df-771d-3b5c-0e1b-3a1a68db8d21",
+                                                                            "attributes": [],
+                                                                            "attributeValues": [],
+                                                                            "id": "dd883c97-c236-5dfa-8c59-3a1a68db8d27"
+                                                                        },
+                                                                        {
+                                                                            "key": "description",
+                                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                                            "type": "object",
+                                                                            "order": 1,
+                                                                            "isActive": true,
+                                                                            "parentId": "c77246df-771d-3b5c-0e1b-3a1a68db8d21",
+                                                                            "attributes": [
+                                                                                {
+                                                                                    "key": "value",
+                                                                                    "value": "<strong>Hasta $40.000 a beneficiarios </strong>\r\nde tu elección, si llegas a fallecer",
+                                                                                    "type": "string",
+                                                                                    "order": 0,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "31ce9577-f0f5-bbdc-8131-3a1a68db8d2e",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "f518aea6-7902-1012-7e33-3a1a68db8d35"
+                                                                                },
+                                                                                {
+                                                                                    "key": "aria",
+                                                                                    "value": "Hasta $40.000 a beneficiarios de tu elección, si llegas a fallecer ",
+                                                                                    "type": "string",
+                                                                                    "order": 1,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "31ce9577-f0f5-bbdc-8131-3a1a68db8d2e",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "6886e776-df08-6e3f-67f4-3a1a68db8d3c"
+                                                                                }
+                                                                            ],
+                                                                            "attributeValues": [],
+                                                                            "id": "31ce9577-f0f5-bbdc-8131-3a1a68db8d2e"
+                                                                        }
+                                                                    ],
+                                                                    "attributeValues": [],
+                                                                    "id": "c77246df-771d-3b5c-0e1b-3a1a68db8d21"
+                                                                },
+                                                                {
+                                                                    "key": "COBE177_LH",
+                                                                    "value": "Default value",
+                                                                    "type": "object",
+                                                                    "order": 2,
+                                                                    "isActive": true,
+                                                                    "parentId": "a115db2b-ef5e-ea09-cd39-3a1a68db8d1a",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "key": "coverageCode",
+                                                                            "value": "COBE177_LH",
+                                                                            "type": "string",
+                                                                            "order": 0,
+                                                                            "isActive": true,
+                                                                            "parentId": "627a2889-8a77-c09f-36c6-3a1a68db8d43",
+                                                                            "attributes": [],
+                                                                            "attributeValues": [],
+                                                                            "id": "66330998-14ce-6d6f-8c31-3a1a68db8d4a"
+                                                                        },
+                                                                        {
+                                                                            "key": "description",
+                                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                                            "type": "object",
+                                                                            "order": 1,
+                                                                            "isActive": true,
+                                                                            "parentId": "627a2889-8a77-c09f-36c6-3a1a68db8d43",
+                                                                            "attributes": [
+                                                                                {
+                                                                                    "key": "value",
+                                                                                    "value": "<strong>Consultas presenciales de </strong>medicina general y especialidades",
+                                                                                    "type": "string",
+                                                                                    "order": 0,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "32fbe346-4ec9-d80c-9c84-3a1a68db8d50",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "58bf678f-c875-8f1f-235d-3a1a68db8d57"
+                                                                                },
+                                                                                {
+                                                                                    "key": "aria",
+                                                                                    "value": "Consultas presenciales de medicina general y especialidades",
+                                                                                    "type": "string",
+                                                                                    "order": 1,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "32fbe346-4ec9-d80c-9c84-3a1a68db8d50",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "ff563f00-4719-e572-c90b-3a1a68db8d5e"
+                                                                                }
+                                                                            ],
+                                                                            "attributeValues": [],
+                                                                            "id": "32fbe346-4ec9-d80c-9c84-3a1a68db8d50"
+                                                                        }
+                                                                    ],
+                                                                    "attributeValues": [],
+                                                                    "id": "627a2889-8a77-c09f-36c6-3a1a68db8d43"
+                                                                },
+                                                                {
+                                                                    "key": "COBE178_LH",
+                                                                    "value": "Default value",
+                                                                    "type": "object",
+                                                                    "order": 3,
+                                                                    "isActive": true,
+                                                                    "parentId": "a115db2b-ef5e-ea09-cd39-3a1a68db8d1a",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "key": "coverageCode",
+                                                                            "value": "COBE178_LH",
+                                                                            "type": "string",
+                                                                            "order": 0,
+                                                                            "isActive": true,
+                                                                            "parentId": "1667d13c-2eac-8fb1-761c-3a1a68db8d65",
+                                                                            "attributes": [],
+                                                                            "attributeValues": [],
+                                                                            "id": "1fdb324a-f87c-29ed-2926-3a1a68db8d6c"
+                                                                        },
+                                                                        {
+                                                                            "key": "description",
+                                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                                            "type": "object",
+                                                                            "order": 1,
+                                                                            "isActive": true,
+                                                                            "parentId": "1667d13c-2eac-8fb1-761c-3a1a68db8d65",
+                                                                            "attributes": [
+                                                                                {
+                                                                                    "key": "value",
+                                                                                    "value": "<strong>Protección desde el primer día,  </strong>\r\nen caso de fallecimiento.",
+                                                                                    "type": "string",
+                                                                                    "order": 0,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "d7a98f4f-a2b0-385d-0232-3a1a68db8d73",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "8479c8cf-5b8f-1f0c-47ef-3a1a68db8d7a"
+                                                                                },
+                                                                                {
+                                                                                    "key": "aria",
+                                                                                    "value": "sta $10.000 al año por cargos fraudulentos en tus cuentas",
+                                                                                    "type": "string",
+                                                                                    "order": 1,
+                                                                                    "isActive": true,
+                                                                                    "parentId": "d7a98f4f-a2b0-385d-0232-3a1a68db8d73",
+                                                                                    "attributes": [],
+                                                                                    "attributeValues": [],
+                                                                                    "id": "2a9d41e1-d920-d983-f67d-3a1a68db8d82"
+                                                                                }
+                                                                            ],
+                                                                            "attributeValues": [],
+                                                                            "id": "d7a98f4f-a2b0-385d-0232-3a1a68db8d73"
+                                                                        }
+                                                                    ],
+                                                                    "attributeValues": [],
+                                                                    "id": "1667d13c-2eac-8fb1-761c-3a1a68db8d65"
+                                                                }
+                                                            ],
+                                                            "attributeValues": [],
+                                                            "id": "a115db2b-ef5e-ea09-cd39-3a1a68db8d1a"
+                                                        },
+                                                        {
+                                                            "key": "title",
+                                                            "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                            "type": "object",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "f8172996-f505-2b04-1a46-3a1a68db8d14",
+                                                            "attributes": [
+                                                                {
+                                                                    "key": "value",
+                                                                    "value": "<strong>Este seguro cubre:</strong>",
+                                                                    "type": "string",
+                                                                    "order": 0,
+                                                                    "isActive": true,
+                                                                    "parentId": "8c8637d1-dbca-f5f4-f20b-3a1a68db8d89",
+                                                                    "attributes": [],
+                                                                    "attributeValues": [],
+                                                                    "id": "20f5a7cd-4111-9aed-c409-3a1a68db8d90"
+                                                                },
+                                                                {
+                                                                    "key": "aria",
+                                                                    "value": "Este seguro cubre:",
+                                                                    "type": "string",
+                                                                    "order": 1,
+                                                                    "isActive": true,
+                                                                    "parentId": "8c8637d1-dbca-f5f4-f20b-3a1a68db8d89",
+                                                                    "attributes": [],
+                                                                    "attributeValues": [],
+                                                                    "id": "1564b3b3-b3da-a157-d379-3a1a68db8d97"
+                                                                }
+                                                            ],
+                                                            "attributeValues": [],
+                                                            "id": "8c8637d1-dbca-f5f4-f20b-3a1a68db8d89"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "f8172996-f505-2b04-1a46-3a1a68db8d14"
+                                                },
+                                                {
+                                                    "key": "action",
+                                                    "value": "Pablo, vive tranquilo, nosotros cuidamos de ti.",
+                                                    "type": "object",
+                                                    "order": 5,
+                                                    "isActive": true,
+                                                    "parentId": "7358cd61-f306-007b-0ef2-3a1a68db8cb2",
+                                                    "attributes": [
+                                                        {
+                                                            "key": "urlTarget",
+                                                            "value": "PRODUCT_DETAIL",
+                                                            "type": "string",
+                                                            "order": 0,
+                                                            "isActive": true,
+                                                            "parentId": "47dc7bf3-7c25-f58b-cecc-3a1a68db8d9e",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "c645fcea-524f-db6e-629e-3a1a68db8da6"
+                                                        },
+                                                        {
+                                                            "key": "aria",
+                                                            "value": "Descubre qué incluye tu seguro",
+                                                            "type": "string",
+                                                            "order": 2,
+                                                            "isActive": true,
+                                                            "parentId": "47dc7bf3-7c25-f58b-cecc-3a1a68db8d9e",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "832e067c-d972-0f3c-76b7-3a1a68db8dad"
+                                                        },
+                                                        {
+                                                            "key": "value",
+                                                            "value": "Descubre qué incluye tu seguro",
+                                                            "type": "string",
+                                                            "order": 1,
+                                                            "isActive": true,
+                                                            "parentId": "47dc7bf3-7c25-f58b-cecc-3a1a68db8d9e",
+                                                            "attributes": [],
+                                                            "attributeValues": [],
+                                                            "id": "aab4324f-e385-342e-8985-3a1a68db8db3"
+                                                        }
+                                                    ],
+                                                    "attributeValues": [],
+                                                    "id": "47dc7bf3-7c25-f58b-cecc-3a1a68db8d9e"
+                                                }
+                                            ],
+                                            "attributeValues": [],
+                                            "id": "7358cd61-f306-007b-0ef2-3a1a68db8cb2"
+                                        }
+                                    ],
+                                    "attributeValues": [],
+                                    "id": "c5368aed-d48a-2c7a-70c4-3a1a68db8bc7"
+                                }
+                            ],
+                            "attributeValues": [],
+                            "id": "1301bd77-f18b-c616-1e5b-3a1a68db8bc2"
+                        }
+                    ],
+                    "id": "cd3d4cd8-5fbe-83c4-45ab-3a1a68db8ba5"
+                }
+            ]
+        },
+        "client": {
+            "address": "CALLE FALSA 123 Y REFERENCIA PERDIDA",
+            "cellPhone": "0933889966",
+            "city": "CALVAS",
+            "province": "LOJA",
+            "civilStatus": "S",
+            "dateBirth": "25/12/2005",
+            "email": "mail@mail.com",
+            "firstLastName": "PEREZ",
+            "firstName": "MARIA",
+            "gender": "F",
+            "homePhone": "022987456",
+            "identification": "1100225588",
+            "identificationType": "C",
+            "identificationByChannel": "1236548",
+            "income": "2000",
+            "ipClient": "168.192.1.1",
+            "patrimony": "50000",
+            "secondLastName": "LOPEZ",
+            "secondName": "MERCEDES",
+            "economicActivity": "17000",
+            "economicSubActivity": "17532",
+            "segment": "PERSONAS",
+            "subSegment": "CONSUMO",
+            "workPhone": "022589652",
+            "legalName": "INDUSTRIA DE CONFECCIONES INZATEX CIA. LTDA.",
+            "businessName": "CONFECCIONES INZATEX",
+            "companyPurpose": "INDUSTRIA DE TEXTILES",
+            "nationality": "ECUADOR",
+            "birthPlace": "ECUADOR/PICHINCHA/QUITO",
+            "employmentSituation": "DEPENDENT"
+        }
+    }
+}

@@ -32,6 +32,7 @@ interface PreviousProducts {
   source: string
   contract: string
   portalCode: string
+  productCode: string
 }
 
 interface OfferProducts {

@@ -22,7 +22,7 @@ import { APP_ROUTES_CONFIG } from '@app/routes/hub/config'
 
 import InsurancePageFallback from '@app/components/pages/hub/insurance-page/insurance-page-fallback'
 
-import { PreviousProductPageFallback } from '@app/components/pages/previous-product-page'
+import { PreviousProductPageFallback } from '@app/components/pages/hub/previous-product-page'
 
 type DispatchState<T> = Dispatch<SetStateAction<T>>
 

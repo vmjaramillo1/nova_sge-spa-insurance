@@ -42,6 +42,7 @@ interface PreviousProducts {
   contract: string
   relatedProductCode: string
   portalCode: string
+  productCode: string
 }
 
 // todo validar eso con servicio posterior
@@ -101,7 +102,7 @@ export type FindOfferResponse = Response<FindOfferResult>
 
 export interface PortalHubOffer extends ResponseWithResult<FindOfferResult> {
   validateResult: ValidateValue
-  offerResult: Array<OfferableProduct>
+  offerResult: OfferableProduct[]
 }
 
 //#endregion

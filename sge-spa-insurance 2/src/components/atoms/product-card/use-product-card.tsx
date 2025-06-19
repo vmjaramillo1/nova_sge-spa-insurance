@@ -10,10 +10,20 @@ import {
   useGenericProductByCodeSelector,
 } from '@app/store/hooks/use-generic-portal-selector'
 import { sortByOrder } from '@app/utils'
+import InsuranceIconTuBanPro from '@app/components/icons/InsuranceIconTuBanPro'
+import InsuranceIconLifeHealth from '@app/components/icons/InsuranceIconLifeHealth'
+import { PRODUCTS_CODES } from '@app/utils/constants'
+
+export type ProductCode = typeof PRODUCTS_CODES[number]
 
 const useProductCard = (urlTarget: string, productCode: string) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+
+  const MAPPER_ICONS: Record<ProductCode, JSX.Element> = {
+    LIFE_HEALTH: <InsuranceIconLifeHealth width={40} height={40} />,
+    TU_BAN_PRO: <InsuranceIconTuBanPro width={40} height={40} />,
+  }
 
   const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
 
@@ -45,6 +55,7 @@ const useProductCard = (urlTarget: string, productCode: string) => {
 
   return {
     handleClick,
+    MAPPER_ICONS,
   }
 }
 

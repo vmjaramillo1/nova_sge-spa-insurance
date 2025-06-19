@@ -16,6 +16,8 @@ import {
 import { type AppProducts, type Products } from '@app/store/reducers/app-slice'
 import { selectorProducts } from '@app/store/selectors/selectors'
 
+export type PortalTypeLife = 'LIFE_HEALTH'
+export type PortalTypeFraud = 'TU_BAN_PRO'
 export type PortalType = 'TU_BAN_PRO' | 'LIFE_HEALTH'
 
 export type PortalTypeMap = {

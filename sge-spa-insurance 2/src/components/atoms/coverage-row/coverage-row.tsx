@@ -1,5 +1,6 @@
 import { FC, ReactNode, memo } from 'react'
 import clsx from 'clsx'
+import SmartContent from '@app/components/atoms/smart-text'
 
 import './coverage-row.scss'
 
@@ -42,8 +43,8 @@ const CoverageRow: FC<CoverageRowProps> = (props) => {
         className={clsx(
           'coverage-row__value',
           bolder && 'font-semibold',
-          classes?.value,
-          classes?.shared
+          classes?.shared,
+          classes?.value
         )}
         aria-hidden="true"
       >

@@ -196,7 +196,7 @@ const useLoadData = () => {
 
       dispatch(setTransaction({ transactionReference }))
       return {
-        offerResult: [result.value],
+        offerResult: [result.value], // todo ajustar en caso de pruebas con []
         validateResult: validateResult.value,
       }
     },

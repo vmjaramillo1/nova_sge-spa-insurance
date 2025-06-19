@@ -1,5 +1,5 @@
-@use "../../../styles/utils/index.scss";
-@use "../../../styles/utils/colors.scss" as colors;
+@use "../../../../styles/utils/index.scss";
+@use "../../../../styles/utils/colors.scss" as colors;
 
 
 .previous-product-page {
@@ -41,8 +41,8 @@
     display: flex;
     padding: 8px 16px;
     gap: 16px;
-  color: map-get(colors.$blue, 500);
+    color: map-get(colors.$blue, 500);
     border-radius: 8px;
-	  border: 2px solid map-get(colors.$blue, 500);;
+    border: 2px solid map-get(colors.$blue, 500);;
   }
 }

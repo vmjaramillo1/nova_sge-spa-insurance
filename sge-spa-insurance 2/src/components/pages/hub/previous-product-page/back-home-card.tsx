@@ -1,19 +1,27 @@
 import React from 'react'
 import Typography from '@app/components/atoms/typography/'
 import SmartContent from '@app/components/atoms/smart-text'
-import InsuranceIcon from '@app/components/icons/InsuranceIcon'
+import InsuranceIconTuBanPro from '@app/components/icons/InsuranceIconTuBanPro'
 import './previous-product-page.scss'
+import { useNavigate } from 'react-router-dom'
 
+import { APP_ROUTES } from '@app/routes/config'
+
+// todo ajustar
 interface BackHomeCardProps {
   description: any
   action: any
 }
 
 const BackHomeCard = ({ description, action }: BackHomeCardProps) => {
-  const handleClick = () => console.log(description)
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(APP_ROUTES.INSURANCE_PORTAL)
+  }
+
   return (
     <div className="back-home-card">
-      <InsuranceIcon width={48} height={48} />
+      <InsuranceIconTuBanPro width={48} height={48} />
       <Typography
         variant="body"
         className="previous-product-page__title"

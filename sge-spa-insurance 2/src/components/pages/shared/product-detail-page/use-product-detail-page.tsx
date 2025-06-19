@@ -22,6 +22,7 @@ import useGenericPortalByCodeSelector, {
   type PortalType,
 } from '@app/store/hooks/use-generic-portal-selector'
 import useNextStep from '@app/hooks/use-next-step'
+import WrapperIcons from '@app/components/atoms/wrapper_icons/WrapperIcons'
 
 export function useContentProductDetailPage() {
   const productCode = useAppSelector(selectorProductCode)
@@ -41,16 +42,7 @@ export function useContentProductDetailPage() {
         question,
         answer,
         track,
-        icon: (
-          <pichincha-icon
-            size="24px"
-            type="--outlined"
-            color="blue"
-            weight-color="500"
-          >
-            {icon}
-          </pichincha-icon>
-        ),
+        icon: <WrapperIcons icon={icon} />,
         classes: { icon: 'min-w-48' },
       })
     )
@@ -99,15 +91,15 @@ const useProductDetailPage = () => {
   const identity = useIdentity()
   const { isOpen: showModalCoverage, toggle: handleModalCoverage } = useModal()
 
-  useBackButton(backHomeWithTracking(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK))
-
-  usePageTrackingEvent(TrackingEvents.ONBOARDING_VIEW_PAGE)
+  // todo revisar traking
+  useBackButton(() => {
+    pushTrackEvent(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK)
+    navigate(APP_ROUTES.INSURANCE_PORTAL)
+  })
 
   const handleContinue = async () => {
     pushTrackEvent(TrackingEvents.ONBOARDING_CLICK_CTA)
-
     if (!identity) return
-
     navigate(APP_ROUTES[nextStep])
   }
 

@@ -22,12 +22,11 @@ export interface GetDefaultContextParams {
   }
 }
 
-type AppStateProductInfo<TPortal> = Omit<AppState<TPortal>, 'lopdp'| 'offer'>
+type AppStateProductInfo<TPortal> = Omit<AppState<TPortal>, 'lopdp' | 'offer'>
 
 export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>>(
   params: GetDefaultContextParams
 ): AppStateProductInfo<ReducedPortal<TContent, TParams>> {
-
   const { offers, paymentOptions } = params
 
   const products = offers.reduce((acc, item) => {
