@@ -45,7 +45,6 @@ const DownloadFileLinkWrapper = ({
   staticDocumentCode: string
   classname: string
 }) => {
-
   const key = useAppSelector(selectorKey)
   const transactionReference = useAppSelector(selectorTransactionReference)
   const identity = useIdentity()

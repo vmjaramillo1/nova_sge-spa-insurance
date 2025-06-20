@@ -11,7 +11,7 @@ import SuccessPage from '@app/components/pages/shared/success-page'
 import { type RouteObject } from 'react-router-dom'
 import PlanSelection from '@app/components/pages/shared/plan-selection-page'
 
-const FraudRoutes: Array<RouteObject> = [
+const SharedRoutes: Array<RouteObject> = [
   // PLAN_SELECTION
   {
     path: APP_ROUTES_CONFIG.PLAN_SELECTION.path,
@@ -71,4 +71,4 @@ const FraudRoutes: Array<RouteObject> = [
   },
 ]
 
-export default FraudRoutes
+export default SharedRoutes

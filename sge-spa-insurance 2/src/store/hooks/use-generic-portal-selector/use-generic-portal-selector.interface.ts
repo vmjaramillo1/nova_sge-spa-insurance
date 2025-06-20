@@ -20,5 +20,5 @@ export type ListReducedAttribute<T> = Array<AttributeFormat<T>>
 
 export interface TextWhitAria {
   value: string
-  aria: string
+  aria?: string
 }

@@ -96,9 +96,9 @@ const ProductDetailPage = () => {
             onClick={handleModalCoverage}
             className={clsx('product-detail__action')}
             type="button"
-            aria-label={content.sectionCoverages.actionShowCoverages.aria}
+            aria-label={content.sectionCoverages.actions.showCoverages.aria}
           >
-            {content.sectionCoverages.actionShowCoverages.value}
+            {content.sectionCoverages.actions.showCoverages.value}
             <ArrowIcon fill="#2F7ABF" />
           </button>
         </div>
@@ -106,9 +106,9 @@ const ProductDetailPage = () => {
         <Button
           className="mt-auto floating-button"
           onClick={handleContinue}
-          aria-label={content.sectionCoverages.actionNext.aria}
+          aria-label={content.sectionCoverages.actions.cta.aria}
         >
-          {content.sectionCoverages.actionNext.value}
+          {content.sectionCoverages.actions.cta.value}
         </Button>
       </div>
       {showModalCoverage && (

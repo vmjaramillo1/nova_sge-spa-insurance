@@ -19,7 +19,6 @@ interface AccordionItem extends WithKey, WithOrder, WithIsActive {
 interface SectionFaq {
   description: TextWhitAria
   questions: Array<AccordionItem>
-
   alert: TextWhitAria
 }
 
@@ -37,19 +36,28 @@ interface itemsList {
 }
 
 interface SectionCoverages {
-  actionShowCoverages: TextWhitAria
-  actionNext: TextWhitAria
-  actionDownloadCertificate: TextWhitAria
+  actions: {
+    showCoverages: TextWhitAria
+    cta: TextWhitAria
+  }
+  description: TextWhitAria
+}
+
+interface ModalCoverages {
   title: TextWhitAria
   description: TextWhitAria
   exclusions: itemsList
   coverages: itemsList
+  actions: {
+    btnDownload: TextWhitAria
+  }
 }
 
 export interface PageHomeShared {
   sectionHero: AttributeFormat<SectionHero>
   sectionFaq: AttributeFormat<SectionFaq>
   sectionCoverages: AttributeFormat<SectionCoverages>
+  modalCoverages: ModalCoverages
 }
 //#endregion
 
@@ -157,7 +165,8 @@ export interface PageSuccessShared {
 //#region flow
 interface StepItem extends WithKey, WithOrder, WithIsActive {
   route: string
-  title: string
+  title: TextWhitAria
+  overlaidIcon?: string
 }
 
 export interface ConfigurationFlowShared {
@@ -166,7 +175,6 @@ export interface ConfigurationFlowShared {
 //#endregion
 
 //#region MultiOffer
-
 interface OfferPlan {
   header: string
   row: Record<string, string>

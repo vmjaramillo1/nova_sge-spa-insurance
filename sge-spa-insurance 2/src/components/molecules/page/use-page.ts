@@ -3,10 +3,8 @@ import { useOutletContext } from 'react-router-dom'
 
 import useRouterEvent from '@app/hooks/use-router-event'
 import { FlowStatus } from '@app/utils/enums'
-
-import {
-  selectorProductCode,
-} from '@app/store/selectors/selectors'
+import { useSmartText } from '@app/components/atoms/smart-text'
+import { selectorProductCode } from '@app/store/selectors/selectors'
 import {
   useGenericProductByCodeSelector,
   type PortalType,
@@ -24,13 +22,14 @@ const usePage = (title: string) => {
   const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
   const flowConfigStep = productData?.portal?.content?.flow?.steps
 
+  const stepTitle =
+    flowConfigStep?.find((s) => s.route === step)?.title.value ?? title
+  const formatTitle = useSmartText(stepTitle)
   useRouterEvent()
 
   useEffect(() => {
-    const currentTitle =
-      flowConfigStep?.find((s) => s.route === step)?.title ?? title
-    changeTitle(currentTitle)
-  }, [changeTitle, title])
+    changeTitle(formatTitle)
+  }, [changeTitle, title, formatTitle])
 
   return {
     isLoading,

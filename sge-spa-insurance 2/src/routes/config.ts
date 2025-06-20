@@ -1,5 +1,5 @@
-import { RoutesFraudAlias, RoutesHubAlias } from '@app/utils/enums'
-import { APP_ROUTES_CONFIG as APP_ROUTES_FRAUD } from './fraud'
+import { RoutesSharedAlias, RoutesHubAlias } from '@app/utils/enums'
+import { APP_ROUTES_CONFIG as APP_ROUTES_FRAUD } from './shared'
 import { APP_ROUTES_CONFIG as APP_ROUTES_HUB } from './hub'
 
 // todo validar para mejorar
@@ -9,7 +9,7 @@ export interface RouteConfig<T extends string = string> {
   title: string
 }
 
-export type AllRouteAliases = RoutesFraudAlias | RoutesHubAlias
+export type AllRouteAliases = RoutesSharedAlias | RoutesHubAlias
 type RecordRoutes = Record<AllRouteAliases, string>
 
 // todo ajustar esto

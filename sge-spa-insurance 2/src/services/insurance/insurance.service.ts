@@ -234,6 +234,32 @@ export default class InsuranceService {
     }
   }
 
+    static async validateOffer1(
+    params: ValidateOfferParams
+  ): Promise<ValidateOfferResponse> {
+    try {
+      const {
+        identity: { cif, dni, dniType },
+      } = params
+
+      const endpoint = this.formatEndpoint('validate-offerable-product')
+
+      const body = encryptBody({
+        cif,
+        dni,
+        dniType,
+      })
+
+      debugger
+      const result = await axios.post<ValidateOfferResponse>(endpoint, body)
+
+      return validateResult(result)
+    } catch (error) {
+      return resolveError(error)
+    }
+  }
+
+
   static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
     const tempBaseUrl =
       'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'

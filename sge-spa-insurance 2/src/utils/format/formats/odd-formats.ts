@@ -1,5 +1,4 @@
 import { SmartFormatCallback, DateFormats } from '@app/utils/format/smart-format'
-// import { capitalize } from '@app/utils/common'
 import { isStringTruthy } from '@app/utils/common'
 import { formatMoney } from '@app/utils/format/formats'
 import { money } from '@app/utils/format/formats'
@@ -86,7 +85,6 @@ const none: SmartFormatCallback = (value) => value
 
 export const formats: Record<string, SmartFormatCallback> = {
   fixed,
-  // capitalize,
   prependText,
   lower,
   upper,

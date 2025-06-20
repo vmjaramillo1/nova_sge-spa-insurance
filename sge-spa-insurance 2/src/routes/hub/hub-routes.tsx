@@ -92,6 +92,7 @@ const HubRoutes: Array<RouteObject> = [
       </Page>
     ),
   },
+  // PAGINA DE PRODUCTOS PREVIOS
   {
     path: APP_ROUTES_CONFIG.PREVIOUS_PRODUCT.path,
     element: (
@@ -103,6 +104,7 @@ const HubRoutes: Array<RouteObject> = [
       </Page>
     ),
   },
+  // PAGINA DE DETALLE DE PRODUCTOS PREVIOS
   {
     path: APP_ROUTES_CONFIG.PREVIOUS_PRODUCT_DETAIL.path,
     element: (

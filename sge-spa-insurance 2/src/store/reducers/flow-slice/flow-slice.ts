@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 import { FlowState } from './flow-slice.inteface'
-import { FlowStatus, RoutesFraudAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesSharedAlias } from '@app/utils/enums'
 
 const initialState: FlowState = {
   shared: {
@@ -11,7 +11,7 @@ const initialState: FlowState = {
     periodicitySelected: '',
     transactionReference: undefined,
     contentLoaded: false,
-    step: RoutesFraudAlias.PRODUCT_DETAIL,
+    step: RoutesSharedAlias.PRODUCT_DETAIL,
     status: FlowStatus.WAIT_LOAD,
   },
   client: {

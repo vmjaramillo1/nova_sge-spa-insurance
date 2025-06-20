@@ -5,8 +5,9 @@ import useGenericPortalByCodeSelector, {
 } from '@app/store/hooks/use-generic-portal-selector'
 import { useMemo } from 'react'
 import { filterAndSort } from '@app/utils/common'
+import { RoutesHubAlias } from '@app/utils/enums/routes-alias'
 
-const useNextStep = () => {
+const useNextBackStep = () => {
   const productCode = useAppSelector(selectorProductCode)
   const currentStep = useAppSelector((state) => state.flow.shared.step)
 
@@ -19,19 +20,33 @@ const useNextStep = () => {
   )
 
   return useMemo(() => {
-    if (isPending) return ''
+    if (isPending)
+      return {
+        backStep: '',
+        nextStep: '',
+      }
 
     if (currentStep === '') {
       const [firstStep] = currentSteps
-      return firstStep.route
+      return {
+        backStep: RoutesHubAlias.INSURANCE_PORTAL,
+        nextStep: firstStep.route,
+      }
     }
 
     const currentIndex = currentSteps.findIndex((step) => step.route === currentStep)
     const nextIndex = currentIndex + 1
     const nextStep = currentSteps[nextIndex]
+    const backStep =
+      currentIndex <= 0
+        ? { route: RoutesHubAlias.INSURANCE_PORTAL }
+        : currentSteps[currentIndex - 1]
 
-    return nextStep.route
+    return {
+      backStep: backStep.route,
+      nextStep: nextStep.route,
+    }
   }, [currentStep, currentSteps, isPending])
 }
 
-export default useNextStep
+export default useNextBackStep

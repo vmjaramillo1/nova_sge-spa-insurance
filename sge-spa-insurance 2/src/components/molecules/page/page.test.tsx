@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Page from './page'
-import { FlowStatus, RoutesFraudAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesSharedAlias } from '@app/utils/enums'
 import { APP_ROUTES } from '@app/routes/config'
 import { Route } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
@@ -87,7 +87,7 @@ describe('<Page />', () => {
             transactionReference: '60547864-a16d-4571-9771-25d0f98ffc11',
             key: 'aUYg77Dfr/mA8NhDEHfVRbksKZjbdPnuV3ARE29k3vCL2/dnEgSBJl1xbo/Dey3t5LXDvGIRgV7QUAvEacJSHKqyrns3ej5fFPxl59bAxPBTM4cONP2NyRJKomx9RmLA9QOv9x4=',
             contentLoaded: true,
-            step: RoutesFraudAlias.PRODUCT_DETAIL,
+            step: RoutesSharedAlias.PRODUCT_DETAIL,
             status: FlowStatus.RETRY_ACCEPTANCE_ERROR,
           },
         },
@@ -137,7 +137,7 @@ describe('<Page />', () => {
             key: 'aUYg77Dfr/mA8NhDEHfVRbksKZjbdPnuV3ARE29k3vCL2/dnEgSBJl1xbo/Dey3t5LXDvGIRgV7QUAvEacJSHKqyrns3ej5fFPxl59bAxPBTM4cONP2NyRJKomx9RmLA9QOv9x4=',
             contentLoaded: true,
             status: FlowStatus.END_SUCCESS,
-            step: RoutesFraudAlias.ACCEPTANCE,
+            step: RoutesSharedAlias.ACCEPTANCE,
           },
         },
         global: globalValues,

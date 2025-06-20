@@ -22,7 +22,9 @@ interface itemsList {
 interface ModalCoverageProps {
   title: TextWhitAria
   description: TextWhitAria
-  actionDownloadCertificate: TextWhitAria
+  actions: {
+    btnDownload: TextWhitAria
+  }
   exclusions: itemsList
   coverages: itemsList
 
@@ -30,14 +32,7 @@ interface ModalCoverageProps {
 }
 
 const ModalCoverage: FC<ModalCoverageProps> = (props) => {
-  const {
-    handleClose,
-    title,
-    description,
-    actionDownloadCertificate,
-    exclusions,
-    coverages,
-  } = props
+  const { handleClose, title, description, actions, exclusions, coverages } = props
 
   const renderItems = (item: Item) => {
     return (
@@ -122,10 +117,10 @@ const ModalCoverage: FC<ModalCoverageProps> = (props) => {
         <Button
           className="mt-auto"
           onClick={handleClose}
-          aria-label={actionDownloadCertificate.aria}
+          aria-label={actions.btnDownload.aria}
           color="secondary"
         >
-          {actionDownloadCertificate.value}
+          {actions.btnDownload.value}
         </Button>
       </div>
     </div>

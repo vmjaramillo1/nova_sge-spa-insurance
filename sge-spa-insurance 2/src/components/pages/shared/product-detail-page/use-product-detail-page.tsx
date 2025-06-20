@@ -3,14 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import useBackButton from '@app/hooks/use-back-button'
 import useIdentity from '@app/hooks/use-identity'
-import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
 
 import { filterAndSort } from '@app/utils/common'
-import {
-  backHomeWithTracking,
-  pushTrackEvent,
-  TrackingEvents,
-} from '@app/utils/messages'
+import { pushTrackEvent, TrackingEvents } from '@app/utils/messages'
 
 import { APP_ROUTES, AllRouteAliases } from '@app/routes/config'
 
@@ -21,7 +16,7 @@ import { selectorProductCode } from '@app/store/selectors/selectors'
 import useGenericPortalByCodeSelector, {
   type PortalType,
 } from '@app/store/hooks/use-generic-portal-selector'
-import useNextStep from '@app/hooks/use-next-step'
+import useNextBackStep from '@app/hooks/use-next-back-step'
 import WrapperIcons from '@app/components/atoms/wrapper_icons/WrapperIcons'
 
 export function useContentProductDetailPage() {
@@ -52,7 +47,7 @@ export function useContentProductDetailPage() {
     if (!currentPortal.content.home.sectionCoverages) return []
 
     const currentCoverages =
-      currentPortal.content.home.sectionCoverages.coverages.items
+      currentPortal.content.home.modalCoverages.coverages.items
     const mappedItems = mappedCoverageExclusions(currentCoverages)
 
     return mappedItems
@@ -62,7 +57,7 @@ export function useContentProductDetailPage() {
     if (!currentPortal.content.home.sectionCoverages) return []
 
     const currentExclusions =
-      currentPortal.content.home.sectionCoverages.exclusions.items
+      currentPortal.content.home.modalCoverages.exclusions.items
     const mappedItems = mappedCoverageExclusions(currentExclusions)
 
     return mappedItems
@@ -72,13 +67,13 @@ export function useContentProductDetailPage() {
     content: currentPortal.content.home,
     questions: mappedFaqs,
     coverages: {
-      ...currentPortal.content.home.sectionCoverages,
+      ...currentPortal.content.home.modalCoverages,
       exclusions: {
-        title: currentPortal.content.home.sectionCoverages.exclusions.title,
+        title: currentPortal.content.home.modalCoverages.exclusions.title,
         items: mappedExclusions,
       },
       coverages: {
-        title: currentPortal.content.home.sectionCoverages.coverages.title,
+        title: currentPortal.content.home.modalCoverages.coverages.title,
         items: mappedCoverages,
       },
     },
@@ -87,20 +82,20 @@ export function useContentProductDetailPage() {
 
 const useProductDetailPage = () => {
   const navigate = useNavigate()
-  const nextStep = useNextStep() as AllRouteAliases
+  const flowSteps = useNextBackStep()
   const identity = useIdentity()
   const { isOpen: showModalCoverage, toggle: handleModalCoverage } = useModal()
 
   // todo revisar traking
   useBackButton(() => {
     pushTrackEvent(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK)
-    navigate(APP_ROUTES.INSURANCE_PORTAL)
+    navigate(APP_ROUTES[flowSteps.backStep as AllRouteAliases])
   })
 
   const handleContinue = async () => {
     pushTrackEvent(TrackingEvents.ONBOARDING_CLICK_CTA)
     if (!identity) return
-    navigate(APP_ROUTES[nextStep])
+    navigate(APP_ROUTES[flowSteps.nextStep as AllRouteAliases])
   }
 
   return {

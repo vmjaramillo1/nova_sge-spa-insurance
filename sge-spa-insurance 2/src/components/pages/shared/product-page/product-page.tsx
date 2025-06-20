@@ -28,19 +28,14 @@ const ProductPage = () => {
     handleClickPeriodicity,
   } = useProductPage()
 
-  console.log(content)
-
   return (
     <>
       <div className="product-page">
         <Typography variant="subtitle" className="font-semibold">
-          {/* <SmartContent>{content.title.value}</SmartContent> */}
-          <SmartContent>Plan Preferido</SmartContent>
+          <SmartContent>{content.title.value}</SmartContent>
         </Typography>
         <Typography aria-label={content.description.aria} className="mb-16">
-          Un producto de Seguros del Pichincha
-
-          {/* {content.description.value} */}
+          {content.description.value}
         </Typography>
         <Typography variant="caption" className="font-semibold mb-8">
           {content.paymentMethod.input.value}

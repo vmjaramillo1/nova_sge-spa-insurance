@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import {
-  selectorProductCode,
-} from '@app/store/selectors/selectors'
+import { selectorProductCode } from '@app/store/selectors/selectors'
 import { useNavigate } from 'react-router-dom'
 import {
   useGenericProductByCodeSelector,
@@ -14,11 +12,21 @@ import {
   setPeriodicitySelected,
 } from '@app/store/reducers/flow-slice'
 import { sortByOrder } from '@app/utils'
-import { APP_ROUTES } from '@app/routes/config'
+import { APP_ROUTES, AllRouteAliases } from '@app/routes/config'
+import useNextBackStep from '@app/hooks/use-next-back-step'
+import useBackButton from '@app/hooks/use-back-button'
+import { pushTrackEvent, TrackingEvents } from '@app/utils/messages'
 
 const usePlanSelectionPage = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const flowSteps = useNextBackStep()
+
+  // todo revisar traking
+  useBackButton(() => {
+    pushTrackEvent(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK)
+    navigate(APP_ROUTES[flowSteps.backStep as AllRouteAliases])
+  })
 
   const productCode = useAppSelector(selectorProductCode)
   const [, productData] = useGenericProductByCodeSelector(
@@ -55,7 +63,7 @@ const usePlanSelectionPage = () => {
     const [firstPeriodicity] = periodicityOptions
     dispatch(setPlanSelected(selectedPlan))
     dispatch(setPeriodicitySelected(firstPeriodicity.code))
-    navigate(APP_ROUTES.PRODUCT_DETAIL)
+    navigate(APP_ROUTES[flowSteps.nextStep as AllRouteAliases])
   }
 
   const handleChangePlan = (planCode: string) => {

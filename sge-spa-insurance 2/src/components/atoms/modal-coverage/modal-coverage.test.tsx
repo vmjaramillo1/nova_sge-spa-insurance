@@ -12,10 +12,13 @@ describe('<ModalCoverage />', () => {
         value: 'title test',
         aria: 'title test',
       },
-      actionDownloadCertificate: {
-        value: 'title test',
-        aria: 'title test',
+      actions: {
+        btnDownload: {
+          value: 'title test',
+          aria: 'title test',
+        },
       },
+
       exclusions: {
         title: {
           value: 'title test',

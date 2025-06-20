@@ -42,29 +42,29 @@
   tbody tr:not(:last-child) th {
     border-bottom: 1px solid #DEE3ED;
   }
-
-
-
-
 }
 
-  .floating-container {
-    position: sticky;
-    bottom: 0px;
-    background: white;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+.floating-container {
 
-    padding: 20px;
-    border-top: 1px solid #DEE3ED;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-    &__left {
-      min-width: 40%;
-    }
+  background: white;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
+  padding: 20px;
+  border-top: 1px solid #DEE3ED;
+
+  &__left {
+    min-width: 40%;
   }
+
+}
 
 .sticky-col {
   position: sticky;

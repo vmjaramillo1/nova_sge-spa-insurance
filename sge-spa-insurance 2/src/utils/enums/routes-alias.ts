@@ -14,7 +14,7 @@ export const enum RoutesHubAlias {
   FAILED_OFFERABLE_DATA = 'FAILED_OFFERABLE_DATA',
 }
 
-export const enum RoutesFraudAlias {
+export const enum RoutesSharedAlias {
   PLAN_SELECTION = 'PLAN_SELECTION',
   PRODUCT_DETAIL = 'PRODUCT_DETAIL',
   PRODUCT = 'PRODUCT',

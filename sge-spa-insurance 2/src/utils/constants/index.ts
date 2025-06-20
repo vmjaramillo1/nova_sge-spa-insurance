@@ -5,7 +5,6 @@ export const PRODUCT_NAME_FRAUD = 'Seguro por robos y fraudes'
 export const PRODUCT_NAME_LIFE = 'Seguro de Vida + Salud'
 export const PRODUCT_NAME_PAYMENT = 'Forma de pago'
 export const PRODUCT_NAME_ACCEPTANCE = 'Confirmar contratación'
-
 export const PROD_CODE_LIFE_HEALTH = 'LIFE_HEALTH'
 export const PROD_CODE_TU_BAN_PRO = 'TU_BAN_PRO'
 
@@ -63,6 +62,7 @@ export const SOFT_TOKEN_TIME = 49
 export const SOFT_TOKEN_ANIMATION_FR = 46.5
 
 export const ZERO = 0
+export const EMPTY_STRING = ''
 
 export const DOCUMENT_DOWNLOAD_STATIC_CODES = Object.freeze({
   USE_GUIDE: 'DOC_FRAUDS_USE_GUIDE',

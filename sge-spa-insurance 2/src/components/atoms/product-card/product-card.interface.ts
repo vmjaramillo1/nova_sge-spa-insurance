@@ -1,6 +1,6 @@
 export interface AccessibleText {
   value: string
-  aria: string
+  aria?: string
 }
 
 export interface CoverageItem {

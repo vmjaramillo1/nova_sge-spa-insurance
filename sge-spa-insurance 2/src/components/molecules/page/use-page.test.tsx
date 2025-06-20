@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import usePage from './use-page'
-import { FlowStatus, RoutesHubAlias, RoutesFraudAlias } from '@app/utils/enums'
+import { FlowStatus, RoutesHubAlias, RoutesSharedAlias } from '@app/utils/enums'
 import { createWrapperStore, makeStore } from '@app/__test__/wrappers'
 import { globalValues, appValues } from '@app/__test__/values'
 import { useOutletContext } from 'react-router-dom' // importa el hook aquí
@@ -32,7 +32,7 @@ describe('usePage', () => {
           key: 'aUYg77Dfr/mA8NhDEHfVRbksKZjbdPnuV3ARE29k3vCL2/dnEgSBJl1xbo/Dey3t5LXDvGIRgV7QUAvEacJSHKqyrns3ej5fFPxl59bAxPBTM4cONP2NyRJKomx9RmLA9QOv9x4=',
           contentLoaded: true,
           status: FlowStatus.NORMAL,
-          step: RoutesFraudAlias.PRODUCT_DETAIL,
+          step: RoutesSharedAlias.PRODUCT_DETAIL,
         },
       },
       global: globalValues,
@@ -71,7 +71,7 @@ describe('usePage', () => {
           key: 'aUYg77Dfr/mA8NhDEHfVRbksKZjbdPnuV3ARE29k3vCL2/dnEgSBJl1xbo/Dey3t5LXDvGIRgV7QUAvEacJSHKqyrns3ej5fFPxl59bAxPBTM4cONP2NyRJKomx9RmLA9QOv9x4=',
           contentLoaded: true,
           status: FlowStatus.NORMAL,
-          step: RoutesFraudAlias.PRODUCT_DETAIL,
+          step: RoutesSharedAlias.PRODUCT_DETAIL,
         },
       },
       global: globalValues,
@@ -103,7 +103,7 @@ describe('usePage', () => {
           key: 'aUYg77Dfr/mA8NhDEHfVRbksKZjbdPnuV3ARE29k3vCL2/dnEgSBJl1xbo/Dey3t5LXDvGIRgV7QUAvEacJSHKqyrns3ej5fFPxl59bAxPBTM4cONP2NyRJKomx9RmLA9QOv9x4=',
           contentLoaded: true,
           status: FlowStatus.END_SUCCESS,
-          step: RoutesFraudAlias.SUCCESS,
+          step: RoutesSharedAlias.SUCCESS,
         },
       },
       global: globalValues,

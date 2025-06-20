@@ -48,23 +48,6 @@ function getFunctionNameAndArgs(value: string): FunctionNameAndArgs {
   return { functionName, functionArgs }
 }
 
-/**
- * Allows to interpolate variables dynamically in a string and apply format functions
- * @param content Initial string to be interpolated
- * @param context Object with values to be interpolated
- * @param formats Record of format functions to be applied
- * @returns reduced string
- * @example
- * const content = "Hello {{name::upper()}} {{surname::lower()}}";
- * const context = { name: "John", surname: "Doe" };
- * const formats = {
- *  upper: (value: string) => value.toUpperCase(),
- *  lower: (value: string) => value.toLowerCase(),
- * };
- *
- * smartFormat(content, context, formats); // "Hello JOHN doe"
- *
- */
 export function smartFormat(
   content: string,
   context: UnknownRecord,
