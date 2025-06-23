@@ -1,5 +1,6 @@
 @import "./mapping.scss";
 
+
 .underline {
   text-decoration: underline;
 }
@@ -14,4 +15,10 @@
 
 .list-disc {
   list-style-type: disc;
+}
+
+.link-format {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--strongBlue500);
 }

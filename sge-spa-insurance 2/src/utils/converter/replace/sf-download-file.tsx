@@ -1,32 +1,33 @@
 import clsx from 'clsx'
 import { domToReact } from 'html-react-parser'
-import Typography from '@app/components/atoms/typography'
+import Typography, { TypographyProps } from '@app/components/atoms/typography'
 import React from 'react'
 import { pushTrackEvent, TrackingEvents } from '@app/utils/messages'
 import { createReplace } from '../utils'
 import { smartFormatParseOptions } from '../converter'
-import useAppSelector from '@app/hooks/use-app-selector'
-import useIdentity from '@app/hooks/use-identity'
-import {
-  selectorKey,
-  selectorTransactionReference,
-} from '@app/store/selectors/selectors'
+import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 import { callModal, downloadFile } from '@app/utils/messages'
 
 import { FindDocumentsParams } from '@app/services/insurance'
 import { isSuccessResponse } from '@app/utils/guards'
-import { IdentityValues } from '@app/services/insurance'
+
 export default createReplace({
   name: 'sf-download-file',
-  attributes: ['staticdocumentcode', 'arialabel', 'classname'],
+  attributes: ['staticdocumentcode', 'arialabel', 'classname', 'variant'],
   replace: (node) => {
-    const { arialabel = '', staticdocumentcode = '', classname = '' } = node.attribs
+    const {
+      arialabel = '',
+      staticdocumentcode = '',
+      classname = '',
+      variant = 'caption',
+    } = node.attribs
 
     return (
       <DownloadFileLinkWrapper
         classname={classname}
         ariaLabel={arialabel}
         staticDocumentCode={staticdocumentcode}
+        variant={variant}
       >
         {domToReact(node.children, smartFormatParseOptions)}
       </DownloadFileLinkWrapper>
@@ -39,25 +40,28 @@ const DownloadFileLinkWrapper = ({
   ariaLabel,
   staticDocumentCode,
   classname,
+  variant,
 }: {
   children: React.ReactNode
   ariaLabel: string
   staticDocumentCode: string
   classname: string
+  variant: string
 }) => {
-  const key = useAppSelector(selectorKey)
-  const transactionReference = useAppSelector(selectorTransactionReference)
-  const identity = useIdentity()
+  const { currentPortal } = useCurrentPortal()
 
-  if (!key || !transactionReference || !identity) return null
+  if (!currentPortal || !staticDocumentCode) {
+    console.warn('Missing fields: DownloadFileLin')
+    return null
+  }
+
+  const flowCode = currentPortal.params.flowcode
 
   const handleClick = () => {
     pushTrackEvent(TrackingEvents.ONBOARDING_DOWNLOAD_LINK_USE_GUIDE)
     downloadStaticDocument({
-      key,
-      transactionReference: transactionReference,
-      identity,
-      document: staticDocumentCode,
+      flowCode,
+      documentCode: staticDocumentCode,
     })
   }
 
@@ -66,6 +70,7 @@ const DownloadFileLinkWrapper = ({
       downloadFile={handleClick}
       ariaLabel={ariaLabel}
       classname={classname}
+      variant={variant}
     >
       {children}
     </DownloadFileLink>
@@ -77,15 +82,17 @@ const DownloadFileLink = ({
   ariaLabel,
   classname,
   downloadFile,
+  variant,
 }: {
   children: React.ReactNode
   ariaLabel: string
   classname: string
+  variant: string
   downloadFile: () => void
 }) => {
   return (
     <Typography
-      variant="caption"
+      variant={variant as TypographyProps['variant']}
       className={clsx(
         'underline text-information-500 font-semibold cursor-pointer',
         classname
@@ -100,24 +107,17 @@ const DownloadFileLink = ({
 }
 
 const downloadStaticDocument = async ({
-  document,
-  key,
-  transactionReference,
-  identity,
+  documentCode,
+  flowCode,
 }: {
-  document: string
-  key: string
-  transactionReference: string
-  identity: IdentityValues
+  documentCode: string
+  flowCode: string
 }) => {
   try {
     callModal(callModal.OPEN)
 
     const findDocumentsParams: FindDocumentsParams = {
-      key,
-      transactionReference,
-      identity,
-      documentsReference: [document],
+      documents: [{ flowCode, reference: documentCode }],
     }
 
     const InsuranceService = (await import('@app/services/insurance')).default
@@ -126,8 +126,7 @@ const downloadStaticDocument = async ({
 
     if (!isSuccessResponse(result)) return
 
-    const [firstProduct] = result.value
-    const [firstDocument] = firstProduct.documents
+    const [firstDocument] = result.value.documents
 
     downloadFile(firstDocument)
   } finally {

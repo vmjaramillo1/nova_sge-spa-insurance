@@ -120,17 +120,6 @@ describe('selectorCode', () => {
   })
 })
 
-// todo esto aun debe ser implementado
-describe('selectorKey', () => {
-  it("should return ''", () => {
-    //const result = selectorKey()
-    const result = () => {
-      return 'value1'
-    }
-
-    expect(result).toEqual('value')
-  })
-})
 
 // todo esto aun debe ser implementado
 describe('selectorTransactionReference', () => {

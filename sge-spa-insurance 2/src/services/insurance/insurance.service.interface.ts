@@ -4,7 +4,7 @@ import { ResponseWithResult } from '@app/utils/interfaces'
 
 //#region Session
 export interface KeyAndTransactionReference {
-  key: string
+  key?: string
   transactionReference: string
 }
 export interface PersonSession {
@@ -108,9 +108,13 @@ export interface PortalHubOffer extends ResponseWithResult<FindOfferResult> {
 //#endregion
 
 //#region FindDocuments
-export interface FindDocumentsParams extends KeyAndTransactionReference {
-  documentsReference?: Array<string>
-  identity: PersonInformation
+export interface DocumentsReference {
+  reference: string
+  flowCode: string
+}
+
+export interface FindDocumentsParams {
+  documents: Array<DocumentsReference>
 }
 
 export type FindDocumentsBody = ParamsToBody<FindDocumentsParams>
@@ -121,16 +125,18 @@ export interface DocumentInfo {
   content: string
 }
 
-interface DocumentItem {
-  channelCode: string
-  channelProductCode: string
-  documents: Array<DocumentInfo>
-  planCode: string
-  productCode: string
+interface DocumentItem extends DocumentInfo {
+  reference?: string
+  status?: string
+}
+
+export interface DocumentsValue {
+  transactionReference: string
+  documents: Array<DocumentItem>
 }
 
 export interface DocumentsDownloadResult {
-  value: Array<DocumentItem>
+  value: DocumentsValue
 }
 
 export type DocumentsDownloadResponse = Response<DocumentsDownloadResult>

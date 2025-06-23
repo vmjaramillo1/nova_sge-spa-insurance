@@ -14,37 +14,23 @@ import {
  * @param document return static file by document 'alias', if not provided, get preview of certificate
  */
 const useDownloadFile = (document?: string) => {
-  const key = useAppSelector(selectorKey)
-  const transactionReference = useAppSelector(selectorTransactionReference)
-
-  const identity = useIdentity()
+  const flowCode = 'FL_LIF_HEAL' // useAppSelector(selectorTransactionReference)
 
   return async () => {
     try {
       callModal(callModal.OPEN)
 
-      if (!key || !transactionReference || !identity) return
+      if (!flowCode) return
 
       const findDocumentsParams: FindDocumentsParams = {
-        key,
-        transactionReference,
-        identity: {
-          cif: identity.cif,
-          dni: identity.dni,
-          dniType: identity.dniType,
-        },
-      }
-
-      if (document) {
-        findDocumentsParams.documentsReference = [document]
+        documents: [{ flowCode, reference: document ?? '' }],
       }
 
       const result = await InsuranceService.findDocuments(findDocumentsParams)
 
       if (!isSuccessResponse(result)) return
 
-      const [firstProduct] = result.value
-      const [firstDocument] = firstProduct.documents
+      const [firstDocument] = result.value.documents
 
       downloadFile(firstDocument)
     } finally {

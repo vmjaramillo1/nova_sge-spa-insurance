@@ -7,6 +7,8 @@ import Radio from '@app/components/atoms/radio'
 import clsx from 'clsx'
 import Button from '@app/components/atoms/button'
 
+const nn = "<sf-link to='www.google.com' variant='body' arialabel='prueba' trackevent='prueba 1'> esto es una prueba </sf-link>"
+
 const PlanSelection = () => {
   const {
     content,

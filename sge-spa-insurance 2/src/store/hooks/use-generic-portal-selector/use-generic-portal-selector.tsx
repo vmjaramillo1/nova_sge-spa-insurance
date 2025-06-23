@@ -1,12 +1,12 @@
 import useAppSelector from '@app/hooks/use-app-selector'
 import {
   type PortalFraudReducedDefault,
-  type PortalFraudParamsKeys,
+  type PortaFraudParams,
 } from './use-portal-fraud-selector.interface'
 
 import {
   type PortalLifeReducedDefault,
-  type PortalLifeParamsKeys,
+  type PortaLifeParams,
 } from './use-portal-life-selector.interface'
 
 import {
@@ -21,8 +21,8 @@ export type PortalTypeFraud = 'TU_BAN_PRO'
 export type PortalType = 'TU_BAN_PRO' | 'LIFE_HEALTH'
 
 export type PortalTypeMap = {
-  TU_BAN_PRO: { content: PortalFraudReducedDefault; params: PortalFraudParamsKeys }
-  LIFE_HEALTH: { content: PortalLifeReducedDefault; params: PortalLifeParamsKeys }
+  TU_BAN_PRO: { content: PortalFraudReducedDefault; params: PortaFraudParams }
+  LIFE_HEALTH: { content: PortalLifeReducedDefault; params: PortaLifeParams }
 }
 
 export const portalProductCodes: Record<PortalType, string> = {

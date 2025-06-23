@@ -202,8 +202,4 @@ export interface PortalSharedReducedDefault {
   flow: ConfigurationFlowShared
 }
 //#endregion
-export type PortalSharedParamsKeys = 'ChannelCode'
-
-export type PortaSharedParams = {
-  [key in Lowercase<PortalSharedParamsKeys>]: string
-}
+export type PortalSharedParamsKeys = 'ChannelCode' | 'FlowCode'

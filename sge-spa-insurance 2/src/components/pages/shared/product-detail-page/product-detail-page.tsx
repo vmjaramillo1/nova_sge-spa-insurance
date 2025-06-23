@@ -102,6 +102,10 @@ const ProductDetailPage = () => {
             <ArrowIcon fill="#2F7ABF" />
           </button>
         </div>
+
+        <Typography variant="legal" className="text-dark-gray-400 mt-24">
+          <SmartContent>{content.sectionCoverages.description.value}</SmartContent>
+        </Typography>
         <Divider className="h-16 mb-16 mt-16 -mx-24" />
         <Button
           className="mt-auto floating-button"

@@ -20,7 +20,6 @@ export const selectorPortalHub = createSelector(
 //#endregion
 
 //#region App
-
 export const selectorOfferProducts = createSelector(
   (store: RootState) => store.app.offer,
   (offer) => offer
@@ -62,6 +61,8 @@ export const selectorProductCode = createSelector(
   (store: RootState) => store.flow.shared.productCode,
   (productCode) => productCode
 )
+
+// todo eliminar el key en caso de ser necessario
 export const selectorKey = createSelector(
   (store: RootState) => store.flow.shared.key,
   (key) => key

@@ -6,14 +6,12 @@ import useGenericPortalByCodeSelector, {
 import { useMemo } from 'react'
 import { filterAndSort } from '@app/utils/common'
 import { RoutesHubAlias } from '@app/utils/enums/routes-alias'
+import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 
 const useNextBackStep = () => {
-  const productCode = useAppSelector(selectorProductCode)
+  const { isPending, currentPortal } = useCurrentPortal()
   const currentStep = useAppSelector((state) => state.flow.shared.step)
 
-  const [isPending, currentPortal] = useGenericPortalByCodeSelector(
-    productCode as PortalType
-  )
   const currentSteps = useMemo(
     () => (isPending ? [] : filterAndSort(currentPortal.content.flow.steps)),
     [isPending, currentPortal]

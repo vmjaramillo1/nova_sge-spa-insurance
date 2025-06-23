@@ -73,37 +73,6 @@ export default class InsuranceService {
     }
   }
 
-  static async findDocuments(
-    params: FindDocumentsParams
-  ): Promise<DocumentsDownloadResponse> {
-    try {
-      const {
-        key,
-        transactionReference,
-        documentsReference,
-        identity: { cif, dni, dniType },
-      } = params
-
-      const endpoint = this.formatEndpoint('documents-download')
-
-      const body = encryptBody({
-        transactionReference,
-        key,
-        documentsReference,
-
-        cif,
-        dni,
-        dniType,
-      })
-
-      const result = await axios.post<DocumentsDownloadResponse>(endpoint, body)
-
-      return validateResult(result)
-    } catch (error) {
-      return resolveError(error)
-    }
-  }
-
   static async processTransaction(
     params: ProcessTransactionParams
   ): Promise<ProcessTransactionResponse> {
@@ -203,7 +172,7 @@ export default class InsuranceService {
   ): Promise<ValidateOfferResponse> {
     const tempBaseUrl =
       'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-      // 'https://hub-seguros.free.beeceptor.com/hub'
+    // 'https://hub-seguros.free.beeceptor.com/hub'
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
     try {
@@ -234,7 +203,7 @@ export default class InsuranceService {
     }
   }
 
-    static async validateOffer1(
+  static async validateOffer1(
     params: ValidateOfferParams
   ): Promise<ValidateOfferResponse> {
     try {
@@ -259,11 +228,10 @@ export default class InsuranceService {
     }
   }
 
-
   static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
     const tempBaseUrl =
       'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-      // 'https://hub-seguros.free.beeceptor.com/hub'
+    // 'https://hub-seguros.free.beeceptor.com/hub'
 
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
@@ -281,6 +249,44 @@ export default class InsuranceService {
         ...this.tempHeaders,
       })
       return validateResult(result)
+    } catch (error) {
+      return resolveError(error)
+    }
+  }
+
+  static async findDocuments(
+    params: FindDocumentsParams
+  ): Promise<DocumentsDownloadResponse> {
+    try {
+      const { documents } = params
+      // const endpoint = this.formatEndpoint('documents-download')
+      const endpoint =
+        'https://des-api-eva.novaecuador.com/salegateway/api/sale-gateway/static-documents-download'
+
+      // const body = encryptBody({
+      //   documents,
+      // })
+
+      const body = {
+        documents,
+      }
+
+      const result = await axios.post<DocumentsDownloadResponse>(endpoint, body)
+
+      // todo eliminar esto
+      const tempResutl = {...result.data} as any
+
+      const original = {
+        code: '200',
+        message: 'OK',
+        value: {
+          documents:tempResutl.result
+        }
+      }
+
+      const response = { ...result, data: original }
+      //
+      return validateResult(response)
     } catch (error) {
       return resolveError(error)
     }
