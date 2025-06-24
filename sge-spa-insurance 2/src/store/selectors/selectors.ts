@@ -35,21 +35,6 @@ export const selectorAccounts = createSelector(
   (paymentOptions) => paymentOptions
 )
 
-export const selectorPlans = createSelector(
-  (store: RootState) => store.app.products[0]?.plans,
-  (plans) => plans
-)
-
-export const selectorSale = createSelector(
-  (store: RootState) => store.app.products[0]?.sale,
-  (sale) => sale
-)
-
-export const selectorPortal = createSelector(
-  (store: RootState) => store.app.products[0]?.portal,
-  (portal) => portal
-)
-
 export const selectorLopdp = createSelector(
   (store: RootState) => store.app.lopdp,
   (lopdp) => lopdp
@@ -101,5 +86,10 @@ export const selectorStep = createSelector(
 export const selectorContentLoaded = createSelector(
   (store: RootState) => store.flow.shared.contentLoaded,
   (contentLoaded) => contentLoaded
+)
+
+export const selectorContract = createSelector(
+  (store: RootState) => store.flow.shared.contract,
+  (contract) => contract
 )
 //#endregion

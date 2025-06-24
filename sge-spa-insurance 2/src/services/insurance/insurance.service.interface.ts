@@ -18,6 +18,7 @@ export interface PersonInformation {
   cif: string
   dni: string
   dniType: string
+  transactionReference?: string
 }
 
 export type IdentityValues = PersonSession & PersonInformation
@@ -181,9 +182,8 @@ export type ProcessTransactionResponse = Response<ProcessTransactionResult>
 //#endregion
 
 //#region FindContracts
-export interface FindContractsParams extends KeyAndTransactionReference {
+export interface FindContractsParams {
   reference: string
-  identity: PersonInformation
 }
 
 export type FindContractsBody = ParamsToBody<FindContractsParams>

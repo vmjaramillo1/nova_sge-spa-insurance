@@ -40,11 +40,9 @@ import {
   selectorPeriodicitySelected,
 } from '@app/store/selectors/selectors'
 import useAppDispatch from '@app/hooks/use-app-dispatch'
-import { selectorProductCode } from '@app/store/selectors/selectors'
-import {
-  type PortalType,
-  useGenericProductByCodeSelector,
-} from '@app/store/hooks/use-generic-portal-selector'
+
+import useCurrentProduct from '@app/hooks/use-current-product'
+
 const periodicityLabel: Record<string, string> = {
   [PeriodicityCode.ANNUAL]: 'anual',
   [PeriodicityCode.MONTHLY]: 'mensual',
@@ -61,8 +59,7 @@ const useAcceptancePage = () => {
 
   usePageTrackingEvent(TrackingEvents.ACCEPT_VIEW_PAGE)
 
-  const productCode = useAppSelector(selectorProductCode)
-  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
+  const { currentProduct: productData } = useCurrentProduct()
 
   const plans = productData.plans
 

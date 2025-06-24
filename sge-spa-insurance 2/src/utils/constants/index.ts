@@ -41,6 +41,11 @@ export const BASE_PATH = process.env.PUBLIC_URL ?? '/'
 
 export const OPEN_ACCOUNTS_FLOW_URL =
   process.env.REACT_APP_EXTERNAL_FLOW_ACCOUNT_URL!
+
+export const PORTAL_PRODUCT_CODE = process.env.REACT_APP_PORTAL_PRODUCT_CODE!
+
+export const CHANNEL_PRODUCT_CODE = process.env.REACT_APP_CHANNEL_PRODUCT_CODE!
+
 export const PORTAL_INSURANCE_URL =
   'https://www.pichincha.com/portal/seguros-en-linea'
 

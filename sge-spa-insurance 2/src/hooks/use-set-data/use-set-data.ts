@@ -14,19 +14,29 @@ export const useSetData = () => {
   const identityEventCallback = useCallback(
     (detail: IdentityEvent) => {
       if (isValidIdentity(detail)) {
-        dispatch(authenticate(detail))
+        const formattedGuid = detail.guid.replace(
+          /^(.{8})(.{4})(.{4})(.{4})(.{12})$/,
+          '$1-$2-$3-$4-$5'
+        )
+
+        const formatDetail = {
+          ...detail,
+          guid: formattedGuid,
+        }
+
+        dispatch(authenticate(formatDetail))
 
         const identity: PersonSession = {
-          device: detail.device,
-          guid: detail.guid,
-          ip: detail.ip,
-          session: detail.session,
+          device: formatDetail.device,
+          guid: formatDetail.guid,
+          ip: formatDetail.ip,
+          session: formatDetail.session,
         }
 
         const stringifyIdentity = JSON.stringify(identity)
 
-        axios.defaults.headers.common['Authorization'] = detail.jwtToken
-        axios.defaults.headers.common['Channel'] = detail.channel ?? 'movil'
+        axios.defaults.headers.common['Authorization'] = formatDetail.jwtToken
+        axios.defaults.headers.common['Channel'] = formatDetail.channel ?? 'movil'
         axios.defaults.headers.common['Identity'] = stringifyIdentity
       }
     },

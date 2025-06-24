@@ -6,6 +6,7 @@ import Typography from '../typography/typography'
 import clsx from 'clsx'
 import Divider from '@app/components/atoms/divider/divider'
 import Button from '@app/components/atoms/button'
+import SmartContent from '@app/components/atoms/smart-text'
 import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
 
 interface Item {
@@ -43,7 +44,7 @@ const ModalCoverage: FC<ModalCoverageProps> = (props) => {
         classes={{ root: 'modal-coverage__items' }}
       >
         <Typography variant="button" aria-hidden="true">
-          {item.description?.value}
+          <SmartContent>{item.description?.value}</SmartContent>
         </Typography>
       </CoverageItem>
     )

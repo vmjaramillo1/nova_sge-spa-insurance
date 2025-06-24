@@ -4,23 +4,20 @@ import { useOutletContext } from 'react-router-dom'
 import useRouterEvent from '@app/hooks/use-router-event'
 import { FlowStatus } from '@app/utils/enums'
 import { useSmartText } from '@app/components/atoms/smart-text'
-import { selectorProductCode } from '@app/store/selectors/selectors'
-import {
-  useGenericProductByCodeSelector,
-  type PortalType,
-} from '@app/store/hooks/use-generic-portal-selector'
+
 import { OutletContextValue } from '../layout'
 import useAppSelector from '@app/hooks/use-app-selector'
 import { selectorStatus, selectorStep } from '@app/store/selectors/selectors'
+import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 
 const usePage = (title: string) => {
   const { isLoading, changeTitle } = useOutletContext<OutletContextValue>()
   const status = useAppSelector(selectorStatus)
   const step = useAppSelector(selectorStep)
 
-  const productCode = useAppSelector(selectorProductCode)
-  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
-  const flowConfigStep = productData?.portal?.content?.flow?.steps
+  const { currentPortal: productData } = useCurrentPortal()
+
+  const flowConfigStep = productData?.content?.flow?.steps
 
   const stepTitle =
     flowConfigStep?.find((s) => s.route === step)?.title.value ?? title

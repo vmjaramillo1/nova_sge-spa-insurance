@@ -9,20 +9,15 @@ import { pushTrackEvent, TrackingEvents } from '@app/utils/messages'
 
 import { APP_ROUTES, AllRouteAliases } from '@app/routes/config'
 
-import useAppSelector from '@app/hooks/use-app-selector'
 import useModal from '@app/hooks/use-modal/use-modal'
 import { CoverageItem } from '@app/store/hooks/use-generic-portal-selector/use-portal-shared-selector.interface'
-import { selectorProductCode } from '@app/store/selectors/selectors'
-import useGenericPortalByCodeSelector, {
-  type PortalType,
-} from '@app/store/hooks/use-generic-portal-selector'
+
 import useNextBackStep from '@app/hooks/use-next-back-step'
 import WrapperIcons from '@app/components/atoms/wrapper_icons/WrapperIcons'
+import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 
 export function useContentProductDetailPage() {
-  const productCode = useAppSelector(selectorProductCode)
-
-  const [, currentPortal] = useGenericPortalByCodeSelector(productCode as PortalType)
+  const { currentPortal } = useCurrentPortal()
 
   const mappedFaqs = useMemo(() => {
     if (!currentPortal.content.home.sectionFaq) return []

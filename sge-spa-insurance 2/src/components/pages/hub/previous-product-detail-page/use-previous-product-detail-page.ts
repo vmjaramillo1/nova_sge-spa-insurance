@@ -1,53 +1,42 @@
 import useBackButton from '@app/hooks/use-back-button'
 import useDownloadFile from '@app/hooks/use-download-file'
-import useIdentity from '@app/hooks/use-identity'
 
 import { isSuccessResponse } from '@app/utils/guards'
-import { filterAndSort, stringFormat } from '@app/utils/common'
-import smartFormats, { monthByNumber } from '@app/utils/format/formats/odd-formats'
+import { filterAndSort } from '@app/utils/common'
 import InsuranceService from '@app/services/insurance'
 import {
   TrackingEvents,
-  backHomeWithTracking,
   callModal,
   downloadFile,
   openBrowser,
   pushTrackEvent,
 } from '@app/utils/messages'
-import usePageTrackingEvent from '@app/hooks/use-page-tracking-event/use-page-tracking-event'
-import { useMemo } from 'react'
-import {
-  DOCUMENT_DOWNLOAD_STATIC_CODES,
-  getAriaNumber,
-  getMoneyAriaLabel,
-} from '@app/utils'
-import { PeriodicityCode } from '@app/utils/enums'
+
 import useAppSelector from '@app/hooks/use-app-selector'
-import { DefaultPortal } from '@app/utils/interfaces'
 
 import {
-  selectorSale,
-  selectorPortal,
-  selectorPlans,
-  selectorKey,
-  selectorTransactionReference,
+  selectorPlanSelected,
+  selectorContract,
 } from '@app/store/selectors/selectors'
+import { APP_ROUTES } from '@app/routes/config'
+import { useNavigate } from 'react-router-dom'
+import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 
 function usePreviousProductDetailPage() {
-  const { sale } = useAppSelector(selectorPortal) as { sale: DefaultPortal['sale'] }
+  const navigate = useNavigate()
 
-  const saleDetail = useAppSelector(selectorSale)
-  const plans = useAppSelector(selectorPlans)
-  const key = useAppSelector(selectorKey)
-  const transactionReference = useAppSelector(selectorTransactionReference)
+  const contract = useAppSelector(selectorContract)
+  const { currentPortal } = useCurrentPortal()
+  const { sale: saleContent } = currentPortal.content
 
-  const identity = useIdentity()
+  const planSelected = useAppSelector(selectorPlanSelected)
 
-  useBackButton(backHomeWithTracking(TrackingEvents.POSVENTA_CLICK_BUTTON_BACK))
+  useBackButton(() => {
+    pushTrackEvent(TrackingEvents.PAYMENT_CLICK_BUTTON_BACK)
+    navigate(APP_ROUTES.PREVIOUS_PRODUCT)
+  })
 
-  usePageTrackingEvent(TrackingEvents.POSVENTA_VIEW_PAGE)
-
-  const downloadUseGuide = useDownloadFile(DOCUMENT_DOWNLOAD_STATIC_CODES.USE_GUIDE)
+  const downloadUseGuide = useDownloadFile(saleContent.actions.userGuide.value)
   const handleDownloadUseGuide = () => {
     pushTrackEvent(TrackingEvents.POSVENTA_DOWNLOAD_BUTTON_USE_GUIDE)
     downloadUseGuide()
@@ -55,12 +44,17 @@ function usePreviousProductDetailPage() {
 
   const handleOpenCall = () => {
     pushTrackEvent(TrackingEvents.POSVENTA_CLICK_BUTTON_CALL)
-    openBrowser(sale.actions.call.value)
+    openBrowser(saleContent.contact.call.value)
   }
 
   const handleOpenWhatsapp = () => {
     pushTrackEvent(TrackingEvents.POSVENTA_CLICK_BUTTON_WSP)
-    openBrowser(sale.actions.whatsapp.value)
+    openBrowser(saleContent.contact.whatsapp.value)
+  }
+
+  const handleOpenNetwork = () => {
+    pushTrackEvent(TrackingEvents.POSVENTA_CLICK_BUTTON_WSP)
+    openBrowser(saleContent.contact.cta.value)
   }
 
   const handleDownloadContract = async () => {
@@ -68,18 +62,10 @@ function usePreviousProductDetailPage() {
       pushTrackEvent(TrackingEvents.POSVENTA_DOWNLOAD_BUTTON_CONTRACT)
       callModal(callModal.OPEN)
 
-      if (!key || !transactionReference || !saleDetail?.idGpsSale || !identity)
-        return
+      if (!contract) return
 
       const response = await InsuranceService.findContracts({
-        key,
-        transactionReference,
-        reference: saleDetail.idGpsSale,
-        identity: {
-          cif: identity.cif,
-          dni: identity.dni,
-          dniType: identity.dniType,
-        },
+        reference: contract,
       })
 
       if (!isSuccessResponse(response)) return
@@ -92,94 +78,27 @@ function usePreviousProductDetailPage() {
     }
   }
 
-  const currentPlan = useMemo(() => {
-    const [firstPlan] = Object.keys(plans)
-    return firstPlan
-  }, [plans])
-
-  const currentPeriodicity = useMemo(() => {
-    const [firstPeriodicity] = Object.keys(plans[currentPlan].periodicityOptions)
-
-    return firstPeriodicity
-  }, [currentPlan, plans])
-
-  const currentPrice = useMemo(() => {
-    return plans[currentPlan].periodicityOptions[currentPeriodicity].totalPrice
-  }, [currentPeriodicity, currentPlan, plans])
-
   const pichinchaIconProps = {
-    size: '24px',
+    size: '22px',
+    type: '--sharp',
     color: 'blue',
-    weight_color: '500',
-    type: '--outlined',
+    'weight-color': '500',
   }
 
-  const coverages = filterAndSort(sale.coverages.items)
+  const coverageItems = saleContent.coverages.MAP_PLANS[planSelected]
 
-  const saleFormatted = useMemo<typeof sale>(() => {
-    const isAnnual = currentPeriodicity === PeriodicityCode.ANNUAL
-
-    const startDate = smartFormats.toDate(saleDetail?.startVigency || '', 'full')
-    const dateAria = smartFormats.toDate(saleDetail?.startVigency || '', 'aria')
-    const currentSaleId = saleDetail?.idGpsSale ?? ''
-    const ariaSaleId = getAriaNumber(currentSaleId)
-
-    const debitDate = new Date(saleDetail?.startVigency ?? '')
-
-    const debitDateDay = debitDate.getDate().toString()
-
-    const period = isAnnual ? 'año' : 'mes'
-    const dateLabel = `de cada ${period}`
-    const month = monthByNumber[debitDate.getMonth()].full
-
-    const debitDateLabel = isAnnual
-      ? `${debitDateDay} ${month} ${dateLabel}`
-      : `${debitDateDay} ${dateLabel}`
-
-    const titlePeriodicity = `${smartFormats.toMoney(currentPrice)} cada ${period}`
-
-    // todo arreglar any
-    return {
-      ...sale,
-      description: {
-        ...sale.description,
-        aria: stringFormat(sale.description.aria, [
-          ` ${getMoneyAriaLabel(currentPrice)} cada ${period}`,
-        ]),
-        value: stringFormat(sale.description.value, [titlePeriodicity]),
-      },
-      range: {
-        ...sale.range,
-        aria: stringFormat(sale.range.aria, [dateAria, debitDateLabel]),
-        items: filterAndSort(
-          sale.range.items.map((item) => ({
-            ...item,
-            value: stringFormat(item.value, [startDate, debitDateLabel]),
-          }))
-        ),
-      },
-      contract: {
-        ...sale.contract,
-        aria: stringFormat(sale.contract.aria, [ariaSaleId]),
-        value: stringFormat(sale.contract.value, [currentSaleId]),
-      },
-    }
-  }, [
-    currentPeriodicity,
-    currentPrice,
-    sale,
-    saleDetail?.idGpsSale,
-    saleDetail?.startVigency,
-  ])
+  const sortCoverageItems = filterAndSort(coverageItems)
 
   return {
-    content: saleFormatted,
-    coverages,
+    content: saleContent,
+    planSelected,
+    coverages: sortCoverageItems,
     pichinchaIconProps,
     handleDownloadContract,
     handleOpenWhatsapp,
     handleOpenCall,
     handleDownloadUseGuide,
+    handleOpenNetwork,
   }
 }
 

@@ -21,17 +21,14 @@ import useAppSelector from '@app/hooks/use-app-selector'
 
 import {
   selectorAccounts,
-  selectorProductCode,
   selectorPlanSelected,
   selectorPeriodicitySelected,
 } from '@app/store/selectors/selectors'
 
 import { setPeriodicitySelected } from '@app/store/reducers/flow-slice'
-import {
-  useGenericProductByCodeSelector,
-  type PortalType,
-} from '@app/store/hooks/use-generic-portal-selector'
+
 import useAppDispatch from '@app/hooks/use-app-dispatch'
+import useCurrentProduct from '@app/hooks/use-current-product'
 
 function roundNum(num: string | number) {
   return Math.round((Number(num) + Number.EPSILON) * 100) / 100
@@ -49,8 +46,7 @@ const useProductPage = () => {
   const dispatch = useAppDispatch()
 
   const currentAccountValues = useCurrentAccount()
-  const productCode = useAppSelector(selectorProductCode)
-  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
+  const { currentProduct: productData } = useCurrentProduct()
 
   const plans = productData.plans
   const productInfo = productData.portal.content.payment
@@ -145,7 +141,7 @@ const useProductPage = () => {
     setAccepted((prev) => !prev)
   }
 
-  const downloadDocumentsPreview = useDownloadFile()
+  const downloadDocumentsPreview = useDownloadFile('TERM_COND') // TODO JUstar
   const handleDownload = () => {
     pushTrackEvent(TrackingEvents.PAYMENT_DOWNLOAD_LINK)
     downloadDocumentsPreview()

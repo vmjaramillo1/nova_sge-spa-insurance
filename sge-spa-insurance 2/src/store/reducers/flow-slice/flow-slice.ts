@@ -13,6 +13,7 @@ const initialState: FlowState = {
     contentLoaded: false,
     step: RoutesSharedAlias.PRODUCT_DETAIL,
     status: FlowStatus.WAIT_LOAD,
+    contract: '',
   },
   client: {
     cellPhone: '',
@@ -65,6 +66,9 @@ const flowSlice = createSlice({
     setClientData(state, action: PayloadAction<FlowState['client']>) {
       state.client = action.payload
     },
+    setContract(state, action: PayloadAction<string>) {
+      state.shared.contract = action.payload
+    }
   },
 })
 
@@ -78,6 +82,7 @@ export const {
   setPlanSelected,
   setPeriodicitySelected,
   setClientData,
+  setContract,
 } = flowSlice.actions
 
 export default flowSlice

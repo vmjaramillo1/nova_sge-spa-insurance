@@ -18,22 +18,25 @@ const useProducts = () => {
       offerableCodes.includes(product.code)
     )
   )
-
   const offerableProductsCodes = Object.keys(offerableProducts)
 
-  const previousProduct = Object.fromEntries(
-    Object.entries(products).filter(
-      ([, product]) => !offerableCodes.includes(product.code)
-    )
+  const previousProducts = offerProductCodes.previousProducts
+  const previousCodes = Array.from(
+    new Set(offerProductCodes.previousProducts.map((item) => item.productCode))
   )
 
-  const previousProductCodes = Object.keys(previousProduct)
+  const previousByProductCode = previousProducts.reduce<
+    Record<string, typeof previousProducts[number]>
+  >((acc, item) => {
+    acc[item.productCode] = item
+    return acc
+  }, {})
 
   return {
     offerableProducts,
     offerableProductsCodes,
-    previousProduct,
-    previousProductCodes,
+    previousProduct: previousByProductCode,
+    previousProductCodes: previousCodes,
   }
 }
 

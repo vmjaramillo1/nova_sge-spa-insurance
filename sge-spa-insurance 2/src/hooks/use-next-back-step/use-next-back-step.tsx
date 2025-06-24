@@ -1,8 +1,4 @@
 import useAppSelector from '@app/hooks/use-app-selector'
-import { selectorProductCode } from '@app/store/selectors/selectors'
-import useGenericPortalByCodeSelector, {
-  type PortalType,
-} from '@app/store/hooks/use-generic-portal-selector'
 import { useMemo } from 'react'
 import { filterAndSort } from '@app/utils/common'
 import { RoutesHubAlias } from '@app/utils/enums/routes-alias'

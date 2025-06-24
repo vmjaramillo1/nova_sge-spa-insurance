@@ -17,6 +17,8 @@ import { MessageService, WebviewMessages } from '@pichincha/events-microsite'
 
 import { HttpStatusCode } from '@app/utils/enums'
 import { resolveError, validateResult, encryptBody } from '@app/utils/service'
+import { CHANNEL_PRODUCT_CODE, PORTAL_PRODUCT_CODE } from '@app/utils/constants'
+import { channel } from 'diagnostics_channel'
 
 const defaultTimeout = '10000'
 
@@ -39,7 +41,11 @@ axios.interceptors.response.use(
 
 export default class InsuranceService {
   // todo ajuste para variable de entorno en test
-  private static baseUrl = 'http://localhost:4200/insurance'
+  // private static baseUrl = 'http://localhost:4200/insurance'
+
+  private static baseUrl =
+    'http://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub-gateway/domain/seguros-embebidos/v1/hub'
+
   private static formatEndpoint = (path: string) => `${this.baseUrl}/${path}`
 
   static async consentLopdp(params: ConsentParams): Promise<ConsentResponse> {
@@ -121,23 +127,12 @@ export default class InsuranceService {
     params: FindContractsParams
   ): Promise<ContractDocumentsDownloadResponse> {
     try {
-      const {
-        key,
-        transactionReference,
-        reference,
-        identity: { cif, dni, dniType },
-      } = params
+      const { reference } = params
 
       const endpoint = this.formatEndpoint('contract-download')
 
       const body = encryptBody({
-        transactionReference,
-        key,
         reference,
-
-        cif,
-        dni,
-        dniType,
       })
 
       const result = await axios.post<ContractDocumentsDownloadResponse>(
@@ -170,7 +165,8 @@ export default class InsuranceService {
   static async validateOffer(
     params: ValidateOfferParams
   ): Promise<ValidateOfferResponse> {
-    const tempBaseUrl =
+
+      const tempBaseUrl =
       'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
     // 'https://hub-seguros.free.beeceptor.com/hub'
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
@@ -183,12 +179,12 @@ export default class InsuranceService {
       const request = {
         profile: 'A1',
         mode: 'NORMAL',
-        dni: dni,
-        dniType: dniType,
+        dni: dni, //si
+        dniType: dniType, //si
         cif: cif,
-        channelProductCode: 'BP_BM_REQUESTS',
-        transactionReference: 'd536b1b6-2057-eb23-a3df-3a1716ec58f6',
-        portalCode: 'POR_BP_BANCAMOVIL_EMB_PROD',
+        channelProductCode: 'BP_BM_REQUESTS', //si
+        transactionReference: 'd536b1b6-2057-eb23-a3df-3a1716ec58f6', // GUID
+        portalCode: 'POR_BP_BANCAMOVIL_EMB_PROD', //si
       }
 
       const endpoint = tempFormatEndpoint('validate')
@@ -208,18 +204,20 @@ export default class InsuranceService {
   ): Promise<ValidateOfferResponse> {
     try {
       const {
-        identity: { cif, dni, dniType },
+        identity: { cif, dni, dniType, transactionReference },
       } = params
 
-      const endpoint = this.formatEndpoint('validate-offerable-product')
-
+      const endpoint = this.formatEndpoint('validate')
+      debugger
       const body = encryptBody({
         cif,
         dni,
         dniType,
+        transactionReference: transactionReference,
+        channelProductCode: CHANNEL_PRODUCT_CODE,
+        portalCode: PORTAL_PRODUCT_CODE,
       })
 
-      debugger
       const result = await axios.post<ValidateOfferResponse>(endpoint, body)
 
       return validateResult(result)
@@ -274,14 +272,14 @@ export default class InsuranceService {
       const result = await axios.post<DocumentsDownloadResponse>(endpoint, body)
 
       // todo eliminar esto
-      const tempResutl = {...result.data} as any
+      const tempResutl = { ...result.data } as any
 
       const original = {
         code: '200',
         message: 'OK',
         value: {
-          documents:tempResutl.result
-        }
+          documents: tempResutl.result,
+        },
       }
 
       const response = { ...result, data: original }

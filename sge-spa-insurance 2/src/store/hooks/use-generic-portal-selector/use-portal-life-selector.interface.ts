@@ -5,6 +5,7 @@ import {
   type PageSuccessShared,
   type PageMultiOffer,
   type ConfigurationFlowShared,
+  type SalePageShared,
   type PortalSharedParamsKeys,
 } from './use-portal-shared-selector.interface'
 
@@ -15,6 +16,8 @@ export type PageSuccessLife = PageSuccessShared
 export type PageMultiOfferLife = PageMultiOffer
 export type ConfigurationFlowLife = ConfigurationFlowShared
 
+export type SalePageFlowLife = SalePageShared
+
 export interface PortalLifeReducedDefault {
   home: PageHomeLife
   payment: PagePaymentLife
@@ -22,6 +25,7 @@ export interface PortalLifeReducedDefault {
   success: PageSuccessLife
   multiOffer: PageMultiOfferLife
   flow: ConfigurationFlowLife
+  sale: SalePageFlowLife
 }
 
 export type PortalLifeParamsKeys = PortalSharedParamsKeys

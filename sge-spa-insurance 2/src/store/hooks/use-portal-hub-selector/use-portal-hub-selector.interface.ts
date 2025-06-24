@@ -45,12 +45,26 @@ export interface TermsAndConditionPage {
   action: TextWhitAria
 }
 
+interface ProductSaleCard {
+  title: TextWhitAria
+  account: TextWhitAria
+  nextPayment: TextWhitAria & { text: string }
+  amount: TextWhitAria & { text: string }
+  action: TextWhitAria
+}
+
+interface PageSale {
+  description: TextWhitAria
+  defaultCard: {
+    description: TextWhitAria
+    action: TextWhitAria
+  }
+  products: Record<string, ProductSaleCard>
+}
+
 export interface PortalHubReducedDefault {
   home: PageHome
-  // termsConditions: TermsAndConditionPage
-
-  // CONFIG FLOW
-  // flow: PageFlow;
+  sale: PageSale
 }
 
 export type PortalHubParamsKeys = 'ChannelCode'

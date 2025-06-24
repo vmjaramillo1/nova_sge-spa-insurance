@@ -1,6 +1,7 @@
 import { AttributeFormat } from '@app/utils/reduce/portal-reduce-utils'
 import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
 import { WithIsActive, WithKey, WithOrder } from '@app/utils/interfaces'
+import { text } from 'stream/consumers'
 
 //#region home
 interface SectionHero {
@@ -71,6 +72,7 @@ export interface PagePaymentShared {
   }
   disclaimer: TextWhitAria & {
     action: string
+    sufix: string
   }
   selectAccount: {
     multipleAccount: string
@@ -192,6 +194,47 @@ export interface PageMultiOffer {
 
 //#endregion
 
+// #region Sale
+
+interface AlterTextWhitAria extends TextWhitAria {
+  text: string
+  icon?: string
+}
+
+interface ContactText extends AlterTextWhitAria {
+  icon: string
+  act: string
+}
+
+interface CoverageItemSale extends TextWhitAria, WithKey, WithOrder, WithIsActive {
+  text: string
+}
+
+export interface SalePageShared {
+  title: TextWhitAria
+  contract: TextWhitAria
+  plan: TextWhitAria
+  paymentDate: AlterTextWhitAria
+  amount: AlterTextWhitAria
+  productFrom: AlterTextWhitAria
+  actions: {
+    userGuide: AlterTextWhitAria & { isActive: boolean }
+    reviewCertificate: AlterTextWhitAria & { isActive: boolean }
+  }
+  coverages: {
+    title: TextWhitAria
+    MAP_PLANS: Record<string, CoverageItemSale[]>
+  }
+  contact: {
+    title: TextWhitAria
+    whatsapp: ContactText
+    call: ContactText
+    cta: AlterTextWhitAria
+  }
+}
+
+// #endregion
+
 //#region Reduced
 export interface PortalSharedReducedDefault {
   home: PageHomeShared
@@ -200,6 +243,7 @@ export interface PortalSharedReducedDefault {
   success: PageSuccessShared
   multiOffer: PageMultiOffer
   flow: ConfigurationFlowShared
+  sale: SalePageShared
 }
 //#endregion
 export type PortalSharedParamsKeys = 'ChannelCode' | 'FlowCode'

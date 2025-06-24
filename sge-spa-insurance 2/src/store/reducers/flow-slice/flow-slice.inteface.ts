@@ -11,6 +11,7 @@ export interface FlowState {
     accountHashSelected: string
     periodicitySelected: string
     transactionReference?: string
+    contract: string
   }
   client: {
     // address: string,

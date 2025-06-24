@@ -25,19 +25,15 @@ import useAppSelector from '@app/hooks/use-app-selector'
 import useBackButton from '@app/hooks/use-back-button'
 
 import {
-  selectorPortal,
   selectorPlanSelected,
   selectorPeriodicitySelected,
 } from '@app/store/selectors/selectors'
-import { selectorProductCode } from '@app/store/selectors/selectors'
-import {
-  type PortalType,
-  useGenericProductByCodeSelector,
-} from '@app/store/hooks/use-generic-portal-selector'
-const useSuccessPage = () => {
-  const productCode = useAppSelector(selectorProductCode)
-  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
 
+import useCurrentProduct from '@app/hooks/use-current-product'
+
+const useSuccessPage = () => {
+
+  const { currentProduct: productData } = useCurrentProduct()
   const { success } = productData.portal.content
 
   const plans = productData?.plans

@@ -99,7 +99,7 @@ const ProductPage = () => {
           classes={{ root: 'mt-auto mb-24' }}
         >
           {content.disclaimer.value}
-          {content.disclaimer?.action && content.disclaimer?.action === '' && (
+          {content.disclaimer?.action && content.disclaimer?.action !== '' && (
             <Typography
               onClick={handleDownload}
               variant="legal"
@@ -110,6 +110,7 @@ const ProductPage = () => {
               {content.disclaimer.action}
             </Typography>
           )}
+          {content.disclaimer.sufix}
         </CheckLegal>
         <Button onClick={handleClickContinue} disabled={!accepted}>
           {content.actionNext.cta.value}

@@ -18,13 +18,10 @@ const InsurancePage = () => {
           root: 'insurance-page__banner -mx-24 -mt-24 pt-24',
         }}
         variant="secondary"
+        ariaHidden={false}
       >
         <Suspense>
-          <Typography
-            variant="headline3"
-            className="insurance-page__title mr-4"
-            aria-label={heroContent.title.aria}
-          >
+          <Typography variant="headline3" className="insurance-page__title mr-4">
             <SmartContent>{heroContent.title.value}</SmartContent>
           </Typography>
 

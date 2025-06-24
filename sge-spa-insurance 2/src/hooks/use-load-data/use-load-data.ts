@@ -167,6 +167,7 @@ const useLoadData = () => {
           cif: identity.cif,
           dni: identity.dni,
           dniType: identity.dniType,
+          transactionReference: identity.guid,
         },
       })
 

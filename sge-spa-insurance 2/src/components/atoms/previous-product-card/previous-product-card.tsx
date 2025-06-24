@@ -13,7 +13,7 @@ interface RecordItem extends TextWhitAria {
   text: string
 }
 
-interface PreviousProductCard {
+export interface PreviousProductCardProps {
   title: TextWhitAria
   status?: StatusType
   account: TextWhitAria
@@ -25,7 +25,7 @@ interface PreviousProductCard {
 
 export type StatusType = keyof typeof MAP_INSURANCE_STATUS
 
-const PreviousProductCard = (props: PreviousProductCard) => {
+const PreviousProductCard = (props: PreviousProductCardProps) => {
   const { title, status, account, nextPayment, amount, action, handleClick } = props
 
   return (

@@ -1,21 +1,20 @@
 import InsuranceService, { FindDocumentsParams } from '@app/services/insurance'
 import { isSuccessResponse } from '@app/utils/guards'
 import { callModal, downloadFile } from '@app/utils/messages'
-import useIdentity from '../use-identity'
-
-import useAppSelector from '@app/hooks/use-app-selector'
-
-import {
-  selectorKey,
-  selectorTransactionReference,
-} from '@app/store/selectors/selectors'
+import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 
 /**
  * @param document return static file by document 'alias', if not provided, get preview of certificate
  */
 const useDownloadFile = (document?: string) => {
-  const flowCode = 'FL_LIF_HEAL' // useAppSelector(selectorTransactionReference)
+  const { currentPortal } = useCurrentPortal()
 
+  if (!currentPortal) {
+    console.warn('Missing fields: DownloadFileLin')
+    callModal(callModal.CLOSE)
+  }
+
+  const flowCode = currentPortal.params.flowcode
   return async () => {
     try {
       callModal(callModal.OPEN)

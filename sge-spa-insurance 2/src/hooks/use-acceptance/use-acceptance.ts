@@ -14,16 +14,11 @@ import {
   selectorPlanSelected,
   selectorPeriodicitySelected,
 } from '@app/store/selectors/selectors'
-import {
-  type PortalType,
-  useGenericProductByCodeSelector,
-} from '@app/store/hooks/use-generic-portal-selector'
-
-import { selectorProductCode } from '@app/store/selectors/selectors'
+import useCurrentProduct from '@app/hooks/use-current-product'
 
 const useAcceptance = () => {
-  const productCode = useAppSelector(selectorProductCode)
-  const [, productData] = useGenericProductByCodeSelector(productCode as PortalType)
+
+  const { productCode, currentProduct: productData } = useCurrentProduct()
 
   const plans = productData?.plans
 
