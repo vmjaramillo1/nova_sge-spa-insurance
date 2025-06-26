@@ -4,10 +4,13 @@ import { type ProductCardProps } from '@app/components/atoms/product-card/produc
 import { mapperRouts } from '@app/routes/config'
 import useBackButton from '@app/hooks/use-back-button/use-back-button'
 import { TrackingEvents, backHomeWithTracking } from '@app/utils/messages'
+import { useSmartText } from '@app/components/atoms/smart-text'
 
 function useInsurancePage() {
   const [, content] = usePortalHubSelector((portal) => portal.content.home)
   const { offerableProductsCodes } = useProducts()
+
+  const ariaBanner = useSmartText(content.sectionHero.title.aria ?? '')
 
   //  todo validar traking
   useBackButton(backHomeWithTracking(TrackingEvents.IN_PROGRESS_CLICK_BUTTON_BACK))
@@ -36,6 +39,7 @@ function useInsurancePage() {
   }, [] as ProductCardProps[])
 
   return {
+    ariaBanner,
     heroContent,
     productCards,
   }

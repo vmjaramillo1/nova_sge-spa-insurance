@@ -29,6 +29,7 @@ export interface CoverageItem extends WithKey, WithOrder, WithIsActive {
     value: string
     color: string
   }
+  role?: string
 }
 
 interface itemsList {
@@ -69,6 +70,7 @@ export interface PagePaymentShared {
   alert: TextWhitAria
   paymentMethod: {
     input: TextWhitAria
+    periodicityOptionsAria: Record<string, string>
   }
   disclaimer: TextWhitAria & {
     action: string
@@ -178,16 +180,22 @@ export interface ConfigurationFlowShared {
 
 //#region MultiOffer
 interface OfferPlan {
-  header: string
-  row: Record<string, string>
+  header: TextWhitAria
+  row: Record<string, TextWhitAria>
+}
+
+interface FooterActions {
+  planSelected: TextWhitAria
+  planPrice: TextWhitAria
+  paymentFrequency: TextWhitAria
 }
 
 export interface PageMultiOffer {
   title: TextWhitAria
   table: Record<string, OfferPlan>
-  benefits: Record<string, string>
+  benefits: Record<string, TextWhitAria>
   actions: {
-    footer: string
+    footer: FooterActions
     cta: TextWhitAria
   }
 }

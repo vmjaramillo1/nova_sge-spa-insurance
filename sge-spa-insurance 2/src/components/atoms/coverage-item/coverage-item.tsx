@@ -10,6 +10,7 @@ export interface CoverageItemProps {
   icon: ReactNode
   aria?: string
   classes?: Partial<Classes>
+  role?: string
 }
 
 interface Classes {
@@ -19,10 +20,14 @@ interface Classes {
 }
 
 const CoverageItem: FC<PropsWithChildren<CoverageItemProps>> = (props) => {
-  const { icon, title, subTitle, classes, children, aria } = props
+  const { icon, title, subTitle, classes, children, aria, role } = props
 
   return (
-    <li className={clsx('coverage-item py-8', classes?.root)} aria-label={aria}>
+    <li
+      className={clsx('coverage-item py-8', classes?.root)}
+      aria-label={aria}
+      {...(role ? { role } : {})}
+    >
       {/* icon */}
       <div className={clsx('coverage-item__icon', classes?.icon)} aria-hidden="true">
         {icon}

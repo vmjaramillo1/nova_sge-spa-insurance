@@ -44,7 +44,7 @@ export default class InsuranceService {
   // private static baseUrl = 'http://localhost:4200/insurance'
 
   private static baseUrl =
-    'http://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub-gateway/domain/seguros-embebidos/v1/hub'
+    'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub-gateway/domain/seguros-embebidos/v1/hub'
 
   private static formatEndpoint = (path: string) => `${this.baseUrl}/${path}`
 

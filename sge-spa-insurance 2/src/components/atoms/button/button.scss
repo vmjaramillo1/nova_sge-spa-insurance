@@ -108,4 +108,55 @@
       color: var(--blue100);
     }
   }
+
+
+
+
+
+// custom accecibility styles
+ &--is-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6; // opcional para feedback visual
+  }
+
+  &--primary.button--is-disabled {
+    background-color: var(--yellow200);
+    color: var(--blue200);
+  }
+
+  &--secondary.button--is-disabled {
+    background-color: var(--darkGrayishBlue100);
+    border: 2px solid var(--darkGrayishBlue100);
+    color: var(--blue200);
+  }
+
+  &--tertiary.button--is-disabled {
+    border: 1px solid var(--blue200);
+    color: var(--blue200);
+    background-color: var(--white); // mantener fondo
+  }
+
+  &--complementary.button--is-disabled {
+    background-color: var(--blue200);
+    color: var(--blue100);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

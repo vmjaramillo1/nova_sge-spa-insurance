@@ -16,6 +16,7 @@ import './product-page.scss'
 const ProductPage = () => {
   const { isOpen: showModalAccount, toggle: handleModalCoverage } = useModal()
   const {
+    ariaTitle,
     accepted,
     content,
     periodicityOptionsContent,
@@ -31,13 +32,21 @@ const ProductPage = () => {
   return (
     <>
       <div className="product-page">
-        <Typography variant="subtitle" className="font-semibold">
+        <Typography
+          variant="subtitle"
+          className="font-semibold"
+          aria-label={ariaTitle}
+        >
           <SmartContent>{content.title.value}</SmartContent>
         </Typography>
         <Typography aria-label={content.description.aria} className="mb-16">
           {content.description.value}
         </Typography>
-        <Typography variant="caption" className="font-semibold mb-8">
+        <Typography
+          variant="caption"
+          className="font-semibold mb-8"
+          aria-label={content.paymentMethod.input.aria}
+        >
           {content.paymentMethod.input.value}
         </Typography>
         <div className="product-page__periodicity">
@@ -50,6 +59,7 @@ const ProductPage = () => {
               badge={periodicity.badge}
               additional={periodicity.additional}
               selected={periodicity.code === periodicitySelected}
+              ariaLabel={periodicity.ariaLabel}
               onClick={handleClickPeriodicity}
             />
           ))}
@@ -112,7 +122,15 @@ const ProductPage = () => {
           )}
           {content.disclaimer.sufix}
         </CheckLegal>
-        <Button onClick={handleClickContinue} disabled={!accepted}>
+        <Button
+          onClick={handleClickContinue}
+          disabled={!accepted}
+          aria-label={
+            accepted
+              ? content.actionNext.cta.aria.enabled
+              : content.actionNext.cta.aria.disabled
+          }
+        >
           {content.actionNext.cta.value}
         </Button>
       </div>

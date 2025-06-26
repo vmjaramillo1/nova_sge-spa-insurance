@@ -33,9 +33,15 @@ const Button: FC<ButtonProps> = ({
 }: ButtonProps) => {
   return (
     <button
-      onClick={onClick}
-      className={clsx('button', `button--${color}`, className)}
-      disabled={Boolean(disabled) || loading}
+        onClick={!disabled && !loading ? onClick : undefined}
+      className={clsx('button', `button--${color}`, 
+          (disabled || loading) && 'button--is-disabled',
+        className,
+
+
+      )}
+        aria-disabled={Boolean(disabled) || loading}
+      // disabled={Boolean(disabled) || loading}
       type={type}
       {...restProps}
     >

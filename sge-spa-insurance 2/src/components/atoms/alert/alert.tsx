@@ -32,6 +32,7 @@ const Alert: FC<PropsWithChildren<AlertProps>> = (props) => {
       )}
       role="alert"
       aria-label={ariaLabel}
+      tabIndex={-1}
     >
       {icon && (
         <div className="alert__icon" aria-hidden="true">

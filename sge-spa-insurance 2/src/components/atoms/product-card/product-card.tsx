@@ -39,7 +39,11 @@ const ProductCard = (props: ProductCardProps) => {
         >
           <SmartContent>{paymentType.value}</SmartContent>
         </Typography>
-        <Typography variant="headline2" className="product-card__price">
+        <Typography
+          variant="headline2"
+          className="product-card__price"
+          // aria-label={price.aria}
+        >
           <SmartContent>{price.value}</SmartContent>
         </Typography>
       </div>
@@ -77,7 +81,7 @@ const ProductCard = (props: ProductCardProps) => {
           className={clsx('product-card__action')}
           type="button"
           aria-label={action.aria}
-          role="link"
+          role='link'
         >
           {action.value}
           <ArrowIcon fill="#2F7ABF" />

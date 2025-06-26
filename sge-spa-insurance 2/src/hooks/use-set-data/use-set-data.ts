@@ -35,7 +35,9 @@ export const useSetData = () => {
 
         const stringifyIdentity = JSON.stringify(identity)
 
-        axios.defaults.headers.common['Authorization'] = formatDetail.jwtToken
+        axios.defaults.headers.common['X-Authentication'] = formatDetail.jwtToken
+        axios.defaults.headers.common['Channel'] = formatDetail.channel ?? 'movil'
+        axios.defaults.headers.common['X-Channel'] = formatDetail.channel ?? 'movil'
         axios.defaults.headers.common['Channel'] = formatDetail.channel ?? 'movil'
         axios.defaults.headers.common['Identity'] = stringifyIdentity
       }

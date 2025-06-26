@@ -13,6 +13,7 @@ interface Item {
   key: string
   description: TextWhitAria
   icon: React.ReactNode
+  role?: string
 }
 
 interface itemsList {
@@ -42,6 +43,7 @@ const ModalCoverage: FC<ModalCoverageProps> = (props) => {
         icon={item.icon}
         aria={item.description?.aria}
         classes={{ root: 'modal-coverage__items' }}
+        {...(item.role ? { role: item.role } : {})}
       >
         <Typography variant="button" aria-hidden="true">
           <SmartContent>{item.description?.value}</SmartContent>
@@ -64,7 +66,7 @@ const ModalCoverage: FC<ModalCoverageProps> = (props) => {
           onClick={handleClose}
           className={clsx('product-detail__action')}
           type="button"
-          aria-label={'content.sectionCoverages.actionShowCoverages.aria'}
+          aria-label={'Cerrar'}
         >
           <pichincha-icon
             size="24px"

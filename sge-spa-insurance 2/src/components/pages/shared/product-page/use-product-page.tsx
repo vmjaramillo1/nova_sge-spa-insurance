@@ -29,6 +29,7 @@ import { setPeriodicitySelected } from '@app/store/reducers/flow-slice'
 
 import useAppDispatch from '@app/hooks/use-app-dispatch'
 import useCurrentProduct from '@app/hooks/use-current-product'
+import { useSmartText } from '@app/components/atoms/smart-text'
 
 function roundNum(num: string | number) {
   return Math.round((Number(num) + Number.EPSILON) * 100) / 100
@@ -65,6 +66,8 @@ const useProductPage = () => {
     }))
   )
 
+  const ariaTitle = useSmartText(productInfo.title.aria ?? '')
+
   const periodicityOptionsExtraProperties = useMemo(() => {
     const [firstOption] = iterablePeriodicityOptions
     const minimumPrice = Number(firstOption.totalPrice)
@@ -98,6 +101,8 @@ const useProductPage = () => {
         additional: isAnnual
           ? formatMoney(periodicityOptionsExtraProperties[option.code].total)
           : undefined,
+        ariaLabel:
+          productInfo.paymentMethod.periodicityOptionsAria[option.code] ?? '',
       }
     })
   }, [iterablePeriodicityOptions, periodicityOptionsExtraProperties])
@@ -152,6 +157,7 @@ const useProductPage = () => {
   }
 
   return {
+    ariaTitle,
     currentAccount,
     content: productInfo,
     periodicityOptionsContent,

@@ -16,6 +16,7 @@ import { APP_ROUTES, AllRouteAliases } from '@app/routes/config'
 import useNextBackStep from '@app/hooks/use-next-back-step'
 import useBackButton from '@app/hooks/use-back-button'
 import { pushTrackEvent, TrackingEvents } from '@app/utils/messages'
+import { useSmartText } from '@app/components/atoms/smart-text'
 
 const usePlanSelectionPage = () => {
   const navigate = useNavigate()
@@ -40,11 +41,25 @@ const usePlanSelectionPage = () => {
   const benefitsCodes = Object.keys(content.benefits).sort()
   const planCodes = Object.keys(plans)
 
+  const ariaFooter = useSmartText(
+    `${content.actions.cta.aria}
+  ${content.actions.footer.planSelected.aria}
+  ${content.actions.footer.planPrice.aria}
+  ${content.actions.footer.paymentFrequency.aria}`,
+    { selectedPlan }
+  )
+
   const getIcon = (icon: string) => {
     const color = icon === 'close' ? 'error' : 'success'
 
     return (
-      <pichincha-icon size="20px" type="--outlined" color={color} weight-color="500">
+      <pichincha-icon
+        aria-hidden="true"
+        size="20px"
+        type="--outlined"
+        color={color}
+        weight-color="500"
+      >
         {icon}
       </pichincha-icon>
     )
@@ -78,6 +93,7 @@ const usePlanSelectionPage = () => {
     selectedPlan,
     handleChangePlan,
     handleNextPage,
+    ariaFooter,
   }
 }
 

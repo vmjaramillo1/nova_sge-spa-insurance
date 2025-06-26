@@ -29,7 +29,7 @@ const ProductDetailPage = () => {
   const { handleContinue, showModalCoverage, handleModalCoverage } =
     useProductDetailPage()
 
-  const { content, questions, coverages } = useContentProductDetailPage()
+  const { content, questions, coverages, ariaTitle } = useContentProductDetailPage()
 
   const bannerType = content.sectionHero.bannerType
 
@@ -54,7 +54,7 @@ const ProductDetailPage = () => {
         <Typography
           variant="headline3"
           className="product-detail__title mb-16"
-          aria-label={content.sectionHero.title.aria}
+          aria-label={ariaTitle}
         >
           <SmartContent>{content.sectionHero.title.value}</SmartContent>
         </Typography>
@@ -96,6 +96,7 @@ const ProductDetailPage = () => {
             onClick={handleModalCoverage}
             className={clsx('product-detail__action')}
             type="button"
+            role="link"
             aria-label={content.sectionCoverages.actions.showCoverages.aria}
           >
             {content.sectionCoverages.actions.showCoverages.value}
@@ -116,7 +117,14 @@ const ProductDetailPage = () => {
         </Button>
       </div>
       {showModalCoverage && (
-        <ModalCoverage handleClose={handleModalCoverage} {...coverages} />
+        <ModalCoverage
+          handleClose={handleModalCoverage}
+          title={coverages.title}
+          description={coverages.description}
+          actions={coverages.actions}
+          exclusions={coverages.exclusions}
+          coverages={coverages.coverages}
+        />
       )}
     </>
   )

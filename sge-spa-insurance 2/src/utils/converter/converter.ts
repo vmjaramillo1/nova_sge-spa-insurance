@@ -26,6 +26,8 @@ export const parseHtmlToJsx = createParser({
     'className',
     'src',
     'width',
+    'aria-label',
+    'role',
     ...replacers.attributes,
   ],
   allowedTags: [

@@ -15,9 +15,17 @@ import { CoverageItem } from '@app/store/hooks/use-generic-portal-selector/use-p
 import useNextBackStep from '@app/hooks/use-next-back-step'
 import WrapperIcons from '@app/components/atoms/wrapper_icons/WrapperIcons'
 import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
+import { useSmartText } from '@app/components/atoms/smart-text'
 
 export function useContentProductDetailPage() {
   const { currentPortal } = useCurrentPortal()
+
+  const ariaTitle = useSmartText(
+    currentPortal.content.home.sectionHero.title.aria ?? ''
+  )
+  const ariaTitleModal = useSmartText(
+    currentPortal.content.home.modalCoverages.title.aria ?? ''
+  )
 
   const mappedFaqs = useMemo(() => {
     if (!currentPortal.content.home.sectionFaq) return []
@@ -59,10 +67,15 @@ export function useContentProductDetailPage() {
   }, [currentPortal.content.home.sectionCoverages])
 
   return {
+    ariaTitle,
     content: currentPortal.content.home,
     questions: mappedFaqs,
     coverages: {
       ...currentPortal.content.home.modalCoverages,
+      title: {
+        value: currentPortal.content.home.modalCoverages.title.value,
+        aria: ariaTitleModal,
+      },
       exclusions: {
         title: currentPortal.content.home.modalCoverages.exclusions.title,
         items: mappedExclusions,
@@ -103,23 +116,26 @@ const useProductDetailPage = () => {
 const mappedCoverageExclusions = (coveragesList: Array<CoverageItem>) => {
   const sortedCoverages = filterAndSort(coveragesList)
 
-  return sortedCoverages.map(({ key, description, isActive, order, icon }) => ({
-    key,
-    isActive,
-    order,
-    description,
-    icon: (
-      <pichincha-icon
-        size="24px"
-        type="--outlined"
-        color={icon.color}
-        weight-color="500"
-        aria-hidden="true"
-      >
-        {icon.value}
-      </pichincha-icon>
-    ),
-  }))
+  return sortedCoverages.map(
+    ({ key, description, isActive, order, icon, role }) => ({
+      key,
+      isActive,
+      order,
+      description,
+      icon: (
+        <pichincha-icon
+          size="24px"
+          type="--outlined"
+          color={icon.color}
+          weight-color="500"
+          aria-hidden="true"
+        >
+          {icon.value}
+        </pichincha-icon>
+      ),
+      ...(role ? { role } : {}),
+    })
+  )
 }
 
 export default useProductDetailPage

@@ -9,7 +9,7 @@ import SmartContent from '@app/components/atoms/smart-text'
 const FamilyIcon = lazy(() => import('@app/components/icons/FamilyUnitIcon'))
 
 const InsurancePage = () => {
-  const { heroContent, productCards } = useInsurancePage()
+  const { heroContent, productCards, ariaBanner } = useInsurancePage()
 
   return (
     <div className="insurance-page">
@@ -21,7 +21,11 @@ const InsurancePage = () => {
         ariaHidden={false}
       >
         <Suspense>
-          <Typography variant="headline3" className="insurance-page__title mr-4">
+          <Typography
+            variant="headline3"
+            aria-label={ariaBanner}
+            className="insurance-page__title mr-4"
+          >
             <SmartContent>{heroContent.title.value}</SmartContent>
           </Typography>
 

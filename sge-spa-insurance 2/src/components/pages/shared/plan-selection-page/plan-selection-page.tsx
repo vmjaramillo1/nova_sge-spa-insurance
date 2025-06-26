@@ -1,13 +1,13 @@
 import SmartContent from '@app/components/atoms/smart-text'
 import Typography from '@app/components/atoms/typography'
 import './plan-selection-page.scss'
+import { useSmartText } from '@app/components/atoms/smart-text'
 
 import usePlanSelectionPage from './use-plan-selection-page'
 import Radio from '@app/components/atoms/radio'
 import clsx from 'clsx'
 import Button from '@app/components/atoms/button'
-
-const nn = "<sf-link to='www.google.com' variant='body' arialabel='prueba' trackevent='prueba 1'> esto es una prueba </sf-link>"
+import PlanTableCell from './plan-table-cell'
 
 const PlanSelection = () => {
   const {
@@ -15,7 +15,7 @@ const PlanSelection = () => {
     benefitsCodes,
     planCodes,
     selectedPlan,
-    getIcon,
+    ariaFooter,
     handleChangePlan,
     handleNextPage,
   } = usePlanSelectionPage()
@@ -43,7 +43,9 @@ const PlanSelection = () => {
                       'plan-selection-page__table py-16 pl-8'
                     )}
                   >
-                    <SmartContent>{content.table[planCode].header}</SmartContent>
+                    <SmartContent>
+                      {content.table[planCode].header.value}
+                    </SmartContent>
                   </th>
                 ))}
               </tr>
@@ -52,25 +54,17 @@ const PlanSelection = () => {
               {benefitsCodes.map((benefitCode) => (
                 <tr key={benefitCode}>
                   <td className="py-4 pl-8 pr-0 sticky-col">
-                    <SmartContent>{content.benefits[benefitCode]}</SmartContent>
+                    <SmartContent>
+                      {content.benefits[benefitCode].value}
+                    </SmartContent>
                   </td>
                   {planCodes.map((planCode) => (
-                    <td
+                    <PlanTableCell
                       key={planCode}
-                      className={clsx(
-                        planCode == selectedPlan &&
-                          'plan-selection-page__table--selected',
-                        'text-center px-4'
-                      )}
-                    >
-                      {benefitCode === 'BENE01' || benefitCode === 'BENE06' ? (
-                        <SmartContent>
-                          {content.table[planCode].row[benefitCode]}
-                        </SmartContent>
-                      ) : (
-                        getIcon(content.table[planCode].row[benefitCode])
-                      )}
-                    </td>
+                      planCode={planCode}
+                      selectedPlan={selectedPlan}
+                      benefitCode={benefitCode}
+                    />
                   ))}
                 </tr>
               ))}
@@ -85,6 +79,7 @@ const PlanSelection = () => {
                       'text-center'
                     )}
                     onClick={() => handleChangePlan(planCode)}
+                    aria-label={`Selector de plan ${content.table[planCode].header.aria}`}
                   >
                     <Radio checked={selectedPlan == planCode} data-testid="radio" />
                   </td>
@@ -95,17 +90,27 @@ const PlanSelection = () => {
         </div>
 
         <div className="floating-container">
-          <div className="floating-container__left">
-            <SmartContent context={{ selectedPlan }}>
-              {content.actions.footer}
-            </SmartContent>
+          <div className="floating-container__left" aria-label={ariaFooter}>
+            <Typography variant="body" aria-hidden="true">
+              <SmartContent context={{ selectedPlan }}>
+                {content.actions.footer.planSelected.value}
+              </SmartContent>
+            </Typography>
+
+            <Typography variant="body" aria-hidden="true">
+              <SmartContent context={{ selectedPlan }}>
+                {content.actions.footer.planPrice.value}
+              </SmartContent>
+            </Typography>
+
+            <Typography variant="body" aria-hidden="true">
+              <SmartContent context={{ selectedPlan }}>
+                {content.actions.footer.paymentFrequency.value}
+              </SmartContent>
+            </Typography>
           </div>
 
-          <Button
-            className="m-auto"
-            onClick={handleNextPage}
-            aria-label={content.actions.cta.aria}
-          >
+          <Button className="m-auto" onClick={handleNextPage} aria-hidden="true">
             {content.actions.cta.value}
           </Button>
         </div>
