@@ -18,7 +18,7 @@ const MAP_ICONS = {
 const Badge = ({ type, children }: BadgeProps) => {
   return (
     <div className={clsx('badge', `badge--${type}`)}>
-      <pichincha-icon size="15px" type="--sharp" color={type} weight-color="500">
+      <pichincha-icon size="15px" type="--sharp" color={type} weight-color="500" >
         {MAP_ICONS[type]}
       </pichincha-icon>
       <Typography variant="caption" className="ml-4">

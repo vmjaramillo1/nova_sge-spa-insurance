@@ -167,8 +167,8 @@ export default class InsuranceService {
   ): Promise<ValidateOfferResponse> {
 
       const tempBaseUrl =
-      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-    // 'https://hub-seguros.free.beeceptor.com/hub'
+     // 'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+     'https://hub-seguros.free.beeceptor.com/hub'
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
     try {
@@ -208,7 +208,6 @@ export default class InsuranceService {
       } = params
 
       const endpoint = this.formatEndpoint('validate')
-      debugger
       const body = encryptBody({
         cif,
         dni,
@@ -228,8 +227,8 @@ export default class InsuranceService {
 
   static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
     const tempBaseUrl =
-      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-    // 'https://hub-seguros.free.beeceptor.com/hub'
+    //  'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+     'https://hub-seguros.free.beeceptor.com/hub'
 
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 

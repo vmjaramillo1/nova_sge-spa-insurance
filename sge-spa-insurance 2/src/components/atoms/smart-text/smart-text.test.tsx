@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import SmartContent, { useSmartText } from '@app/components/atoms/smart-text'
 import { createWrapperStore, makeStore } from '@app/__test__/wrappers'
 import { flowValues, globalValues, appValues } from '@app/__test__/values'
-import {  renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: jest.fn(),
@@ -79,6 +79,8 @@ describe('<SmartContent />', () => {
   })
 
   it('should render context format', () => {
+    const fixed =
+      '<p>N_{{app.products.LIFE_HEALTH.plans.LIFE_HEALTH_2.periodicityOptions.ANNUAL.price::fixed(1)}}</p>'
     const money =
       '<p>{{app.products.LIFE_HEALTH.plans.LIFE_HEALTH_2.periodicityOptions.ANNUAL.price::money()}}</p>'
     const lower =
@@ -93,11 +95,13 @@ describe('<SmartContent />', () => {
       '<p>{{app.products.LIFE_HEALTH.plans.LIFE_HEALTH_2.periodicityOptions.MONTHLY.description::bolder()}}</p>'
     const toMoneyText =
       '<p>{{app.products.LIFE_HEALTH.plans.LIFE_HEALTH_2.periodicityOptions.ANNUAL.taxes::toMoney()}}</p>'
-    const toDateText =
-      '<p>{{global.portalHub.content.home.sectionHero.title.aria::toDate()}}</p>'
+    const toDateText = '<p>{{date::toDate()}}</p>'
+
+    const toTitleCase = '<p>{{flow.client.firstName::toTitleCase()}}</p>'
 
     render(
       <>
+        <SmartContent>{fixed}</SmartContent>
         <SmartContent>{money}</SmartContent>
         <SmartContent>{lower}</SmartContent>
         <SmartContent>{upper}</SmartContent>
@@ -105,13 +109,15 @@ describe('<SmartContent />', () => {
         <SmartContent>{multiplyText}</SmartContent>
         <SmartContent>{bolderText}</SmartContent>
         <SmartContent>{toMoneyText}</SmartContent>
-        <SmartContent>{toDateText}</SmartContent>
+        <SmartContent context={{ date: '2025-06-25' }}>{toDateText}</SmartContent>
+        <SmartContent>{toTitleCase}</SmartContent>
       </>,
       {
         wrapper: wrapper,
       }
     )
 
+    const elementFixed = screen.getByText('N_168.7')
     const elementMoney = screen.getByText('$ 168,70')
     const elementLower = screen.getByText('pago anual')
     const elementUpper = screen.getByText('PAGO ANUAL')
@@ -119,7 +125,9 @@ describe('<SmartContent />', () => {
     const elementMultiply = screen.getByText('6')
     const elementBolder = screen.getByText('Pago mensual')
     const elementtoMoney = screen.getByText('$ 7,19')
-    const elementtoDate = screen.getByText('2 jun. 2025')
+    const elementtoDate = screen.getByText('25 jun. 2025')
+    const elementTitleCase = screen.getByText('Maria')
+    expect(elementFixed).toBeInTheDocument()
     expect(elementMoney).toBeInTheDocument()
     expect(elementLower).toBeInTheDocument()
     expect(elementUpper).toBeInTheDocument()
@@ -128,6 +136,23 @@ describe('<SmartContent />', () => {
     expect(elementBolder).toBeInTheDocument()
     expect(elementtoMoney).toBeInTheDocument()
     expect(elementtoDate).toBeInTheDocument()
+    expect(elementTitleCase).toBeInTheDocument()
+  })
+
+  it('should render custom context data', () => {
+    const test = '{{flow.shared.productCode}}'
+
+    render(
+      <SmartContent context={{ flow: { shared: { productCode: 'TU_BAN_PRO_1' } } }}>
+        {test}
+      </SmartContent>,
+      {
+        wrapper: wrapper,
+      }
+    )
+
+    const textElement = screen.getByText('TU_BAN_PRO_1')
+    expect(textElement).toBeInTheDocument()
   })
 })
 

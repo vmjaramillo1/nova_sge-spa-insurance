@@ -9,7 +9,7 @@ const accountData = {
   favorite: true,
   hash: '1as465d3as4d',
   mask: '******2234',
-  type: 'SAVING_ACCOUNT',
+  type: 'SAVINGS_ACCOUNT',
   value: '1as465d3as4d',
 }
 

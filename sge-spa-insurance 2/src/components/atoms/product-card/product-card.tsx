@@ -14,7 +14,7 @@ const ProductCard = (props: ProductCardProps) => {
   const { handleClick, MAPPER_ICONS } = useProductCard(action.urlTarget, code)
 
   return (
-    <div className="product-card" onClick={handleClick}>
+    <div className="product-card" data-testid={code}  onClick={handleClick}>
       {/* Header */}
       <div className="product-card__header">
         {MAPPER_ICONS[code as ProductCode]}

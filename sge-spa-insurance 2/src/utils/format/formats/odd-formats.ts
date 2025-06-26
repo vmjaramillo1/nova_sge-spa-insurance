@@ -18,7 +18,10 @@ const toMoney: SmartFormatCallback = (
 const toDate: SmartFormatCallback = (value, type = 'short') => {
   if (!value) return ''
 
-  const date = new Date(value)
+  const date =
+    typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+      ? new Date(value + 'T00:00:00') // fuerza hora local
+      : new Date(value)
 
   const day = date.getDate()
   const month = date.getMonth()
@@ -50,6 +53,11 @@ export const monthByNumber: Record<string | number, DateFormats> = {
 const fixed: SmartFormatCallback = (value, spaces = '0') => {
   return Number(value).toFixed(Number(spaces))
 }
+
+const toTitleCase: SmartFormatCallback = (value, _) => {
+  if (!value || typeof value !== 'string') return '';
+  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+};
 
 const prependText: SmartFormatCallback = (value, str) => {
   return `${str}${value}`
@@ -84,6 +92,7 @@ const link: SmartFormatCallback = (value, to = '#') => {
 const none: SmartFormatCallback = (value) => value
 
 export const formats: Record<string, SmartFormatCallback> = {
+  toTitleCase,
   fixed,
   prependText,
   lower,

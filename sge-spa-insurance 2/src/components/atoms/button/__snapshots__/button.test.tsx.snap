@@ -2,8 +2,8 @@
 
 exports[`Button should render loading 1`] = `
 <button
-  class="button button--primary"
-  disabled=""
+  aria-disabled="true"
+  class="button button--primary button--is-disabled"
   type="button"
 >
   <pichincha-spinner

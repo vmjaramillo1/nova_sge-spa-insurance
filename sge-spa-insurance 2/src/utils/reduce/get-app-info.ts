@@ -45,7 +45,7 @@ export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>
     ),
     savings: reduceAccounts(
       paymentOptions.accounts.savings,
-      ACCOUNT_TYPES.SAVING_ACCOUNT
+      ACCOUNT_TYPES.SAVINGS_ACCOUNT
     ),
   }
 

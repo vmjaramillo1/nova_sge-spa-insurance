@@ -27,8 +27,7 @@ describe('Button', () => {
     render(<Button disabled>Hazme click</Button>)
 
     const buttonEl = screen.getByRole('button')
-
-    expect(buttonEl).toBeDisabled()
+    expect(buttonEl).toHaveClass('button--is-disabled')
   })
 
   it('should have a custom class', () => {

@@ -112,8 +112,8 @@ describe('<ProductCard />', () => {
       wrapper: wrapper,
     })
 
-    const actionButton = screen.getByRole('button')
-    fireEvent.click(actionButton)
+    const actionElement = screen.getByTestId(DATA.code)
+    fireEvent.click(actionElement)
 
     expect(navigateMock).toHaveBeenCalledTimes(1)
   })
@@ -123,8 +123,8 @@ describe('<ProductCard />', () => {
       wrapper: wrapper,
     })
 
-    const actionButton = screen.getByRole('button')
-    fireEvent.click(actionButton)
+    const actionElement = screen.getByTestId(DATA.code)
+    fireEvent.click(actionElement)
 
     expect(navigateMock).toHaveBeenCalledWith(APP_ROUTES.PRODUCT_DETAIL)
   })

@@ -15,7 +15,7 @@ exports[`<ModalCoverage /> should render the component 1`] = `
         title test
       </p>
       <button
-        aria-label="content.sectionCoverages.actionShowCoverages.aria"
+        aria-label="Cerrar"
         class="product-detail__action"
         type="button"
       >
@@ -91,7 +91,7 @@ exports[`<ModalCoverage /> should render the component 1`] = `
         class="divider h-16 mb-16 mt-16 -mx-24"
       />
       <div
-        class="modal-coverage__coverages"
+        class="modal-coverage__coverages mb-82"
       >
         <p
           aria-label="title test"
