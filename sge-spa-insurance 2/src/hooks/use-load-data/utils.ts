@@ -1,51 +1,20 @@
-import { AccountInfo, MergeOfferPreviousList } from '@app/services/insurance'
-import { OfferableWithType } from '@app/utils'
 import { MergeOfferablePreviousType } from '@app/utils/enums'
+import { AppAccounts } from '@app/store/reducers/app-slice/app-slice.interface'
 
 type ItemWIthType = { type: MergeOfferablePreviousType }
 
-export function isOffer<T extends ItemWIthType>(list: Array<T>) {
-  return list.some((item) => item.type === MergeOfferablePreviousType.OFFER)
+// todo ajustar prueba
+export function isOffer<T extends ItemWIthType>(item: T) {
+  return item.type === MergeOfferablePreviousType.OFFER
 }
 
-export function getFavoriteAccountHash(accounts: Array<AccountInfo>): string {
-  const favoriteAccountByFlag = accounts.find((account) => account.favorite)
-  if (favoriteAccountByFlag) return favoriteAccountByFlag.hash
+export function getFavoriteAccountHash(appAccounts: AppAccounts): string {
+  const allAccounts = [
+    ...Object.values(appAccounts.accounts),
+    ...Object.values(appAccounts.cards),
+  ]
 
-  const [firstAccount] = accounts
-  return firstAccount.hash
-}
+  const favoriteAccount = allAccounts.find((account) => account.favorite)
 
-export function mergeOfferAndPrevious(
-  data: MergeOfferPreviousList
-): Array<OfferableWithType> {
-  const result: Array<OfferableWithType> = []
-
-  const offerableProducts = data.find(
-    (item) => item.type === MergeOfferablePreviousType.OFFER
-  )
-
-  if (offerableProducts?.data) {
-    const mappedOfferableProducts = offerableProducts.data.map((offerable) => ({
-      ...offerable,
-      type: offerableProducts.type,
-    }))
-
-    result.push(...mappedOfferableProducts)
-  }
-
-  const previousProducts = data.find(
-    (item) => item.type === MergeOfferablePreviousType.PREVIOUS
-  )
-
-  if (previousProducts?.data) {
-    const mappedPreviousProducts = previousProducts.data.map((previous) => ({
-      ...previous,
-      type: previousProducts.type,
-    }))
-
-    result.push(...mappedPreviousProducts)
-  }
-
-  return result
+  return favoriteAccount?.hash ?? allAccounts[0]?.hash ?? ''
 }

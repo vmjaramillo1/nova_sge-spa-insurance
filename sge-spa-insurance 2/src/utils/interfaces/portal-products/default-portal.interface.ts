@@ -8,6 +8,7 @@ import {
   WithValue,
 } from '../utility'
 
+// todo eliminar luego
 export interface DefaultPortal {
   productDetail: PartialSection<ProductDetail>
   productInfo: PartialSection<Product>
@@ -18,7 +19,6 @@ export interface DefaultPortal {
 }
 
 // ProductDetail Section
-
 interface ProductDetail {
   title: DefaultAttribute & WithAria
   description: DefaultAttribute & WithAria
@@ -54,7 +54,6 @@ interface LegalAttr extends PartialAttribute, WithDescription {
 }
 
 // Product Section
-
 interface Product {
   title: string
   value: DefaultAttribute & WithAria
@@ -79,7 +78,6 @@ interface DisclaimerAttr extends PartialAttribute, WithDescription {
 }
 
 // PreviousSale Section
-
 interface Sale {
   title: string
   contract: DefaultAttribute & WithAria
@@ -108,13 +106,11 @@ interface Actions {
 }
 
 // SelectAccount
-
 interface SelectAccount {
   title: DefaultAttribute & WithAria
 }
 
 // Acceptance
-
 interface Acceptance {
   title: string
   descriptions: DescriptionsAttr

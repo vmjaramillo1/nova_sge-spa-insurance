@@ -7,23 +7,22 @@ exports[`<Radio /> should render checked 1`] = `
       <svg
         fill="none"
         height="20"
-        viewBox="0 0 20 20"
+        viewBox="0 0 26 27"
         width="20"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          fill="#2F7ABF"
-          height="20"
-          rx="10"
-          width="20"
-        />
-        <rect
+        <circle
+          cx="13"
+          cy="13.5005"
           fill="white"
-          height="8.33333"
-          rx="4.16667"
-          width="8.33333"
-          x="5.83331"
-          y="5.83325"
+          r="9.76316"
+          stroke="#0F265C"
+        />
+        <circle
+          cx="12.9999"
+          cy="13.5004"
+          fill="#0F265C"
+          r="4.78947"
         />
       </svg>
     </div>
@@ -38,25 +37,16 @@ exports[`<Radio /> should render unchecked 1`] = `
       <svg
         fill="none"
         height="20"
-        viewBox="0 0 21 20"
+        viewBox="0 0 26 27"
         width="21"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
+        <circle
+          cx="13"
+          cy="13.5005"
           fill="white"
-          height="19"
-          rx="9.5"
-          width="19"
-          x="1.00391"
-          y="0.5"
-        />
-        <rect
-          height="19"
-          rx="9.5"
-          stroke="#6E6E73"
-          width="19"
-          x="1.00391"
-          y="0.5"
+          r="9.76316"
+          stroke="#B7B7B9"
         />
       </svg>
     </div>

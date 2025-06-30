@@ -2,9 +2,7 @@ import { FC, memo } from 'react'
 
 import { IconProps } from './Icon.interface'
 
-const ArrowBackIcon: FC<IconProps> = (props) => {
-  const { width, height } = props
-
+const ArrowBackIcon: FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       width={width}
@@ -21,11 +19,6 @@ const ArrowBackIcon: FC<IconProps> = (props) => {
       />
     </svg>
   )
-}
-
-ArrowBackIcon.defaultProps = {
-  width: 24,
-  height: 24,
 }
 
 export default memo(ArrowBackIcon)

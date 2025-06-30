@@ -1,4 +1,8 @@
 export const TrackingEvents = {
+
+//TODO cambiar el nombre a real
+  ONBOARDING_VIEW_PAGE_HUB: 'BM_Segu_Hub_01Onbor_Btn_Clk_01Onb',
+
   ONBOARDING_CLICK_BUTTON_BACK: 'BM_Segu_Frau_01Onbor_Btn_Clk_01Onb',
   ONBOARDING_VIEW_PAGE: 'BM_Segu_Frau_01Onbor_Page_Viw_None',
   ONBOARDING_DOWNLOAD_LINK_USE_GUIDE: 'BM_Segu_Frau_01Onbor_Link_Dwl_Guia',

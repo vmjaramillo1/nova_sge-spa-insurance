@@ -18,12 +18,11 @@ const RadioBase = () => (
   <svg
     width="21"
     height="20"
-    viewBox="0 0 21 20"
+    viewBox="0 0 26 27"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="1.00391" y="0.5" width="19" height="19" rx="9.5" fill="white" />
-    <rect x="1.00391" y="0.5" width="19" height="19" rx="9.5" stroke="#6E6E73" />
+    <circle cx="13" cy="13.5005" r="9.76316" fill="white" stroke="#B7B7B9"/>
   </svg>
 )
 
@@ -31,18 +30,11 @@ const RadioChecked = () => (
   <svg
     width="20"
     height="20"
-    viewBox="0 0 20 20"
+    viewBox="0 0 26 27"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="20" height="20" rx="10" fill="#2F7ABF" />
-    <rect
-      x="5.83331"
-      y="5.83325"
-      width="8.33333"
-      height="8.33333"
-      rx="4.16667"
-      fill="white"
-    />
+    <circle cx="13" cy="13.5005" r="9.76316" fill="white" stroke="#0F265C"/>
+    <circle cx="12.9999" cy="13.5004" r="4.78947" fill="#0F265C"/>
   </svg>
 )

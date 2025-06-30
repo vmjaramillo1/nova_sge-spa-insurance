@@ -7,9 +7,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  
-  border: 1px solid #DEE3ED;
-  border-radius: 8px;
+
 
   &__text {
     @extend .text-dark-gray-500;

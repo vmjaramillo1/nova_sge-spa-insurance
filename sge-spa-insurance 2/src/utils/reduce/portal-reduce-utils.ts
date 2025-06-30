@@ -1,8 +1,21 @@
-import { Attribute, PortalRule, SectionRule } from '@app/utils/interfaces'
+import {
+  Attribute,
+  PortalRule,
+  SectionRule,
+  Param,
+  RecordLowercase,
+} from '@app/utils/interfaces'
 
 export type BaseAttributeFormat = Pick<Attribute, 'isActive' | 'key' | 'order'>
 
 export type AttributeFormat<T = unknown> = (BaseAttributeFormat & T) | T
+
+export type ReducedPortal<TContent = unknown, TParams = Record<string, unknown>> = {
+  code: string
+  isActive: boolean
+  content: TContent
+  params: RecordLowercase<TParams>
+}
 
 /**
  * Function to format Attributes from ODD,
@@ -79,8 +92,26 @@ export function reduceSections<TReduce>(sections: Array<SectionRule>) {
   ) as TReduce
 }
 
-export function reducePortal<TReduce>(portal: PortalRule) {
-  const { sections } = portal
+export function reduceParams<TReduce>(params: Array<Param>) {
+  return params.reduce((acc, param) => {
+    return {
+      ...acc,
+      [param.key.toLowerCase()]: param.value,
+    }
+  }, {} as RecordLowercase<TReduce>)
+}
 
-  return reduceSections<TReduce>(sections)
+export function reducePortal<TContent, TParams = Record<string, unknown>>(
+  portal: PortalRule
+) {
+  const { code, sections, params } = portal
+
+  const content = reduceSections<TContent>(sections)
+  const paramsReduced = reduceParams<TParams>(params)
+
+  return {
+    code,
+    content,
+    params: paramsReduced,
+  }
 }

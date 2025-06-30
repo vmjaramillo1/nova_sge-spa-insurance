@@ -14,6 +14,7 @@ import {
   RecordPlan,
   RecordPlanCoverages,
   RecordPrices,
+  RecordAccountWithType,
 } from '../interfaces/records.interface'
 import {
   AssistanceRule,
@@ -24,7 +25,11 @@ import {
   PlanRule,
   PriceRule,
   ProductRule,
+  AccountRule,
 } from '../interfaces/rule.interface'
+
+import { OfferableProduct } from '../interfaces/offerable-product.interface'
+import { reducePortal } from './portal-reduce-utils'
 
 export function reduceGeneric<
   Input extends object,
@@ -134,22 +139,6 @@ export function mapperPlan(
   }
 }
 
-function reduceCoverages(coverages: Array<CoverageRule>): RecordCoverage {
-  return reduceGeneric(coverages, 'code')
-}
-
-function reduceBenefits(benefits: Array<BenefitRule>): RecordBenefits {
-  return reduceGeneric(benefits, 'code')
-}
-
-function reduceAssistances(assistances: Array<AssistanceRule>): RecordAssistances {
-  return reduceGeneric(assistances, 'code')
-}
-
-function reduceExclusions(exclusions: Array<ExclusionRule>): RecordExclusions {
-  return reduceGeneric(exclusions, 'code')
-}
-
 export function mapperProduct(product: ProductRule): MapperProductResult {
   const { code, name } = product
 
@@ -166,6 +155,22 @@ export function mapperProduct(product: ProductRule): MapperProductResult {
     assistances,
     exclusions,
   }
+}
+
+function reduceCoverages(coverages: Array<CoverageRule>): RecordCoverage {
+  return reduceGeneric(coverages, 'code')
+}
+
+function reduceBenefits(benefits: Array<BenefitRule>): RecordBenefits {
+  return reduceGeneric(benefits, 'code')
+}
+
+function reduceAssistances(assistances: Array<AssistanceRule>): RecordAssistances {
+  return reduceGeneric(assistances, 'code')
+}
+
+function reduceExclusions(exclusions: Array<ExclusionRule>): RecordExclusions {
+  return reduceGeneric(exclusions, 'code')
 }
 
 export function reducePlans(
@@ -187,4 +192,84 @@ export function reducePlans(
       [code]: reducePlan,
     }
   }, {} as RecordPlan)
+}
+
+export function reduceAccounts(
+  accounts: Array<AccountRule>,
+  typeAccount: string
+): Record<string, RecordAccountWithType> {
+  return accounts.reduce<Record<string, RecordAccountWithType>>((acc, account) => {
+    const { accountHash } = account
+    acc[accountHash] = {
+      hash: accountHash,
+      mask: account.accountMaskedNumber,
+      type: account.type,
+      balance: account.availableBalance,
+      alias: account.alias,
+      favorite: account.favoriteStatus,
+      allowsTransact: account.allowsTransact,
+      paymentType: typeAccount,
+    }
+    return acc
+  }, {})
+}
+
+export function reduceOffer<TContent = unknown, TParams = Record<string, unknown>>(
+  offer: OfferableProduct
+) {
+  const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
+    offer
+
+  const { code, name, coverages, benefits, assistances, exclusions } =
+    mapperProduct(product)
+
+  const coveragesById = reduceGeneric(product.coverages, 'id')
+
+  const paymentMethodOptions = reducePaymentMethodsOptions(
+    offer.paymentMethodOptions
+  )
+
+  const plansResult = reducePlans(
+    plans,
+    coveragesById,
+    paymentMethodOptions,
+    paymentPeriodicityOptions
+  )
+
+  const portalResult = reducePortal<TContent, TParams>(portal)
+
+  return {
+    code,
+    name,
+    sale,
+    coverages,
+    benefits,
+    assistances,
+    exclusions,
+    insuranceName,
+    plans: plansResult,
+    portal: portalResult,
+  }
+}
+
+// todo poner prueba
+export function reduceToRecord<
+  Input extends object,
+  Key extends keyof Input,
+  OmitKeys extends keyof Input = never
+>(values: Array<Input>, key: Key, omit: Array<OmitKeys> = []) {
+  const result = values.reduce((acc, properties) => {
+    const { [key]: keyProperty } = properties
+
+    omit.forEach((property) => {
+      delete properties[property as unknown as keyof typeof properties]
+    })
+
+    return {
+      ...acc,
+      [keyProperty as unknown as string]: properties,
+    }
+  }, {})
+
+  return result as Record<string, Omit<Input, OmitKeys>>
 }

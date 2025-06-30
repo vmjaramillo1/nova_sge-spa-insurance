@@ -1,0 +1,86 @@
+@use "@app/styles/utils/index.scss";
+
+$product-detail-action-color: #2F7ABF;
+
+.product-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend .font-semibold;
+    @extend .text-blue-500;
+    text-align: center;
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__coverages {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__banner {
+    border-radius: 12px;
+    border: 1px solid #D3D9E7;
+  }
+
+  &__action{
+		@extend .font-semibold;
+		color: $product-detail-action-color;
+		display: flex;
+		justify-content: space-between;
+	}
+
+}
+
+.product-detail-fallback {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.coverage-item-fallback {
+  display: flex;
+  gap: 8px;
+
+  &__description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.accordion-item-fallback {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 22px;
+}
+
+.floating-button {
+  position: sticky;
+  bottom: 24px;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 24px;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+}

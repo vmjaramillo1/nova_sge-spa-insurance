@@ -1,7 +1,59 @@
+import { connected } from 'process'
+
 export const INSURANCE_PORTAL_NAME = 'Seguros'
-export const PRODUCT_NAME = 'Seguro por robos y fraudes'
+export const PREVIOUS_PORTAL_NAME = 'Seguros contratados'
+export const TERMS_AND_CONDITIONS_NAME = 'Autorización de uso de datos'
+export const PRODUCT_NAME_FRAUD = 'Seguro por robos y fraudes'
+export const PRODUCT_NAME_LIFE = 'Seguro de Vida + Salud'
+export const PRODUCT_NAME_PAYMENT = 'Forma de pago'
+export const PRODUCT_NAME_ACCEPTANCE = 'Confirmar contratación'
+export const PROD_CODE_LIFE_HEALTH = 'LIFE_HEALTH'
+export const PROD_CODE_TU_BAN_PRO = 'TU_BAN_PRO'
+
+export const PRODUCTS_CODES = [PROD_CODE_LIFE_HEALTH, PROD_CODE_TU_BAN_PRO] as const
+
+export const MAP_INSURANCE_STATUS = {
+  success: 'Estás al día',
+  error: 'Cancelado',
+  warning: 'Pendiente',
+  info: 'Pendiente',
+} as const
+
+export const ALLOW_DEVTOOLS = ['development', 'local'].includes(
+  process.env.REACT_APP_ENVIRONMENT ?? ''
+)
+
+export const CARD_BRANDS = {
+  VISA: {
+    code: 'VISA',
+    name: 'Visa',
+  },
+  MASTERCARD: { code: 'MASTERCARD', name: 'Mastercard' },
+  UNKNOWN: {
+    code: 'UNKNOWN',
+    name: 'Desconocido',
+  },
+}
+
+export const PAYMENT_METHODS = {
+  ACCOUNT: 'ACCOUNT',
+  CREDIT_CARD: 'CREDIT_CARD',
+}
+
+export const ACCOUNT_TYPES = {
+  SAVINGS_ACCOUNT: 'SAVINGS_ACCOUNT',
+  CHECKING_ACCOUNT: 'CHECKING_ACCOUNT',
+}
+
+export const BASE_PATH = process.env.PUBLIC_URL ?? '/'
+
 export const OPEN_ACCOUNTS_FLOW_URL =
   process.env.REACT_APP_EXTERNAL_FLOW_ACCOUNT_URL!
+
+export const PORTAL_PRODUCT_CODE = process.env.REACT_APP_PORTAL_PRODUCT_CODE!
+
+export const CHANNEL_PRODUCT_CODE = process.env.REACT_APP_CHANNEL_PRODUCT_CODE!
+
 export const PORTAL_INSURANCE_URL =
   'https://www.pichincha.com/portal/seguros-en-linea'
 
@@ -23,6 +75,7 @@ export const SOFT_TOKEN_TIME = 49
 export const SOFT_TOKEN_ANIMATION_FR = 46.5
 
 export const ZERO = 0
+export const EMPTY_STRING = ''
 
 export const DOCUMENT_DOWNLOAD_STATIC_CODES = Object.freeze({
   USE_GUIDE: 'DOC_FRAUDS_USE_GUIDE',

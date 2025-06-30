@@ -1,0 +1,70 @@
+@use "../../../../styles/utils/index.scss";
+
+.terms-and-condition-fallback {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__icon {
+    margin: 16px auto;
+  }
+  &__title {
+    margin: 0 auto;
+  }
+}
+
+
+.terms-and-condition {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__icon {
+    padding-top: 2px;
+    background-color: #EAF1F8;
+    margin: 0 auto;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  &__title {
+    margin: 0 auto;
+    @extend .font-semibold;
+    @extend .text-blue-500;
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__disclaimer {
+
+    padding: 16px 24px;
+    border: 1px solid #DEE3ED;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+
+    span {
+      margin: auto;
+    }
+  }
+
+  &__document-link {
+      display: flex;
+      align-items: center;
+  }
+
+
+
+
+}
+
+

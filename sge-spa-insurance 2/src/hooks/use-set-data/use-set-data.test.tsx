@@ -1,21 +1,14 @@
 import { act, renderHook } from '@testing-library/react'
 import useSetData from './use-set-data'
-import { WebviewEvents } from '@pichincha/events-microsite'
 
-import useFlow from '@app/context/flow-context/use-flow'
-import useGlobal from '@app/context/global-context/use-global'
-import useApp from '@app/context/app-context/use-app'
 import { FC, PropsWithChildren } from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
-
-jest.mock('@app/context/flow-context/use-flow')
-jest.mock('@app/context/global-context/use-global')
-jest.mock('@app/context/app-context/use-app')
-
-const useAppMock = useApp as jest.Mock
-const useFlowMock = useFlow as jest.Mock
-const useGlobalMock = useGlobal as jest.Mock
+import { configureStore } from '@reduxjs/toolkit'
+import appSlice from '@app/store/reducers/app-slice'
+import globalSlice from '@app/store/reducers/global-slice'
+import flowSlice from '@app/store/reducers/flow-slice'
+import { Provider } from 'react-redux'
 
 const IdentityEvent = {
   detail: {
@@ -32,60 +25,56 @@ const IdentityEvent = {
   },
 }
 
-const wrapper: FC<PropsWithChildren> = ({ children }) => (
-  <QueryClientProvider client={new QueryClient()}>
-    <BrowserRouter>{children}</BrowserRouter>
-  </QueryClientProvider>
-)
+const makeStore = (preloadedState = {}) =>
+  configureStore({
+    reducer: {
+      app: appSlice.reducer,
+      flow: flowSlice.reducer,
+      global: globalSlice.reducer,
+    },
+    preloadedState,
+  })
+
+const createWrapper = (
+  store: ReturnType<typeof makeStore>
+): FC<PropsWithChildren> => {
+  return ({ children }) => (
+    <Provider store={store}>
+      <QueryClientProvider client={new QueryClient()}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </QueryClientProvider>
+    </Provider>
+  )
+}
 
 describe('useSetData', () => {
   it('should set Identity', () => {
-    const mockIdentity = jest.fn()
+    const store = makeStore()
 
-    useGlobalMock.mockReturnValue({
-      dispatchAuthenticate: mockIdentity,
+    renderHook(() => useSetData(), {
+      wrapper: createWrapper(store),
     })
-
-    useFlowMock.mockReturnValue({
-      dispatchTransaction: jest.fn(),
-    })
-
-    useAppMock.mockReturnValue({
-      dispatchLoadValues: jest.fn(),
-    })
-
-    renderHook(() => useSetData(), { wrapper })
 
     act(() => {
       document.dispatchEvent(new CustomEvent('IDENTITY_APP_EVENT', IdentityEvent))
     })
 
-    expect(mockIdentity).toHaveBeenCalledWith({ ...IdentityEvent.detail })
+    const state = store.getState()
+    expect(state.global.security.authEvent).toEqual(IdentityEvent.detail)
   })
 
-  it('should not set Identity if some value is not defined', () => {
-    const mockIdentity = jest.fn()
+  it('should not dispatch identity if data is incomplete', () => {
+    const store = makeStore()
 
-    useGlobalMock.mockReturnValue({
-      dispatchAuthenticate: mockIdentity,
+    renderHook(() => useSetData(), {
+      wrapper: createWrapper(store),
     })
-
-    useFlowMock.mockReturnValue({
-      dispatchTransaction: jest.fn(),
-    })
-
-    useAppMock.mockReturnValue({
-      dispatchLoadValues: jest.fn(),
-    })
-
-    renderHook(() => useSetData(), { wrapper })
 
     act(() => {
-      document.dispatchEvent(
-        new CustomEvent(WebviewEvents.IDENTITY_APP_EVENT, { detail: {} })
-      )
+      document.dispatchEvent(new CustomEvent('IDENTITY_APP_EVENT', { detail: {} }))
     })
 
-    expect(mockIdentity).not.toHaveBeenCalled()
+    const state = store.getState()
+    expect(state.global.security.authEvent).toBeUndefined()
   })
 })

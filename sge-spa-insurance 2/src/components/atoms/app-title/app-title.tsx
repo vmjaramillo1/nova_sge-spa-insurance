@@ -6,9 +6,10 @@ interface AppTitleProps {
   isSuccess?: boolean
 }
 
-const AppTitle: FC<PropsWithChildren<AppTitleProps>> = (props) => {
-  const { isSuccess, children } = props
-
+const AppTitle: FC<PropsWithChildren<AppTitleProps>> = ({
+  isSuccess = false,
+  children,
+}) => {
   if (isSuccess) {
     return <BPIcon />
   }
@@ -18,10 +19,6 @@ const AppTitle: FC<PropsWithChildren<AppTitleProps>> = (props) => {
       {children}
     </Typography>
   )
-}
-
-AppTitle.defaultProps = {
-  isSuccess: false,
 }
 
 export default memo(AppTitle)

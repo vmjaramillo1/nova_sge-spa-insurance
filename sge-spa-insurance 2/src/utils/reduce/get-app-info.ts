@@ -1,63 +1,61 @@
 import { OfferableProduct } from '../interfaces/offerable-product.interface'
-import { reducePortal } from './portal-reduce-utils'
-import {
-  mapperProduct,
-  reduceGeneric,
-  reducePaymentMethodsOptions,
-  reducePlans,
-} from './reduce'
-import { AppState } from '@app/context/app-context'
-import { MergeOfferablePreviousType } from '../enums/merge-offerable-previous-type'
+import { reduceOffer } from './reduce'
+import { type ReducedPortal } from './portal-reduce-utils'
 
-export interface OfferableWithType extends OfferableProduct {
-  type: MergeOfferablePreviousType
-}
+import { type AppState } from '@app/store/reducers/app-slice/app-slice.interface'
+
+import { reduceAccounts } from '@app/utils/reduce'
+import { ACCOUNT_TYPES, PAYMENT_METHODS } from '@app/utils/constants'
+
+import { AccountRule } from '../interfaces/rule.interface'
+
+export type OfferableWithType = OfferableProduct[]
 
 export interface GetDefaultContextParams {
-  offerablePrevious: OfferableWithType
+  offers: OfferableProduct[]
+  paymentOptions: {
+    accounts: {
+      checking: Array<AccountRule>
+      savings: Array<AccountRule>
+    }
+    cards: Array<AccountRule>
+  }
 }
 
-type AppStateProductInfo<TPortal> = Omit<
-  AppState<TPortal>,
-  'accounts' | 'lopdp' | 'hasOffer'
->
+type AppStateProductInfo<TPortal> = Omit<AppState<TPortal>, 'lopdp' | 'offer'>
 
-export function getAppInfo<TPortal>(
+export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>>(
   params: GetDefaultContextParams
-): AppStateProductInfo<TPortal> {
-  const { offerablePrevious } = params
+): AppStateProductInfo<ReducedPortal<TContent, TParams>> {
+  const { offers, paymentOptions } = params
 
-  const { product, plans, paymentPeriodicityOptions, portal, insuranceName, sale } =
-    offerablePrevious
+  const products = offers.reduce((acc, item) => {
+    const offer = reduceOffer<TContent, TParams>(item)
 
-  const { code, name, coverages, benefits, assistances, exclusions } =
-    mapperProduct(product)
+    return {
+      ...acc,
+      [offer.code]: offer,
+    }
+  }, {})
 
-  const coveragesById = reduceGeneric(product.coverages, 'id')
+  const accountInfo = {
+    checking: reduceAccounts(
+      paymentOptions.accounts.checking,
+      ACCOUNT_TYPES.CHECKING_ACCOUNT
+    ),
+    savings: reduceAccounts(
+      paymentOptions.accounts.savings,
+      ACCOUNT_TYPES.SAVINGS_ACCOUNT
+    ),
+  }
 
-  const paymentMethodOptions = reducePaymentMethodsOptions(
-    offerablePrevious.paymentMethodOptions
-  )
-
-  const plansResult = reducePlans(
-    plans,
-    coveragesById,
-    paymentMethodOptions,
-    paymentPeriodicityOptions
-  )
-
-  const portalResult = reducePortal<TPortal>(portal)
+  const paymentCards = reduceAccounts(paymentOptions.cards, PAYMENT_METHODS.CREDIT_CARD)
 
   return {
-    code,
-    name,
-    sale,
-    coverages,
-    benefits,
-    assistances,
-    exclusions,
-    insuranceName,
-    plans: plansResult,
-    portal: portalResult,
+    products,
+    paymentOptions: {
+      accounts: { ...accountInfo.checking, ...accountInfo.savings },
+      cards: paymentCards,
+    },
   }
 }

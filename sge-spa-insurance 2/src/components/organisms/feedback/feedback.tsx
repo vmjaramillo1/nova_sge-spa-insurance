@@ -42,9 +42,13 @@ const FEEDBACK_ICON_BY_TYPE: Record<FeedBackType, Icon> = {
   },
 }
 
-const FeedBack: FC<PropsWithChildren<FeedBackProps>> = (props) => {
-  const { icon, title, type = 'info', children, classes } = props
-
+const FeedBack: FC<PropsWithChildren<FeedBackProps>> = ({
+  icon,
+  title,
+  type = 'info',
+  children,
+  classes,
+}) => {
   const { background, path } = FEEDBACK_ICON_BY_TYPE[type]
 
   return (
@@ -74,10 +78,6 @@ const FeedBack: FC<PropsWithChildren<FeedBackProps>> = (props) => {
       <div className="feedback__content">{children}</div>
     </div>
   )
-}
-
-FeedBack.defaultProps = {
-  type: 'info',
 }
 
 export default memo(FeedBack)

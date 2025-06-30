@@ -1,8 +1,10 @@
-import { useGlobal } from '@app/context/global-context'
 import { useMemo } from 'react'
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import { selectorAuthEvent } from '@app/store/selectors/selectors'
 
 const useOsType = () => {
-  const { authEvent } = useGlobal()
+  const authEvent: any = useAppSelector(selectorAuthEvent)
 
   const type = useMemo(() => {
     if (!authEvent?.os || typeof authEvent.os !== 'string') return 'unknown'

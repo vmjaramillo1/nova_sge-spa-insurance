@@ -1,0 +1,55 @@
+@import "../../../styles/index.scss";
+
+$previous-product-card-border-color: #DEE3ED;
+$previous-product-card-bg: #ffffff;
+$previous-product-card-padding: 24px;
+$previous-product-card-radius: 8px;
+$previous-product-card-action-color: #2F7ABF;
+$previous-product-card-shadow-color: #00000040;
+
+.previous-product-card {
+	margin-bottom: 24px;
+	width: 100%;
+	min-width: 290px;
+	padding: $previous-product-card-padding;
+	background-color: $previous-product-card-bg;
+	border-radius: $previous-product-card-radius;
+	border: 1px solid $previous-product-card-border-color;
+
+	&__record {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__divider {
+		width: 80%;
+		height: 1px;
+		background-color: $previous-product-card-border-color;
+		margin-block: $previous-product-card-padding;
+	}
+
+	&__action{
+		@extend .font-semibold;
+		color: $previous-product-card-action-color;
+		margin: auto;
+		margin-right: 0px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+}
+
+.previous-product-card-fallback {
+	@extend .previous-product-card;
+
+	&__title {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+}

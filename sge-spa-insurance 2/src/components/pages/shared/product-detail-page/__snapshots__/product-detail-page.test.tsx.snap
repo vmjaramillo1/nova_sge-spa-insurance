@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductDetailPage /> should render correctly 1`] = `
+<div>
+  <div
+    class="product-detail"
+  >
+    <div
+      aria-hidden="true"
+      class="banner banner--secondary product-detail__banner  mb-24"
+      role="banner"
+    />
+    <h3
+      aria-label="Protección adicional desde el primer dia, por $4,09 al mes"
+      class="text-headline3 product-detail__title mb-16"
+    >
+      Protección adicional desde el primer dia, por $4,09 al mes
+    </h3>
+    <p
+      aria-label="Añade una capa extra de seguridad a tus cuentas y tarjetas de Banco Pichincha."
+      class="text-body product-detail__description mb-24"
+    >
+      Añade una capa extra de seguridad a tus cuentas y tarjetas de Banco Pichincha.
+    </p>
+    <section
+      class="mb-24"
+    >
+      <p
+        aria-label="Esto es lo que cubre tu seguro:"
+        class="text-body mb-16"
+      >
+        Esto es lo que cubre tu seguro:
+      </p>
+      <ul
+        class="faq__list"
+      >
+        <li
+          class="accordion"
+        >
+          <button
+            aria-controls=":r0:"
+            aria-expanded="false"
+            class="accordion__title"
+            type="button"
+          >
+            <p
+              aria-label="Hasta $10.000 al año, por cargos que no reconoces"
+              class="text-body font-semibold faq__question-title-image"
+            >
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                devices
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $10.000 al año, por cargos que no reconoces
+              </span>
+            </p>
+            <div
+              aria-hidden="true"
+              class="accordion__arrow"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 8.59009L12 13.1701L16.59 8.59009L18 10.0001L12 16.0001L6 10.0001L7.41 8.59009Z"
+                  fill="#0F265C"
+                />
+              </svg>
+            </div>
+          </button>
+        </li>
+        <li
+          class="accordion"
+        >
+          <button
+            aria-controls=":r1:"
+            aria-expanded="false"
+            class="accordion__title"
+            type="button"
+          >
+            <p
+              aria-label="Hasta $1.400 al año, por robo después de retirar dinero"
+              class="text-body font-semibold faq__question-title-image"
+            >
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                local_atm
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $1.400 al año, por robo después de retirar dinero
+              </span>
+            </p>
+            <div
+              aria-hidden="true"
+              class="accordion__arrow"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 8.59009L12 13.1701L16.59 8.59009L18 10.0001L12 16.0001L6 10.0001L7.41 8.59009Z"
+                  fill="#0F265C"
+                />
+              </svg>
+            </div>
+          </button>
+        </li>
+        <li
+          class="accordion"
+        >
+          <button
+            aria-controls=":r2:"
+            aria-expanded="false"
+            class="accordion__title"
+            type="button"
+          >
+            <p
+              aria-label="Hasta $1.000 al año por daños o robo a productos"
+              class="text-body font-semibold faq__question-title-image"
+            >
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                shopping_bag
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $1.000 al año por daños o robo a productos
+              </span>
+            </p>
+            <div
+              aria-hidden="true"
+              class="accordion__arrow"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 8.59009L12 13.1701L16.59 8.59009L18 10.0001L12 16.0001L6 10.0001L7.41 8.59009Z"
+                  fill="#0F265C"
+                />
+              </svg>
+            </div>
+          </button>
+        </li>
+        <li
+          class="accordion"
+        >
+          <button
+            aria-controls=":r3:"
+            aria-expanded="false"
+            class="accordion__title"
+            type="button"
+          >
+            <p
+              aria-label="Hasta $600 al año por robo de tu billetera o bolso"
+              class="text-body font-semibold faq__question-title-image"
+            >
+              <pichincha-icon
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight-color="500"
+              >
+                account_balance_wallet
+              </pichincha-icon>
+              <span
+                class="ml-16"
+              >
+                Hasta $600 al año por robo de tu billetera o bolso
+              </span>
+            </p>
+            <div
+              aria-hidden="true"
+              class="accordion__arrow"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.41 8.59009L12 13.1701L16.59 8.59009L18 10.0001L12 16.0001L6 10.0001L7.41 8.59009Z"
+                  fill="#0F265C"
+                />
+              </svg>
+            </div>
+          </button>
+        </li>
+      </ul>
+    </section>
+    <div
+      class="alert alert--info alert--icon mb-24"
+      role="alert"
+    >
+      <div
+        aria-hidden="true"
+        class="alert__icon"
+      >
+        <pichincha-icon
+          aria-hidden="true"
+          color="info"
+          size="24px"
+          type="--round"
+          weight_color="400"
+        >
+          info
+        </pichincha-icon>
+      </div>
+      <div
+        aria-hidden="false"
+        class="alert__content"
+      >
+        <p
+          class="text-caption text-dark-gray-400"
+        >
+          Puedes usar cada cobertura hasta 2 veces al año o hasta alcanzar el monto máximo, y también usarlas al mismo tiempo.
+        </p>
+      </div>
+    </div>
+    <div>
+      <button
+        aria-label="Saber más del seguro"
+        class="product-detail__action"
+        type="button"
+      >
+        Saber más del seguro
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+            fill="#2F7ABF"
+          />
+        </svg>
+      </button>
+    </div>
+    <span
+      aria-hidden="true"
+      class="divider h-16 mb-16 mt-16 -mx-24"
+    />
+    <button
+      aria-label="Elige tu método de pago"
+      class="button button--primary mt-auto floating-button"
+      type="button"
+    >
+      Elige tu método de pago
+    </button>
+  </div>
+</div>
+`;

@@ -1,10 +1,14 @@
 import { FC, PropsWithChildren, ReactNode } from 'react'
 import { MemoryRouter, Outlet, Route, Routes } from 'react-router-dom'
 
-import { AppProvider, AppState } from '@app/context/app-context'
-import { FlowProvider, FlowState } from '@app/context/flow-context'
-import { GlobalProvider, GlobalState } from '@app/context/global-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+import { BrowserRouter } from 'react-router-dom'
+import { configureStore } from '@reduxjs/toolkit'
+import appSlice from '@app/store/reducers/app-slice'
+import globalSlice from '@app/store/reducers/global-slice'
+import flowSlice from '@app/store/reducers/flow-slice'
+import { Provider } from 'react-redux'
 
 interface WrapperRoutesProps {
   routes?: ReactNode
@@ -26,34 +30,58 @@ export const WrapperRoutes: FC<PropsWithChildren<WrapperRoutesProps>> = ({
   </MemoryRouter>
 )
 
-export interface WrapperProvidersProps {
-  flow?: Partial<FlowState>
-  app?: Partial<AppState<unknown>>
-  global?: Partial<GlobalState>
-}
+export const makeStore = (preloadedState = {}) =>
+  configureStore({
+    reducer: {
+      app: appSlice.reducer,
+      flow: flowSlice.reducer,
+      global: globalSlice.reducer,
+    },
+    preloadedState,
+  })
 
-export const WrapperProviders: FC<PropsWithChildren<WrapperProvidersProps>> = ({
-  children,
-  app = {},
-  flow = {},
-  global = {},
-}) => (
-  <QueryClientProvider client={new QueryClient()}>
-    <GlobalProvider initialValues={{ ...global }}>
-      <AppProvider initialValues={{ ...app }}>
-        <FlowProvider initialValues={{ ...flow }}>{children}</FlowProvider>
-      </AppProvider>
-    </GlobalProvider>
-  </QueryClientProvider>
-)
-
-export const createWrapper = (
-  providers?: WrapperProvidersProps,
-  routing?: WrapperRoutesProps
+export const createWrapperStore = (
+  store: ReturnType<typeof makeStore>
 ): FC<PropsWithChildren> => {
   return ({ children }) => (
-    <WrapperProviders {...providers}>
-      <WrapperRoutes {...routing}>{children}</WrapperRoutes>
-    </WrapperProviders>
+    <Provider store={store}>
+      <QueryClientProvider client={new QueryClient()}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </QueryClientProvider>
+    </Provider>
+  )
+}
+
+import { useOutletContext } from 'react-router-dom'
+
+type WrapperOptions = {
+  outletValues?: any
+  routes?: React.ReactNode
+  initialEntries?: string[]
+}
+
+export const createWrapperMemoryStore = (
+  preloadedState: Parameters<typeof makeStore>[0],
+  options: WrapperOptions = {}
+): FC<PropsWithChildren> => {
+  const store = makeStore(preloadedState)
+
+  if (options.outletValues) {
+    ;(useOutletContext as jest.Mock).mockReturnValue(options.outletValues)
+  }
+
+  const client = new QueryClient()
+
+  return ({ children }) => (
+    <Provider store={store}>
+      <QueryClientProvider client={client}>
+        <MemoryRouter initialEntries={options.initialEntries || ['/']}>
+          <Routes>
+            {options.routes}
+            <Route path="*" element={children} />
+          </Routes>
+        </MemoryRouter>
+      </QueryClientProvider>
+    </Provider>
   )
 }

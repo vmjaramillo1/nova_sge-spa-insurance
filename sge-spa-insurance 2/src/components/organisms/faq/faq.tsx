@@ -8,16 +8,19 @@ import { filterAndSort } from '@app/utils/common'
 
 import './faq.scss'
 import { pushTrackEvent } from '@app/utils/messages'
+import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
+import SmartContent from '@app/components/atoms/smart-text'
 
 interface AccordionItem extends WithKey, WithOrder, WithIsActive {
-  title: string
-  answer: string
+  question: TextWhitAria
+  answer: TextWhitAria
   track: string
+  icon?: string | React.ReactNode
 }
 
 interface FaqProps {
-  title: string
-  titleAria?: string
+  title?: TextWhitAria
+  description?: TextWhitAria
   initialSelected?: string
   items: Array<AccordionItem>
   classes?: Partial<Classes>
@@ -28,7 +31,7 @@ interface Classes {
 }
 
 const Faq: FC<FaqProps> = (props) => {
-  const { initialSelected, items, title, titleAria, classes } = props
+  const { initialSelected, items, title, description, classes } = props
 
   const [accordionSelected, setAccordionSelected] = useState<string>(
     initialSelected ?? ''
@@ -41,29 +44,60 @@ const Faq: FC<FaqProps> = (props) => {
 
   const mappedItems = useMemo(() => filterAndSort(items), [items])
 
+  const renderQuestionTitle = (
+    question: TextWhitAria,
+    icon?: string | React.ReactNode
+  ) => {
+    return icon ? (
+      <Typography
+        variant="body"
+        className="font-semibold faq__question-title-image"
+        aria-label={question.aria}
+      >
+        {icon}
+        <span className="ml-16">{question.value}</span>
+      </Typography>
+    ) : (
+      <Typography
+        variant="body"
+        className="font-semibold"
+        aria-label={question.aria}
+      >
+        <SmartContent>{question.value}</SmartContent>
+      </Typography>
+    )
+  }
+
   return (
     <section className={clsx(classes?.root)}>
-      <Typography
-        variant="subtitle"
-        className="font-semibold mb-16"
-        aria-label={titleAria}
-      >
-        {title}
-      </Typography>
+      {title && (
+        <Typography
+          variant="subtitle"
+          className="font-semibold mb-16"
+          aria-label={title.aria}
+        >
+          {title.value}
+        </Typography>
+      )}
+
+      {description && (
+        <Typography variant="body" className="mb-16" aria-label={description.aria}>
+          <SmartContent>{description.value}</SmartContent>
+        </Typography>
+      )}
+
       <ul className="faq__list">
         {mappedItems.map((faq) => (
           <Accordion
             key={faq.key}
-            title={
-              <Typography variant="body" className="font-semibold">
-                {faq.title}
-              </Typography>
-            }
+            title={renderQuestionTitle(faq.question, faq.icon)}
             value={faq.key}
             active={accordionSelected === faq.key}
             onChange={handleSelectAccordion(faq.track)}
           >
-            {faq.answer}
+            <Typography variant="caption" className="mb-16">
+              <SmartContent>{faq.answer.value}</SmartContent>
+            </Typography>
           </Accordion>
         ))}
       </ul>

@@ -40,7 +40,7 @@ describe('<CoverageCard />', () => {
         classes={{
           root: 'root-test',
           title: 'title-test',
-          description: 'description-test'
+          description: 'description-test',
         }}
       >
         Content test

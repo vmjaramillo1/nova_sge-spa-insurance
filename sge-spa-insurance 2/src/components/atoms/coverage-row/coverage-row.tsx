@@ -1,5 +1,6 @@
 import { FC, ReactNode, memo } from 'react'
 import clsx from 'clsx'
+import SmartContent from '@app/components/atoms/smart-text'
 
 import './coverage-row.scss'
 
@@ -19,7 +20,7 @@ interface Classes {
 }
 
 const CoverageRow: FC<CoverageRowProps> = (props) => {
-  const { label, value, bolder, classes, aria } = props
+  const { label, value, bolder = false, classes, aria } = props
 
   return (
     <div
@@ -42,8 +43,8 @@ const CoverageRow: FC<CoverageRowProps> = (props) => {
         className={clsx(
           'coverage-row__value',
           bolder && 'font-semibold',
-          classes?.value,
-          classes?.shared
+          classes?.shared,
+          classes?.value
         )}
         aria-hidden="true"
       >
@@ -51,10 +52,6 @@ const CoverageRow: FC<CoverageRowProps> = (props) => {
       </div>
     </div>
   )
-}
-
-CoverageRow.defaultProps = {
-  bolder: false,
 }
 
 export default memo(CoverageRow)

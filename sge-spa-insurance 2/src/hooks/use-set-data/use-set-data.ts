@@ -1,35 +1,48 @@
 import { useCallback, useEffect } from 'react'
 import { AuthService, LocalEvents, IdentityEvent } from '@pichincha/events-microsite'
-import useGlobal from '@app/context/global-context/use-global'
 import { isValidIdentity } from '@app/utils/guards'
 import axios from 'axios'
 import { PersonSession } from '@app/services/insurance'
+import useAppDispatch from '@app/hooks/use-app-dispatch'
+import { authenticate } from '@app/store/reducers/global-slice'
 
 const emptyCallback = () => null
 
 export const useSetData = () => {
-  const { dispatchAuthenticate } = useGlobal()
+  const dispatch = useAppDispatch()
 
   const identityEventCallback = useCallback(
     (detail: IdentityEvent) => {
       if (isValidIdentity(detail)) {
-        dispatchAuthenticate(detail)
+        const formattedGuid = detail.guid.replace(
+          /^(.{8})(.{4})(.{4})(.{4})(.{12})$/,
+          '$1-$2-$3-$4-$5'
+        )
+
+        const formatDetail = {
+          ...detail,
+          guid: formattedGuid,
+        }
+
+        dispatch(authenticate(formatDetail))
 
         const identity: PersonSession = {
-          device: detail.device,
-          guid: detail.guid,
-          ip: detail.ip,
-          session: detail.session,
+          device: formatDetail.device,
+          guid: formatDetail.guid,
+          ip: formatDetail.ip,
+          session: formatDetail.session,
         }
 
         const stringifyIdentity = JSON.stringify(identity)
 
-        axios.defaults.headers.common['Authorization'] = detail.jwtToken
-        axios.defaults.headers.common['Channel'] = detail.channel ?? 'movil'
+        axios.defaults.headers.common['X-Authentication'] = formatDetail.jwtToken
+        axios.defaults.headers.common['Channel'] = formatDetail.channel ?? 'movil'
+        axios.defaults.headers.common['X-Channel'] = formatDetail.channel ?? 'movil'
+        axios.defaults.headers.common['Channel'] = formatDetail.channel ?? 'movil'
         axios.defaults.headers.common['Identity'] = stringifyIdentity
       }
     },
-    [dispatchAuthenticate]
+    [dispatch]
   )
 
   const backEventCallback = () => {

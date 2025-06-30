@@ -1,20 +1,29 @@
-import useFlow from '@app/context/flow-context/use-flow'
-import useApp from '@app/context/app-context/use-app'
-
 import { ACCOUNT_FORMATS } from '@app/utils'
 
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import {
+  selectorAccounts,
+  selectorAccountHashSelected,
+} from '@app/store/selectors/selectors'
+
 const useCurrentAccount = () => {
-  const { accounts } = useApp()
+  const accounts = useAppSelector(selectorAccounts)
+  const allAccounts = {
+    ...accounts.accounts,
+    ...accounts.cards,
+  }
 
-  const { accountHashSelected } = useFlow()
+  const hashAccountList = Object.keys(allAccounts)
+  const accountHashSelected = useAppSelector(selectorAccountHashSelected)
 
-  if (accounts.length === 0) return null
+  if (hashAccountList.length === 0) return null
 
-  const value = accounts.find((account) => account.hash === accountHashSelected)
+  const value = allAccounts[accountHashSelected]
 
   if (!value) return null
 
-  const format = ACCOUNT_FORMATS[value.type]
+  const format = ACCOUNT_FORMATS[value.paymentType]
 
   return {
     description: value.mask,
@@ -23,8 +32,8 @@ const useCurrentAccount = () => {
     accountHash: value.hash,
     amount: value.balance,
     type: value.type,
-    value: value.value,
     mask: value.mask,
+    paymentType: value.paymentType,
   }
 }
 

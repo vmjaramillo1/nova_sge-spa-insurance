@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalCoverage /> should render the component 1`] = `
+<div>
+  <div
+    class="modal-coverage"
+  >
+    <div
+      class="modal-coverage__header"
+    >
+      <p
+        aria-label="title test"
+        class="text-body font-semibold text-blue-500"
+      >
+        title test
+      </p>
+      <button
+        aria-label="Cerrar"
+        class="product-detail__action"
+        type="button"
+      >
+        <pichincha-icon
+          aria-hidden="true"
+          color="blue"
+          size="24px"
+          type="--outlined"
+          weight_color="500"
+        >
+          close
+        </pichincha-icon>
+      </button>
+    </div>
+    <div
+      class="modal-coverage__content"
+    >
+      <p
+        aria-label="title test"
+        class="text-body font-medium text-dark-gray-500"
+      >
+        title test
+      </p>
+      <div
+        class="modal-coverage__coverages"
+      >
+        <p
+          aria-label="title test"
+          class="text-body font-semibold text-dark-gray-500 my-16"
+        >
+          title test
+        </p>
+        <ul>
+          <li
+            aria-label="title test"
+            class="coverage-item py-8 modal-coverage__items"
+          >
+            <div
+              aria-hidden="true"
+              class="coverage-item__icon"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight_color="500"
+              >
+                close
+              </pichincha-icon>
+            </div>
+            <div
+              aria-hidden="true"
+              class="coverage-item__content"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-item__description"
+              >
+                <span
+                  aria-hidden="true"
+                  class="text-button"
+                >
+                  title test
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <span
+        aria-hidden="true"
+        class="divider h-16 mb-16 mt-16 -mx-24"
+      />
+      <div
+        class="modal-coverage__coverages mb-82"
+      >
+        <p
+          aria-label="title test"
+          class="text-body font-semibold text-dark-gray-500 my-16"
+        >
+          title test
+        </p>
+        <ul>
+          <li
+            aria-label="title test"
+            class="coverage-item py-8 modal-coverage__items"
+          >
+            <div
+              aria-hidden="true"
+              class="coverage-item__icon"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="blue"
+                size="24px"
+                type="--outlined"
+                weight_color="500"
+              >
+                close
+              </pichincha-icon>
+            </div>
+            <div
+              aria-hidden="true"
+              class="coverage-item__content"
+            >
+              <div
+                aria-hidden="true"
+                class="coverage-item__description"
+              >
+                <span
+                  aria-hidden="true"
+                  class="text-button"
+                >
+                  title test
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="modal-coverage__footer"
+    >
+      <button
+        aria-label="title test"
+        class="button button--secondary mt-auto"
+        type="button"
+      >
+        title test
+      </button>
+    </div>
+  </div>
+</div>
+`;

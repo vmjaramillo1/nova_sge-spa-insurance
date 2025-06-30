@@ -1,3 +1,16 @@
+import type { NodeWithChildren, ChildNode } from 'domhandler'
+type ReplaceAttributes<T extends string> = Partial<Record<T, string>>
+export type ElementWithAttributes<T extends string> = Element &
+  NodeWithChildren & {
+    attribs: ReplaceAttributes<T>
+    children: ChildNode[]
+  }
+
+export type ReplaceCallback<TKeys extends string = string> = (
+  node: ElementWithAttributes<TKeys>
+) => React.JSX.Element
+
+export type UnknownRecord = Record<string, unknown>
 export type ReMapProperties<
   TSource,
   TProperties extends { [K in keyof TSource]?: TProperties[K] }
@@ -7,6 +20,9 @@ export type ReMapProperties<
 
 export type Full<TObject> = {
   [P in keyof TObject]-?: TObject[P]
+}
+export type RecordLowercase<T> = {
+  [K in keyof T as Lowercase<K & string>]: T[K]
 }
 
 export interface WithIsActive {
@@ -31,6 +47,10 @@ export interface WithKey {
 
 export interface WithDescription {
   description: string
+}
+
+export type WithName = {
+  name: string
 }
 
 export interface WithLabel {

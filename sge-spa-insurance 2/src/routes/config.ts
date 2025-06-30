@@ -1,110 +1,86 @@
-import { PRODUCT_NAME, INSURANCE_PORTAL_NAME } from '@app/utils/constants'
-import { RoutesAlias } from '@app/utils/enums'
+import { RoutesSharedAlias, RoutesHubAlias } from '@app/utils/enums'
+import { APP_ROUTES_CONFIG as APP_ROUTES_FRAUD } from './shared'
+import { APP_ROUTES_CONFIG as APP_ROUTES_HUB } from './hub'
 
-interface RouteConfig {
-  key: RoutesAlias
+// todo validar para mejorar
+export interface RouteConfig<T extends string = string> {
+  key: T
   path: string
   title: string
 }
-type RecordRoutes = Record<RoutesAlias, string>
 
-export const BASE_PATH = process.env.PUBLIC_URL ?? '/'
+export type AllRouteAliases = RoutesSharedAlias | RoutesHubAlias
+type RecordRoutes = Record<AllRouteAliases, string>
 
-function formatPath(path: string): string {
+// todo ajustar esto
+export function formatPath(path: string): string {
+  const BASE_PATH = process.env.PUBLIC_URL ?? '/'
   const basePathEndsWithSlash = BASE_PATH.endsWith('/')
   const currentPath = basePathEndsWithSlash ? path : '/' + path
   return BASE_PATH + currentPath
 }
 
-export const APP_ROUTES_CONFIG = Object.freeze<Record<RoutesAlias, RouteConfig>>({
-  INSURANCE_PORTAL: {
-    key: RoutesAlias.INSURANCE_PORTAL,
-    path: formatPath('seguros'),
-    title: INSURANCE_PORTAL_NAME,
-  },
-  PRODUCT_DETAIL: {
-    key: RoutesAlias.PRODUCT_DETAIL,
-    path: formatPath('detalle-producto'),
-    title: PRODUCT_NAME,
-  },
-  PRODUCT: {
-    key: RoutesAlias.PRODUCT,
-    path: formatPath('pago'),
-    title: PRODUCT_NAME,
-  },
-  SELECT_ACCOUNT: {
-    key: RoutesAlias.SELECT_ACCOUNT,
-    path: formatPath('seleccionar-cuenta'),
-    title: 'Elige tu cuenta',
-  },
-  ACCEPTANCE: {
-    key: RoutesAlias.ACCEPTANCE,
-    path: formatPath('soft-token'),
-    title: PRODUCT_NAME,
-  },
-  SUCCESS: {
-    key: RoutesAlias.SUCCESS,
-    path: formatPath('compra-exitosa'),
-    title: PRODUCT_NAME,
-  },
+export const APP_ROUTES_CONFIG = {
+  ...APP_ROUTES_HUB,
+  ...APP_ROUTES_FRAUD,
+}
 
-  // Errors
-  GENERAL_ERROR: {
-    key: RoutesAlias.GENERAL_ERROR,
-    path: formatPath('error'),
-    title: PRODUCT_NAME,
-  },
-  NOT_ACCOUNT: {
-    key: RoutesAlias.NOT_ACCOUNT,
-    path: formatPath('cuenta-no-disponible'),
-    title: PRODUCT_NAME,
-  },
-
-  // Additional
-  RETRY_ACCEPTANCE: {
-    key: RoutesAlias.RETRY_ACCEPTANCE,
-    path: formatPath('reintentar-aceptacion'),
-    title: PRODUCT_NAME,
-  },
-  PREVIOUS: {
-    key: RoutesAlias.PREVIOUS,
-    path: formatPath('posventa-otros-canales'),
-    title: PRODUCT_NAME,
-  },
-  PREVIOUS_PRODUCT: {
-    key: RoutesAlias.PREVIOUS_PRODUCT,
-    path: formatPath('posventa'),
-    title: PRODUCT_NAME,
-  },
-  ALREADY_PRODUCT: {
-    key: RoutesAlias.ALREADY_PRODUCT,
-    path: formatPath('no-cumple-regla-negocio'),
-    title: PRODUCT_NAME,
-  },
-  NOT_PRODUCT: {
-    key: RoutesAlias.NOT_PRODUCT,
-    path: formatPath('producto-no-disponible'),
-    title: PRODUCT_NAME,
-  },
-  IN_PROGRESS: {
-    key: RoutesAlias.IN_PROGRESS,
-    path: formatPath('en-progreso'),
-    title: PRODUCT_NAME,
-  },
-})
-
-export const APP_ROUTES = Object.keys(APP_ROUTES_CONFIG).reduce<RecordRoutes>(
+export const APP_ROUTES: Record<AllRouteAliases, string> = Object.keys(
+  APP_ROUTES_CONFIG
+).reduce<RecordRoutes>(
   (acc, key) => ({
     ...acc,
-    [key]: APP_ROUTES_CONFIG[key as RoutesAlias].path,
+    [key]: APP_ROUTES_CONFIG[key as AllRouteAliases].path,
   }),
   {} as RecordRoutes
 )
 
-export const getRoutKeyByPath = (path: string): RoutesAlias | undefined => {
+export const getRoutKeyByPath = (path: string): AllRouteAliases | undefined => {
   const route = Object.keys(APP_ROUTES_CONFIG).find(
-    (key) => APP_ROUTES_CONFIG[key as RoutesAlias].path === path
+    (key) => APP_ROUTES_CONFIG[key as AllRouteAliases].path === path
   )
 
-  return route as RoutesAlias
+  return route as AllRouteAliases
+}
+
+export function mapperRouts(routeCode: string) {
+  if (!routeCode || !APP_ROUTES) return ''
+  switch (routeCode) {
+    // Hub
+    case 'INSURANCE_PORTAL':
+      return APP_ROUTES.INSURANCE_PORTAL
+    case 'TERMS_AND_CONDITIONS':
+      return APP_ROUTES.TERMS_AND_CONDITIONS
+    case 'GENERAL_ERROR':
+      return APP_ROUTES.GENERAL_ERROR
+    case 'NOT_ACCOUNT':
+      return APP_ROUTES.NOT_ACCOUNT
+    case 'RETRY_ACCEPTANCE':
+      return APP_ROUTES.RETRY_ACCEPTANCE
+    case 'PREVIOUS_PRODUCT':
+      return APP_ROUTES.PREVIOUS_PRODUCT
+    case 'PREVIOUS_PRODUCT_DETAIL':
+      return APP_ROUTES.PREVIOUS_PRODUCT_DETAIL
+    case 'ALREADY_PRODUCT':
+      return APP_ROUTES.ALREADY_PRODUCT
+    case 'NOT_PRODUCT':
+      return APP_ROUTES.NOT_PRODUCT
+    case 'IN_PROGRESS':
+      return APP_ROUTES.IN_PROGRESS
+
+    // PRODUCTS
+    case 'PLAN_SELECTION':
+      return APP_ROUTES.PLAN_SELECTION
+    case 'PRODUCT_DETAIL':
+      return APP_ROUTES.PRODUCT_DETAIL
+    case 'PRODUCT':
+      return APP_ROUTES.PRODUCT
+    case 'ACCEPTANCE':
+      return APP_ROUTES.ACCEPTANCE
+    case 'SUCCESS':
+      return APP_ROUTES.SUCCESS
+
+    default:
+      return 'URL_NOT_MAP_FOUND'
+  }
 }

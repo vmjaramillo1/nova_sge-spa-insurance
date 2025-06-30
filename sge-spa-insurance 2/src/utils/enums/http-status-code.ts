@@ -1,4 +1,6 @@
 export const enum HttpStatusCode {
+  DEFAULT = 0,
+
   OK = 200,
 
   BAD_REQUEST = 400,

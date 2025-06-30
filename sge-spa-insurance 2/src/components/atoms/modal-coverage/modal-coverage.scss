@@ -1,0 +1,50 @@
+.modal-coverage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: white;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-bottom: 1px solid #DEE3ED;
+  }
+
+  &__content {
+    padding: 24px;
+    height: 100%;
+    padding-bottom: 96px;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    background: white;
+    padding: 24px 24px 0px 24px;
+    border-top: 1px solid #DEE3ED;
+    position: sticky;
+    bottom: 24px;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 24px;
+      background-color: white;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    line-height: 22px;
+  }
+
+}

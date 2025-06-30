@@ -1,6 +1,3 @@
-import useApp from '@app/context/app-context/use-app'
-import useFlow from '@app/context/flow-context/use-flow'
-
 import useCurrentAccount from '@app/hooks/use-current-account'
 import useIdentity from '@app/hooks/use-identity'
 
@@ -9,21 +6,37 @@ import InsuranceService from '@app/services/insurance'
 import { ACCEPTED_STATUS, isSuccessResponse } from '@app/utils'
 import { customMessage, trackingConversion } from '@app/utils/messages'
 
+import useAppSelector from '@app/hooks/use-app-selector'
+
+import {
+  selectorTransactionReference,
+  selectorPlanSelected,
+  selectorPeriodicitySelected,
+} from '@app/store/selectors/selectors'
+import useCurrentProduct from '@app/hooks/use-current-product'
+
 const useAcceptance = () => {
-  const { code: productCode, plans } = useApp()
-  const { key, transactionReference, planSelected, periodicitySelected } = useFlow()
+  const { productCode, currentProduct: productData } = useCurrentProduct()
+
+  const plans = productData?.plans
+
+  // const key = useAppSelector(selectorKey)
+  const transactionReference = useAppSelector(selectorTransactionReference)
+  const planSelected = useAppSelector(selectorPlanSelected)
+  const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
+
   const identity = useIdentity()
 
   const currentAccount = useCurrentAccount()
 
   return async (acceptanceReference: string) => {
-    if (!key || !transactionReference || !currentAccount || !identity) {
+    if (!transactionReference || !currentAccount || !identity) {
       throw new InvalidBodyError(
         'Missing fields: [key or transactionReference or currentAccount or identity]'
       )
     }
 
-    const { type: accountType, value: accountValue } = currentAccount
+    const { type: accountType, accountHash: accountValue } = currentAccount
     const { cif, dni, dniType } = identity
     const [paymentMethodCode] = Object.keys(plans[planSelected].paymentMethodOptions)
 
@@ -31,11 +44,11 @@ const useAcceptance = () => {
     const periodicity = plans[planSelected].periodicityOptions[periodicitySelected]
 
     const response = await InsuranceService.processTransaction({
-      key,
+      key: "",
       transactionReference,
       acceptanceReference,
       accountType,
-      accountValue,
+      accountValue, // todo asjutar aqui antes se vnaia el valuer pero ya no existe
       paymentMethodCode,
       paymentPeriodicityCode: periodicitySelected,
       planCode: planSelected,
@@ -62,6 +75,8 @@ const useAcceptance = () => {
       aux: periodicity?.name?.toLowerCase(),
       aux2: method?.name?.toLowerCase(),
     })
+
+    // todo emitir evento de tracking de MOENGAGE
 
     return response
   }

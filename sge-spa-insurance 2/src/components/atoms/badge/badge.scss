@@ -1,0 +1,39 @@
+@use    "../../../styles/utils/colors.scss" as colors;
+@import "../../../styles/index.scss";
+
+$badge-radius: 20px;
+
+.badge {
+	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 4px;
+	font-size: 12px;
+	line-height: 16px;
+	border-radius: $badge-radius;
+
+ &--success {
+	background-color: map-get(colors.$success, 50);
+	color: map-get(colors.$success, 500);
+	border: 1px solid map-get(colors.$success, 200);
+ }
+
+ &--error {
+	background-color: map-get(colors.$error, 50);
+	color: map-get(colors.$error, 500);
+	border: 1px solid map-get(colors.$error, 200);
+ }
+
+ &--warning {
+	background-color: map-get(colors.$warning, 50);
+	color: map-get(colors.$warning, 500);
+	border: 1px solid map-get(colors.$warning, 200);
+ }
+
+ &--info {
+	background-color: map-get(colors.$information, 50);
+	color: map-get(colors.$information, 500);
+	border: 1px solid map-get(colors.$information, 200);
+ }
+}

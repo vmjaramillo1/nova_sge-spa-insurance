@@ -1,8 +1,10 @@
-import { MergeOfferablePreviousType } from '@app/utils/enums'
 import { OfferableProduct, Response } from '@app/utils/interfaces'
+import { PortalRule, AccountRule, ClientRule } from '@app/utils/interfaces'
+import { ResponseWithResult } from '@app/utils/interfaces'
 
+//#region Session
 export interface KeyAndTransactionReference {
-  key: string
+  key?: string
   transactionReference: string
 }
 export interface PersonSession {
@@ -16,11 +18,13 @@ export interface PersonInformation {
   cif: string
   dni: string
   dniType: string
+  transactionReference?: string
 }
 
 export type IdentityValues = PersonSession & PersonInformation
 
 type ParamsToBody<T> = Omit<T, 'identity'> & PersonInformation
+//#endregion
 
 //#region ValidateOffer
 export interface ValidateOfferParams {
@@ -29,11 +33,38 @@ export interface ValidateOfferParams {
 
 export type ValidateOfferBody = ParamsToBody<ValidateOfferParams>
 
-interface ValidateOfferResult {
-  value: {
-    key: string
-    transactionReference: string
+interface OfferableProducts {
+  productCode: string
+  portalCode: string
+}
+
+interface PreviousProducts {
+  source: string
+  contract: string
+  relatedProductCode: string
+  portalCode: string
+  productCode: string
+}
+
+// todo validar eso con servicio posterior
+interface ValidateValue {
+  transactionReference: string
+  lopdpAcceptation: boolean
+  offerableProducts: Array<OfferableProducts>
+  previousProducts: Array<PreviousProducts>
+  availablePaymentOptions: {
+    accounts: {
+      savings: Array<AccountRule>
+      checking: Array<AccountRule>
+    }
+    cards: Array<AccountRule>
   }
+  portal: PortalRule
+  client: ClientRule
+}
+
+interface ValidateOfferResult {
+  value: ValidateValue
 }
 
 export type ValidateOfferResponse = Response<ValidateOfferResult>
@@ -41,49 +72,50 @@ export type ValidateOfferResponse = Response<ValidateOfferResult>
 //#endregion
 
 //#region FindOffer
-export interface FindOfferParams extends KeyAndTransactionReference {
+// todo eliminar el key en caso de ser necessario
+export interface FindOfferParams {
   identity: PersonInformation
+  offerableProducts?: Array<{
+    productCode: string
+    portalCode: string
+  }>
+  transactionReference: string
 }
 
 export type FindOfferBody = ParamsToBody<FindOfferParams>
 
-export interface AccountInfo {
-  hash: string
-  mask: string
-  type: string
-  balance: number
-  alias: string | null
-  favorite: boolean
-  value: string
-}
-
 export interface LopdpResult {
-  hasConsent: boolean | null
   acceptedTermsConditions: boolean
   url: string
 }
 
 export interface MergeOfferPrevious {
-  type: MergeOfferablePreviousType
   data: Array<OfferableProduct> | null
 }
 
-export type MergeOfferPreviousList = Array<MergeOfferPrevious>
+export type MergeOfferPreviousList = Array<OfferableProduct>
 
 export interface FindOfferResult {
-  lopdp: LopdpResult
-  accounts: Array<AccountInfo>
-  odds: MergeOfferPreviousList
+  value: OfferableProduct | null
 }
 
 export type FindOfferResponse = Response<FindOfferResult>
 
+export interface PortalHubOffer extends ResponseWithResult<FindOfferResult> {
+  validateResult: ValidateValue
+  offerResult: OfferableProduct[]
+}
+
 //#endregion
 
 //#region FindDocuments
-export interface FindDocumentsParams extends KeyAndTransactionReference {
-  documentsReference?: Array<string>
-  identity: PersonInformation
+export interface DocumentsReference {
+  reference: string
+  flowCode: string
+}
+
+export interface FindDocumentsParams {
+  documents: Array<DocumentsReference>
 }
 
 export type FindDocumentsBody = ParamsToBody<FindDocumentsParams>
@@ -94,16 +126,18 @@ export interface DocumentInfo {
   content: string
 }
 
-interface DocumentItem {
-  channelCode: string
-  channelProductCode: string
-  documents: Array<DocumentInfo>
-  planCode: string
-  productCode: string
+interface DocumentItem extends DocumentInfo {
+  reference?: string
+  status?: string
+}
+
+export interface DocumentsValue {
+  transactionReference: string
+  documents: Array<DocumentItem>
 }
 
 export interface DocumentsDownloadResult {
-  value: Array<DocumentItem>
+  value: DocumentsValue
 }
 
 export type DocumentsDownloadResponse = Response<DocumentsDownloadResult>
@@ -111,7 +145,6 @@ export type DocumentsDownloadResponse = Response<DocumentsDownloadResult>
 //#endregion
 
 //#region ConsentLopdp
-
 export interface ConsentParams {
   url: string
   hasConsent: boolean
@@ -123,7 +156,6 @@ export interface ConsentParams {
 export type ConsentBody = ParamsToBody<ConsentParams>
 
 export type ConsentResponse = Response<{ [key: string]: unknown }>
-
 //#endregion
 
 //#region ProcessTransaction
@@ -150,9 +182,8 @@ export type ProcessTransactionResponse = Response<ProcessTransactionResult>
 //#endregion
 
 //#region FindContracts
-export interface FindContractsParams extends KeyAndTransactionReference {
+export interface FindContractsParams {
   reference: string
-  identity: PersonInformation
 }
 
 export type FindContractsBody = ParamsToBody<FindContractsParams>

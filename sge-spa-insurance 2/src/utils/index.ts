@@ -26,6 +26,12 @@ export const ACCOUNT_FORMATS: Record<string, AccountFormat> = {
     alias: 'Corriente',
     aria: 'corriente',
   },
+  CREDIT_CARD: {
+    label: 'Tarjeta ',
+    type: 'Tarjeta',
+    alias: 'Tarjeta',
+    aria: 'Tarjeta de crédito',
+  },
   DEFAULT: {
     label: 'Cta.',
     type: '',

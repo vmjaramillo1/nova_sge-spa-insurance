@@ -2,9 +2,7 @@ import { FC, memo } from 'react'
 
 import { IconProps } from './Icon.interface'
 
-const CheckIcon: FC<IconProps> = (props) => {
-  const { width, height } = props
-
+const CheckIcon: FC<IconProps> = ({ width = 18, height = 18 }) => {
   return (
     <svg
       width={width}
@@ -21,11 +19,6 @@ const CheckIcon: FC<IconProps> = (props) => {
       />
     </svg>
   )
-}
-
-CheckIcon.defaultProps = {
-  width: 18,
-  height: 18,
 }
 
 export default memo(CheckIcon)

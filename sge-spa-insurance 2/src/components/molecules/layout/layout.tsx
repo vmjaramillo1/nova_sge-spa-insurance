@@ -8,11 +8,17 @@ import Header from '@app/components/molecules/header'
 import useLayout from './use-layout'
 import './layout.scss'
 import ModalLoading from '@app/components/atoms/modal-loading/modal-loading'
-import ProductDetailPageFallback from '@app/components/pages/product-detail-page/product-detail-page-fallback'
 
 const Layout: FC = () => {
-  const { contextValue, isFlowEndSuccess, title, showHeader, showModal, isLoading } =
-    useLayout()
+  const {
+    contextValue,
+    isFlowEndSuccess,
+    title,
+    showHeader,
+    showModal,
+    isLoading,
+    fallBackElement,
+  } = useLayout()
 
   return (
     <>
@@ -27,11 +33,7 @@ const Layout: FC = () => {
       )}
       <main className={clsx('layout', { 'layout--full': !showHeader || isLoading })}>
         <div className="layout__content">
-          {isLoading ? (
-            <ProductDetailPageFallback className="mt-64" />
-          ) : (
-            <Outlet context={contextValue} />
-          )}
+          {isLoading ? fallBackElement : <Outlet context={contextValue} />}
         </div>
       </main>
       {showModal && <ModalLoading>Espera un momento</ModalLoading>}

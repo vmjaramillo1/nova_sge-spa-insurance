@@ -2,8 +2,7 @@ import { FC, memo } from 'react'
 
 import { IconProps } from './Icon.interface'
 
-const BPIcon: FC<IconProps> = (props) => {
-  const { width, height } = props
+const BPIcon: FC<IconProps> = ({ width = 192, height = 16 }) => {
 
   return (
     <svg
@@ -40,11 +39,6 @@ const BPIcon: FC<IconProps> = (props) => {
       </defs>
     </svg>
   )
-}
-
-BPIcon.defaultProps = {
-  width: 192,
-  height: 16,
 }
 
 export default memo(BPIcon)

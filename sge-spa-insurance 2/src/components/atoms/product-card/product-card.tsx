@@ -1,66 +1,34 @@
 import React from 'react'
-
+import SmartContent from '@app/components/atoms/smart-text'
 import Typography from '@app/components/atoms/typography'
 import clsx from 'clsx'
 import './product-card.scss'
-import { useNavigate } from 'react-router-dom'
 import ArrowIcon from '@app/components/icons/ArrowIcon'
-import InsuranceIcon from '@app/components/icons/InsuranceIcon'
 import CheckIcon from '@app/components/icons/CheckIcon'
-
-interface AccessibleText {
-  value: string | React.ReactNode
-  aria: string
-}
-
-interface CoverageItem {
-  key: string
-  title: AccessibleText
-  description: AccessibleText
-}
-
-interface ProductCardProps {
-  title: AccessibleText
-  description: AccessibleText
-  paymentType: AccessibleText
-  price: AccessibleText
-  coverages: {
-    title: string | React.ReactNode
-    items: CoverageItem[]
-  }
-  action: {
-    urlTarget: string
-    value: string | React.ReactNode
-    aria: string
-  }
-}
+import { ProductCardProps } from './product-card.interface'
+import useProductCard, { ProductCode } from './use-product-card'
 
 const ProductCard = (props: ProductCardProps) => {
-  const { title, description, paymentType, price, coverages, action } = props
-  const navigate = useNavigate()
+  const { title, description, paymentType, price, coverages, action, code } = props
 
-  const handleClick = () => {
-    navigate(action.urlTarget)
-  }
+  const { handleClick, MAPPER_ICONS } = useProductCard(action.urlTarget, code)
 
   return (
-    <div className="product-card">
+    <div className="product-card" data-testid={code}  onClick={handleClick}>
       {/* Header */}
       <div className="product-card__header">
-        <InsuranceIcon width={40} height={40} />
+        {MAPPER_ICONS[code as ProductCode]}
         <Typography
           variant="body"
           className="product-card__title"
           aria-label={title.aria}
         >
-          {title.value}
+          <SmartContent>{title.value}</SmartContent>
         </Typography>
       </div>
 
       <Typography variant="caption" className="my-16" aria-label={description.aria}>
-        {description.value}
-        {/* Suma una <span className="font-semibold">capa extra</span> de protección para
-        tus cuentas y tarjetas. */}
+        <SmartContent>{description.value}</SmartContent>
       </Typography>
 
       <div className="product-card__header">
@@ -69,14 +37,14 @@ const ProductCard = (props: ProductCardProps) => {
           className="product-card__price"
           aria-label={paymentType.aria}
         >
-          {paymentType.value}
+          <SmartContent>{paymentType.value}</SmartContent>
         </Typography>
         <Typography
           variant="headline2"
           className="product-card__price"
-          aria-label={price.aria}
+          // aria-label={price.aria}
         >
-          {price.value}
+          <SmartContent>{price.value}</SmartContent>
         </Typography>
       </div>
 
@@ -84,45 +52,38 @@ const ProductCard = (props: ProductCardProps) => {
 
       {/* Body */}
       <div>
-        {coverages.title}
-        {/* <strong>Este seguro cubre:</strong> */}
+        <SmartContent>{coverages.title.value}</SmartContent>
+
         <ul className="product-card__coverage-list">
           {coverages.items.map((item) => (
             <li
-              data-testid={item.key}
-              key={item.key}
+              data-testid={`${code}-${item.coverageCode}`}
+              key={item.coverageCode}
               className={clsx('product-card__header my-16')}
             >
               <div className="product-card__coverage-icon">
                 <CheckIcon />
               </div>
               <div>
-                <Typography
-                  variant="body"
-                  className="font-semibold"
-                  aria-label={item.title.aria}
-                >
-                  {item.title.value}
-                </Typography>
                 <Typography variant="caption" aria-label={item.description.aria}>
-                  {item.description.value}
+                  <SmartContent>{item.description.value}</SmartContent>
                 </Typography>
               </div>
             </li>
           ))}
         </ul>
       </div>
+
       <div className="product-card__divider"></div>
       {/* footer */}
       <div>
         <button
-          onClick={handleClick}
           className={clsx('product-card__action')}
           type="button"
           aria-label={action.aria}
+          role='link'
         >
           {action.value}
-          {/* {Descubre qué incluye tu seguro} */}
           <ArrowIcon fill="#2F7ABF" />
         </button>
       </div>

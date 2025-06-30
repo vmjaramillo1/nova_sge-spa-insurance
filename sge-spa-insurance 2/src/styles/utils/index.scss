@@ -1,9 +1,24 @@
 @import "./mapping.scss";
 
+
 .underline {
   text-decoration: underline;
 }
 
 .select-none {
   user-select: none;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.link-format {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--strongBlue500);
 }

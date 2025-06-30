@@ -420,3 +420,27 @@ describe('reducePlans', () => {
     })
   })
 })
+
+// todo esto aun debe ser implementado
+describe('reduceAccounts', () => {
+  it("should return ''", () => {
+    //const result = reduceAccounts()
+    const result = () => {
+      return 'value1'
+    }
+
+    expect(result).toEqual('value')
+  })
+})
+
+// todo esto aun debe ser implementado
+describe('reduceOffer', () => {
+  it("should return ''", () => {
+    //const result = reduceOffer()
+    const result = () => {
+      return 'value1'
+    }
+
+    expect(result).toEqual('value')
+  })
+})
