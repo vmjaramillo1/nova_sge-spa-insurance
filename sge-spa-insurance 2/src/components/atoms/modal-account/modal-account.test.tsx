@@ -15,29 +15,42 @@ const store = makeStore({
 const wrapper = createWrapperStore(store)
 
 describe('<ModalAccount />', () => {
-  it('should render', () => {
-    render(<ModalAccount handleClose={() => console.log('close')} />, {
-      wrapper: wrapper,
-    })
+  const content = {
+    title: { value: 'Cuenta a debitar', aria: 'Cuenta a debitar' },
+    inputByAccount: { value: 'Cuenta a debitar', aria: 'Cuenta a debitar' },
+    inputByCard: { value: 'Tarjeta a debitar', aria: 'Tarjeta a debitar' },
+  } 
 
-    const account = screen.getByText('Cuenta a debitar')
+  it('should render', () => {
+    render(
+      <ModalAccount content={content} handleClose={() => console.log('close')} />,
+      {
+        wrapper: wrapper,
+      }
+    )
+
+    const accounts = screen.getAllByText('Cuenta a debitar')
     const creditCard = screen.getByText('Tarjeta a debitar')
 
-    expect(account).toBeInTheDocument()
+    expect(accounts.length).toBeGreaterThan(0)
     expect(creditCard).toBeInTheDocument()
   })
 
   it('should change to selected account', () => {
     render(
       <Provider store={store}>
-        <ModalAccount handleClose={() => console.log('close')} />
+        <ModalAccount content={content} handleClose={() => console.log('close')} />
       </Provider>
     )
 
-    const button = screen.getByTestId('btn-account-row-4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d')
+    const button = screen.getByTestId(
+      'btn-account-row-4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d'
+    )
     fireEvent.click(button)
 
     const state = store.getState()
-    expect(state.flow.shared.accountHashSelected).toBe('4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d')
+    expect(state.flow.shared.accountHashSelected).toBe(
+      '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d'
+    )
   })
 })

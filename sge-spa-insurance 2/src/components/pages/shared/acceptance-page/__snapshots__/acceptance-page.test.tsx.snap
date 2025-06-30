@@ -617,7 +617,7 @@ exports[`<AcceptancePage /> should render 1`] = `
       </div>
     </div>
     <div
-      aria-label="Vas a pagar 4 dólares con 9 centavos. De la cuenta: Corriente. A la empresa: Novaecuador S.A. Por el producto: Seguro por robos y fraudes. Cobertura total. Póliza maestra número: 5 0 1 5 7"
+      aria-label="Vas a pagar 4 dólares con 9 centavos. De la cuenta: Transaccional. A la empresa: Novaecuador S.A. Por el producto: Seguro por robos y fraudes. Cobertura total. Póliza maestra número: 5 0 1 5 7"
       class="text-center mb-24"
     >
       <p
@@ -630,7 +630,7 @@ exports[`<AcceptancePage /> should render 1`] = `
         aria-hidden="true"
         class="text-body text-dark-gray-400 mb-16"
       >
-        De la cuenta: Corriente
+        De la cuenta: Ahorros
       </p>
       <p
         aria-hidden="true"
@@ -661,9 +661,9 @@ exports[`<AcceptancePage /> should render 1`] = `
       class="mt-auto"
     >
       <button
+        aria-disabled="true"
         aria-label="Confirmar contratación"
-        class="button button--primary mb-16"
-        disabled=""
+        class="button button--primary button--is-disabled mb-16"
         type="button"
       >
         Confirmar

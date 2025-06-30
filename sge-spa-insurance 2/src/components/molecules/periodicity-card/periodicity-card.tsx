@@ -3,7 +3,6 @@ import Toggle from '@app/components/atoms/toggle/toggle'
 import Typography from '@app/components/atoms/typography'
 import { useSmartText } from '@app/components/atoms/smart-text'
 
-
 import './periodicity-card.scss'
 
 interface PeriodicityCardProps {

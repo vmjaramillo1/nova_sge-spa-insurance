@@ -12,7 +12,11 @@ import useCurrentPortal from '@app/hooks/use-current-portal/use-current-portal'
 
 const usePage = (title: string) => {
   const { isLoading, changeTitle } = useOutletContext<OutletContextValue>()
+  console.log("titulo", title)
+
   const status = useAppSelector(selectorStatus)
+
+
   const step = useAppSelector(selectorStep)
 
   const { currentPortal: productData } = useCurrentPortal()

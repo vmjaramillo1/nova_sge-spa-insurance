@@ -107,6 +107,7 @@ const ProductPage = () => {
           checked={accepted}
           onChange={handleCheckLegal}
           classes={{ root: 'mt-auto mb-24' }}
+          ariaChildren={content.disclaimer?.aria}
         >
           {content.disclaimer.value}
           {content.disclaimer?.action && content.disclaimer?.action !== '' && (
@@ -115,7 +116,6 @@ const ProductPage = () => {
               variant="legal"
               className="check-legal__insurance underline font-semibold"
               as="a"
-              aria-label={content.disclaimer.aria}
             >
               {content.disclaimer.action}
             </Typography>
@@ -135,7 +135,12 @@ const ProductPage = () => {
         </Button>
       </div>
 
-      {showModalAccount && <ModalAccount handleClose={handleModalCoverage} />}
+      {showModalAccount && (
+        <ModalAccount
+          handleClose={handleModalCoverage}
+          content={content.selectAccount}
+        />
+      )}
     </>
   )
 }

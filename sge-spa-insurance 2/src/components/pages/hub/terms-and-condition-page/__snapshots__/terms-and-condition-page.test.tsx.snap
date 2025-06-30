@@ -41,10 +41,9 @@ exports[`<TermsAndConditionPage /> should render correctly 1`] = `
         >
           <input
             aria-labelledby=":r0:"
-            checked=""
             class="checkbox"
             type="checkbox"
-            value="true"
+            value="false"
           />
         </span>
         <label
@@ -55,7 +54,7 @@ exports[`<TermsAndConditionPage /> should render correctly 1`] = `
           <p
             class="text-caption"
           >
-            He leído y autorizo el tratamiento de mis datos
+            He leído y autorizo el tratamiento de mis datos 
           </p>
         </label>
       </div>
@@ -86,8 +85,9 @@ exports[`<TermsAndConditionPage /> should render correctly 1`] = `
       </span>
     </a>
     <button
-      aria-label="Guardar"
-      class="button button--primary mt-auto floating-button"
+      aria-disabled="true"
+      aria-label="Para continuar marca la casilla de autorización anterior. Aceptar botón desactivado (Botón)"
+      class="button button--primary button--is-disabled mt-auto floating-button"
       type="button"
     >
       Guardar

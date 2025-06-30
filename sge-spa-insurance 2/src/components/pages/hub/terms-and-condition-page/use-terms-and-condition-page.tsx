@@ -15,11 +15,11 @@ import {
 import InsuranceService from '@app/services/insurance'
 
 import useBackButton from '@app/hooks/use-back-button'
-import usePageTrackingEvent from '@app/hooks/use-page-tracking-event'
 import { APP_ROUTES } from '@app/routes/config'
 
 import { selectorLopdp } from '@app/store/selectors/selectors'
 import { setLopdp } from '@app/store/reducers/app-slice'
+import usePortalHubSelector from '@app/store/hooks/use-portal-hub-selector'
 
 function getNextLopdpAction(hasConsent: boolean | null): LopdpAction {
   return hasConsent === null
@@ -32,16 +32,17 @@ const useTermsAndConditionPage = () => {
   const identity = useIdentity()
   const dispatch = useAppDispatch()
 
-  const checkboxRef = useRef<HTMLInputElement>(null)
+  const [, content] = usePortalHubSelector(
+    (portal) => portal.content.termsAndConditions
+  )
 
+  const checkboxRef = useRef<HTMLInputElement>(null)
   const lopdp = useAppSelector(selectorLopdp)
 
   const [acceptTC, setAcceptTC] = useState<boolean>(lopdp.acceptedTermsConditions)
 
   // todo validar traking
   useBackButton(backHomeWithTracking(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK))
-  // todo validar el evento a enviar
-  usePageTrackingEvent(TrackingEvents.ONBOARDING_VIEW_PAGE)
 
   const canContinue = useMemo(() => {
     if (!lopdp.acceptedTermsConditions) return acceptTC
@@ -106,6 +107,7 @@ const useTermsAndConditionPage = () => {
   }
 
   return {
+    content,
     acceptTC,
     handleAcceptTC,
     checkboxRef,

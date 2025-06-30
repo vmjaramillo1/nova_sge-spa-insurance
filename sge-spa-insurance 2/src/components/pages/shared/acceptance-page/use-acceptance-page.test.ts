@@ -70,10 +70,10 @@ describe('useAcceptancePage', () => {
       companyName: 'Novaecuador S.A.',
       policy: 'Póliza maestra nro.: 50157',
       toCompany: 'A la empresa:',
-      from: 'De la cuenta: Corriente',
+      from: 'De la cuenta: Ahorros',
       productName: 'Seguro por robos y fraudes. Cobertura Total',
       forProduct: 'Por el producto:',
-      aria: 'Vas a pagar 4 dólares con 9 centavos. De la cuenta: Corriente. A la empresa: Novaecuador S.A. Por el producto: Seguro por robos y fraudes. Cobertura total. Póliza maestra número: 5 0 1 5 7',
+      aria: 'Vas a pagar 4 dólares con 9 centavos. De la cuenta: Transaccional. A la empresa: Novaecuador S.A. Por el producto: Seguro por robos y fraudes. Cobertura total. Póliza maestra número: 5 0 1 5 7',
       toPay: 'Vas a pagar mensual: $ 4,09 inc. impuestos',
     })
   })
@@ -103,12 +103,63 @@ describe('useAcceptancePage', () => {
 
   it('should fail acceptance and navigate retry page', async () => {
     const store = makeStore({
-      app: appValues,
+      app: {...appValues,
+        paymentOptions: {
+    accounts: {
+      '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+        {
+          hash: '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+          mask: '210021****',
+          type: 'CTA.CTE PERSONAL',
+          balance: '2000000.00',
+          alias: 'ytytyty',
+          favorite: false,
+          allowsTransact: true,
+          paymentType: 'CHECKING_ACCOUNT',
+        },
+      '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d':
+        {
+          hash: '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d',
+          mask: '220404****',
+          type: 'TRANSACCIONAL TRADICIONAL',
+          balance: '2000000.00',
+          alias: 'fdfdf',
+          favorite: false,
+          allowsTransact: true,
+          paymentType: 'SAVINGS_ACCOUNT',
+        },
+      '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d':
+        {
+          hash: '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+          mask: '221264****',
+          type: 'Cuenta de AhorroTransaccional',
+          balance: '20.00',
+          alias: 'uyutty',
+          favorite: true,
+          allowsTransact: true,
+          paymentType: 'SAVINGS_ACCOUNT',
+        },
+    },
+    cards: {
+      '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+        {
+          hash: '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+          mask: '5555 5555 5555 4444',
+          type: 'PERSONAL',
+          balance: '2000000.00',
+          alias: 'TARJETA',
+          favorite: false,
+          allowsTransact: true,
+          paymentType: 'UNKNOWN',
+        },
+    },
+  },
+      },
       flow: {
         shared: {
           productCode: 'TU_BAN_PRO',
           accountHashSelected:
-            '42e976aea883be9ad3b29487ab3d1a64778bdbfbac9d02f30941d30600b76585',
+            '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
           planSelected: 'TU_BAN_PRO_2',
           periodicitySelected: 'MONTHLY',
           transactionReference: '60547864-a16d-4571-9771-25d0f98ffc11',

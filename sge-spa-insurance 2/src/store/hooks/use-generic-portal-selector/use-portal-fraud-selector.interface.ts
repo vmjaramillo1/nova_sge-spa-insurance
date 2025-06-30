@@ -5,7 +5,8 @@ import {
   type PageSuccessShared,
   type ConfigurationFlowShared,
   type PortalSharedParamsKeys,
-  type SalePageShared
+  type SalePageShared,
+  type TermsAndConditionsShared,
 } from './use-portal-shared-selector.interface'
 
 export type PageHomeFraud = PageHomeShared
@@ -14,6 +15,7 @@ export type PageAcceptanceFraud = PageAcceptanceShared
 export type PageSuccessFraud = PageSuccessShared
 export type ConfigurationFlowFraud = ConfigurationFlowShared
 export type SalePageFraud = SalePageShared
+export type TermsAndConditionsFraudPage = TermsAndConditionsShared
 
 export interface PortalFraudReducedDefault {
   home: PageHomeFraud
@@ -22,6 +24,7 @@ export interface PortalFraudReducedDefault {
   success: PageSuccessFraud
   flow: ConfigurationFlowFraud
   sale: SalePageFraud
+  termsAndConditions: TermsAndConditionsFraudPage
 }
 
 export type PortalFraudParamsKeys = PortalSharedParamsKeys

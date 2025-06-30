@@ -7,6 +7,7 @@ import {
   type ConfigurationFlowShared,
   type SalePageShared,
   type PortalSharedParamsKeys,
+  type TermsAndConditionsShared,
 } from './use-portal-shared-selector.interface'
 
 export type PageHomeLife = PageHomeShared
@@ -15,7 +16,7 @@ export type PageAcceptanceLife = PageAcceptanceShared
 export type PageSuccessLife = PageSuccessShared
 export type PageMultiOfferLife = PageMultiOffer
 export type ConfigurationFlowLife = ConfigurationFlowShared
-
+export type TermsAndConditionsLifePage = TermsAndConditionsShared
 export type SalePageFlowLife = SalePageShared
 
 export interface PortalLifeReducedDefault {
@@ -26,6 +27,7 @@ export interface PortalLifeReducedDefault {
   multiOffer: PageMultiOfferLife
   flow: ConfigurationFlowLife
   sale: SalePageFlowLife
+  termsAndConditions: TermsAndConditionsLifePage
 }
 
 export type PortalLifeParamsKeys = PortalSharedParamsKeys

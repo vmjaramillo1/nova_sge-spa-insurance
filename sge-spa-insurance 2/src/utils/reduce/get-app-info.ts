@@ -5,7 +5,7 @@ import { type ReducedPortal } from './portal-reduce-utils'
 import { type AppState } from '@app/store/reducers/app-slice/app-slice.interface'
 
 import { reduceAccounts } from '@app/utils/reduce'
-import { ACCOUNT_TYPES, CARD_BRANDS } from '@app/utils/constants'
+import { ACCOUNT_TYPES, PAYMENT_METHODS } from '@app/utils/constants'
 
 import { AccountRule } from '../interfaces/rule.interface'
 
@@ -49,7 +49,7 @@ export function getAppInfo<TContent = unknown, TParams = Record<string, unknown>
     ),
   }
 
-  const paymentCards = reduceAccounts(paymentOptions.cards, CARD_BRANDS.UNKNOWN)
+  const paymentCards = reduceAccounts(paymentOptions.cards, PAYMENT_METHODS.CREDIT_CARD)
 
   return {
     products,

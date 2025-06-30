@@ -1,7 +1,6 @@
 import { AttributeFormat } from '@app/utils/reduce/portal-reduce-utils'
 import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
 import { WithIsActive, WithKey, WithOrder } from '@app/utils/interfaces'
-import { text } from 'stream/consumers'
 
 //#region home
 interface SectionHero {
@@ -79,6 +78,9 @@ export interface PagePaymentShared {
   selectAccount: {
     multipleAccount: string
     singleAccount: string
+    title: TextWhitAria
+    inputByAccount: TextWhitAria
+    inputByCard: TextWhitAria
   }
   actionNext: {
     cta: {
@@ -243,6 +245,19 @@ export interface SalePageShared {
 
 // #endregion
 
+//#region TermsAndConditions
+export interface TermsAndConditionsShared {
+  title: TextWhitAria
+  description: TextWhitAria
+  checkbox: {
+    description: TextWhitAria
+  }
+  previewDocument: TextWhitAria
+  actions: TextWhitAria
+}
+// #endregion
+
+
 //#region Reduced
 export interface PortalSharedReducedDefault {
   home: PageHomeShared
@@ -252,6 +267,7 @@ export interface PortalSharedReducedDefault {
   multiOffer: PageMultiOffer
   flow: ConfigurationFlowShared
   sale: SalePageShared
+  termsAndConditions: TermsAndConditionsShared
 }
 //#endregion
 export type PortalSharedParamsKeys = 'ChannelCode' | 'FlowCode'

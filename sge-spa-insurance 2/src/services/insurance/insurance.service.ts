@@ -79,7 +79,7 @@ export default class InsuranceService {
     }
   }
 
-  static async processTransaction(
+  static async processTransaction1(
     params: ProcessTransactionParams
   ): Promise<ProcessTransactionResponse> {
     try {
@@ -146,6 +146,32 @@ export default class InsuranceService {
     }
   }
 
+  static async validateOffer1(
+    params: ValidateOfferParams
+  ): Promise<ValidateOfferResponse> {
+    try {
+      const {
+        identity: { cif, dni, dniType, transactionReference },
+      } = params
+
+      const endpoint = this.formatEndpoint('validate')
+      const body = encryptBody({
+        cif,
+        dni,
+        dniType,
+        transactionReference: transactionReference,
+        channelProductCode: CHANNEL_PRODUCT_CODE,
+        portalCode: PORTAL_PRODUCT_CODE,
+      })
+
+      const result = await axios.post<ValidateOfferResponse>(endpoint, body)
+
+      return validateResult(result)
+    } catch (error) {
+      return resolveError(error)
+    }
+  }
+
   // ============== TODO AJUSTE PARA SERVICIO TEMPORAL==========================
 
   // todo ajustar
@@ -167,8 +193,8 @@ export default class InsuranceService {
   ): Promise<ValidateOfferResponse> {
 
       const tempBaseUrl =
-     // 'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-     'https://hub-seguros.free.beeceptor.com/hub'
+      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+    // 'https://hub-seguros.free.beeceptor.com/hub'
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
     try {
@@ -199,36 +225,10 @@ export default class InsuranceService {
     }
   }
 
-  static async validateOffer1(
-    params: ValidateOfferParams
-  ): Promise<ValidateOfferResponse> {
-    try {
-      const {
-        identity: { cif, dni, dniType, transactionReference },
-      } = params
-
-      const endpoint = this.formatEndpoint('validate')
-      const body = encryptBody({
-        cif,
-        dni,
-        dniType,
-        transactionReference: transactionReference,
-        channelProductCode: CHANNEL_PRODUCT_CODE,
-        portalCode: PORTAL_PRODUCT_CODE,
-      })
-
-      const result = await axios.post<ValidateOfferResponse>(endpoint, body)
-
-      return validateResult(result)
-    } catch (error) {
-      return resolveError(error)
-    }
-  }
-
   static async findOffer(params: FindOfferParams): Promise<FindOfferResponse> {
     const tempBaseUrl =
-    //  'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
-     'https://hub-seguros.free.beeceptor.com/hub'
+      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+    // 'https://hub-seguros.free.beeceptor.com/hub'
 
     const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
 
@@ -288,4 +288,57 @@ export default class InsuranceService {
       return resolveError(error)
     }
   }
+
+  static async processTransaction(
+    params: ProcessTransactionParams
+  ): Promise<ProcessTransactionResponse> {
+    try {
+
+
+  const tempBaseUrl =
+      'https://desarrollo-segurosembebidos.pichincha.com/sge-msa-hub/domain/seguros-embebidos/v1/hub'
+    const tempFormatEndpoint = (path: string) => `${tempBaseUrl}/${path}`
+
+      const {
+        key,
+        transactionReference,
+        acceptanceReference,
+        accountType,
+        accountValue,
+        paymentMethodCode,
+        paymentPeriodicityCode,
+        planCode,
+        productCode,
+
+        identity: { cif, dni, dniType },
+      } = params
+
+      const endpoint = tempFormatEndpoint('process-transaction')
+
+      const body = encryptBody({
+        transactionReference,
+        key,
+        paymentPeriodicityCode,
+        paymentMethodCode,
+        acceptanceReference,
+        productCode,
+        planCode,
+        accountType,
+        accountValue,
+
+        cif,
+        dni,
+        dniType,
+      })
+
+      const result = await axios.post<ProcessTransactionResponse>(endpoint, body)
+
+      return validateResult(result)
+    } catch (error) {
+      return resolveError(error)
+    }
+  }
+
+
+
 }

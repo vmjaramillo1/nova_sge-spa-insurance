@@ -14,7 +14,14 @@ describe('<TermsAndConditionPage />', () => {
 
   it('should render correctly', () => {
     const store = makeStore({
-      app: appValues,
+      app: {
+        ...appValues,
+        lopdp: {
+          acceptedTermsConditions: false,
+          hasConsent: false,
+          url: 'https://www.pichincha.com/portal/Portals/0/Transparencia/autorizacion-para-tratamiento-de-documentos-personales-v02.pdf',
+        },
+      },
       flow: flowValues,
       global: globalValues,
     })

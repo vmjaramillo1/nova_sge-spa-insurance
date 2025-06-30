@@ -123,6 +123,8 @@ const useAcceptancePage = () => {
     }
   }
 
+  console.log('AcceptancePage currentAccount', currentAccount)
+
   const currentAccountFormat = ACCOUNT_FORMATS[currentAccount!.paymentType]
 
   const softTokenAria = useMemo(() => {

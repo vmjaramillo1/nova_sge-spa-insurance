@@ -7,13 +7,19 @@ import React from 'react'
 import Divider from '@app/components/atoms/divider/divider'
 import useModalAccount from './use-modal-account'
 import { PAYMENT_METHODS } from '@app/utils/constants'
+import { TextWhitAria } from '@app/store/hooks/use-generic-portal-selector'
 
 interface ModalAccountProps {
+  content: {
+    title: TextWhitAria
+    inputByAccount: TextWhitAria
+    inputByCard: TextWhitAria
+  }
   handleClose: () => void
 }
 
 const ModalAccount: FC<ModalAccountProps> = (props) => {
-  const { handleClose } = props
+  const { handleClose, content } = props
 
   const { handleSelect, groupSelected, accountList, creditCards } = useModalAccount()
 
@@ -46,15 +52,15 @@ const ModalAccount: FC<ModalAccountProps> = (props) => {
           <Typography
             variant="body"
             className="font-semibold text-dark-gray-500"
-            aria-label={'title.aria'}
+            aria-label={content.title.aria}
           >
-            {'Elige tu método de pago.'}
+            {content.title.value}
           </Typography>
           <button
             onClick={handleClose}
             className={clsx('product-detail__action')}
             type="button"
-            aria-label={'content.sectionCoverages.actionShowCoverages.aria'}
+            aria-label={'Cerrar'}
           >
             <pichincha-icon
               size="24px"
@@ -71,8 +77,12 @@ const ModalAccount: FC<ModalAccountProps> = (props) => {
         <div className="modal-account__content">
           {creditCards.length > 0 && (
             <>
-              <Typography variant="body" className="mt-16 mb-24">
-                Tarjeta a debitar
+              <Typography
+                variant="body"
+                className="mt-16 mb-24"
+                aria-label={content.inputByCard.aria}
+              >
+                {content.inputByCard.value}
               </Typography>
 
               {creditCards.map((item, index) => (
@@ -88,8 +98,12 @@ const ModalAccount: FC<ModalAccountProps> = (props) => {
 
           {accountList.length > 0 && (
             <>
-              <Typography variant="body" className="mt-16 mb-24">
-                Cuenta a debitar
+              <Typography
+                variant="body"
+                className="mt-16 mb-24"
+                aria-label={content.inputByAccount.aria}
+              >
+                {content.inputByAccount.value}
               </Typography>
 
               {accountList.map((item, index) => (

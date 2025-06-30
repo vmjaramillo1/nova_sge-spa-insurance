@@ -17,6 +17,8 @@ const mockSale = Object.freeze({
   state: 'PENDIENTE',
 })
 
+// todo implementar
+
 // describe('usePreviousProductPage', () => {
 //   it('should return defined', () => {
 //     const wrapper = createWrapper({

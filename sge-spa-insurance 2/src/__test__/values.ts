@@ -412,7 +412,7 @@ export const globalValues = Object.freeze({
           },
         },
       },
-      termsAndCondition: {
+      termsAndConditions: {
         title: {
           isActive: true,
           key: 'title',

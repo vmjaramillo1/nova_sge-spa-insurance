@@ -52,8 +52,6 @@ const ModalCoverage: FC<ModalCoverageProps> = (props) => {
     )
   }
 
-  console.log('ModalCoverage', props)
- 
   return (
     <div className="modal-coverage">
       <div className="modal-coverage__header">

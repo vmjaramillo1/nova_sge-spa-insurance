@@ -65,6 +65,7 @@ interface PageSale {
 export interface PortalHubReducedDefault {
   home: PageHome
   sale: PageSale
+  termsAndConditions: TermsAndConditionPage
 }
 
 export type PortalHubParamsKeys = 'ChannelCode'

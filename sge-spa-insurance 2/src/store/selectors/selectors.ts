@@ -46,13 +46,6 @@ export const selectorProductCode = createSelector(
   (store: RootState) => store.flow.shared.productCode,
   (productCode) => productCode
 )
-
-// todo eliminar el key en caso de ser necessario
-export const selectorKey = createSelector(
-  (store: RootState) => store.flow.shared.key,
-  (key) => key
-)
-
 export const selectorTransactionReference = createSelector(
   (store: RootState) => store.flow.shared.transactionReference,
   (transactionReference) => transactionReference

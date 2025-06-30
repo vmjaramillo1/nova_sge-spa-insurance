@@ -12,6 +12,7 @@ interface CheckLegalProps {
   onChange?: CheckBoxChange
   checked?: boolean
   classes?: Partial<Classes>
+  ariaChildren?: string
 }
 
 interface Classes {
@@ -22,7 +23,7 @@ interface Classes {
 
 const CheckLegal = forwardRef<HTMLInputElement, PropsWithChildren<CheckLegalProps>>(
   (props, ref) => {
-    const { onChange, checked, children, classes } = props
+    const { onChange, checked, children, classes, ariaChildren } = props
 
     const currentId = useId()
 
@@ -41,6 +42,7 @@ const CheckLegal = forwardRef<HTMLInputElement, PropsWithChildren<CheckLegalProp
             className="check-legal__content"
             as="label"
             aria-hidden="true"
+            aria-label= {ariaChildren}
           >
             {children}
           </Typography>

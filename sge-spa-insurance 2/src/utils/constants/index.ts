@@ -1,3 +1,5 @@
+import { connected } from 'process'
+
 export const INSURANCE_PORTAL_NAME = 'Seguros'
 export const PREVIOUS_PORTAL_NAME = 'Seguros contratados'
 export const TERMS_AND_CONDITIONS_NAME = 'Autorización de uso de datos'
@@ -22,9 +24,15 @@ export const ALLOW_DEVTOOLS = ['development', 'local'].includes(
 )
 
 export const CARD_BRANDS = {
-  VISA: 'VISA',
-  MASTERCARD: 'MASTERCARD',
-  UNKNOWN: 'UNKNOWN',
+  VISA: {
+    code: 'VISA',
+    name: 'Visa',
+  },
+  MASTERCARD: { code: 'MASTERCARD', name: 'Mastercard' },
+  UNKNOWN: {
+    code: 'UNKNOWN',
+    name: 'Desconocido',
+  },
 }
 
 export const PAYMENT_METHODS = {

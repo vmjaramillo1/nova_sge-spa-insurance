@@ -1,7 +1,4 @@
-import {
-  createWrapperStore,
-  makeStore,
-} from '@app/__test__/wrappers'
+import { createWrapperStore, makeStore } from '@app/__test__/wrappers'
 import { flowValues, globalValues, appValues } from '@app/__test__/values'
 import useTermsAndConditionPage from './use-terms-and-condition-page'
 import { act, renderHook } from '@testing-library/react'

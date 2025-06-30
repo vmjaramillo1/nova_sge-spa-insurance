@@ -9,7 +9,6 @@ import { customMessage, trackingConversion } from '@app/utils/messages'
 import useAppSelector from '@app/hooks/use-app-selector'
 
 import {
-  selectorKey,
   selectorTransactionReference,
   selectorPlanSelected,
   selectorPeriodicitySelected,
@@ -17,12 +16,11 @@ import {
 import useCurrentProduct from '@app/hooks/use-current-product'
 
 const useAcceptance = () => {
-
   const { productCode, currentProduct: productData } = useCurrentProduct()
 
   const plans = productData?.plans
 
-  const key = useAppSelector(selectorKey)
+  // const key = useAppSelector(selectorKey)
   const transactionReference = useAppSelector(selectorTransactionReference)
   const planSelected = useAppSelector(selectorPlanSelected)
   const periodicitySelected = useAppSelector(selectorPeriodicitySelected)
@@ -32,7 +30,7 @@ const useAcceptance = () => {
   const currentAccount = useCurrentAccount()
 
   return async (acceptanceReference: string) => {
-    if (!key || !transactionReference || !currentAccount || !identity) {
+    if (!transactionReference || !currentAccount || !identity) {
       throw new InvalidBodyError(
         'Missing fields: [key or transactionReference or currentAccount or identity]'
       )
@@ -46,7 +44,7 @@ const useAcceptance = () => {
     const periodicity = plans[planSelected].periodicityOptions[periodicitySelected]
 
     const response = await InsuranceService.processTransaction({
-      key,
+      key: "",
       transactionReference,
       acceptanceReference,
       accountType,

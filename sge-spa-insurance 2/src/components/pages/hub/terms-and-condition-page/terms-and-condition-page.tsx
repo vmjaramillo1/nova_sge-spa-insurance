@@ -5,36 +5,11 @@ import Button from '@app/components/atoms/button'
 import SmartContent from '@app/components/atoms/smart-text'
 import useTermsAndConditionPage from './use-terms-and-condition-page'
 import DocumentCheckIcon from '@app/components/icons/DocumentCheckIcon'
+import { console } from 'inspector'
 
-// todo ajustar
 const TermsAndConditionPage = () => {
-  const content = {
-    title: {
-      value: 'Autorización',
-      aria: 'Autorización',
-    },
-    description: {
-      value:
-        'Tu seguridad es nuestra prioridad. Usamos tu información para ofrecerte seguros a tu medida, pensados en lo que realmente necesitas.',
-      aria: 'Tu seguridad es nuestra prioridad. Usamos tu información para ofrecerte seguros a tu medida, pensados en lo que realmente necesitas.',
-    },
-    checkbox: {
-      description: {
-        value: 'He leído y autorizo el tratamiento de mis datos',
-        aria: 'He leído y autorizo el tratamiento de mis datos ',
-      },
-    },
-    previewDocument: {
-      value: 'Ver documento completo',
-      aria: 'Ver documento completo',
-    },
-    action: {
-      value: 'Guardar',
-      aria: 'Guardar',
-    },
-  }
-
   const {
+    content,
     acceptTC,
     checkboxRef,
     handleLopdp,
@@ -42,6 +17,8 @@ const TermsAndConditionPage = () => {
     canContinue,
     handleContinue,
   } = useTermsAndConditionPage()
+
+  console.log('TermsAndConditionPage content', content)
 
   return (
     <div className="terms-and-condition">

@@ -28,8 +28,8 @@ const useModalAccount = () => {
   const [selectedAccountState, setSelectedAccountState] = useState('')
 
   const MAPPER_CARD: Record<string, ReactNode> = {
-    [CARD_BRANDS.VISA]: <VisaIcon />,
-    [CARD_BRANDS.MASTERCARD]: <MasterCard />,
+    [CARD_BRANDS.VISA.code]: <VisaIcon />,
+    [CARD_BRANDS.MASTERCARD.code]: <MasterCard />,
     UNKNOWN: null,
   }
 
@@ -39,16 +39,30 @@ const useModalAccount = () => {
 
     const allAccounts = hashAccountList.map((hashAccount) => {
       const account = allPaymentsTypes[hashAccount]
-
-      const format = ACCOUNT_FORMATS[account.type] || ACCOUNT_FORMATS.DEFAULT
-      const ariaLastNumbers = getAriaAccountNumber(account.mask)
-      const ariaBalance = getAriaAccountMoney(account.balance)
-      const ariaResult = `${format.type}, saldo disponible de ${ariaBalance}, Número de cuenta termina en ${ariaLastNumbers}`
+      const isAccountSelected = accountSelected === account.hash
 
       const brand = getCreditCardBrand(account.mask)
-      const iconAccount = MAPPER_CARD[brand]
+      const iconAccount = MAPPER_CARD[brand.code]
 
-      if (accountSelected === account.hash) {
+      const ariaLastNumbers = getAriaAccountNumber(account.mask)
+      const ariaBalance = getAriaAccountMoney(account.balance)
+
+      const format = ACCOUNT_FORMATS[account.paymentType] || ACCOUNT_FORMATS.DEFAULT
+
+      let ariaResult = ''
+
+      if (iconAccount) {
+        const selectAria = isAccountSelected ? 'Tarjeta seleccionada.' : ''
+        ariaResult = `${selectAria} ${format.type} ${brand.name} termina en ${ariaLastNumbers}. Saldo disponible ${ariaBalance}`
+      } else {
+        const allowsTransactAria = account.allowsTransact
+          ? ''
+          : 'Esta cuenta es solo para ahorro y no permite pagos automáticos.'
+        const selectAria = isAccountSelected ? 'Cuenta seleccionada.' : ''
+        ariaResult = `${selectAria} Desde cuenta ${format.aria} ${account.type}, con saldo disponible de ${ariaBalance}, Número de cuenta termina en ${ariaLastNumbers} ${allowsTransactAria}`
+      }
+
+      if (isAccountSelected) {
         setSelectedAccountState(account.hash)
         setGroupSelected(PAYMENT_METHODS.ACCOUNT)
       }
@@ -64,7 +78,7 @@ const useModalAccount = () => {
         amount: formatMoney(account.balance.toString()),
         ariaLabel: ariaResult,
         disabled: false,
-        selected: accountSelected === account.hash,
+        selected: isAccountSelected,
         icon: iconAccount,
         type: elementType, // account.type, // necesario para filtrar
       }

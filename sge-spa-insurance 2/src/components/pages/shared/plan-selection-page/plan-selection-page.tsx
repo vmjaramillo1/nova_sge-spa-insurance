@@ -1,7 +1,6 @@
 import SmartContent from '@app/components/atoms/smart-text'
 import Typography from '@app/components/atoms/typography'
 import './plan-selection-page.scss'
-import { useSmartText } from '@app/components/atoms/smart-text'
 
 import usePlanSelectionPage from './use-plan-selection-page'
 import Radio from '@app/components/atoms/radio'
@@ -23,7 +22,11 @@ const PlanSelection = () => {
   return (
     <>
       <div className="plan-selection-page -mx-20 -my-24">
-        <Typography variant="body" className="my-20 ml-16">
+        <Typography
+          variant="body"
+          className="my-20 ml-16"
+          aria-label={content.title.aria}
+        >
           <SmartContent>{content.title.value}</SmartContent>
         </Typography>
 
