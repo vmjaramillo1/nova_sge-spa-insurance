@@ -9,34 +9,31 @@ import globalSlice from '@app/store/reducers/global-slice'
 import flowSlice from '@app/store/reducers/flow-slice'
 import { Provider } from 'react-redux'
 
-const makeStore = (preloadedState = {}) =>
-  configureStore({
-    reducer: {
-      app: appSlice.reducer,
-      flow: flowSlice.reducer,
-      global: globalSlice.reducer,
-    },
-    preloadedState,
-  })
+import { createWrapperStore, makeStore } from '@app/__test__/wrappers'
+import { flowValues, globalValues, appValues } from '@app/__test__/values'
 
-const createWrapper = (
-  store: ReturnType<typeof makeStore>
-): FC<PropsWithChildren> => {
-  return ({ children }) => (
-    <Provider store={store}>
-      <QueryClientProvider client={new QueryClient()}>
-        <BrowserRouter>{children}</BrowserRouter>
-      </QueryClientProvider>
-    </Provider>
-  )
-}
+const store = makeStore({
+  app: appValues,
+  flow: flowValues,
+  global: globalValues,
+})
 
 describe('useCurrentAccount', () => {
   it('should return null when no accounts', () => {
-    const store = makeStore()
+    const store = makeStore({
+      app: {
+        ...appValues,
+        paymentOptions: {
+          accounts: {},
+          cards: {},
+        },
+      },
+      flow: flowValues,
+      global: globalValues,
+    })
 
     const { result } = renderHook(() => useCurrentAccount(), {
-      wrapper: createWrapper(store),
+      wrapper: createWrapperStore(store),
     })
 
     expect(result.current).toBeNull()
@@ -45,139 +42,259 @@ describe('useCurrentAccount', () => {
   it('should return current account', () => {
     const store = makeStore({
       app: {
-        accounts: {
-          '0x002351234': {
-            hash: '0x002351234',
-            mask: '22XXXX54',
-            type: 'SAVINGS_ACCOUNT',
-            balance: 300,
-            alias: 'PRINCIPAL',
-            favorite: true,
-            value: '232423423412e312ae3e123',
+        ...appValues,
+        paymentOptions: {
+          accounts: {
+            '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+              {
+                hash: '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+                mask: '210021****',
+                type: 'CTA.CTE PERSONAL',
+                balance: '2000000.00',
+                alias: 'ytytyty',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'CHECKING_ACCOUNT',
+              },
+            '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d':
+              {
+                hash: '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d',
+                mask: '220404****',
+                type: 'TRANSACCIONAL TRADICIONAL',
+                balance: '2000000.00',
+                alias: 'fdfdf',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'SAVINGS_ACCOUNT',
+              },
+            '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d':
+              {
+                hash: '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+                mask: '221264****',
+                type: 'Cuenta de AhorroTransaccional',
+                balance: '20.00',
+                alias: null,
+                favorite: true,
+                allowsTransact: true,
+                paymentType: 'SAVINGS_ACCOUNT',
+              },
           },
-          '0x01': {
-            hash: '0x01',
-            mask: '12XXXX12',
-            type: 'CHECKING_ACCOUNT',
-            balance: 800,
-            alias: null,
-            favorite: false,
-            value: '232423423412e312ae3e134234254aea254ae3',
+          cards: {
+            '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+              {
+                hash: '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+                mask: '5555 5555 5555 4444',
+                type: 'PERSONAL',
+                balance: '2000000.00',
+                alias: 'TARJETA',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'UNKNOWN',
+              },
           },
         },
       },
       flow: {
+        ...flowValues,
+
         shared: {
-          accountHashSelected: '0x01',
+          productCode: 'TU_BAN_PRO',
+          accountHashSelected:
+            '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+          planSelected: 'TU_BAN_PRO_2',
+          periodicitySelected: 'MONTHLY',
+          transactionReference: '8d4d1a40-5901-44be-9046-cf26f9a468d6',
+          contentLoaded: true,
+          step: 'PRODUCT',
+          status: 'WAIT_LOAD',
+          contract: '',
         },
       },
+      global: globalValues,
     })
 
     const { result } = renderHook(() => useCurrentAccount(), {
-      wrapper: createWrapper(store),
+      wrapper: createWrapperStore(store),
     })
 
     expect(result.current).toEqual({
-      description: '12XXXX12',
+      description: '221264****',
       alias: null,
-      label: 'Corriente',
-      accountHash: '0x01',
-      amount: 800,
-      type: 'CHECKING_ACCOUNT',
-      value: '232423423412e312ae3e134234254aea254ae3',
-      mask: '12XXXX12',
+      label: 'Cta. Ahorros',
+      accountHash:
+        '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+      amount: '20.00',
+      type: 'Cuenta de AhorroTransaccional',
+      mask: '221264****',
+      paymentType: 'SAVINGS_ACCOUNT',
     })
   })
 
   it('should return alias in label', () => {
     const store = makeStore({
       app: {
-        accounts: {
-          '0x00': {
-            hash: '0x00',
-            mask: '27XXXX57',
-            type: 'SAVINGS_ACCOUNT',
-            balance: 2000,
-            alias: 'PRINCIPAL',
-            favorite: true,
-            value: '525a356sd2a5642',
+        ...appValues,
+        paymentOptions: {
+          accounts: {
+            '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+              {
+                hash: '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+                mask: '210021****',
+                type: 'CTA.CTE PERSONAL',
+                balance: '2000000.00',
+                alias: 'ytytyty',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'CHECKING_ACCOUNT',
+              },
+            '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d':
+              {
+                hash: '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d',
+                mask: '220404****',
+                type: 'TRANSACCIONAL TRADICIONAL',
+                balance: '2000000.00',
+                alias: 'fdfdf',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'SAVINGS_ACCOUNT',
+              },
+            '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d':
+              {
+                hash: '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+                mask: '221264****',
+                type: 'Cuenta de AhorroTransaccional',
+                balance: '20.00',
+                alias: 'PRINCIPAL',
+                favorite: true,
+                allowsTransact: true,
+                paymentType: 'SAVINGS_ACCOUNT',
+              },
           },
-          '0x01': {
-            hash: '0x01',
-            mask: '22XXXX22',
-            type: 'SAVINGS_ACCOUNT',
-            balance: 400,
-            alias: 'OTHER',
-            favorite: false,
-            value: '65a3sd6a5sd36a5sd',
-          },
-          '0x01234sf2': {
-            hash: '0x01234sf2',
-            mask: '23XXXX29',
-            type: 'CHECKING_ACCOUNT',
-            balance: 150,
-            alias: null,
-            favorite: false,
-            value: 'as7d865as78d6a8s7d',
+          cards: {
+            '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+              {
+                hash: '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+                mask: '5555 5555 5555 4444',
+                type: 'PERSONAL',
+                balance: '2000000.00',
+                alias: 'TARJETA',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'UNKNOWN',
+              },
           },
         },
       },
       flow: {
+        ...flowValues,
         shared: {
-          accountHashSelected: '0x00',
+          productCode: 'TU_BAN_PRO',
+          accountHashSelected:
+            '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+          planSelected: 'TU_BAN_PRO_2',
+          periodicitySelected: 'MONTHLY',
+          transactionReference: '8d4d1a40-5901-44be-9046-cf26f9a468d6',
+          contentLoaded: true,
+          step: 'PRODUCT',
+          status: 'WAIT_LOAD',
+          contract: '',
         },
       },
+      global: globalValues,
     })
 
     const { result } = renderHook(() => useCurrentAccount(), {
-      wrapper: createWrapper(store),
+      wrapper: createWrapperStore(store),
     })
 
     expect(result.current).toEqual({
-      accountHash: '0x00',
-      description: '27XXXX57',
+      description: '221264****',
       alias: 'PRINCIPAL',
-      type: 'SAVINGS_ACCOUNT',
-      amount: 2000,
       label: 'PRINCIPAL',
-      value: '525a356sd2a5642',
-      mask: '27XXXX57',
+      accountHash:
+        '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+      amount: '20.00',
+      type: 'Cuenta de AhorroTransaccional',
+      mask: '221264****',
+      paymentType: 'SAVINGS_ACCOUNT',
     })
   })
 
   it('should return null when accountHash not in accounts', () => {
     const store = makeStore({
       app: {
-        accounts: {
-          '0x02342e41a0': {
-            hash: '0x02342e41a0',
-            mask: '53XXXX57',
-            type: 'SAVINGS_ACCOUNT',
-            balance: 350,
-            alias: 'PRINCIPAL',
-            favorite: true,
-            value: 'asd647a7sda4sd7',
+        ...appValues,
+        paymentOptions: {
+          accounts: {
+            '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+              {
+                hash: '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+                mask: '210021****',
+                type: 'CTA.CTE PERSONAL',
+                balance: '2000000.00',
+                alias: 'ytytyty',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'CHECKING_ACCOUNT',
+              },
+            '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d':
+              {
+                hash: '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d',
+                mask: '220404****',
+                type: 'TRANSACCIONAL TRADICIONAL',
+                balance: '2000000.00',
+                alias: 'fdfdf',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'SAVINGS_ACCOUNT',
+              },
+            '72767676767637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d':
+              {
+                hash: '72767676767637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+                mask: '221264****',
+                type: 'Cuenta de AhorroTransaccional',
+                balance: '20.00',
+                alias: 'PRINCIPAL',
+                favorite: true,
+                allowsTransact: true,
+                paymentType: 'SAVINGS_ACCOUNT',
+              },
           },
-          '0x01': {
-            hash: '0x01',
-            mask: '12XXXX12',
-            type: 'CHECKING_ACCOUNT',
-            balance: 7000,
-            alias: null,
-            favorite: true,
-            value: 'asd87a6s73d6a5s5d89as',
+          cards: {
+            '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+              {
+                hash: '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+                mask: '5555 5555 5555 4444',
+                type: 'PERSONAL',
+                balance: '2000000.00',
+                alias: 'TARJETA',
+                favorite: false,
+                allowsTransact: true,
+                paymentType: 'UNKNOWN',
+              },
           },
         },
       },
       flow: {
+        ...flowValues,
         shared: {
-          accountHashSelected: 'RANDOM',
+          productCode: 'TU_BAN_PRO',
+          accountHashSelected:
+            '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+          planSelected: 'TU_BAN_PRO_2',
+          periodicitySelected: 'MONTHLY',
+          transactionReference: '8d4d1a40-5901-44be-9046-cf26f9a468d6',
+          contentLoaded: true,
+          step: 'PRODUCT',
+          status: 'WAIT_LOAD',
+          contract: '',
         },
       },
+      global: globalValues,
     })
 
     const { result } = renderHook(() => useCurrentAccount(), {
-      wrapper: createWrapper(store),
+      wrapper: createWrapperStore(store),
     })
 
     expect(result.current).toBeNull()

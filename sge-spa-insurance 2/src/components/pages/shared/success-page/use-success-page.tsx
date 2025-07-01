@@ -32,7 +32,6 @@ import {
 import useCurrentProduct from '@app/hooks/use-current-product'
 
 const useSuccessPage = () => {
-
   const { currentProduct: productData } = useCurrentProduct()
   const { success } = productData.portal.content
 
@@ -43,7 +42,7 @@ const useSuccessPage = () => {
 
   useBackButton(backHomeWithTracking(TrackingEvents.ONBOARDING_CLICK_BUTTON_BACK))
 
-  usePageTrackingEvent(TrackingEvents.SUCCESS_VIEW_PAGE)
+  // usePageTrackingEvent(TrackingEvents.SUCCESS_VIEW_PAGE)
 
   const handleBackHome = backHomeWithTracking(TrackingEvents.SUCCESS_CLICK_END)
 
@@ -112,6 +111,7 @@ const useSuccessPage = () => {
     downloadUseGuide()
   }
 
+  // todo ajustar
   const handleClickCall = () => {
     pushTrackEvent(TrackingEvents.SUCCESS_CLICK_CALL)
     // openBrowser(success.moreInformation.actions.[0].link)

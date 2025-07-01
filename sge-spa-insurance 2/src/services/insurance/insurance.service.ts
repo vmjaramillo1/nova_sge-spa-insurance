@@ -18,7 +18,6 @@ import { MessageService, WebviewMessages } from '@pichincha/events-microsite'
 import { HttpStatusCode } from '@app/utils/enums'
 import { resolveError, validateResult, encryptBody } from '@app/utils/service'
 import { CHANNEL_PRODUCT_CODE, PORTAL_PRODUCT_CODE } from '@app/utils/constants'
-import { channel } from 'diagnostics_channel'
 
 const defaultTimeout = '10000'
 
@@ -211,6 +210,8 @@ export default class InsuranceService {
         channelProductCode: 'BP_BM_REQUESTS', //si
         transactionReference: 'd536b1b6-2057-eb23-a3df-3a1716ec58f6', // GUID
         portalCode: 'POR_BP_BANCAMOVIL_EMB_PROD', //si
+        adviserId: null,
+        wayCode: null,
       }
 
       const endpoint = tempFormatEndpoint('validate')
@@ -218,9 +219,9 @@ export default class InsuranceService {
       const result = await axios.post<ValidateOfferResponse>(endpoint, request, {
         ...this.tempHeaders,
       })
-
       return validateResult(result)
     } catch (error) {
+
       return resolveError(error)
     }
   }
@@ -277,12 +278,12 @@ export default class InsuranceService {
         code: '200',
         message: 'OK',
         value: {
-          documents: tempResutl.result,
+          documents: tempResutl.value,
         },
       }
 
       const response = { ...result, data: original }
-      //
+
       return validateResult(response)
     } catch (error) {
       return resolveError(error)
@@ -316,8 +317,8 @@ export default class InsuranceService {
       const endpoint = tempFormatEndpoint('process-transaction')
 
       const body = encryptBody({
-        transactionReference,
         key,
+        transactionReference,
         paymentPeriodicityCode,
         paymentMethodCode,
         acceptanceReference,

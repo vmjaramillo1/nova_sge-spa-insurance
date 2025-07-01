@@ -2,7 +2,6 @@ import { EMPTY_STRING } from '@app/utils/constants'
 import { RoutesSharedAlias } from '@app/utils/enums'
 import { RouteConfig, formatPath } from '@app/routes/config'
 
-// tood cambiar apra q sea generic el nombre
 export const APP_ROUTES_CONFIG = Object.freeze<
   Record<RoutesSharedAlias, RouteConfig<RoutesSharedAlias>>
 >({

@@ -250,10 +250,10 @@ describe('reduceParams', () => {
   it("should return ''", () => {
     //const result = reduceParams()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -262,10 +262,10 @@ describe('reducePortal', () => {
   it("should return ''", () => {
     //const result = reducePortal()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 

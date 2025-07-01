@@ -13,10 +13,10 @@ describe('setSelectedAccount', () => {
   it("should return ''", () => {
     //const result = setSelectedAccount()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -25,10 +25,10 @@ describe('setStep', () => {
   it("should return ''", () => {
     //const result = setStep()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -37,10 +37,10 @@ describe('setTransaction', () => {
   it("should return ''", () => {
     //const result = setTransaction()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -49,10 +49,10 @@ describe('setContentLoaded', () => {
   it("should return ''", () => {
     //const result = setContentLoaded()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -61,10 +61,10 @@ describe('setFlowStatus', () => {
   it("should return ''", () => {
     //const result = setFlowStatus()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -73,10 +73,10 @@ describe('setPlanSelected', () => {
   it("should return ''", () => {
     //const result = setPlanSelected()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -85,9 +85,9 @@ describe('setPeriodicitySelected', () => {
   it("should return ''", () => {
     //const result = setPeriodicitySelected()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })

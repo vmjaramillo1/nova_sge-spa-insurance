@@ -78,7 +78,7 @@ export const ZERO = 0
 export const EMPTY_STRING = ''
 
 export const DOCUMENT_DOWNLOAD_STATIC_CODES = Object.freeze({
-  USE_GUIDE: 'DOC_FRAUDS_USE_GUIDE',
+  USE_GUIDE: 'FLOW_TU_BAN_PRO_S_F_GDU',
 })
 
 export const TIME = Object.freeze({

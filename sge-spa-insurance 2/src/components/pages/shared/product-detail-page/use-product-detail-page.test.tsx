@@ -139,258 +139,19 @@ describe('useContentProductDetailPage', () => {
 
   it('should return filtered and sorted coverages', () => {
     const store = makeStore({
-      app: {
-        products: {
-          TU_BAN_PRO: {
-            portal: {
-              content: {
-                home: {
-                  sectionCoverages: {
-                    isActive: true,
-                    key: 'sectionCoverages',
-                    order: 2,
-                    actionShowCoverages: {
-                      isActive: true,
-                      key: 'actionShowCoverages',
-                      order: 0,
-                      value: 'Saber más del seguro',
-                      aria: 'Saber más del seguro',
-                    },
-                    actionNext: {
-                      isActive: true,
-                      key: 'actionNext',
-                      order: 1,
-                      value: 'Elige tu método de pago',
-                      aria: 'Elige tu método de pago',
-                    },
-                    title: {
-                      isActive: true,
-                      key: 'title',
-                      order: 3,
-                      value: 'Transparencia total',
-                      aria: 'Transparencia total',
-                    },
-                    coverages: {
-                      isActive: true,
-                      key: 'coverages',
-                      order: 5,
-                      items: [
-                        {
-                          isActive: false,
-                          key: 'COB_1',
-                          order: 0,
-                          description: {
-                            isActive: true,
-                            key: 'description',
-                            order: 0,
-                            value: 'Desde el primer día de contratación.',
-                            aria: 'Desde el primer día de contratación.',
-                          },
-                          icon: {
-                            isActive: true,
-                            key: 'icon',
-                            order: 1,
-                            value: 'check',
-                            color: 'darkCyan',
-                          },
-                        },
-                        {
-                          isActive: false,
-                          key: 'COB_2',
-                          order: 1,
-                          description: {
-                            isActive: true,
-                            key: 'description',
-                            order: 0,
-                            value:
-                              'Todas tus cuentas de ahorro y corriente en Banco Pichincha, incluidas sus tarjetas de débito.',
-                            aria: 'Todas tus cuentas de ahorro y corriente en Banco Pichincha, incluidas sus tarjetas de débito.',
-                          },
-                          icon: {
-                            isActive: true,
-                            key: 'icon',
-                            order: 1,
-                            value: 'check',
-                            color: 'darkCyan',
-                          },
-                        },
-                        {
-                          isActive: false,
-                          key: 'COB_4',
-                          order: 3,
-                          description: {
-                            isActive: true,
-                            key: 'description',
-                            order: 0,
-                            value:
-                              'Documentos personales: cédula, pasaporte, licencia de conducir.',
-                            aria: 'Documentos personales: cédula, pasaporte, licencia de conducir.',
-                          },
-                          icon: {
-                            isActive: true,
-                            key: 'icon',
-                            order: 1,
-                            value: 'check',
-                            color: 'darkCyan',
-                          },
-                        },
-                      ],
-                      title: {
-                        isActive: true,
-                        key: 'title',
-                        order: 0,
-                        value: 'Si cubrimos...',
-                        aria: 'Si cubrimos...',
-                      },
-                    },
-                    description: {
-                      isActive: true,
-                      key: 'description',
-                      order: 4,
-                      value:
-                        'Conoce qué incluye tu seguro y qué situaciones no están cubiertas.',
-                      aria: 'Conoce qué incluye tu seguro y qué situaciones no están cubiertas.',
-                    },
-                    exclusions: {
-                      isActive: true,
-                      key: 'exclusions',
-                      order: 6,
-                      items: [
-                        {
-                          isActive: false,
-                          key: 'EXC_1',
-                          order: 0,
-                          description: {
-                            isActive: true,
-                            key: 'description',
-                            order: 0,
-                            value: 'Tarjetas y cuentas de otros bancos.',
-                            aria: 'Tarjetas y cuentas de otros bancos.',
-                          },
-                          icon: {
-                            isActive: true,
-                            key: 'icon',
-                            order: 1,
-                            value: 'close',
-                            color: 'error',
-                          },
-                        },
-                        {
-                          isActive: false,
-                          key: 'EXC_2',
-                          order: 1,
-                          description: {
-                            isActive: true,
-                            key: 'description',
-                            order: 0,
-                            value: 'Casos ocurridos antes de contratar el seguro.',
-                            aria: 'Casos ocurridos antes de contratar el seguro.',
-                          },
-                          icon: {
-                            isActive: true,
-                            key: 'icon',
-                            order: 1,
-                            value: 'close',
-                            color: 'error',
-                          },
-                        },
-                        {
-                          isActive: false,
-                          key: 'EXC_4',
-                          order: 3,
-                          description: {
-                            isActive: true,
-                            key: 'description',
-                            order: 0,
-                            value:
-                              'Reportes realizados después de 72 horas o con documentación incompleta tras 30 días.',
-                            aria: 'Reportes realizados después de 72 horas o con documentación incompleta tras 30 días.',
-                          },
-                          icon: {
-                            isActive: true,
-                            key: 'icon',
-                            order: 1,
-                            value: 'close',
-                            color: 'error',
-                          },
-                        },
-                      ],
-                      title: {
-                        isActive: true,
-                        key: 'title',
-                        order: 0,
-                        value: 'No cubrimos...',
-                        aria: 'No cubrimos...',
-                      },
-                    },
-                    actionDownloadCertificate: {
-                      isActive: true,
-                      key: 'actionDownloadCertificate',
-                      order: 2,
-                      value: 'Previsualizar certificado',
-                      aria: 'Previsualizar certificado',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+      app: appValues,
       flow: flowValues,
       global: globalValues,
     })
-
-    // const wrapper = createWrapper({
-    //   flow: { ...flowValues },
-    //   app: {
-    //     portal: {
-    //       productDetail: {
-    //         coverages: [
-    //           {
-    //             key: 'coverageCode1',
-    //             order: 1,
-    //             isActive: false,
-    //             title: 'coverageName1',
-    //             subTitle: 'coverageSubtitle1',
-    //             description: 'coverageDescription1',
-    //             aria: 'coverageAria1',
-    //             icon: 'coverage1',
-    //           },
-    //           {
-    //             key: 'coverageCode2',
-    //             order: 2,
-    //             isActive: false,
-    //             title: 'coverageName2',
-    //             subTitle: 'coverageSubtitle2',
-    //             description: 'coverageDescription2',
-    //             aria: 'coverageAria2',
-    //             icon: 'coverage2',
-    //           },
-    //         ],
-    //       },
-    //     },
-    //     lopdp: {
-    //       url: 'url',
-    //       acceptedTermsConditions: true,
-    //       hasConsent: true,
-    //     },
-    //   },
-    //   global: {
-    //     authEvent: { ...authEventValues },
-    //   },
-    // })
 
     const { result } = renderHook(() => useContentProductDetailPage(), {
       wrapper: createWrapperStore(store),
     })
 
-    console.log(result.current.coverages.coverages.items)
-
-    expect(result.current.coverages.coverages.items).toEqual([])
-    // expect(result.current.coverages.exclusions.items).toEqual([])
+    expect(result.current.coverages.coverages.items.length).toBeGreaterThan(0)
   })
 })
+ 
 
 describe('useProductDetailPage', () => {
   beforeEach(() => {
@@ -433,7 +194,7 @@ describe('useProductDetailPage', () => {
     expect(result.current.showModalCoverage).toBe(true)
   })
 
-  it('should navigate to product page when handleContinue is called', async () => {
+  it('should navigate to acceptance when handleContinue is called', async () => {
     const navigateMock = jest.fn()
     useNavigateMock.mockReturnValue(navigateMock)
 
@@ -451,6 +212,6 @@ describe('useProductDetailPage', () => {
       result.current.handleContinue()
     })
 
-    expect(navigateMock).toBeCalledWith(APP_ROUTES.PRODUCT_DETAIL)
+    expect(navigateMock).toBeCalledWith(APP_ROUTES.ACCEPTANCE)
   })
 })

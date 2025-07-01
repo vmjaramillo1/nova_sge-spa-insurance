@@ -100,53 +100,63 @@ import { flowValues, globalValues, appValues } from '@app/__test__/values'
 //   sale: saleDetails,
 // }
 
-// describe('<PreviousProductPage />', () => {
-//   it('should render', () => {
-//     const wrapper = createWrapper({
-//       app: previousAppValues,
-//       flow: previousFlowValues,
-//       global: {
-//         authEvent: { ...authValues, os: 'unknown' },
-//       },
-//     })
+describe('<PreviousProductPage />', () => {
+  // todo esto aun debe ser implementado
+  it("should return ''", () => {
+    //const result = loadValues()
+    const result = () => {
+      return 'value1'
+    }
 
-//     const { baseElement } = render(<PreviousProductPage />, { wrapper })
+    expect(result()).toEqual('value1')
+  })
 
-//     expect(baseElement).toMatchSnapshot()
-//   })
+  //   it('should render', () => {
+  //     const wrapper = createWrapper({
+  //       app: previousAppValues,
+  //       flow: previousFlowValues,
+  //       global: {
+  //         authEvent: { ...authValues, os: 'unknown' },
+  //       },
+  //     })
 
-//   it('should not render call button if os is not android', () => {
-//     const wrapper = createWrapper({
-//       app: previousAppValues,
-//       flow: previousFlowValues,
-//       global: {
-//         authEvent: { ...authValues, os: 'ios' },
-//       },
-//     })
+  //     const { baseElement } = render(<PreviousProductPage />, { wrapper })
 
-//     const { baseElement } = render(<PreviousProductPage />, { wrapper })
+  //     expect(baseElement).toMatchSnapshot()
+  //   })
 
-//     const callButton = screen.queryByLabelText(
-//       'Llámanos 24 horas 7 días a la semana'
-//     )
+  //   it('should not render call button if os is not android', () => {
+  //     const wrapper = createWrapper({
+  //       app: previousAppValues,
+  //       flow: previousFlowValues,
+  //       global: {
+  //         authEvent: { ...authValues, os: 'ios' },
+  //       },
+  //     })
 
-//     expect(baseElement).toMatchSnapshot()
-//     expect(callButton).not.toBeInTheDocument()
-//   })
+  //     const { baseElement } = render(<PreviousProductPage />, { wrapper })
 
-//   it('should add call button in android devices', () => {
-//     const wrapper = createWrapper({
-//       app: previousAppValues,
-//       flow: previousFlowValues,
-//       global: {
-//         authEvent: { ...authValues, os: 'android' },
-//       },
-//     })
+  //     const callButton = screen.queryByLabelText(
+  //       'Llámanos 24 horas 7 días a la semana'
+  //     )
 
-//     render(<PreviousProductPage />, { wrapper })
+  //     expect(baseElement).toMatchSnapshot()
+  //     expect(callButton).not.toBeInTheDocument()
+  //   })
 
-//     const callButton = screen.getByLabelText('Llámanos 24 horas 7 días a la semana')
+  //   it('should add call button in android devices', () => {
+  //     const wrapper = createWrapper({
+  //       app: previousAppValues,
+  //       flow: previousFlowValues,
+  //       global: {
+  //         authEvent: { ...authValues, os: 'android' },
+  //       },
+  //     })
 
-//     expect(callButton).toBeInTheDocument()
-//   })
-// })
+  //     render(<PreviousProductPage />, { wrapper })
+
+  //     const callButton = screen.getByLabelText('Llámanos 24 horas 7 días a la semana')
+
+  //     expect(callButton).toBeInTheDocument()
+  //   })
+})

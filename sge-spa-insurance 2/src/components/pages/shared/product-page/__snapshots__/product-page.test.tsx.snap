@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPage /> should render 1`] = `
+<div>
+  <div
+    class="product-page"
+  >
+    <h2
+      aria-label="Plan Preferido"
+      class="text-subtitle font-semibold"
+    >
+      Plan Preferido
+    </h2>
+    <p
+      aria-label="Un producto de Seguros del Pichincha"
+      class="text-body mb-16"
+    >
+      Un producto de Seguros del Pichincha
+    </p>
+    <p
+      aria-label="¿Cómo quieres pagar tu seguro? lista de 2 opciones desplegables."
+      class="text-caption font-semibold mb-8"
+    >
+      ¿Cómo quieres pagar tu seguro?
+    </p>
+    <div
+      class="product-page__periodicity"
+    >
+      <button
+        aria-label="Mensual, Monto a pagar 
+$24,99 , incluidos impuestos"
+        class="toggle p-16 toggle--selected periodicity-card"
+      >
+        <p
+          aria-hidden="true"
+          class="text-body font-medium"
+        >
+          Mensual
+        </p>
+        <span
+          aria-hidden="true"
+          class="text-amountSmall font-semibold"
+        >
+          $ 24,99
+           
+        </span>
+        <p
+          aria-hidden="true"
+          class="text-caption"
+        >
+          Incluye impuestos
+        </p>
+        <div
+          class="periodicity-card__radio"
+          data-testid="undefined-radio"
+        >
+          <svg
+            fill="none"
+            height="20"
+            viewBox="0 0 26 27"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="13"
+              cy="13.5005"
+              fill="white"
+              r="9.76316"
+              stroke="#0F265C"
+            />
+            <circle
+              cx="12.9999"
+              cy="13.5004"
+              fill="#0F265C"
+              r="4.78947"
+            />
+          </svg>
+        </div>
+      </button>
+      <button
+        aria-label="Anual, Monto a pagar 
+$274,89 , incluidos impuestos"
+        class="toggle p-16 periodicity-card"
+      >
+        <div
+          aria-hidden="true"
+          class="periodicity-card__badge"
+        >
+          OFERTA
+        </div>
+        <p
+          aria-hidden="true"
+          class="text-body font-medium"
+        >
+          Anual
+        </p>
+        <span
+          aria-hidden="true"
+          class="text-amountSmall font-semibold"
+        >
+          $ 274,89
+           
+        </span>
+        <p
+          aria-hidden="true"
+          class="text-caption font-semibold"
+        >
+          Antes 
+          <span
+            class="periodicity-card__through"
+          >
+            $ 299,88
+          </span>
+        </p>
+        <p
+          aria-hidden="true"
+          class="text-caption"
+        >
+          Incluye impuestos
+        </p>
+        <div
+          class="periodicity-card__radio"
+          data-testid="undefined-radio"
+        >
+          <svg
+            fill="none"
+            height="20"
+            viewBox="0 0 26 27"
+            width="21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="13"
+              cy="13.5005"
+              fill="white"
+              r="9.76316"
+              stroke="#B7B7B9"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+    <div
+      aria-label="Puedes cancelar en cualquier momento."
+      class="alert alert--info alert--icon mb-16"
+      role="alert"
+      tabindex="-1"
+    >
+      <div
+        aria-hidden="true"
+        class="alert__icon"
+      >
+        <pichincha-icon
+          aria-hidden="true"
+          class="-mb-4 hydrated"
+          color="info"
+          size="20px"
+          type="--round"
+          weight_color="400"
+        >
+          info
+        </pichincha-icon>
+      </div>
+      <div
+        aria-hidden="true"
+        class="alert__content"
+      >
+        <p
+          class="text-caption text-dark-gray-400"
+        >
+          Puedes cancelar en cualquier momento.
+        </p>
+      </div>
+    </div>
+    <span
+      aria-hidden="true"
+      class="divider mb-16"
+    />
+    <div
+      class="mb-16"
+    >
+      <p
+        class="text-body font-semibold mb-16"
+      >
+        Cuenta a debitar el seguro
+      </p>
+      <button
+        aria-label="Desde cuenta de ahorros uyutty, con saldo disponible de 20 dólares con 00 centavos, Número de cuenta termina en * * * *"
+        class="account-card p-16"
+      >
+        <div
+          aria-hidden="true"
+          class="account-card__content--selected"
+        >
+          <div
+            class="account-card__details account-card__details--left"
+          >
+            <p
+              class="text-caption font-semibold"
+            >
+              uyutty
+            </p>
+            <p
+              class="text-legal text-dark-gray-400"
+            >
+              221264****
+            </p>
+          </div>
+          <div
+            class="account-card__details account-card__details--right"
+          >
+            <p
+              class="text-caption font-semibold"
+            >
+              $ 20,00
+            </p>
+            <p
+              class="text-legal font-medium"
+            >
+              Saldo disponible
+            </p>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="account-card__actionable"
+        >
+          <svg
+            aria-hidden="true"
+            data-testid="account-arrow"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+              fill="#6E6E73"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+    <div
+      class="check-legal mt-auto mb-24"
+    >
+      <div
+        class="check-legal__checkbox"
+      >
+        <span
+          class="inline-block"
+        >
+          <input
+            aria-labelledby=":r0:"
+            class="checkbox"
+            type="checkbox"
+            value="false"
+          />
+        </span>
+        <label
+          aria-hidden="true"
+          aria-label="Descargar el documento de cobertura total"
+          class="text-legal check-legal__content"
+          id=":r0:"
+        >
+          Autorizo el débito recurrente y 
+          <a
+            class="text-legal check-legal__insurance underline font-semibold"
+            href="#"
+          >
+            términos y condiciones
+          </a>
+           del producto de seguro seleccionado, así como a compartir mis datos personales y de medio de pago con el prestador del servicio y NOVAECUADOR S.A para la contratación de seguro de vida y salud protegida.
+        </label>
+      </div>
+    </div>
+    <button
+      aria-disabled="true"
+      aria-label="Para continuar marca la casilla de autorización anterior. Aceptar botón desactivado"
+      class="button button--primary button--is-disabled"
+      type="button"
+    >
+      Aceptar
+    </button>
+  </div>
+</div>
+`;

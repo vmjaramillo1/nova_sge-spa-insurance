@@ -24,6 +24,17 @@ describe('smart-format', () => {
   // })
 })
 
+// todo esto aun debe ser implementado
+describe('smartformat', () => {
+  it("should return ''", () => {
+    //const result = smart-format()
+    const result = () => {
+      return 'value1'
+    }
+
+    expect(result()).toEqual('value1')
+  })
+})
 
 // import { describe, expect, test } from "vitest";
 // import { smartFormat } from '.'

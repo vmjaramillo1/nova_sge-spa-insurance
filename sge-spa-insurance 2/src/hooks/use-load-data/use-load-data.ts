@@ -38,6 +38,11 @@ import { APP_ROUTES_CONFIG } from '@app/routes/hub/config'
 const useLoadData = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+
+
+  
+console.log('validateRewewwwwwwwwwwwwwwwwwwwwwwweweesult')
+
   const { verifyValidateOffer, verifyFindOffer } = useVerifyData()
 
   const identity = useIdentity()
@@ -160,7 +165,10 @@ const useLoadData = () => {
   useQuery(
     ['GET_OFFER'],
     async () => {
+      
       if (!identity) throw new InvalidBodyError('Missing identity')
+
+console.log('validateReweweesult')
 
       const validateResult = await InsuranceService.validateOffer({
         identity: {
@@ -175,6 +183,7 @@ const useLoadData = () => {
         throw new ResponseError(validateResult)
       }
 
+      console.log('validateResult', validateResult)
       verifyValidateOffer(validateResult)
 
       const { transactionReference, offerableProducts } = validateResult.value
@@ -188,7 +197,7 @@ const useLoadData = () => {
           dniType: identity.dniType,
         },
       })
-
+console.log('result', result)
       if (!isSuccessResponse(result)) {
         throw new ResponseError(result)
       }

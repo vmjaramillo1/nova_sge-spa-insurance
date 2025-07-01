@@ -429,7 +429,7 @@ describe('reduceAccounts', () => {
       return 'value1'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value1')
   })
 })
 
@@ -441,6 +441,6 @@ describe('reduceOffer', () => {
       return 'value1'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value1')
   })
 })

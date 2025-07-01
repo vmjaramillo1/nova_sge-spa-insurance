@@ -5,7 +5,6 @@ import Button from '@app/components/atoms/button'
 import SmartContent from '@app/components/atoms/smart-text'
 import useTermsAndConditionPage from './use-terms-and-condition-page'
 import DocumentCheckIcon from '@app/components/icons/DocumentCheckIcon'
-import { console } from 'inspector'
 
 const TermsAndConditionPage = () => {
   const {
@@ -17,8 +16,6 @@ const TermsAndConditionPage = () => {
     canContinue,
     handleContinue,
   } = useTermsAndConditionPage()
-
-  console.log('TermsAndConditionPage content', content)
 
   return (
     <div className="terms-and-condition">

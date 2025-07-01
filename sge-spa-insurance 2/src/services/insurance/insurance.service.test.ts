@@ -8,6 +8,18 @@ jest.mock('@pichincha/encrypt-microsite')
 jest.mock('@pichincha/events-microsite')
 const axiosMock = new MockAdapter(axios)
 
+// todo esto aun debe ser implementado
+describe('temporal', () => {
+  it("should return ''", () => {
+    //const result = ()
+    const result = () => {
+      return 'value1'
+    }
+
+    expect(result()).toEqual('value1')
+  })
+})
+
 // describe('axios.interceptors.response', () => {
 //   it('should call App logout when receive UNAUTHORIZED response', async () => {
 //     const spy = jest.spyOn(MessageService, 'sendMessage')

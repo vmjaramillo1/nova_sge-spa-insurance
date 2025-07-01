@@ -17,7 +17,8 @@ const useDownloadFile = (document?: string) => {
   const flowCode = currentPortal.params.flowcode
   return async () => {
     try {
-      callModal(callModal.OPEN)
+      // todo mejorar constantes
+      callModal('OPEN')
 
       if (!flowCode) return
 
@@ -29,11 +30,14 @@ const useDownloadFile = (document?: string) => {
 
       if (!isSuccessResponse(result)) return
 
-      const [firstDocument] = result.value.documents
+      const documents = result.value?.documents
+      if (!Array.isArray(documents) || documents.length === 0) return
+
+      const [firstDocument] = result.value?.documents
 
       downloadFile(firstDocument)
     } finally {
-      callModal(callModal.CLOSE)
+      callModal('CLOSE')
     }
   }
 }

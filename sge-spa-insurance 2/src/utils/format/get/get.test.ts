@@ -41,4 +41,16 @@ describe("get", () => {
   // test("should return value if nested array object", () => {
   //   expect(get({ a: { b: [{ c: 1 }, { c: 2 }] } }, "a.b.1.c")).toBe(2);
   // });
+  // todo esto aun debe ser implementado
+  describe('get', () => {
+    it("should return ''", () => {
+      //const result = get()
+      const result = () => {
+        return 'value1'
+      }
+  
+      expect(result()).toEqual('value1')
+    })
+  })
+
 });

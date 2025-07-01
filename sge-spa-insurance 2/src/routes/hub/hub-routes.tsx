@@ -3,16 +3,18 @@ import { APP_ROUTES_CONFIG } from './config'
 import Page from '@app/components/molecules/page'
 
 import { ProductDetailPageFallback } from '@app/components/pages/shared/product-detail-page'
-import { PreviousProductPageFallback } from '@app/components/pages/hub/previous-product-page'
-import TermsAndConditionPage from '@app/components/pages/hub/terms-and-condition-page'
-import { TermsAndConditionPageFallback } from '@app/components/pages/hub/terms-and-condition-page'
+import TermsAndConditionPage, {
+  TermsAndConditionPageFallback,
+} from '@app/components/pages/hub/terms-and-condition-page'
 import NotAccountPage from '@app/components/pages/shared/not-account-page'
 import PreviousProductDetailPage from '@app/components/pages/hub/previous-product-detail-page'
 import ErrorPage from '@app/components/pages/shared/error-page'
 import NotBusinessRulePage from '@app/components/pages/shared/not-business-rule-page'
 import NotProductPage from '@app/components/pages/shared/not-product-page'
 import RetryAcceptancePage from '@app/components/pages/shared/retry-acceptance-page'
-import PreviousProductPage from '@app/components/pages/hub/previous-product-page'
+import PreviousProductPage, {
+  PreviousProductPageFallback,
+} from '@app/components/pages/hub/previous-product-page'
 import InProgressPage from '@app/components/pages/shared/in-progress-page'
 import InsurancePage from '@app/components/pages/hub/insurance-page'
 import InsurancePageFallback from '@app/components/pages/hub/insurance-page/insurance-page-fallback'

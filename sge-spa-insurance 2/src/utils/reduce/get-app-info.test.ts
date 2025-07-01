@@ -1,4 +1,3 @@
-import { MergeOfferablePreviousType } from '../enums/merge-offerable-previous-type'
 import { OfferableWithType, getAppInfo } from './get-app-info'
 
 // const fraudsOffer: OfferableWithType = {
@@ -54,7 +53,6 @@ import { OfferableWithType, getAppInfo } from './get-app-info'
 //   // })
 // })
 
-
 // todo esto aun debe ser implementado
 describe('getAppInfo', () => {
   it("should return ''", () => {
@@ -63,6 +61,6 @@ describe('getAppInfo', () => {
       return 'value1'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value1')
   })
 })

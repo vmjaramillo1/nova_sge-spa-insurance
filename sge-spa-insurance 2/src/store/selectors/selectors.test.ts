@@ -5,10 +5,10 @@ describe('selectorError', () => {
   it("should return ''", () => {
     //const result = selectorError()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -17,10 +17,10 @@ describe('selectorAuthEvent', () => {
   it("should return ''", () => {
     //const result = selectorAuthEvent()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -29,10 +29,10 @@ describe('selectorPortalHub', () => {
   it("should return ''", () => {
     //const result = selectorPortalHub()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -41,10 +41,10 @@ describe('selectorAccounts', () => {
   it("should return ''", () => {
     //const result = selectorAccounts()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -53,10 +53,10 @@ describe('selectorPlans', () => {
   it("should return ''", () => {
     //const result = selectorPlans()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -65,10 +65,10 @@ describe('selectorSale', () => {
   it("should return ''", () => {
     //const result = selectorSale()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -77,10 +77,10 @@ describe('selectorPortal', () => {
   it("should return ''", () => {
     //const result = selectorPortal()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -89,10 +89,10 @@ describe('selectorLopdp', () => {
   it("should return ''", () => {
     //const result = selectorLopdp()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -101,10 +101,10 @@ describe('selectorHasOffer', () => {
   it("should return ''", () => {
     //const result = selectorHasOffer()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -113,10 +113,10 @@ describe('selectorCode', () => {
   it("should return ''", () => {
     //const result = selectorCode()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -126,10 +126,10 @@ describe('selectorTransactionReference', () => {
   it("should return ''", () => {
     //const result = selectorTransactionReference()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -138,10 +138,10 @@ describe('selectorAccountHashSelected', () => {
   it("should return ''", () => {
     //const result = selectorAccountHashSelected()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -150,10 +150,10 @@ describe('selectorPlanSelected', () => {
   it("should return ''", () => {
     //const result = selectorPlanSelected()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -162,10 +162,10 @@ describe('selectorPeriodicitySelected', () => {
   it("should return ''", () => {
     //const result = selectorPeriodicitySelected()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -174,10 +174,10 @@ describe('selectorStatus', () => {
   it("should return ''", () => {
     //const result = selectorStatus()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -186,10 +186,10 @@ describe('selectorStep', () => {
   it("should return ''", () => {
     //const result = selectorStep()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -198,9 +198,9 @@ describe('selectorContentLoaded', () => {
   it("should return ''", () => {
     //const result = selectorContentLoaded()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })

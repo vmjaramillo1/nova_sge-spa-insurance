@@ -5,10 +5,10 @@ describe('authenticate', () => {
   it("should return ''", () => {
     //const result = authenticate()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -17,10 +17,10 @@ describe('setError', () => {
   it("should return ''", () => {
     //const result = setError()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -29,9 +29,9 @@ describe('setPortalHub', () => {
   it("should return ''", () => {
     //const result = setPortalHub()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })

@@ -1,0 +1,544 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlanSelectionPage /> should render 1`] = `
+<div>
+  <div
+    class="plan-selection-page -mx-20 -my-24"
+  >
+    <p
+      aria-label="Elige el plan ideal para ti"
+      class="text-body my-20 ml-16"
+    >
+      ¡Elige el plan ideal para ti!
+    </p>
+    <div
+      class="plan-selection-page__table-wrapper"
+    >
+      <table
+        class="plan-selection-page__table "
+      >
+        <thead
+          class="text-primary-alternative1-500 text-left"
+        >
+          <tr>
+            <th
+              class="text-button text-blue-500 py-16 pl-8 sticky-col"
+            >
+              Planes
+            </th>
+            <th
+              class="plan-selection-page__table py-16 pl-8"
+            >
+              <p
+                aria-label="1. Económico"
+                class="small-title  text-blue-500 text-center"
+              >
+                
+Económico
+
+              </p>
+            </th>
+            <th
+              class="plan-selection-page__table py-16 pl-8"
+            >
+              <p
+                aria-label="2. Recomendado"
+                class="small-title  text-blue-500 text-center"
+              >
+                
+Recomendado
+
+              </p>
+            </th>
+            <th
+              class="plan-selection-page__table--selected plan-selection-page__table py-16 pl-8"
+            >
+              <p
+                aria-label="3. Preferido"
+                class="small-title  text-blue-500 text-center"
+              >
+                
+Preferido
+
+              </p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="py-4 pl-8 pr-0 sticky-col"
+            >
+              <p
+                class="small-description"
+              >
+                
+
+                <strong>
+                   En caso de fallecer, tus beneficiarios reciben  
+                </strong>
+                
+
+              </p>
+            </td>
+            <td
+              aria-label="1. Económico $15.000"
+              class="text-center px-4"
+            >
+               
+              <p
+                aria-hidden="true"
+                class="text-caption text-blue-500 font-semibold"
+              >
+                
+ $15.000
+ 
+              </p>
+            </td>
+            <td
+              aria-label="2. Recomendado $25.000"
+              class="text-center px-4"
+            >
+               
+              <p
+                class="text-caption text-blue-500 font-semibold"
+              >
+                
+ $25.000
+ 
+              </p>
+            </td>
+            <td
+              aria-label="3. Preferido $40.000"
+              class="plan-selection-page__table--selected text-center px-4"
+            >
+               
+              <p
+                class="text-caption text-blue-500 font-semibold"
+              >
+                
+ $40.000
+ 
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="py-4 pl-8 pr-0 sticky-col"
+            >
+              <p
+                class="small-description"
+              >
+                
+Telemedicina con consultas ilimitadas
+
+              </p>
+            </td>
+            <td
+              aria-label="1. Económico Incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="2. Recomendado Incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="3. Preferido Incluido"
+              class="plan-selection-page__table--selected text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="py-4 pl-8 pr-0 sticky-col"
+            >
+              <p
+                class="small-description"
+              >
+                
+4 consultas anuales de medicina general
+
+              </p>
+            </td>
+            <td
+              aria-label="1. Económico Incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="2. Recomendado Incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="3. Preferido Incluido"
+              class="plan-selection-page__table--selected text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="py-4 pl-8 pr-0 sticky-col"
+            >
+              <p
+                class="small-description"
+              >
+                
+3 consultas anuales de 8 especialidades 
+
+              </p>
+            </td>
+            <td
+              aria-label="1. Económico No incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="error"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                close
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="2. Recomendado Incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="3. Preferido Incluido"
+              class="plan-selection-page__table--selected text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="py-4 pl-8 pr-0 sticky-col"
+            >
+              <p
+                class="small-description"
+              >
+                
+Bono de $100 para exámenes
+
+              </p>
+            </td>
+            <td
+              aria-label="1. Económico No incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="error"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                close
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="2. Recomendado No incluido"
+              class="text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="error"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                close
+              </pichincha-icon>
+            </td>
+            <td
+              aria-label="3. Preferido Incluido"
+              class="plan-selection-page__table--selected text-center px-4"
+            >
+              <pichincha-icon
+                aria-hidden="true"
+                color="success"
+                size="20px"
+                type="--outlined"
+                weight-color="500"
+              >
+                check
+              </pichincha-icon>
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="py-4 pl-8 pr-0 sticky-col"
+            >
+              <p
+                class="small-description"
+              >
+                
+
+                <strong>
+                   Precios
+                </strong>
+                
+
+              </p>
+            </td>
+            <td
+              aria-label="1. Económico $9,99"
+              class="text-center px-4"
+            >
+               
+              <p
+                aria-hidden="true"
+                class="text-caption text-blue-500 font-semibold"
+              >
+                
+ $9,99
+ 
+              </p>
+            </td>
+            <td
+              aria-label="2. Recomendado  $15,99"
+              class="text-center px-4"
+            >
+               
+              <p
+                class="text-caption text-blue-500 font-semibold"
+              >
+                
+ $15,99
+ 
+              </p>
+            </td>
+            <td
+              aria-label="3. Preferido $24,99"
+              class="plan-selection-page__table--selected text-center px-4"
+            >
+               
+              <p
+                class="text-caption text-blue-500 font-semibold"
+              >
+                
+ $24,99
+ 
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td
+              class="py-8 sticky-col"
+            />
+            <td
+              aria-label="Selector de plan 1. Económico"
+              class="text-center"
+            >
+              <div
+                data-testid="radio"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  viewBox="0 0 26 27"
+                  width="21"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="13"
+                    cy="13.5005"
+                    fill="white"
+                    r="9.76316"
+                    stroke="#B7B7B9"
+                  />
+                </svg>
+              </div>
+            </td>
+            <td
+              aria-label="Selector de plan 2. Recomendado"
+              class="text-center"
+            >
+              <div
+                data-testid="radio"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  viewBox="0 0 26 27"
+                  width="21"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="13"
+                    cy="13.5005"
+                    fill="white"
+                    r="9.76316"
+                    stroke="#B7B7B9"
+                  />
+                </svg>
+              </div>
+            </td>
+            <td
+              aria-label="Selector de plan 3. Preferido"
+              class="plan-selection-page__table--selected text-center"
+            >
+              <div
+                data-testid="radio"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  viewBox="0 0 26 27"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="13"
+                    cy="13.5005"
+                    fill="white"
+                    r="9.76316"
+                    stroke="#0F265C"
+                  />
+                  <circle
+                    cx="12.9999"
+                    cy="13.5004"
+                    fill="#0F265C"
+                    r="4.78947"
+                  />
+                </svg>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="floating-container"
+    >
+      <div
+        aria-label="Quiero conocer mas sobre  el:
+  Plan Preferido
+  $24,99
+  Precio mensual"
+        class="floating-container__left"
+      >
+        <p
+          aria-hidden="true"
+          class="text-body"
+        >
+          <p
+            class="text-button font-bold text-blue-500"
+          >
+            Plan Preferido
+          </p>
+        </p>
+        <p
+          aria-hidden="true"
+          class="text-body"
+        >
+          <p
+            class="text-body font-bold text-blue-500"
+          >
+            $24,99
+            <span
+              class="small-price"
+            >
+               iva incluido
+            </span>
+          </p>
+        </p>
+        <p
+          aria-hidden="true"
+          class="text-body"
+        >
+          <p
+            class="text-caption"
+          >
+            Precio mensual
+          </p>
+        </p>
+      </div>
+      <button
+        aria-hidden="true"
+        class="button button--primary m-auto"
+        type="button"
+      >
+        Conocer más
+      </button>
+    </div>
+  </div>
+</div>
+`;

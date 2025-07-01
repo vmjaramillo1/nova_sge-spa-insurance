@@ -1,187 +1,116 @@
-import { OfferableWithType } from '@app/utils'
-import { MergeOfferablePreviousType } from '@app/utils/enums'
-// import { getFavoriteAccountHash, isOffer, mergeOfferAndPrevious } from './utils'
-// import { AccountInfo, MergeOfferPreviousList } from '@app/services/insurance'
+import { getFavoriteAccountHash } from './utils'
+import { AppAccounts } from '@app/store/reducers/app-slice/app-slice.interface'
 
-// todo termnalizar las pruebas
-describe('isOffer', () => {
-  // it('should return true if any object in the array has type OFFER', () => {
-  //   const list = [
-  //     { type: MergeOfferablePreviousType.OFFER },
-  //     { type: MergeOfferablePreviousType.PREVIOUS },
-  //     { type: MergeOfferablePreviousType.OFFER },
-  //   ]
-  //   expect(isOffer(list)).toBe(true)
-  // })
+describe('getFavoriteAccountHash', () => {
+  it('should return the hash of the favorite account if it exists', () => {
+    const accounts: AppAccounts = {
+      accounts: {
+        '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+          {
+            hash: '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+            mask: '210021****',
+            type: 'CTA.CTE PERSONAL',
+            balance: 200,
+            alias: 'ytytyty',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'CHECKING_ACCOUNT',
+          },
+        '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d':
+          {
+            hash: '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d',
+            mask: '220404****',
+            type: 'TRANSACCIONAL TRADICIONAL',
+            balance: 20000,
+            alias: 'fdfdf',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'SAVINGS_ACCOUNT',
+          },
+        '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d':
+          {
+            hash: '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+            mask: '221264****',
+            type: 'Cuenta de AhorroTransaccional',
+            balance: 29,
+            alias: 'uyutty',
+            favorite: true,
+            allowsTransact: true,
+            paymentType: 'SAVINGS_ACCOUNT',
+          },
+      },
+      cards: {
+        '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+          {
+            hash: '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+            mask: '5555 5555 5555 4444',
+            type: 'PERSONAL',
+            balance: 4000.0,
+            alias: 'TARJETA',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'UNKNOWN',
+          },
+      },
+    }
+    expect(getFavoriteAccountHash(accounts)).toBe(
+      '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d'
+    )
+  })
 
-  // it('should return false if no object in the array has type OFFER', () => {
-  //   const list = [
-  //     { type: MergeOfferablePreviousType.PREVIOUS },
-  //     { type: MergeOfferablePreviousType.PREVIOUS },
-  //     { type: MergeOfferablePreviousType.PREVIOUS },
-  //   ]
-  //   expect(isOffer(list)).toBe(false)
-  // })
-
-  // it('should return false if the array is empty', () => {
-  //   const list: Array<OfferableWithType> = []
-  //   expect(isOffer(list)).toBe(false)
-  // })
+  it('should return the hash of the first account if no favorite account exists', () => {
+    const accounts: AppAccounts = {
+      accounts: {
+        '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+          {
+            hash: '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+            mask: '210021****',
+            type: 'CTA.CTE PERSONAL',
+            balance: 200,
+            alias: 'ytytyty',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'CHECKING_ACCOUNT',
+          },
+        '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d':
+          {
+            hash: '644552306d7a4758584f4639473461694e6e4a7a6f657454516a42514a34594e75695a3736772f627775593d',
+            mask: '220404****',
+            type: 'TRANSACCIONAL TRADICIONAL',
+            balance: 20000,
+            alias: 'fdfdf',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'SAVINGS_ACCOUNT',
+          },
+        '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d':
+          {
+            hash: '727653384647637a774b5a7077486c595a3467516258316a4f7432694273727379625875583637366331453d',
+            mask: '221264****',
+            type: 'Cuenta de AhorroTransaccional',
+            balance: 29,
+            alias: 'uyutty',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'SAVINGS_ACCOUNT',
+          },
+      },
+      cards: {
+        '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d':
+          {
+            hash: '54353454353743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d',
+            mask: '5555 5555 5555 4444',
+            type: 'PERSONAL',
+            balance: 4000.0,
+            alias: 'TARJETA',
+            favorite: false,
+            allowsTransact: true,
+            paymentType: 'UNKNOWN',
+          },
+      },
+    }
+    expect(getFavoriteAccountHash(accounts)).toBe(
+      '4f356a5446717258743858436149306c317a2b5653396b74384e67454168735350624e5850775135476e413d'
+    )
+  })
 })
-
-// describe('getFavoriteAccountHash', () => {
-//   it('should return the hash of the favorite account if it exists', () => {
-//     const accounts: Array<AccountInfo> = [
-//       {
-//         hash: 'hash1',
-//         favorite: false,
-//         mask: '1234',
-//         type: 'checking',
-//         balance: 1000,
-//         alias: 'My Checking Account',
-//         value: '1000 USD',
-//       },
-//       {
-//         hash: 'hash2',
-//         favorite: true,
-//         mask: '5678',
-//         type: 'savings',
-//         balance: 5000,
-//         alias: 'My Savings Account',
-//         value: '5000 USD',
-//       },
-//     ]
-//     expect(getFavoriteAccountHash(accounts)).toBe('hash2')
-//   })
-
-//   it('should return the hash of the first account if no favorite account exists', () => {
-//     const accounts: Array<AccountInfo> = [
-//       {
-//         hash: 'hash3',
-//         favorite: false,
-//         mask: '9012',
-//         type: 'credit',
-//         balance: -2000,
-//         alias: 'My Credit Card',
-//         value: '-2000 USD',
-//       },
-//       {
-//         mask: '5678',
-//         type: 'savings',
-//         balance: 5000,
-//         alias: 'My Savings Account',
-//         value: '5000 USD',
-//         favorite: false,
-//         hash: 'hash4',
-//       },
-//       {
-//         hash: 'hash3',
-//         favorite: false,
-//         mask: '9012',
-//         type: 'credit',
-//         balance: -2000,
-//         alias: 'My Credit Card',
-//         value: '-2000 USD',
-//       },
-//     ]
-//     expect(getFavoriteAccountHash(accounts)).toBe('hash3')
-//   })
-// })
-
-// describe('mergeOfferAndPrevious', () => {
-//   it('should return an empty array if no offerable or previous products are present', () => {
-//     const data: MergeOfferPreviousList = []
-//     expect(mergeOfferAndPrevious(data)).toEqual([])
-//   })
-
-//   it('should return an array appended with type', () => {
-//     const data: MergeOfferPreviousList = [
-//       {
-//         type: 1,
-//         data: [
-//           {
-//             code: 'code0',
-//           } as OfferableWithType,
-//         ],
-//       },
-//       {
-//         type: 2,
-//         data: [
-//           {
-//             code: 'code9',
-//           } as OfferableWithType,
-//         ],
-//       },
-//     ]
-
-//     expect(mergeOfferAndPrevious(data)).toEqual([
-//       {
-//         code: 'code0',
-//         type: MergeOfferablePreviousType.OFFER,
-//       },
-//       {
-//         code: 'code9',
-//         type: MergeOfferablePreviousType.PREVIOUS,
-//       },
-//     ])
-//   })
-
-//   it('should return an array of offerable products if only offerable products are present', () => {
-//     const data: MergeOfferPreviousList = [
-//       {
-//         type: 1,
-//         data: [
-//           {
-//             code: 'code1',
-//           } as OfferableWithType,
-//         ],
-//       },
-//     ]
-
-//     expect(
-//       mergeOfferAndPrevious(data).every(
-//         (item) => item.type === MergeOfferablePreviousType.OFFER
-//       )
-//     ).toBeTruthy()
-//   })
-
-//   it('should return an array of previous products if only previous products are present', () => {
-//     const data: MergeOfferPreviousList = [
-//       {
-//         type: 2,
-//         data: [
-//           {
-//             code: 'code2',
-//           } as OfferableWithType,
-//         ],
-//       },
-//       {
-//         type: 2,
-//         data: [
-//           {
-//             code: 'code3',
-//           } as OfferableWithType,
-//         ],
-//       },
-//     ]
-
-//     expect(
-//       mergeOfferAndPrevious(data).every(
-//         (item) => item.type === MergeOfferablePreviousType.PREVIOUS
-//       )
-//     ).toBeTruthy()
-//   })
-// })
-
-
-// // todo esto aun debe ser implementado
-// describe('unifyOfferByProductCode', () => {
-//   it("should return ''", () => {
-//     //const result = unifyOfferByProductCode()
-//     const result = () => {
-//       return 'value1'
-//     }
-
-//     expect(result).toEqual('value')
-//   })
-// })

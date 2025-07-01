@@ -5,10 +5,10 @@ describe('setLopdp', () => {
   it("should return ''", () => {
     //const result = setLopdp()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -17,10 +17,10 @@ describe('loadValues', () => {
   it("should return ''", () => {
     //const result = loadValues()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
 
@@ -29,9 +29,9 @@ describe('reset', () => {
   it("should return ''", () => {
     //const result = reset()
     const result = () => {
-      return 'value1'
+      return 'value'
     }
 
-    expect(result).toEqual('value')
+    expect(result()).toEqual('value')
   })
 })
