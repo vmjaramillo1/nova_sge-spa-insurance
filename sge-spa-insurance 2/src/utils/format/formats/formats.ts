@@ -16,7 +16,7 @@ export const formatMoney = (
   const [integer, decimal] = format
 
   const numberValue = Number(integer)
-    .toLocaleString()
+    .toLocaleString(locales)
     .replace(/,/g, withThousandsSeparator ? '.' : '')
 
   return `$ ${numberValue},${decimal}`
